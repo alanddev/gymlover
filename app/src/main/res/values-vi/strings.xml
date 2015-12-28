@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">gymlover</string>
+    <string name="action_settings">Settings</string>
+    <string name="notify_afternoon">Chào buổi tối, Đừng quên cập nhật chi tiêu trong ngày của bạn nhé</string>
+    <string name="notify_morning">Chào buổi sáng, Chúc bạn một ngày mới nhiều niềm vui</string>
+    <string name="notify_noon">MW Chúc bạn ngủ ngon!</string>
+    <string name="notify_startmonth">Chúc bạn ngày đầu tháng làm việc hiệu quả và nhiều niềm vui</string>
+    <string name="notify_startweek">Chúc bạn một tuần mới làm việc hiệu quả và nhiều niềm vui</string>
+    <string name="notify_startyear">Chúc mừng năm mới</string>
+    <string name="notify_title">MW chào bạn</string>
+    <string name="yesterday">Hôm qua</string>
+    <string name="tomorrow">Ngày mai</string>
+    <string name="today">Hôm nay</string>
+    <string name="settings_language">Chọn ngôn ngữ</string>
+    <string name="settings_menu">Chọn Menu Theme</string>
+    <string name="settings_themes">Chọn Theme</string>
+    <string name="title_activity_settings">Cài đặt</string>
+    <string name="title_activity_select_theme">Lựa chọn Theme</string>
+    <string name="title_activity_select_menu">Lựa chọn hình nền menu</string>
+    <string name="title_activity_select_language">Lựa chọn ngôn ngữ</string>
+    <string name="setting">Cài đặt</string>
+</resources>

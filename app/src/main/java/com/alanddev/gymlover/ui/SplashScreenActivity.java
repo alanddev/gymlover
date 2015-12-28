@@ -25,13 +25,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         public void run() {
             try {
                 init();
-                if (checkDB()) {
+                /*if (checkDB()) {
                     Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));
                     sleep(Constant.SPLASH_DISPLAY_LONG);
                 } else {
                     initfor1st();
                     sleep(Constant.SPLASH_DISPLAY_SHORT);
-                }
+                }*/
+                //initfor1st();
+                sleep(Constant.SPLASH_DISPLAY_SHORT);
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(i);
                 finish();

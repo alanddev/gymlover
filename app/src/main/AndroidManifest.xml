@@ -26,6 +26,9 @@
             android:name=".ui.SettingActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.SelectThemeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <service
             android:name=".service.NotifyService"/>
 
