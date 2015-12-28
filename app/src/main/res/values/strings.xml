@@ -1,4 +1,129 @@
 <resources>
     <string name="app_name">gymlover</string>
     <string name="action_settings">Settings</string>
+    <string-array name="day_view">
+        <item>@string/yesterday</item>
+        <item>@string/today</item>
+        <item>@string/tomorrow</item>
+    </string-array>
+    <string name="db_path">/data/data/com.alanddev.gymlover/databases/</string>
+    <string-array name="header_images">
+        <item>amber_pentagonal_background</item>
+        <item>blue_grey_pentagonal_background</item>
+        <item>brown_pentagonal_background</item>
+        <item>cyan_pentagonal_background</item>
+        <item>deep_orange_pentagonal_background</item>
+        <item>deep_purple_pentagonal_background</item>
+        <item>green_pentagonal_background</item>
+        <item>indigo_pentagonal_background</item>
+        <item>pink_pentagonal_background</item>
+        <item>purple_pentagonal_background</item>
+        <item>red_pentagonal_background</item>
+        <item>teal_pentagonal_background</item>
+    </string-array>
+    <string name="navi_header_default">indigo_pentagonal_background</string>
+    <string-array name="theme_array">
+        <item>Default_Theme</item>
+        <item>DeepSkyBlue_Theme</item>
+        <item>DodgerBlue_Theme</item>
+        <item>LightSkyBlue_Theme</item>
+        <item>DarkBlue_Theme</item>
+        <item>MediumBlue_Theme</item>
+        <item>RoyalBlue_Theme</item>
+        <item>BlueViolet_Theme</item>
+        <item>Indigo_Theme</item>
+        <item>DarkOrchid_Theme</item>
+        <item>MediumOrchid_Theme</item>
+        <item>Magenta_Theme</item>
+        <item>DeepPink_Theme</item>
+        <item>Pink_Theme</item>
+        <item>Chocolate_Theme</item>
+        <item>Tomato_Theme</item>
+        <item>Coral_Theme</item>
+        <item>OrangeDark_Theme</item>
+        <item>OrangeRed_Theme</item>
+        <item>Gold_Theme</item>
+        <item>DarkGoldenRod_Theme</item>
+        <item>GoldenRod_Theme</item>
+        <item>DarkKhaki_Theme</item>
+        <item>Khaki_Theme</item>
+        <item>Olive_Theme</item>
+        <item>YellowGreen_Theme</item>
+        <item>OliveDrab_Theme</item>
+        <item>ChartReuse_Theme</item>
+        <item>GreenYellow_Theme</item>
+        <item>Green_Theme</item>
+        <item>LimeGreen_Theme</item>
+        <item>LightGreen_Theme</item>
+        <item>DarkSeaGreen_Theme</item>
+        <item>SpringGreen_Theme</item>
+        <item>SeaGreen_Theme</item>
+        <item>MediumAquaMarine_Theme</item>
+        <item>LightSeaGreen_Theme</item>
+        <item>Teal_Theme</item>
+        <item>Cyan_Theme</item>
+    </string-array>
+    <string-array name="color_array">
+        <item>colorPrimaryDark</item>
+        <item>colorDeepSkyBlue</item>
+        <item>colorDodgerBlue</item>
+        <item>colorLightSkyBlue</item>
+        <item>colorDarkBlue</item>
+        <item>colorMediumBlue</item>
+        <item>colorRoyalBlue</item>
+        <item>colorBlueViolet</item>
+        <item>colorIndigo</item>
+        <item>colorDarkOrchid</item>
+        <item>colorMediumOrchid</item>
+        <item>colorMagenta</item>
+        <item>colorDeepPink</item>
+        <item>colorPink</item>
+        <item>colorChocolate</item>
+        <item>colorTomato</item>
+        <item>colorCoral</item>
+        <item>colorOrangeDark</item>
+        <item>colorOrangeRed</item>
+        <item>colorGold</item>
+        <item>colorDarkGoldenRod</item>
+        <item>GoldenRod</item>
+        <item>colorDarkKhaki</item>
+        <item>colorKhaki</item>
+        <item>colorOlive</item>
+        <item>colorYellowGreen</item>
+        <item>colorOliveDrab</item>
+        <item>colorChartReuse</item>
+        <item>colorGreenYellow</item>
+        <item>colorGreen</item>
+        <item>colorLimeGreen</item>
+        <item>colorLightGreen</item>
+        <item>colorDarkSeaGreen</item>
+        <item>colorSpringGreen</item>
+        <item>colorSeaGreen</item>
+        <item>colorMediumAquaMarine</item>
+        <item>colorLightSeaGreen</item>
+        <item>colorTeal</item>
+        <item>colorCyan</item>
+    </string-array>
+
+    <string-array name="language">
+        <item>vi</item>
+        <item>en</item>
+    </string-array>
+
+    <string-array name="language_name">
+        <item>Tiếng Việt</item>
+        <item>English</item>
+    </string-array>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="banner_ad_unit_id">ca-app-pub-6762857180801550/2923514625</string>
+
+    <string-array name="settings">
+        <item>@string/settings_themes</item>
+        <item>@string/settings_menu</item>
+        <item>@string/settings_language</item>
+    </string-array>
 </resources>
