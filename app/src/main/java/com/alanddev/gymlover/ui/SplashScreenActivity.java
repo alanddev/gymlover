@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.controller.ExcerciseGroupController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.service.NotifyService;
 import com.alanddev.gymlover.util.Constant;
@@ -25,15 +27,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         public void run() {
             try {
                 init();
-                /*if (checkDB()) {
-                    Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));
+                if (checkDB()) {
+                    /*Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));*/
                     sleep(Constant.SPLASH_DISPLAY_LONG);
                 } else {
                     initfor1st();
                     sleep(Constant.SPLASH_DISPLAY_SHORT);
-                }*/
-                //initfor1st();
-                sleep(Constant.SPLASH_DISPLAY_SHORT);
+                }
+
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(i);
                 finish();
@@ -49,6 +50,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
 
     private void initfor1st() {
+        ExcerciseGroupController controller = new ExcerciseGroupController(getApplicationContext());
+        controller.open();
+        controller.init(this);
+        controller.close();
         //start notification services
         Intent intent = new Intent();
         intent.setAction("com.alanddev.manwal.CUSTOM_INTENT");

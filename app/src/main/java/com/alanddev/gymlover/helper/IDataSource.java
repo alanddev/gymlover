@@ -3,6 +3,7 @@ package com.alanddev.gymlover.helper;
 import android.database.Cursor;
 
 
+import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.model.Model;
 
 import java.util.List;
@@ -20,5 +21,6 @@ public interface IDataSource {
     public Model get(String query);
     public List<Model> getAll(String query);
     public Model cursorTo(Cursor cursor);
+    public void delete();
 
 }

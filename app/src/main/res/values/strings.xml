@@ -126,4 +126,57 @@
         <item>@string/settings_menu</item>
         <item>@string/settings_language</item>
     </string-array>
+    <string-array name="excercise_grp_names">
+        <item>@string/grp_abdo</item>
+        <item>@string/grp_addu</item>
+        <item>@string/grp_bice</item>
+        <item>@string/grp_calv</item>
+        <item>@string/grp_ches</item>
+        <item>@string/grp_fore</item>
+        <item>@string/grp_glut</item>
+        <item>@string/grp_hams</item>
+        <item>@string/grp_lats</item>
+        <item>@string/grp_back</item>
+        <item>@string/grp_neck</item>
+        <item>@string/grp_quad</item>
+        <item>@string/grp_shou</item>
+        <item>@string/grp_trap</item>
+        <item>@string/grp_tric</item>
+    </string-array>
+
+    <string-array name="excercise_grp_imgs">
+        <item>abdominals</item>
+        <item>adductors</item>
+        <item>biceps</item>
+        <item>calves</item>
+        <item>chest</item>
+        <item>forearms</item>
+        <item>glutes</item>
+        <item>hamstrings</item>
+        <item>lats</item>
+        <item>back</item>
+        <item>neck</item>
+        <item>quadriceps</item>
+        <item>shoulders</item>
+        <item>traps</item>
+        <item>triceps</item>
+    </string-array>
+
+    <string name="grp_abdo">Abdominals</string>
+    <string name="grp_addu">Adductors</string>
+    <string name="grp_bice">Biceps</string>
+    <string name="grp_calv">Calves</string>
+    <string name="grp_ches">Chest</string>
+    <string name="grp_fore">Forearms</string>
+    <string name="grp_glut">Glutes</string>
+    <string name="grp_hams">Hamstrings</string>
+    <string name="grp_lats">Lats</string>
+    <string name="grp_back">Back</string>
+    <string name="grp_neck">Neck</string>
+    <string name="grp_quad">Quadriceps</string>
+    <string name="grp_shou">Shoulders</string>
+    <string name="grp_trap">Traps</string>
+    <string name="grp_tric">Triceps</string>
+    <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
 </resources>

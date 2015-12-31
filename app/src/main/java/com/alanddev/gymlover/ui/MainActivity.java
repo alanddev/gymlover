@@ -1,6 +1,7 @@
 package com.alanddev.gymlover.ui;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,11 +21,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
+
+import java.io.File;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        setNavHeader(navigationView);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -116,6 +124,9 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
             Intent intent = new Intent(this,SettingActivity.class);
             startActivityForResult(intent,REQUEST_SETTING);
+        }else if(id == R.id.nav_exercise){
+            Intent intent = new Intent(this,ExerciseGrpActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -203,4 +214,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void setNavHeader(NavigationView navigationView){
+        View header = navigationView.getHeaderView(0);
+        String naviheader = Utils.getCurrentNavHeader(this);
+        header.setBackgroundResource(getResources().getIdentifier(naviheader,"mipmap",getPackageName()));
+
+    }
 }
