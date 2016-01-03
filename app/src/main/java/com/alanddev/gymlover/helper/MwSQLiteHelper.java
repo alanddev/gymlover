@@ -8,7 +8,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_EXCERCISE = "excercise";
     public static final String TABLE_EXCERCISE_GROUP = "excercise_group";
-    // table Wallet
+    public static final String TABLE_USER = "user";
+    // table columns
     public static final String COLUMN_EXCERCISE_ID = "id";
     public static final String COLUMN_EXCERCISE_NAME = "name";
     public static final String COLUMN_EXCERCISE_DESC = "desc";
@@ -21,6 +22,15 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_EX_GROUP_DESC = "desc";
     public static final String COLUMN_EX_GROUP_IMAGE = "image";
 
+    public static final String COLUMN_USER_ID = "id";
+    public static final String COLUMN_USER_NAME = "name";
+    public static final String COLUMN_USER_GENDER = "gender";
+    public static final String COLUMN_USER_HEIGHT = "height";
+    public static final String COLUMN_USER_WEIGHT = "weight";
+    public static final String COLUMN_USER_FAT = "fat";
+    public static final String COLUMN_USER_IMG = "img";
+
+
 
     public static final String DATABASE_NAME = "gymlover.db";
     private static final int DATABASE_VERSION = 1;
@@ -28,6 +38,20 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public SQLiteDatabase sqLiteDatabase;
     // 20 fields
     // Database creation sql statement
+
+
+    private static final String USER_CREATE = "CREATE TABLE "
+            + TABLE_USER + "("
+            + COLUMN_USER_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_USER_NAME + " text not null, "
+            + COLUMN_USER_GENDER + " integer not null, "
+            + COLUMN_USER_HEIGHT + " float not null, "
+            + COLUMN_USER_WEIGHT + " float not null, "
+            + COLUMN_USER_FAT + " float not null, "
+            + COLUMN_USER_IMG + " text not null "
+            + ");";
+
+
     private static final String EXCERCISE_CREATE = "CREATE TABLE "
             + TABLE_EXCERCISE + "("
             + COLUMN_EXCERCISE_ID + " INTEGER PRIMARY KEY, "
@@ -56,6 +80,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase = database;
         database.execSQL(EXCERCISE_CREATE);
         database.execSQL(EX_GROUP_CREATE);
+        database.execSQL(USER_CREATE);
     }
 
 
@@ -67,6 +92,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         //sqLiteDatabase = db;
         db.execSQL("DROP TABLE IF EXISTS " + EXCERCISE_CREATE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXCERCISE_GROUP);
+        db.execSQL("DROP TABLE IF EXISTS " + USER_CREATE);
         onCreate(db);
     }
 

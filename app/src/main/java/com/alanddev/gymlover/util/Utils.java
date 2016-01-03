@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.View;
@@ -364,6 +365,37 @@ public class Utils {
     public static String getCurrentLanguage(Context context){
         SharedPreferences mshare = Utils.getSharedPreferences(context);
         return mshare.getString(Constant.LANGUAGE_CURRENT,"");
+    }
+
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 0) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    // size waist -- > YCMA formula;
+    // way 2 is Navy body fat;
+    public static double calculatorBodyFat(double weight, double sizeRoundTwo, int gender){
+        double result ;
+        sizeRoundTwo = sizeRoundTwo/2.54; // convert cm --> to inches; 1inches = 2.54 cm;
+        weight = weight * 2.2; // 1kg = 2.2 pounds
+
+        if (gender == Constant.GENDER_BOY){
+            result = (-98.42 + (4.15 * sizeRoundTwo) - (0.082 *weight))/weight ;
+        }else{
+            result = (-76.76 + (4.15 * sizeRoundTwo) - (0.082 * weight))/weight;
+        }
+        return result * 100;
     }
 
 

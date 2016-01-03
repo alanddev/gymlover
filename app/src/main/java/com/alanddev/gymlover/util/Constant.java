@@ -10,8 +10,9 @@ public class Constant {
     public static final Integer INCOME_TYPE=1;
     public static final String DATE_FORMAT_PICKER = "dd/MM/yyyy";
     public static final String DATE_FORMAT_DB = "yyyy-MM-dd";
-    public static final int CUR_WALLET_REQUEST = 2;
-    public static final int GALLERY_WALLET_REQUEST = 3;
+    public static final int BODYFAT_USER_REQUEST = 2;
+    public static final int GALLERY_USER_REQUEST = 3;
+
     public static final String PATH_IMG= Environment.getExternalStorageDirectory().getPath()+"/gymlover/image";
     public static final int VIEW_TYPE_DAY = 0;
     public static final int VIEW_TYPE_WEEK = 1;
@@ -53,4 +54,6 @@ public class Constant {
     public static final String THEME_CURRENT = "THEME_CURRENT";
     public static final String NAV_HEADER_CURRENT = "NAV_HEADER_CURRENT";
     public static final String LANGUAGE_CURRENT = "LANGUAGE_CURRENT";
+    public static int GENDER_BOY = 1;
+    public static int GENDER_GIRL = 0;
 }

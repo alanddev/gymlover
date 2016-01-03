@@ -35,7 +35,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     sleep(Constant.SPLASH_DISPLAY_SHORT);
                 }
 
-                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                Intent i = new Intent(getBaseContext(), UserActivity.class);
                 startActivity(i);
                 finish();
             } catch (Exception e) {

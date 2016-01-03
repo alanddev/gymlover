@@ -179,4 +179,24 @@
     <string name="grp_tric">Triceps</string>
     <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_body_fat">Xác định lượng mỡ</string>
+    <string name="name_user">Tên Bạn</string>
+    <string name="user_height">Chiều cao</string>
+    <string name="user_weight">Cân nặng</string>
+    <string name="user_fat">Phần trăm mỡ cơ thể</string>
+    <string name="action_save">Lưu</string>
+    <string name="warning_user_name">Chưa nhập tên bạn mà :)</string>
+
+    <string-array name="gender_array">
+        <item>@string/gender_boy</item>
+        <item>@string/gender_girl</item>
+    </string-array>
+    <string name="gender_boy">Nam</string>
+    <string name ="gender_girl">Nữ</string>
+
+    <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
+    <string name="user_waist">Vòng eo</string>
+    <string name="bodyfat_guide_begin">Bạn hãy nhìn vào hình bên dưới để có thể dễ hình dung về lượng mỡ cơ thể của mình nhé.</string>
+<string name ="calBodyFat">Tính nhanh</string>
 </resources>
