@@ -146,12 +146,12 @@
 
     <string-array name="excercise_grp_imgs">
         <item>abdominals</item>
-        <item>adductors</item>
+        <item>adductor</item>
         <item>biceps</item>
         <item>calves</item>
         <item>chest</item>
         <item>forearms</item>
-        <item>glutes</item>
+        <item>gluter</item>
         <item>hamstrings</item>
         <item>lats</item>
         <item>back</item>
@@ -160,6 +160,10 @@
         <item>shoulders</item>
         <item>traps</item>
         <item>triceps</item>
+    </string-array>
+
+    <string-array name="excercise_grp_ex">
+        <item>ex_Abdominals_names,ex_Abdominals_descs,ex_Abdominals_imgs,ex_Abdominals_videos</item>
     </string-array>
 
     <string name="grp_abdo">Abdominals</string>
@@ -177,6 +181,35 @@
     <string name="grp_shou">Shoulders</string>
     <string name="grp_trap">Traps</string>
     <string name="grp_tric">Triceps</string>
+    
+    <string-array name="ex_Abdominals_names">
+        <item>3/4 Sit-Up</item>
+        <item>Ab Crunch Machine</item>
+    </string-array>
+    <string-array name="ex_Abdominals_imgs">
+        <item>situ_1,situ_2</item>
+        <item>abcr_1,abcr_2</item>
+    </string-array>
+    <string-array name="ex_Abdominals_descs">
+        <item>ex_abdo_1</item>
+        <item>ex_abdo_2</item>
+    </string-array>
+    <string-array name="ex_Abdominals_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/38031m.mp4</item>
+    </string-array>
+    <string name="ex_abdo_1">1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions. \n</string>
+    <string name="ex_abdo_2">1. Select a light resistance and sit down on the ab machine placing your feet under the pads provided and grabbing the top handles. Your arms should be bent at a 90 degree angle as you rest the triceps on the pads provided. This will be your starting position. \n
+            2. At the same time, begin to lift the legs up as you crunch your upper torso. Breathe out as you perform this movement. Tip: Be sure to use a slow and controlled motion. Concentrate on using your abs to move the weight while relaxing your legs and feet. \n
+            3. After a second pause, slowly return to the starting position as you breathe in. \n
+            3. Repeat the movement for the prescribed amount of repetitions. \n
+    </string>
+    
+    
     <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
     <string name="title_activity_user">UserActivity</string>

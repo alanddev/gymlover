@@ -9,45 +9,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
-import com.alanddev.gymlover.model.ExcerciseGroup;
+import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
-import com.alanddev.gymlover.model.Setting;
-import com.alanddev.gymlover.model.Theme;
 
 import java.util.List;
 
 /**
  * Created by ANLD on 31/12/2015.
  */
-public class ExerciseGrpAdapter extends BaseAdapter {
-    private List<Model> exerGrps;
+public class ExerciseAdapter extends BaseAdapter {
+    private List<Model> exercises;
     private Context mContext;
 
-    public ExerciseGrpAdapter(Context context, List<Model> datas){
-        exerGrps=datas;
+    public ExerciseAdapter(Context context, List<Model> datas){
+        exercises=datas;
         mContext=context;
     }
 
     @Override
     public int getCount() {
-        if(exerGrps!=null){
-            return exerGrps.size();
+        if(exercises!=null){
+            return exercises.size();
         }
         return 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if(exerGrps!=null){
-            return exerGrps.get(position);
+        if(exercises!=null){
+            return exercises.get(position);
         }
         return null;
     }
 
     @Override
     public long getItemId(int position) {
-        if(exerGrps!=null){
-            ExcerciseGroup group = (ExcerciseGroup)exerGrps.get(position);
+        if(exercises!=null){
+            Exercise group = (Exercise)exercises.get(position);
             return group.getId();
         }
         return 0;
@@ -55,7 +53,7 @@ public class ExerciseGrpAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ExcerciseGroup exGrp = (ExcerciseGroup)this.getItem(position);
+        Exercise exercise = (Exercise)this.getItem(position);
         Viewholder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_exercisegrp,null);
@@ -68,8 +66,12 @@ public class ExerciseGrpAdapter extends BaseAdapter {
         } else {
             viewHolder = (Viewholder) convertView.getTag();
         }
-        viewHolder.imggrp.setImageResource(mContext.getResources().getIdentifier("ic_exgrp_"+exGrp.getImage(),"mipmap",mContext.getPackageName()));
-        viewHolder.txtgrp.setText(exGrp.getName());
+        String strImage = exercise.getImage();
+        String image1 = strImage.split(",")[0];
+        if(image1!=null) {
+            viewHolder.imggrp.setImageResource(mContext.getResources().getIdentifier("ic_ex_" + image1, "mipmap", mContext.getPackageName()));
+        }
+        viewHolder.txtgrp.setText(exercise.getName());
         return convertView;
     }
 

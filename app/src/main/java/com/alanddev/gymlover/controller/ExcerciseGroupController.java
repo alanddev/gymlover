@@ -1,13 +1,16 @@
 package com.alanddev.gymlover.controller;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.ExcerciseGroup;
+import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 
 import java.util.ArrayList;
@@ -45,7 +48,15 @@ public class ExcerciseGroupController implements IDataSource {
 
     @Override
     public Model create(Model data) {
-        return null;
+        ContentValues values = new ContentValues();
+        ExcerciseGroup grp  = (ExcerciseGroup)data;
+        values.put(MwSQLiteHelper.COLUMN_EX_GROUP_ID, grp.getId());
+        values.put(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grp.getName());
+        values.put(MwSQLiteHelper.COLUMN_EX_GROUP_DESC, grp.getDescription());
+        values.put(MwSQLiteHelper.COLUMN_EX_GROUP_IMAGE, grp.getImage());
+        database.insert(MwSQLiteHelper.TABLE_EXCERCISE_GROUP, null,
+                values);
+        return grp;
     }
 
     @Override
@@ -61,9 +72,8 @@ public class ExcerciseGroupController implements IDataSource {
     @Override
     public List<Model> getAll() {
         List<Model> excerciseGroups = new ArrayList<Model>();
-        Cursor cursor = database.query(MwSQLiteHelper.TABLE_EXCERCISE,
+        Cursor cursor = database.query(MwSQLiteHelper.TABLE_EXCERCISE_GROUP,
                 allColumns, null, null, null, null, null);
-
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ExcerciseGroup group = (ExcerciseGroup)cursorTo(cursor);
@@ -104,9 +114,9 @@ public class ExcerciseGroupController implements IDataSource {
         database.delete(MwSQLiteHelper.TABLE_EXCERCISE_GROUP, null, null);
     }
 
-    public void init(Context context){
-        String[] arrayExCateName = context.getResources().getStringArray(R.array.excercise_grp_names);
-        String[] arrayExCateImg = context.getResources().getStringArray(R.array.excercise_grp_imgs);
+    public void init(){
+        String[] arrayExCateName = mContext.getResources().getStringArray(R.array.excercise_grp_names);
+        String[] arrayExCateImg = mContext.getResources().getStringArray(R.array.excercise_grp_imgs);
         int i = Math.min(arrayExCateName.length, arrayExCateImg.length);
         List<ExcerciseGroup> lstExGrp = new ArrayList<ExcerciseGroup>();
         for(int j=0;j<i;j++){

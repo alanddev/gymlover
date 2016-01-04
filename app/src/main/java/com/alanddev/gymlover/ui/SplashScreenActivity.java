@@ -30,13 +30,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (checkDB()) {
                     /*Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));*/
                     sleep(Constant.SPLASH_DISPLAY_LONG);
+                    Intent i = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(i);
                 } else {
                     initfor1st();
                     sleep(Constant.SPLASH_DISPLAY_SHORT);
+                    Intent i = new Intent(getBaseContext(), UserActivity.class);
+                    startActivity(i);
                 }
-
-                Intent i = new Intent(getBaseContext(), UserActivity.class);
-                startActivity(i);
                 finish();
             } catch (Exception e) {
             }
@@ -52,8 +53,13 @@ public class SplashScreenActivity extends AppCompatActivity {
     private void initfor1st() {
         ExcerciseGroupController controller = new ExcerciseGroupController(getApplicationContext());
         controller.open();
-        controller.init(this);
+        controller.init();
         controller.close();
+
+        ExcerciseController excerciseController = new ExcerciseController(getApplicationContext());
+        excerciseController.open();
+        excerciseController.init();
+        excerciseController.close();
         //start notification services
         Intent intent = new Intent();
         intent.setAction("com.alanddev.manwal.CUSTOM_INTENT");

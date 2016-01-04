@@ -66,7 +66,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + TABLE_EXCERCISE_GROUP + "("
             + COLUMN_EX_GROUP_ID + " INTEGER PRIMARY KEY, "
             + COLUMN_EX_GROUP_NAME + " text not null, "
-            + COLUMN_EX_GROUP_DESC + " text not null, "
+            + COLUMN_EX_GROUP_DESC + " text, "
             + COLUMN_EX_GROUP_IMAGE + " text "
             + ");";
 

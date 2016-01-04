@@ -1,15 +1,21 @@
 package com.alanddev.gymlover.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.ExerciseGrpAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.controller.ExcerciseGroupController;
+import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.util.Utils;
 
@@ -28,8 +34,16 @@ public class ExerciseGrpActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_exercise_grp));
         ListView lvSetting = (ListView)findViewById(R.id.lstExerciseGrp);
-        final ExerciseGrpAdapter adapter = new ExerciseGrpAdapter(this,createData());
+        final ExerciseGrpAdapter adapter = new ExerciseGrpAdapter(this,getData());
         lvSetting.setAdapter(adapter);
+        lvSetting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),ExerciseActivity.class);
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID, parent.getAdapter().getItemId(position));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -52,8 +66,8 @@ public class ExerciseGrpActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private List<Model> createData(){
-        ExcerciseController controller = new ExcerciseController(getApplicationContext());
+    private List<Model> getData(){
+        ExcerciseGroupController controller = new ExcerciseGroupController(getApplicationContext());
         controller.open();
         List<Model> lstGrp = controller.getAll();
         controller.close();

@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.ExcerciseGroup;
@@ -117,5 +119,35 @@ public class ExcerciseController implements IDataSource {
     @Override
     public void delete() {
         database.delete(MwSQLiteHelper.TABLE_EXCERCISE, null, null);
+    }
+
+    public void init(){
+        String[] arrayExgrp = mContext.getResources().getStringArray(R.array.excercise_grp_ex) ;
+        List<Exercise> lstExercises = new ArrayList<Exercise>();
+        int count=1;
+        for(int i=0;i<arrayExgrp.length;i++){
+            String temp = arrayExgrp[i];
+            String[] itemTemp = temp.split(",");
+            String[] arrayExName = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[0], "array", mContext.getPackageName()));
+            String[] arrayExDesc = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[1],"array",mContext.getPackageName()));
+            String[] arrayExImage = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[2],"array",mContext.getPackageName()));
+            String[] arrayVideo = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[3],"array",mContext.getPackageName()));
+            for(int j=0;j<arrayExName.length;j++){
+                Exercise exercise = new Exercise();
+                exercise.setId(count);
+                exercise.setName(arrayExName[j]);
+                exercise.setDescription(arrayExDesc[j]);
+                exercise.setImage(arrayExImage[j]);
+                exercise.setVideolink(arrayVideo[j]);
+                exercise.setExgroup_id(i + 1);
+                lstExercises.add(exercise);
+                count++;
+            }
+        }
+
+        //create
+        for(int i=0;i<lstExercises.size();i++){
+            create(lstExercises.get(i));
+        }
     }
 }
