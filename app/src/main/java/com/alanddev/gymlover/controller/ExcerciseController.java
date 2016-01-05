@@ -121,6 +121,36 @@ public class ExcerciseController implements IDataSource {
         database.delete(MwSQLiteHelper.TABLE_EXCERCISE, null, null);
     }
 
+    public List<Model> getByGroupId(int grpId){
+        List<Model> excercises = new ArrayList<Model>();
+        StringBuffer sql = new StringBuffer("SELECT * FROM ").
+                append(MwSQLiteHelper.TABLE_EXCERCISE).append(" WHERE ").append(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID)
+                .append("= ?");
+        String[] atts = new String[]{grpId+""};
+        Cursor cursor = database.rawQuery(sql.toString(),atts);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Exercise exercise = (Exercise)cursorTo(cursor);
+            excercises.add(exercise);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return excercises;
+    }
+
+    public Exercise getById(int exId){
+        StringBuffer sql = new StringBuffer("SELECT * FROM ").
+                append(MwSQLiteHelper.TABLE_EXCERCISE).append(" WHERE ").append(MwSQLiteHelper.COLUMN_EXCERCISE_ID)
+                .append("= ?");
+        String[] atts = new String[]{exId+""};
+        Cursor cursor = database.rawQuery(sql.toString(),atts);
+        cursor.moveToFirst();
+        Exercise exercise = (Exercise)cursorTo(cursor);
+        cursor.close();
+        return exercise;
+    }
+
     public void init(){
         String[] arrayExgrp = mContext.getResources().getStringArray(R.array.excercise_grp_ex) ;
         List<Exercise> lstExercises = new ArrayList<Exercise>();

@@ -16,6 +16,7 @@ import com.alanddev.gymlover.adapter.ExerciseGrpAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.ExcerciseGroupController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
+import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.util.Utils;
 
@@ -40,7 +41,9 @@ public class ExerciseGrpActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),ExerciseActivity.class);
-                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID, parent.getAdapter().getItemId(position));
+                ExcerciseGroup grp = (ExcerciseGroup)parent.getAdapter().getItem(position);
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID, grp.getId());
+                intent.putExtra(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grp.getName());
                 startActivity(intent);
             }
         });

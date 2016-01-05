@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.alanddev.gymlover.ui.ExerciseActivity">
+    tools:context="com.alanddev.gymlover.ui.ExerciseDetailActivity"
+    android:background="@color/colorDivider">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +22,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_exercise" />
+    <include layout="@layout/content_exercise_detail" />
 
 </android.support.design.widget.CoordinatorLayout>

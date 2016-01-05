@@ -181,7 +181,7 @@
     <string name="grp_shou">Shoulders</string>
     <string name="grp_trap">Traps</string>
     <string name="grp_tric">Triceps</string>
-    
+
     <string-array name="ex_Abdominals_names">
         <item>3/4 Sit-Up</item>
         <item>Ab Crunch Machine</item>
@@ -191,8 +191,8 @@
         <item>abcr_1,abcr_2</item>
     </string-array>
     <string-array name="ex_Abdominals_descs">
-        <item>ex_abdo_1</item>
-        <item>ex_abdo_2</item>
+        <item>@string/ex_abdo_1</item>
+        <item>@string/ex_abdo_2</item>
     </string-array>
     <string-array name="ex_Abdominals_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
@@ -208,8 +208,8 @@
             3. After a second pause, slowly return to the starting position as you breathe in. \n
             3. Repeat the movement for the prescribed amount of repetitions. \n
     </string>
-    
-    
+
+
     <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
     <string name="title_activity_user">UserActivity</string>
@@ -226,10 +226,11 @@
         <item>@string/gender_girl</item>
     </string-array>
     <string name="gender_boy">Nam</string>
-    <string name ="gender_girl">Nữ</string>
+    <string name="gender_girl">Nữ</string>
 
     <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
     <string name="user_waist">Vòng eo</string>
     <string name="bodyfat_guide_begin">Bạn hãy nhìn vào hình bên dưới để có thể dễ hình dung về lượng mỡ cơ thể của mình nhé.</string>
-<string name ="calBodyFat">Tính nhanh</string>
+    <string name="calBodyFat">Tính nhanh</string>
+    <string name="title_activity_exercise_detail">ExerciseDetailActivity</string>
 </resources>

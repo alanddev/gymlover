@@ -31,23 +31,30 @@ public class ExerciseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_exercise));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ListView lvSetting = (ListView)findViewById(R.id.lstExercise);
-        ExerciseAdapter adapter = new ExerciseAdapter(this,getData());
+        int grpId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID,0);
+        final String grpName = getIntent().getExtras().getString(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, "");
+        getSupportActionBar().setTitle(grpName);
+        ExerciseAdapter adapter = new ExerciseAdapter(this,getData(grpId));
         lvSetting.setAdapter(adapter);
         lvSetting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),ExerciseDetailActivity.class);
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID,(int)parent.getAdapter().getItemId(position));
+                intent.putExtra(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grpName);
+                startActivity(intent);
             }
         });
 
 
     }
 
-    private List<Model> getData(){
+    private List<Model> getData(int grpId){
         ExcerciseController controller = new ExcerciseController(getApplicationContext());
         controller.open();
-        List<Model> lstExer = controller.getAll();
+        List<Model> lstExer = controller.getByGroupId(grpId);
         controller.close();
         return lstExer;
     }
