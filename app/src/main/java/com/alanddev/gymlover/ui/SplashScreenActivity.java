@@ -29,12 +29,12 @@ public class SplashScreenActivity extends AppCompatActivity {
                 init();
                 if (checkDB()) {
                     /*Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));*/
-                    //sleep(Constant.SPLASH_DISPLAY_LONG);
+                    sleep(Constant.SPLASH_DISPLAY_SHORT);
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
                 } else {
                     initfor1st();
-                    //sleep(Constant.SPLASH_DISPLAY_SHORT);
+                    sleep(Constant.SPLASH_DISPLAY_LONG);
                     Intent i = new Intent(getBaseContext(), UserActivity.class);
                     startActivity(i);
                 }
@@ -80,7 +80,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             Utils.setSharedPreferencesValue(getApplicationContext(), Constant.NAV_HEADER_CURRENT, getString(R.string.navi_header_default));
         }
 
-        if (getIntent().getExtras() != null && getIntent().getExtras().get("NOTIFICATION").toString().equals("1")) {
+        if (getIntent().getExtras() != null && getIntent().getExtras().get("NOTIFICATION")!=null && getIntent().getExtras().get("NOTIFICATION").toString().equals("1")) {
             NotificationManager mNotifyMgr =
                     (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             mNotifyMgr.cancel(NotifyService.GREETNG_ID);

@@ -15,6 +15,8 @@ import android.widget.ListView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.SellectThemeAdapter;
+import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.controller.ExcerciseGroupController;
 import com.alanddev.gymlover.model.Theme;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
@@ -63,19 +65,24 @@ public class SelectThemeActivity extends AppCompatActivity {
                     Utils.setSharedPreferencesValue(getApplicationContext(), Constant.LANGUAGE_CURRENT, theme.getLanguage());
                     Utils.setLanguage(getApplicationContext(),theme.getLanguage());
                     int isSetup = getIntent().getExtras().getInt("SETTING_FIRST",0);
-                    /*CategoryController categoryController = new CategoryController(getApplicationContext());
-                    categoryController.open();
+                    ExcerciseGroupController groupController = new ExcerciseGroupController(getApplicationContext());
+                    ExcerciseController exController = new ExcerciseController(getApplicationContext());
+                    groupController.open();
+                    exController.open();
                     if (isSetup > 0){
-                        categoryController.init(getApplicationContext());
-                        categoryController.close();
-                        Intent intent = new Intent(SelectThemeActivity.this, WalletAddActivity.class);
+                        groupController.init();
+                        exController.init();
+                        Intent intent = new Intent(SelectThemeActivity.this, UserActivity.class);
                         startActivity(intent);
                     }else{
-                        categoryController.delete();
-                        categoryController.init(getApplicationContext());
+                        groupController.delete();
+                        groupController.init();
+                        exController.delete();
+                        exController.init();
                     }
-                    categoryController.close();
-                    //Utils.changeToLanguage(theme.getLanguage());*/
+                    groupController.close();
+                    exController.close();
+                    //Utils.changeToLanguage(theme.getLanguage());
                 }
                 finish();
             }

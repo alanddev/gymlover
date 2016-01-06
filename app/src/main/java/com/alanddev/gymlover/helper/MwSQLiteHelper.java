@@ -9,6 +9,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_EXCERCISE = "excercise";
     public static final String TABLE_EXCERCISE_GROUP = "excercise_group";
     public static final String TABLE_USER = "user";
+    public static final String TABLE_WORKOUT = "workout";
+    public static final String TABLE_WORKOUT_EXER = "workout_exer";
     // table columns
     public static final String COLUMN_EXCERCISE_ID = "id";
     public static final String COLUMN_EXCERCISE_NAME = "name";
@@ -29,6 +31,21 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_WEIGHT = "weight";
     public static final String COLUMN_USER_FAT = "fat";
     public static final String COLUMN_USER_IMG = "img";
+
+    public static final String COLUMN_WORKOUT_ID = "id";
+    public static final String COLUMN_WORKOUT_NAME = "name";
+    public static final String COLUMN_WORKOUT_DESC = "desc";
+    public static final String COLUMN_WORKOUT_IMAGE = "image";
+    public static final String COLUMN_WORKOUT_USES = "uses";
+
+    public static final String COLUMN_WORKOUT_EXER_ID = "id";
+    public static final String COLUMN_WORKOUT_EXER_WORK_ID = "workout_id";
+    public static final String COLUMN_WORKOUT_EXER_EXER_ID = "exer_id";
+    public static final String COLUMN_WORKOUT_EXER_DAY = "day";
+    public static final String COLUMN_WORKOUT_EXER_DESC = "desc";
+    public static final String COLUMN_WORKOUT_EXER_SET = "set";
+    public static final String COLUMN_WORKOUT_EXER_REPEAT = "repeat";
+    public static final String COLUMN_WORKOUT_EXER_WEIGHT = "weight";
 
 
 
@@ -70,6 +87,26 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_EX_GROUP_IMAGE + " text "
             + ");";
 
+    private static final String WORKOUT_CREATE = "CREATE TABLE "
+            + TABLE_WORKOUT + "("
+            + COLUMN_WORKOUT_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_WORKOUT_NAME + " text not null, "
+            + COLUMN_WORKOUT_DESC + " text, "
+            + COLUMN_WORKOUT_IMAGE + " text "
+            + COLUMN_WORKOUT_USES + " INTEGER DEFAULT 0 "
+            + ");";
+    private static final String WORKOUT_EXER_CREATE = "CREATE TABLE "
+            + TABLE_WORKOUT_EXER + "("
+            + COLUMN_WORKOUT_EXER_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_WORKOUT_EXER_WORK_ID + " integer not null, "
+            + COLUMN_WORKOUT_EXER_EXER_ID + " integer not null, "
+            + COLUMN_WORKOUT_EXER_DAY + " integer not null, "
+            + COLUMN_WORKOUT_EXER_DESC + " text, "
+            + COLUMN_WORKOUT_EXER_SET + " integer, "
+            + COLUMN_WORKOUT_EXER_REPEAT + " integer, "
+            + COLUMN_WORKOUT_EXER_WEIGHT + " float, "
+            + ");";
+
 
     public MwSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -81,6 +118,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(EXCERCISE_CREATE);
         database.execSQL(EX_GROUP_CREATE);
         database.execSQL(USER_CREATE);
+        database.execSQL(WORKOUT_CREATE);
+        database.execSQL(WORKOUT_EXER_CREATE);
     }
 
 
@@ -93,6 +132,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + EXCERCISE_CREATE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXCERCISE_GROUP);
         db.execSQL("DROP TABLE IF EXISTS " + USER_CREATE);
+        db.execSQL("DROP TABLE IF EXISTS " + WORKOUT_CREATE);
+        db.execSQL("DROP TABLE IF EXISTS " + WORKOUT_EXER_CREATE);
         onCreate(db);
     }
 

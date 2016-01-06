@@ -24,8 +24,8 @@ public class Constant {
     public static final String WALLET_ID = "WALLET_ID";
     public static final int ADD_TRANSACTION_SUCCESS = 1;
     public static final String CUR_ID = "CUR_ID";
-    public static final long SPLASH_DISPLAY_LONG = 1200;
-    public static final long SPLASH_DISPLAY_SHORT = 600;
+    public static final long SPLASH_DISPLAY_LONG = 600;
+    public static final long SPLASH_DISPLAY_SHORT = 300;
     public static final int CAT_WALLET_ADD_INCOME = 19;
     public static final int CAT_WALLET_ADD_EXPENSE = 12;
     public static final int CAT_TYPE_EXPENSE = 0;

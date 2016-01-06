@@ -50,14 +50,18 @@
         <activity
             android:name=".ui.UserActivity"
             android:label="@string/title_activity_user"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.BodyFatActivity"
             android:label="@string/title_activity_body_fat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.ExerciseDetailActivity"
             android:label="@string/title_activity_exercise_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.WorkoutActivity"
+            android:label="@string/title_activity_workout"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
