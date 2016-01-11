@@ -9,6 +9,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_EXCERCISE = "excercise";
     public static final String TABLE_EXCERCISE_GROUP = "excercise_group";
     public static final String TABLE_USER = "user";
+    public static final String TABLE_HISTORY = "history";
     public static final String TABLE_WORKOUT = "workout";
     public static final String TABLE_WORKOUT_EXER = "workout_exer";
     // table columns
@@ -27,10 +28,20 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_ID = "id";
     public static final String COLUMN_USER_NAME = "name";
     public static final String COLUMN_USER_GENDER = "gender";
+    public static final String COLUMN_USER_BIRTHDAY = "birthday";
     public static final String COLUMN_USER_HEIGHT = "height";
     public static final String COLUMN_USER_WEIGHT = "weight";
     public static final String COLUMN_USER_FAT = "fat";
     public static final String COLUMN_USER_IMG = "img";
+
+    public static final String COLUMN_HISTORY_ID = "id";
+    public static final String COLUMN_HISTORY_USER = "user_id";
+    public static final String COLUMN_HISTORY_HEIGHT = "height";
+    public static final String COLUMN_HISTORY_WEIGHT = "weight";
+    public static final String COLUMN_HISTORY_FAT = "fat";
+    public static final String COLUMN_HISTORY_DATE = "date";
+
+
 
     public static final String COLUMN_WORKOUT_ID = "id";
     public static final String COLUMN_WORKOUT_NAME = "name";
@@ -65,7 +76,19 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_USER_HEIGHT + " float not null, "
             + COLUMN_USER_WEIGHT + " float not null, "
             + COLUMN_USER_FAT + " float not null, "
-            + COLUMN_USER_IMG + " text not null "
+            + COLUMN_USER_IMG + " text not null, "
+            + COLUMN_USER_BIRTHDAY + "DATETIME not null "
+            + ");";
+
+
+    private static final String HISTORY_CREATE = "CREATE TABLE "
+            + TABLE_HISTORY + "("
+            + COLUMN_HISTORY_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_HISTORY_USER + " integer not null, "
+            + COLUMN_HISTORY_HEIGHT + " float not null, "
+            + COLUMN_HISTORY_WEIGHT + " float not null, "
+            + COLUMN_HISTORY_FAT + " float not null, "
+            + COLUMN_HISTORY_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP"
             + ");";
 
 
@@ -120,6 +143,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(USER_CREATE);
         database.execSQL(WORKOUT_CREATE);
         database.execSQL(WORKOUT_EXER_CREATE);
+        database.execSQL(HISTORY_CREATE);
     }
 
 
@@ -129,11 +153,12 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");*/
         //sqLiteDatabase = db;
-        db.execSQL("DROP TABLE IF EXISTS " + EXCERCISE_CREATE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXCERCISE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXCERCISE_GROUP);
-        db.execSQL("DROP TABLE IF EXISTS " + USER_CREATE);
-        db.execSQL("DROP TABLE IF EXISTS " + WORKOUT_CREATE);
-        db.execSQL("DROP TABLE IF EXISTS " + WORKOUT_EXER_CREATE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORKOUT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORKOUT_EXER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HISTORY);
         onCreate(db);
     }
 

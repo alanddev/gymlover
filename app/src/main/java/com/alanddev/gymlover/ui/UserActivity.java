@@ -1,5 +1,6 @@
 package com.alanddev.gymlover.ui;
 
+
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
@@ -23,18 +24,24 @@ import android.widget.Toast;
 
 import com.alanddev.gymlover.R;
 
+import com.alanddev.gymlover.controller.HistoryController;
 import com.alanddev.gymlover.controller.UserController;
+import com.alanddev.gymlover.model.History;
 import com.alanddev.gymlover.model.User;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
-public class UserActivity extends AppCompatActivity {
+
+public class UserActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, View.OnClickListener{
 
     UserController userController;
+    HistoryController historyController;
     Utils utils;
     // Full path of image
     String imagePath = "";
@@ -43,6 +50,7 @@ public class UserActivity extends AppCompatActivity {
     private ShowcaseView showcaseView;
     private TextView txtBodyFat;
     private TextView tvWeight;
+    private TextView txtBirthday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +68,29 @@ public class UserActivity extends AppCompatActivity {
         setDataSpinner();
         txtBodyFat = (TextView)findViewById(R.id.txtFat);
         tvWeight = (TextView)findViewById(R.id.txtWeight);
+        txtBirthday = (TextView)findViewById(R.id.txtdate);
+        txtBirthday.setOnClickListener(this);
+
 
         userController = new UserController(this);
+        historyController = new HistoryController(this);
         //userController.open();
         //userController.close();
         utils = new Utils();
 
     }
 
+
+    public void showDatePickerDialog(View v) {
+        Calendar now = Calendar.getInstance();
+        DatePickerDialog dpd = DatePickerDialog.newInstance(
+                UserActivity.this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.show(getFragmentManager(), "Datepickerdialog");
+    }
 
     public void setDataSpinner(){
         ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(this,
@@ -153,11 +176,22 @@ public class UserActivity extends AppCompatActivity {
         if (nameUser.equals("")){
             Toast.makeText(this,getResources().getString(R.string.warning_user_name), Toast.LENGTH_LONG).show();
         }else {
-            User newUser = new User(nameUser,gender, fWeight, fHeight,fFat, imageFileName);
+            User newUser = new User(nameUser,txtBirthday.getText().toString(),gender, fHeight, fWeight,fFat, imageFileName);
             //db.createWallet();
             userController.open();
-            User userSaved = (User)userController.create(newUser);
+            if (userController.getCount() == 0) {
+                User userSaved = (User) userController.create(newUser);
+            }else{
+                User userEdit = (User)userController.getName(newUser.getName());
+                newUser.setId(userEdit.getId());
+                userController.update(newUser);
+            }
+            History hist = new History(newUser.getId(),newUser.getHeight(),newUser.getWeight(),newUser.getFat());
+            historyController.create(hist);
+
+            historyController.close();
             userController.close();
+
             Intent intent = new Intent (this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -229,5 +263,17 @@ public class UserActivity extends AppCompatActivity {
         startActivityForResult(galleryIntent, Constant.GALLERY_USER_REQUEST);
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.txtdate){
+            showDatePickerDialog(v);
+        }
+    }
 
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int month, int day) {
+        String dateStr = day + "/" + (month + 1) + "/" + year;
+        txtBirthday.setText(Utils.getDayView(this,Utils.changeStr2Date(dateStr,Constant.DATE_FORMAT_PICKER)));
+    }
 }

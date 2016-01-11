@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.ExcerciseGroupController;
+import com.alanddev.gymlover.controller.UserController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.service.NotifyService;
 import com.alanddev.gymlover.util.Constant;
@@ -27,11 +28,22 @@ public class SplashScreenActivity extends AppCompatActivity {
         public void run() {
             try {
                 init();
+
+                //userController.open();
                 if (checkDB()) {
                     /*Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));*/
-                    sleep(Constant.SPLASH_DISPLAY_SHORT);
-                    Intent i = new Intent(getBaseContext(), MainActivity.class);
-                    startActivity(i);
+                    UserController userController = new UserController(getApplicationContext());
+                    userController.open();
+                    if (userController.getCount() > 0) {
+                        sleep(Constant.SPLASH_DISPLAY_SHORT);
+                        Intent i = new Intent(getBaseContext(), MainActivity.class);
+                        startActivity(i);
+                    } else{
+                        sleep(Constant.SPLASH_DISPLAY_SHORT);
+                        Intent i = new Intent(getBaseContext(), UserActivity.class);
+                        startActivity(i);
+                    }
+
                 } else {
                     initfor1st();
                     sleep(Constant.SPLASH_DISPLAY_LONG);
@@ -40,6 +52,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 }
                 finish();
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     };

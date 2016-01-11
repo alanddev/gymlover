@@ -237,4 +237,6 @@
     <string name="title_activity_workout">WorkoutActivity</string>
     <string name="menu_exercise_title">Exercise</string>
     <string name="menu_workout_title">Workout</string>
+    <string name="birthday">Ngày Sinh</string>
+    <string name="menu_user_title">Sửa thông tin</string>
 </resources>

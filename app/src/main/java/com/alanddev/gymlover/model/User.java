@@ -1,5 +1,7 @@
 package com.alanddev.gymlover.model;
 
+import java.util.Date;
+
 /**
  * Created by ANLD on 30/12/2015.
  */
@@ -12,18 +14,30 @@ public class User extends Model {
     private float weight;
     private float fat;
     private String img;
+    private String birthday;
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+
 
     public User(){
 
     }
 
-    public User(String name, int gender, float height, float weight, float fat,String imagePath){
+    public User(String name, String birthday, int gender, float height, float weight, float fat,String imagePath){
         this.name = name;
         this.gender = gender;
         this.height = height;
         this.weight = weight;
         this.fat = fat;
         this.img = imagePath;
+        this.birthday = birthday;
     }
 
     public int getId() {

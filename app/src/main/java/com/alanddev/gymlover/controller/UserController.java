@@ -29,7 +29,8 @@ public class UserController implements IDataSource {
             MwSQLiteHelper.COLUMN_USER_HEIGHT,
             MwSQLiteHelper.COLUMN_USER_WEIGHT,
             MwSQLiteHelper.COLUMN_USER_FAT,
-            MwSQLiteHelper.COLUMN_USER_IMG
+            MwSQLiteHelper.COLUMN_USER_IMG,
+            MwSQLiteHelper.COLUMN_USER_BIRTHDAY
 
     };
 
@@ -59,6 +60,7 @@ public class UserController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_USER_WEIGHT, user.getWeight());
         values.put(MwSQLiteHelper.COLUMN_USER_FAT, user.getFat());
         values.put(MwSQLiteHelper.COLUMN_USER_IMG, user.getImg());
+        values.put(MwSQLiteHelper.COLUMN_USER_BIRTHDAY, user.getBirthday());
 
         String selectQuery = MwSQLiteHelper.COLUMN_USER_NAME + " = \"" + user.getName() + "\"";
         database.insert(MwSQLiteHelper.TABLE_USER, null,
@@ -77,7 +79,7 @@ public class UserController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_USER_WEIGHT, user.getWeight());
         values.put(MwSQLiteHelper.COLUMN_USER_FAT, user.getFat());
         values.put(MwSQLiteHelper.COLUMN_USER_IMG, user.getImg());
-
+        values.put(MwSQLiteHelper.COLUMN_USER_BIRTHDAY, user.getBirthday());
 
         try {
             // updating row
@@ -163,6 +165,7 @@ public class UserController implements IDataSource {
         user.setWeight(cursor.getFloat(4));
         user.setFat(cursor.getFloat(5));
         user.setImg(cursor.getString(6));
+        user.setBirthday(cursor.getString(7));
         return user;
     }
 

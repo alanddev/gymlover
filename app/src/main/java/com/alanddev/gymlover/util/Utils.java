@@ -395,7 +395,7 @@ public class Utils {
         }else{
             result = (-76.76 + (4.15 * sizeRoundTwo) - (0.082 * weight))/weight;
         }
-        return result * 100;
+        return Math.round(result * 100);
     }
 
 
