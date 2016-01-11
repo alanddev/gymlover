@@ -181,11 +181,13 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             userController.open();
             if (userController.getCount() == 0) {
                 User userSaved = (User) userController.create(newUser);
+                newUser.setId(userSaved.getId());
             }else{
                 User userEdit = (User)userController.getName(newUser.getName());
                 newUser.setId(userEdit.getId());
                 userController.update(newUser);
             }
+            historyController.open();
             History hist = new History(newUser.getId(),newUser.getHeight(),newUser.getWeight(),newUser.getFat());
             historyController.create(hist);
 

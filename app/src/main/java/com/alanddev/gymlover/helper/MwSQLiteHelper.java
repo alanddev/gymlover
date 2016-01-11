@@ -77,7 +77,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_USER_WEIGHT + " float not null, "
             + COLUMN_USER_FAT + " float not null, "
             + COLUMN_USER_IMG + " text not null, "
-            + COLUMN_USER_BIRTHDAY + "DATETIME not null "
+            + COLUMN_USER_BIRTHDAY + " DATETIME not null "
             + ");";
 
 
