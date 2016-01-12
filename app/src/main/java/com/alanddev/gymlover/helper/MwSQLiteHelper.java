@@ -12,7 +12,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_HISTORY = "history";
     public static final String TABLE_WORKOUT = "workout";
     public static final String TABLE_WORKOUT_EXER = "workout_exer";
-    public static final String TABLE_TRANSACTION ="transaction";
+    public static final String TABLE_TRANSACTION ="transactions";
 
     // table columns
     public static final String COLUMN_EXCERCISE_ID = "id";

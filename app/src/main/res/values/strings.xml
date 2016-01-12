@@ -414,5 +414,10 @@
     <string name="week">tuần</string>
     <string name="action_install">Cài đặt</string>
     <string name="action_finish">Kết thúc</string>
+    <string name="title_activity_workout_run">Workout Run Activity</string>
+    <string name="start">Chạy</string>
+    <string name="start_time">00:00:00</string>
+    <string name="reset">Chạy Lại</string>
+    <string name="menu_workout_run">Chạy workout</string>
     <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
 </resources>
