@@ -11,6 +11,7 @@ import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Workout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +27,23 @@ public class WorkoutController implements IDataSource {
             MwSQLiteHelper.COLUMN_WORKOUT_NAME,
             MwSQLiteHelper.COLUMN_WORKOUT_DESC,
             MwSQLiteHelper.COLUMN_WORKOUT_IMAGE,
+            MwSQLiteHelper.COLUMN_WORKOUT_USES,
+            MwSQLiteHelper.COLUMN_WORKOUT_WEEK
     };
 
     public WorkoutController(Context context){
         dbHelper = new MwSQLiteHelper(context);
         this.mContext = context;
+    }
+
+
+    public  void init(){
+        Workout workout = new Workout("StrongLift 5*5","1", "StrongLift for beginner",12);
+        create(workout);
+        Workout workout2 = new Workout("StrongLift 5*5 2 ","1", "StrongLift for beginner",4);
+        create(workout2);
+        Workout workout3 = new Workout("StrongLift 5*5 3 ","1", "StrongLift for beginner",8);
+        create(workout3);
     }
 
     @Override
@@ -47,10 +60,11 @@ public class WorkoutController implements IDataSource {
     public Model create(Model data) {
         ContentValues values = new ContentValues();
         Workout workout  = (Workout)data;
-        values.put(MwSQLiteHelper.COLUMN_WORKOUT_ID, workout.getId());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_NAME, workout.getName());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_DESC, workout.getDesc());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_IMAGE, workout.getImage());
+        values.put(MwSQLiteHelper.COLUMN_WORKOUT_USES, workout.getUses());
+        values.put(MwSQLiteHelper.COLUMN_WORKOUT_WEEK, workout.getWeek());
         database.insert(MwSQLiteHelper.TABLE_WORKOUT, null,
                 values);
         return workout;
@@ -60,6 +74,29 @@ public class WorkoutController implements IDataSource {
     public void update(Model data) {
 
     }
+
+
+
+    public ArrayList<Workout> getWorkoutStatus(int status){
+        StringBuffer sql = new StringBuffer("SELECT * from " + dbHelper.TABLE_WORKOUT + " where " + dbHelper.COLUMN_WORKOUT_USES +" = " + status);
+        Cursor cursor = database.rawQuery(sql.toString(), null);
+
+        cursor.moveToFirst();
+        ArrayList<Workout> workouts = new ArrayList<Workout>();
+        while (!cursor.isAfterLast()) {
+            Workout workout = new Workout();
+            workout.setId(cursor.getInt(0));
+            workout.setName(cursor.getString(1));
+            workout.setImage(cursor.getString(3));
+            workout.setWeek(cursor.getInt(5));
+            workouts.add(workout);
+            cursor.moveToNext();
+        }
+
+
+        return workouts;
+    }
+
 
     @Override
     public int getCount() {
@@ -89,6 +126,8 @@ public class WorkoutController implements IDataSource {
             workout.setName(cursor.getString(1));
             workout.setDesc(cursor.getString(2));
             workout.setImage(cursor.getString(3));
+            workout.setUses(cursor.getInt(4));
+            workout.setWeek(cursor.getInt(5));
         }catch (Exception ex){
             //don't do anything
         }

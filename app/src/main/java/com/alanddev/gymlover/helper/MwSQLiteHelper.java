@@ -12,6 +12,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_HISTORY = "history";
     public static final String TABLE_WORKOUT = "workout";
     public static final String TABLE_WORKOUT_EXER = "workout_exer";
+
     // table columns
     public static final String COLUMN_EXCERCISE_ID = "id";
     public static final String COLUMN_EXCERCISE_NAME = "name";
@@ -48,6 +49,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WORKOUT_DESC = "desc";
     public static final String COLUMN_WORKOUT_IMAGE = "image";
     public static final String COLUMN_WORKOUT_USES = "uses";
+    public static final String COLUMN_WORKOUT_WEEK = "weeks";
 
     public static final String COLUMN_WORKOUT_EXER_ID = "id";
     public static final String COLUMN_WORKOUT_EXER_WORK_ID = "workout_id";
@@ -115,9 +117,11 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WORKOUT_ID + " INTEGER PRIMARY KEY, "
             + COLUMN_WORKOUT_NAME + " text not null, "
             + COLUMN_WORKOUT_DESC + " text, "
-            + COLUMN_WORKOUT_IMAGE + " text "
-            + COLUMN_WORKOUT_USES + " INTEGER DEFAULT 0 "
+            + COLUMN_WORKOUT_IMAGE + " text, "
+            + COLUMN_WORKOUT_USES + " INTEGER DEFAULT 0, "
+            + COLUMN_WORKOUT_WEEK + " INTEGER not null "
             + ");";
+
     private static final String WORKOUT_EXER_CREATE = "CREATE TABLE "
             + TABLE_WORKOUT_EXER + "("
             + COLUMN_WORKOUT_EXER_ID + " INTEGER PRIMARY KEY, "

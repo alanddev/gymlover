@@ -21,7 +21,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.adapter.WorkoutAdapter;
+import com.alanddev.gymlover.controller.WorkoutController;
+import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.util.Utils;
+
+import java.util.ArrayList;
 
 public class WorkoutActivity extends AppCompatActivity {
 
@@ -39,6 +44,7 @@ public class WorkoutActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private WorkoutController workoutController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +68,17 @@ public class WorkoutActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+
+        workoutController = new WorkoutController(this);
+
 
     }
 
@@ -128,8 +137,13 @@ public class WorkoutActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            ListView listWorkout = (ListView)rootView.findViewById(R.id.list_workout);
+            WorkoutController workoutController = new WorkoutController(container.getContext());
+            workoutController.open();
+            ArrayList<Workout> workouts = workoutController.getWorkoutStatus(getArguments().getInt(ARG_SECTION_NUMBER));
+            listWorkout.setAdapter(new WorkoutAdapter(container.getContext(), workouts));
             return rootView;
         }
     }
@@ -148,7 +162,7 @@ public class WorkoutActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position);
         }
 
         @Override
@@ -161,9 +175,9 @@ public class WorkoutActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "My Workout";
-                case 1:
                     return "List Workout";
+                case 1:
+                    return "My Workout";
             }
             return null;
         }

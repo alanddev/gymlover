@@ -56,4 +56,8 @@ public class Constant {
     public static final String LANGUAGE_CURRENT = "LANGUAGE_CURRENT";
     public static int GENDER_BOY = 1;
     public static int GENDER_GIRL = 0;
+
+    public static int WORKOUT_NEW = 0;
+    public static int WORKOUT_USING = 1;
+    public static int WORKOUT_USED = 2;
 }
