@@ -1,5 +1,6 @@
 package com.alanddev.gymlover.ui;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,12 +18,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.WorkoutAdapter;
 import com.alanddev.gymlover.controller.WorkoutController;
+import com.alanddev.gymlover.helper.MwSQLiteHelper;
+import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.util.Utils;
 
@@ -144,6 +148,16 @@ public class WorkoutActivity extends AppCompatActivity {
             workoutController.open();
             ArrayList<Workout> workouts = workoutController.getWorkoutStatus(getArguments().getInt(ARG_SECTION_NUMBER));
             listWorkout.setAdapter(new WorkoutAdapter(container.getContext(), workouts));
+            listWorkout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getActivity(), WorkOutExerActivity.class);
+                    Workout workout = (Workout) parent.getAdapter().getItem(position);
+                    intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_ID, workout.getId());
+                    intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_NAME, workout.getName());
+                    startActivity(intent);
+                }
+            });
             return rootView;
         }
     }

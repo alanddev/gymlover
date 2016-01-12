@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.ExcerciseGroup;
@@ -38,12 +39,21 @@ public class WorkoutController implements IDataSource {
 
 
     public  void init(){
-        Workout workout = new Workout("StrongLift 5*5","1", "StrongLift for beginner",12);
-        create(workout);
-        Workout workout2 = new Workout("StrongLift 5*5 2 ","1", "StrongLift for beginner",4);
-        create(workout2);
-        Workout workout3 = new Workout("StrongLift 5*5 3 ","1", "StrongLift for beginner",8);
-        create(workout3);
+        String[] arrayWOName = mContext.getResources().getStringArray(R.array.wo_names);
+        String[] arrayWOImg = mContext.getResources().getStringArray(R.array.wo_images);
+        String[] arrayWODesc = mContext.getResources().getStringArray(R.array.wo_descs);
+        String[] arrayWOWeek = mContext.getResources().getStringArray(R.array.wo_weeks);
+
+        for(int j=0;j<arrayWOName.length;j++){
+            Workout workout = new Workout();
+            workout.setId(j + 1);
+            workout.setName(arrayWOName[j]);
+            workout.setImage(arrayWOImg[j]);
+            workout.setDesc(arrayWODesc[j]);
+            workout.setWeek(Integer.valueOf(arrayWOWeek[j]));
+            workout.setUses(0);
+            create(workout);
+        }
     }
 
     @Override

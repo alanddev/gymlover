@@ -2,6 +2,8 @@ package com.alanddev.gymlover.model;
 
 import com.alanddev.gymlover.util.Constant;
 
+import java.util.List;
+
 /**
  * Created by ANLD on 06/01/2016.
  */
@@ -12,6 +14,7 @@ public class Workout extends Model{
     private String desc;
     private int week;
     private int uses;
+    private List<WorkoutExerDay> workoutExerDays;
 
 
     public Workout(){
@@ -72,5 +75,13 @@ public class Workout extends Model{
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public List<WorkoutExerDay> getWorkoutExerDays() {
+        return workoutExerDays;
+    }
+
+    public void setWorkoutExerDays(List<WorkoutExerDay> workoutExerDays) {
+        this.workoutExerDays = workoutExerDays;
     }
 }

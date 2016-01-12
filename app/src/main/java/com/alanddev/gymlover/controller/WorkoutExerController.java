@@ -8,8 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Model;
-import com.alanddev.gymlover.model.Workout;
-import com.alanddev.gymlover.model.WorkoutExer;
+import com.alanddev.gymlover.model.WorkoutExerDetail;
 
 import java.util.List;
 
@@ -50,7 +49,7 @@ public class WorkoutExerController implements IDataSource {
     @Override
     public Model create(Model data) {
         ContentValues values = new ContentValues();
-        WorkoutExer workout  = (WorkoutExer)data;
+        WorkoutExerDetail workout  = (WorkoutExerDetail)data;
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_ID, workout.getId());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, workout.getWorkid());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, workout.getExerid());
@@ -91,7 +90,7 @@ public class WorkoutExerController implements IDataSource {
 
     @Override
     public Model cursorTo(Cursor cursor) {
-        WorkoutExer workout = new WorkoutExer();
+        WorkoutExerDetail workout = new WorkoutExerDetail();
         try {
             workout.setId(cursor.getInt(0));
             workout.setWorkid(cursor.getInt(1));

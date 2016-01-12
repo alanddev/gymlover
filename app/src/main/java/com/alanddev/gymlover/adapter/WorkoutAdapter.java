@@ -27,12 +27,8 @@ import java.util.List;
  */
 public class WorkoutAdapter extends ArrayAdapter<Workout> {
 
-
-    Utils utils;
-    //TransactionController transactionController;
-    public WorkoutAdapter(Context context, List<Workout> currencies) {
-        super(context, 0, currencies);
-        utils = new Utils();
+    public WorkoutAdapter(Context context, List<Workout> workouts) {
+        super(context, 0, workouts);
 
     }
 
@@ -59,7 +55,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
         Drawable image = convertView.getResources().getDrawable(id);
         imgIcon.setImageDrawable(image);
 
-        imgChecked.setOnClickListener(new View.OnClickListener() {
+        /*imgChecked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -95,7 +91,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
 
 
             }
-        });
+        });*/
 //        if (wallet.getId() == utils.getSharedPreferencesValue(convertView.getContext(), Constant.WALLET_ID)){
 //            imgChecked.setImageResource(R.mipmap.ic_check_green);
 //        }
@@ -103,6 +99,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
         // Return the completed view to render on screen
         return convertView;
     }
+
 
 
 }

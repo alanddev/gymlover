@@ -3,7 +3,7 @@ package com.alanddev.gymlover.model;
 /**
  * Created by ANLD on 07/01/2016.
  */
-public class WorkoutExer extends Model{
+public class WorkoutExerDetail extends Model{
     private int id;
     private int workid;
     private int exerid;
