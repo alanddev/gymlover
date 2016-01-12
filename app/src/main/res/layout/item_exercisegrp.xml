@@ -22,6 +22,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="130dp"
         android:enabled="false"
+        android:textColor="@color/colorTextColor"
         android:layout_centerVertical="true"
         />
 </RelativeLayout>

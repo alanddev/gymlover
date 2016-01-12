@@ -128,73 +128,63 @@
     </string-array>
     <string-array name="excercise_grp_names">
         <item>@string/grp_abdo</item>
-        <item>@string/grp_addu</item>
+        <item>@string/grp_back</item>
         <item>@string/grp_bice</item>
-        <item>@string/grp_calv</item>
         <item>@string/grp_ches</item>
+        <item>@string/grp_legs</item>
+        <item>@string/grp_shou</item>
+        <item>@string/grp_tric</item>
         <item>@string/grp_fore</item>
         <item>@string/grp_glut</item>
-        <item>@string/grp_hams</item>
-        <item>@string/grp_lats</item>
-        <item>@string/grp_back</item>
-        <item>@string/grp_neck</item>
-        <item>@string/grp_quad</item>
-        <item>@string/grp_shou</item>
-        <item>@string/grp_trap</item>
-        <item>@string/grp_tric</item>
     </string-array>
 
     <string-array name="excercise_grp_imgs">
         <item>abdominals</item>
-        <item>adductor</item>
+        <item>back</item>
         <item>biceps</item>
-        <item>calves</item>
         <item>chest</item>
+        <item>legs</item>
+        <item>shoulders</item>
+        <item>triceps</item>
         <item>forearms</item>
         <item>gluter</item>
-        <item>hamstrings</item>
-        <item>lats</item>
-        <item>back</item>
-        <item>neck</item>
-        <item>quadriceps</item>
-        <item>shoulders</item>
-        <item>traps</item>
-        <item>triceps</item>
     </string-array>
 
     <string-array name="excercise_grp_ex">
-        <item>ex_Abdominals_names,ex_Abdominals_descs,ex_Abdominals_imgs,ex_Abdominals_videos</item>
+        <item>ex_abdominals_names,ex_abdominals_descs,ex_abdominals_imgs,ex_abdominals_videos</item>
+        <item>ex_back_names,ex_back_descs,ex_back_imgs,ex_back_videos</item>
+        <item>ex_biceps_names,ex_biceps_descs,ex_biceps_imgs,ex_biceps_videos</item>
+        <item>ex_chest_names,ex_chest_descs,ex_chest_imgs,ex_chest_videos</item>
+        <item>ex_legs_names,ex_legs_descs,ex_legs_imgs,ex_legs_videos</item>
+        <item>ex_shoulder_names,ex_shoulder_descs,ex_shoulder_imgs,ex_shoulder_videos</item>
+        <item>ex_triceps_names,ex_triceps_descs,ex_triceps_imgs,ex_triceps_videos</item>
+        <item>ex_forearms_names,ex_forearms_descs,ex_forearms_imgs,ex_forearms_videos</item>
+        <item>ex_gluters_names,ex_gluters_descs,ex_gluters_imgs,ex_gluters_videos</item>
     </string-array>
 
     <string name="grp_abdo">Abdominals</string>
-    <string name="grp_addu">Adductors</string>
     <string name="grp_bice">Biceps</string>
-    <string name="grp_calv">Calves</string>
     <string name="grp_ches">Chest</string>
+    <string name="grp_legs">Legs</string>
     <string name="grp_fore">Forearms</string>
     <string name="grp_glut">Glutes</string>
-    <string name="grp_hams">Hamstrings</string>
-    <string name="grp_lats">Lats</string>
     <string name="grp_back">Back</string>
-    <string name="grp_neck">Neck</string>
-    <string name="grp_quad">Quadriceps</string>
     <string name="grp_shou">Shoulders</string>
-    <string name="grp_trap">Traps</string>
     <string name="grp_tric">Triceps</string>
 
-    <string-array name="ex_Abdominals_names">
+    <string-array name="ex_abdominals_names">
         <item>3/4 Sit-Up</item>
         <item>Ab Crunch Machine</item>
     </string-array>
-    <string-array name="ex_Abdominals_imgs">
+    <string-array name="ex_abdominals_imgs">
         <item>situ_1,situ_2</item>
         <item>abcr_1,abcr_2</item>
     </string-array>
-    <string-array name="ex_Abdominals_descs">
+    <string-array name="ex_abdominals_descs">
         <item>@string/ex_abdo_1</item>
         <item>@string/ex_abdo_2</item>
     </string-array>
-    <string-array name="ex_Abdominals_videos">
+    <string-array name="ex_abdominals_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/38031m.mp4</item>
     </string-array>
@@ -208,6 +198,169 @@
             3. After a second pause, slowly return to the starting position as you breathe in. \n
             3. Repeat the movement for the prescribed amount of repetitions.
     </string>
+
+    <string-array name="ex_back_names">
+        <item>Deadlift</item>
+        <item>Barbell Row</item>
+    </string-array>
+    <string-array name="ex_back_imgs">
+        <item>deadlift_1,deadlift_2,deadlift_3</item>
+        <item>barbellrow_1,barbellrow_2,barbellrow_3</item>
+    </string-array>
+    <string-array name="ex_back_descs">
+        <item>@string/ex_back_deadlift</item>
+        <item>@string/ex_back_barbellrow</item>
+    </string-array>
+    <string-array name="ex_back_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_back_deadlift">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_back_barbellrow">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_biceps_names">
+        <item>Biceps</item>
+    </string-array>
+    <string-array name="ex_biceps_imgs">
+        <item>situ_1,situ_2</item>
+    </string-array>
+    <string-array name="ex_biceps_descs">
+        <item>@string/ex_biceps_squats</item>
+    </string-array>
+    <string-array name="ex_biceps_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_biceps_squats">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_chest_names">
+        <item>Bench Press</item>
+    </string-array>
+    <string-array name="ex_chest_imgs">
+        <item>benchpress_1,benchpress_2</item>
+    </string-array>
+    <string-array name="ex_chest_descs">
+        <item>@string/ex_chest_benchpress</item>
+    </string-array>
+    <string-array name="ex_chest_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_chest_benchpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_legs_names">
+        <item>Squats</item>
+    </string-array>
+    <string-array name="ex_legs_imgs">
+        <item>situ_1,situ_2</item>
+    </string-array>
+    <string-array name="ex_legs_descs">
+        <item>@string/ex_legs_squats</item>
+    </string-array>
+    <string-array name="ex_legs_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_legs_squats">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_shoulder_names">
+        <item>Overhead Press</item>
+    </string-array>
+    <string-array name="ex_shoulder_imgs">
+        <item>overhpress_1,overhpress_2</item>
+    </string-array>
+    <string-array name="ex_shoulder_descs">
+        <item>@string/ex_back_deadlift</item>
+    </string-array>
+    <string-array name="ex_shoulder_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_shoulder_overheadpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_triceps_names">
+        <item>Triceps</item>
+    </string-array>
+    <string-array name="ex_triceps_imgs">
+        <item>overhpress_1,overhpress_2</item>
+    </string-array>
+    <string-array name="ex_triceps_descs">
+        <item>@string/ex_triceps_overheadpress</item>
+    </string-array>
+    <string-array name="ex_triceps_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_triceps_overheadpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_forearms_names">
+        <item>forearms</item>
+    </string-array>
+    <string-array name="ex_forearms_imgs">
+        <item>overhpress_1,overhpress_2</item>
+    </string-array>
+    <string-array name="ex_forearms_descs">
+        <item>@string/ex_triceps_overheadpress</item>
+    </string-array>
+    <string-array name="ex_forearms_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_forearms_overheadpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_gluters_names">
+        <item>Gluters</item>
+    </string-array>
+    <string-array name="ex_gluters_imgs">
+        <item>overhpress_1,overhpress_2</item>
+    </string-array>
+    <string-array name="ex_gluters_descs">
+        <item>@string/ex_triceps_overheadpress</item>
+    </string-array>
+    <string-array name="ex_gluters_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+    </string-array>
+    <string name="ex_gluters_overheadpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
+            2. Place your hands behind or to the side of your head. You will begin with your back on the ground. This will be your starting position. \n
+            3. Flex your hips and spine to raise your torso toward your knees. \n
+            4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
+            5. Repeat for the recommended amount of repetitions.
+    </string>
+
 
 
     <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
