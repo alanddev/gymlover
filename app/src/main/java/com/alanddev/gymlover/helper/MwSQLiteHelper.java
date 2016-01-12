@@ -12,6 +12,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_HISTORY = "history";
     public static final String TABLE_WORKOUT = "workout";
     public static final String TABLE_WORKOUT_EXER = "workout_exer";
+    public static final String TABLE_TRANSACTION ="transaction";
 
     // table columns
     public static final String COLUMN_EXCERCISE_ID = "id";
@@ -61,6 +62,15 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WORKOUT_EXER_WEIGHT = "weight";
 
 
+    // table columns
+    public static final String COLUMN_TRANS_ID = "id";
+    public static final String COLUMN_TRANS_CALO= "calors";
+    public static final String COLUMN_TRANS_EXERCISE = "exercise_id";
+    public static final String COLUMN_TRANS_REPEAT= "repeat";
+    public static final String COLUMN_TRANS_DATE = "date";
+    public static final String COLUMN_TRANS_NOTE = "note";
+    public static final String COLUMN_TRANS_TIME = "time";
+    public static final String COLUMN_TRANS_WEIGHT = "weight";
 
     public static final String DATABASE_NAME = "gymlover.db";
     private static final int DATABASE_VERSION = 1;
@@ -134,6 +144,17 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WORKOUT_EXER_WEIGHT + " float "
             + ");";
 
+    private static final String TRANS_CREATE = "CREATE TABLE "
+            + TABLE_TRANSACTION + "("
+            + COLUMN_TRANS_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_TRANS_EXERCISE + " integer not null, "
+            + COLUMN_TRANS_DATE + " datetime not null, "
+            + COLUMN_TRANS_REPEAT + " integer not null, "
+            + COLUMN_TRANS_WEIGHT + " float not null, "
+            + COLUMN_TRANS_TIME + " float not null, "
+            + COLUMN_TRANS_CALO + " float not null, "
+            + COLUMN_TRANS_NOTE + " text "
+            + ");";
 
     public MwSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -148,12 +169,13 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(WORKOUT_CREATE);
         database.execSQL(WORKOUT_EXER_CREATE);
         database.execSQL(HISTORY_CREATE);
+        database.execSQL(TRANS_CREATE);
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            /*Log.w(MySQLiteHelper.class.getName(),
+        /*Log.w(MySQLiteHelper.class.getName(),
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");*/
         //sqLiteDatabase = db;
@@ -163,6 +185,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORKOUT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORKOUT_EXER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_HISTORY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTION);
         onCreate(db);
     }
 
