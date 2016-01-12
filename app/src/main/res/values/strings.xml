@@ -270,7 +270,7 @@
         <item>Squats</item>
     </string-array>
     <string-array name="ex_legs_imgs">
-        <item>situ_1,situ_2</item>
+        <item>squat_1,squat_2</item>
     </string-array>
     <string-array name="ex_legs_descs">
         <item>@string/ex_legs_squats</item>
