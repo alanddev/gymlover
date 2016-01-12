@@ -38,11 +38,15 @@ android:paddingBottom="10dp">
 
 <ImageView
     android:id="@+id/checked"
+    android:src="@mipmap/ic_menu_popup"
     android:layout_width="@dimen/size_image_checked"
     android:layout_height="@dimen/size_image_checked"
     android:layout_marginRight="20dp"
     android:layout_alignParentRight="true"
     android:layout_alignBottom="@+id/icon"
  />
+
+
+
 
 </RelativeLayout>

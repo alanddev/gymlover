@@ -240,4 +240,6 @@
     <string name="birthday">Ngày Sinh</string>
     <string name="menu_user_title">Sửa thông tin</string>
     <string name="week">tuần</string>
+    <string name="action_install">Cài đặt</string>
+    <string name="action_finish">Kết thúc</string>
 </resources>
