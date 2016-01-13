@@ -10,6 +10,42 @@
     tools:showIn="@layout/activity_workout_run"
     tools:context="com.alanddev.gymlover.ui.WorkoutRunActivity">
 
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:layout_margin="1dp"
+        android:layout_above="@+id/start"
+        android:gravity="center"
+        android:src="@mipmap/clock" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@id/myImageView"
+        android:layout_alignTop="@id/myImageView"
+        android:layout_alignRight="@id/myImageView"
+        android:layout_alignBottom="@id/myImageView"
+        android:layout_above="@+id/start"
+        android:layout_marginBottom="27dp"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:textSize = "40sp"
+        android:text="@string/start_time"
+        android:textColor="#1c1c1c" />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:id="@+id/layoutButton"-->
+        <!-->-->
         <Button
             android:id="@+id/start"
             android:layout_width="90dp"
@@ -17,23 +53,26 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="@string/start" />
-        <TextView
-            android:id="@+id/timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/start"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="27dp"
-            android:text="@string/start_time"
-            android:textColor="#1c1c1c"
-            android:textSize="40sp" />
         <Button
             android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/start"
             android:layout_below="@+id/start"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="18dp"
             android:text="@string/reset" />
+    <!--</LinearLayout>-->
+
+
+    <ImageView
+        android:id="@+id/imgex"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/start"
+        />
+
 
 </RelativeLayout>

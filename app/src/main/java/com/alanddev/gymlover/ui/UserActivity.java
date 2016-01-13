@@ -51,6 +51,9 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView txtBodyFat;
     private TextView tvWeight;
     private TextView txtBirthday;
+    private TextView txtHeight;
+    private TextView txtName;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +71,26 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         setDataSpinner();
         txtBodyFat = (TextView)findViewById(R.id.txtFat);
         tvWeight = (TextView)findViewById(R.id.txtWeight);
+        txtHeight = (TextView)findViewById(R.id.txtHeight);
+        txtName = (TextView)findViewById(R.id.txtName);
+
         txtBirthday = (TextView)findViewById(R.id.txtdate);
         txtBirthday.setOnClickListener(this);
 
 
         userController = new UserController(this);
         historyController = new HistoryController(this);
+        userController.open();
+        if (userController.getCount() > 0) {
+            User user = userController.getId(1);
+            txtName.setText(user.getName());
+            txtHeight.setText(String.valueOf(user.getHeight()));
+            txtBodyFat.setText(String.valueOf(user.getFat()));
+            tvWeight.setText(String.valueOf(user.getWeight()));
+            txtBirthday.setText(user.getBirthday());
+            spinnerGender.setSelection(user.getGender());
+        }
+        userController.close();
         //userController.open();
         //userController.close();
         utils = new Utils();
@@ -183,7 +200,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 User userSaved = (User) userController.create(newUser);
                 newUser.setId(userSaved.getId());
             }else{
-                User userEdit = (User)userController.getName(newUser.getName());
+                User userEdit = (User)userController.getId(1);
                 newUser.setId(userEdit.getId());
                 userController.update(newUser);
             }
@@ -199,6 +216,8 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             finish();
         }
     }
+
+
 
     @Override
     protected void onResume() {

@@ -11,13 +11,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.model.Exercise;
+
+import java.util.ArrayList;
 
 public class WorkoutRunActivity extends AppCompatActivity {
-
 
     Button btnstart, btnreset;
     TextView time;
@@ -32,6 +38,12 @@ public class WorkoutRunActivity extends AppCompatActivity {
     Handler handler = new Handler();
 
 
+    private ImageView imgEx;
+    private String[] imageArray;
+    private int currentIndex;
+    private int startIndex;
+    private int endIndex;
+    private ArrayList<Integer> listExercise;
 
     public Runnable updateTimer = new Runnable() {
         public void run() {
@@ -41,8 +53,9 @@ public class WorkoutRunActivity extends AppCompatActivity {
             mins = secs / 60;
             secs = secs % 60;
             milliseconds = (int) (updatedtime % 1000);
-            time.setText("" + mins + ":" + String.format("%02d", secs) + ":"
-                    + String.format("%03d", milliseconds));
+//            time.setText("" + mins + ":" + String.format("%02d", secs) + ":"
+//                    + String.format("%03d", milliseconds));
+            time.setText("" + mins + ":" + String.format("%02d", secs));
             time.setTextColor(Color.RED);
             handler.postDelayed(this, 0);
         }};
@@ -64,8 +77,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-        // TODO Auto-generated method stub
-
+                // TODO Auto-generated method stub
                 if (t == 1) {
                     btnstart.setText("Pause");
                     starttime = SystemClock.uptimeMillis();
@@ -77,14 +89,14 @@ public class WorkoutRunActivity extends AppCompatActivity {
                     timeSwapBuff += timeInMilliseconds;
                     handler.removeCallbacks(updateTimer);
                     t = 1;
-                }}
+                }
+            }
         });
 
         btnreset.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 starttime = 0L;
                 timeInMilliseconds = 0L;
                 timeSwapBuff = 0L;
@@ -95,9 +107,29 @@ public class WorkoutRunActivity extends AppCompatActivity {
                 milliseconds = 0;
                 btnstart.setText("Start");
                 handler.removeCallbacks(updateTimer);
-                time.setText("00:00:00");
-            }});
-        }
+                time.setText("00:00");
+            }
+        });
+
+
+        listExercise = new ArrayList<>();
+        listExercise.add(1);
+        listExercise.add(2);
+
+        final Exercise exercise = getData(listExercise.get(1));
+        getSupportActionBar().setTitle(exercise.getName());
+        String strImgs = exercise.getImage();
+        imageArray = strImgs.split(",");
+        imgEx = (ImageView)findViewById(R.id.imgex);
+        startIndex = 0;
+        endIndex = imageArray.length-1;
+        nextImage();
+
+    }
+
+    private void initData(){
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -125,5 +157,51 @@ public class WorkoutRunActivity extends AppCompatActivity {
     }
 
 
+
+    public void nextImage() {
+        imgEx.setImageResource(getResources().getIdentifier("ic_ex_"+imageArray[currentIndex],"mipmap",getPackageName()));
+        Animation rotateimage = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        imgEx.startAnimation(rotateimage);
+        currentIndex++;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (currentIndex > endIndex) {
+                    currentIndex--;
+                    previousImage();
+                } else {
+                    nextImage();
+                }
+
+            }
+        }, 1000);
+    }
+
+    public void previousImage() {
+        imgEx.setImageResource(getResources().getIdentifier("ic_ex_"+imageArray[currentIndex],"mipmap",getPackageName()));
+        Animation rotateimage = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        imgEx.startAnimation(rotateimage);
+        currentIndex--;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (currentIndex < startIndex) {
+                    currentIndex++;
+                    nextImage();
+                } else {
+                    previousImage();
+                }
+            }
+        }, 1000);
+    }
+
+
+    private Exercise getData(int exId){
+        ExcerciseController controller = new ExcerciseController(getApplicationContext());
+        controller.open();
+        Exercise excer = controller.getById(exId);
+        controller.close();
+        return excer;
+    }
 
 }

@@ -54,8 +54,8 @@ public class Constant {
     public static final String THEME_CURRENT = "THEME_CURRENT";
     public static final String NAV_HEADER_CURRENT = "NAV_HEADER_CURRENT";
     public static final String LANGUAGE_CURRENT = "LANGUAGE_CURRENT";
-    public static int GENDER_BOY = 1;
-    public static int GENDER_GIRL = 0;
+    public static int GENDER_BOY = 0;
+    public static int GENDER_GIRL = 1;
 
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
