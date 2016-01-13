@@ -13,32 +13,34 @@
 
     <ImageView
         android:id="@+id/myImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
         android:scaleType="fitXY"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp"
-        android:layout_margin="1dp"
-        android:layout_above="@+id/start"
+        android:src="@mipmap/clock"
         android:gravity="center"
-        android:src="@mipmap/clock" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imgex"
+        />
 
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignLeft="@id/myImageView"
-        android:layout_alignTop="@id/myImageView"
-        android:layout_alignRight="@id/myImageView"
-        android:layout_alignBottom="@id/myImageView"
-        android:layout_above="@+id/start"
-        android:layout_marginBottom="27dp"
-        android:layout_margin="1dp"
         android:gravity="center"
         android:textSize = "40sp"
         android:text="@string/start_time"
-        android:textColor="#1c1c1c" />
+        android:textColor="#1c1c1c"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@+id/myImageView"
+        android:layout_alignEnd="@+id/myImageView"
+        android:layout_alignLeft="@+id/myImageView"
+        android:layout_alignStart="@+id/myImageView"
+
+        />
 
     <!--<LinearLayout-->
         <!--android:layout_width="wrap_content"-->
@@ -46,33 +48,41 @@
         <!--android:orientation="horizontal"-->
         <!--android:id="@+id/layoutButton"-->
         <!-->-->
-        <Button
-            android:id="@+id/start"
-            android:layout_width="90dp"
-            android:layout_height="45dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/start" />
-        <Button
-            android:id="@+id/reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/start"
-            android:layout_below="@+id/start"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp"
-            android:text="@string/reset" />
+
     <!--</LinearLayout>-->
 
 
     <ImageView
         android:id="@+id/imgex"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         android:scaleType="fitXY"
-        android:layout_below="@+id/start"
-        />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/start"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:text="@string/start"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="78dp"
+        android:layout_toLeftOf="@+id/reset"
+        android:layout_toStartOf="@+id/reset" />
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:layout_alignTop="@+id/start"
+        android:layout_centerHorizontal="true" />
+
 
 
 </RelativeLayout>
