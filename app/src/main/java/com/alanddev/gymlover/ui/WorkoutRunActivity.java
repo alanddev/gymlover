@@ -20,12 +20,13 @@ import android.widget.TextView;
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.model.Exercise;
+import com.alanddev.gymlover.util.Utils;
 
 import java.util.ArrayList;
 
 public class WorkoutRunActivity extends AppCompatActivity {
 
-    Button btnstart, btnreset;
+    Button btnstart, btnreset, btnext;
     TextView time;
     long starttime = 0L;
     long timeInMilliseconds = 0L;
@@ -36,6 +37,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
     int mins = 0;
     int milliseconds = 0;
     Handler handler = new Handler();
+    Handler handlerNextImg = new Handler();
+    Handler handlerPrevImg = new Handler();
 
 
     private ImageView imgEx;
@@ -44,6 +47,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
     private int startIndex;
     private int endIndex;
     private ArrayList<Integer> listExercise;
+    private int currentExercise;
 
     public Runnable updateTimer = new Runnable() {
         public void run() {
@@ -60,6 +64,31 @@ public class WorkoutRunActivity extends AppCompatActivity {
             handler.postDelayed(this, 0);
         }};
 
+    public Runnable nextImgTimer = new Runnable() {
+        @Override
+        public void run() {
+            if (currentIndex > endIndex) {
+                currentIndex--;
+                previousImage();
+            } else {
+                nextImage();
+            }
+        }
+    };
+
+
+    public Runnable prevImgTimer = new Runnable() {
+        @Override
+        public void run() {
+            if (currentIndex < startIndex) {
+                currentIndex++;
+                nextImage();
+            } else {
+                previousImage();
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,52 +100,19 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
         btnstart = (Button) findViewById(R.id.start);
         btnreset = (Button) findViewById(R.id.reset);
+        btnext = (Button)findViewById(R.id.next);
         time = (TextView) findViewById(R.id.timer);
 
-        btnstart.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                if (t == 1) {
-                    btnstart.setText("Pause");
-                    starttime = SystemClock.uptimeMillis();
-                    handler.postDelayed(updateTimer, 0);
-                    t = 0;
-                } else {
-                    btnstart.setText("Start");
-                    time.setTextColor(Color.BLUE);
-                    timeSwapBuff += timeInMilliseconds;
-                    handler.removeCallbacks(updateTimer);
-                    t = 1;
-                }
-            }
-        });
-
-        btnreset.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                starttime = 0L;
-                timeInMilliseconds = 0L;
-                timeSwapBuff = 0L;
-                updatedtime = 0L;
-                t = 1;
-                secs = 0;
-                mins = 0;
-                milliseconds = 0;
-                btnstart.setText("Start");
-                handler.removeCallbacks(updateTimer);
-                time.setText("00:00");
-            }
-        });
-
+        currentExercise = 0;
 
         listExercise = new ArrayList<>();
-        listExercise.add(1);
-        listExercise.add(2);
+        listExercise.add(7);
+        listExercise.add(6);
+        listExercise.add(8);
+        listExercise.add(4);
+        listExercise.add(3);
 
-        final Exercise exercise = getData(listExercise.get(1));
+        final Exercise exercise = getData(listExercise.get(currentExercise));
         getSupportActionBar().setTitle(exercise.getName());
         String strImgs = exercise.getImage();
         imageArray = strImgs.split(",");
@@ -159,22 +155,11 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
     public void nextImage() {
-        imgEx.setImageResource(getResources().getIdentifier("ic_ex_"+imageArray[currentIndex],"mipmap",getPackageName()));
+        imgEx.setImageResource(getResources().getIdentifier("ic_ex_" + imageArray[currentIndex], "mipmap", getPackageName()));
         Animation rotateimage = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         imgEx.startAnimation(rotateimage);
         currentIndex++;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (currentIndex > endIndex) {
-                    currentIndex--;
-                    previousImage();
-                } else {
-                    nextImage();
-                }
-
-            }
-        }, 1000);
+        handlerNextImg.postDelayed(nextImgTimer, 1000);
     }
 
     public void previousImage() {
@@ -182,17 +167,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         Animation rotateimage = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         imgEx.startAnimation(rotateimage);
         currentIndex--;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (currentIndex < startIndex) {
-                    currentIndex++;
-                    nextImage();
-                } else {
-                    previousImage();
-                }
-            }
-        }, 1000);
+        handlerPrevImg.postDelayed(prevImgTimer, 1000);
     }
 
 
@@ -203,5 +178,65 @@ public class WorkoutRunActivity extends AppCompatActivity {
         controller.close();
         return excer;
     }
+
+
+    public void onClickStart(View v){
+        if (t == 1) {
+            btnstart.setText("Pause");
+            starttime = SystemClock.uptimeMillis();
+            handler.postDelayed(updateTimer, 0);
+            t = 0;
+        } else {
+            btnstart.setText("Start");
+            time.setTextColor(Color.BLUE);
+            timeSwapBuff += timeInMilliseconds;
+            handler.removeCallbacks(updateTimer);
+            t = 1;
+        }
+    }
+
+    public void onClickReset(View v){
+        starttime = 0L;
+        timeInMilliseconds = 0L;
+        timeSwapBuff = 0L;
+        updatedtime = 0L;
+        t = 1;
+        secs = 0;
+        mins = 0;
+        milliseconds = 0;
+        btnstart.setText("Start");
+        handler.removeCallbacks(updateTimer);
+        time.setText("00:00");
+        currentExercise = 0;
+        btnext.setEnabled(true);
+        reloadImage();
+
+    }
+
+
+    private void reloadImage(){
+        final Exercise exercise = getData(listExercise.get(currentExercise));
+        String strImgs = exercise.getImage();
+        imageArray = strImgs.split(",");
+        imgEx = (ImageView) findViewById(R.id.imgex);
+        startIndex = 0;
+        currentIndex = 0;
+        endIndex = imageArray.length - 1;
+        handlerNextImg.removeCallbacks(nextImgTimer);
+        handlerPrevImg.removeCallbacks(prevImgTimer);
+        nextImage();
+        getSupportActionBar().setTitle(exercise.getName());
+    }
+
+    public void onClickNext(View v){
+        if (currentExercise < listExercise.size()-1) {
+            currentExercise++;
+            reloadImage();
+            if (currentExercise == listExercise.size() - 1){
+                btnext.setEnabled(false);
+            }
+        }
+    }
+
 
 }

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Model;
+import com.alanddev.gymlover.model.User;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
 
 import java.util.List;
@@ -28,7 +29,8 @@ public class WorkoutExerController implements IDataSource {
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_SET,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT,
-            MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEIGHT
+            MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEIGHT,
+            MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME
     };
 
     public WorkoutExerController(Context context){
@@ -50,7 +52,6 @@ public class WorkoutExerController implements IDataSource {
     public Model create(Model data) {
         ContentValues values = new ContentValues();
         WorkoutExerDetail workout  = (WorkoutExerDetail)data;
-        values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_ID, workout.getId());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, workout.getWorkid());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, workout.getExerid());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DESC, workout.getDesc());
@@ -58,6 +59,7 @@ public class WorkoutExerController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_SET, workout.getSet());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT, workout.getRepeat());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEIGHT, workout.getWeight());
+        values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME, workout.getTime());
         database.insert(MwSQLiteHelper.TABLE_WORKOUT_EXER, null,
                 values);
         return workout;
@@ -68,10 +70,37 @@ public class WorkoutExerController implements IDataSource {
 
     }
 
+    public void updateTime(float time,int workoutId, int exerciseId){
+
+
+        String updateQuery = "UPDATE " + MwSQLiteHelper.TABLE_WORKOUT_EXER + " SET " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME + "=" + time +" WHERE " +
+                MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID + "=" +workoutId + " AND " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID + "=" + exerciseId;
+        try {
+            database.execSQL(updateQuery);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public int getCount() {
         return 0;
     }
+
+
+    public WorkoutExerDetail getId(int id) {
+        String query = MwSQLiteHelper.COLUMN_WORKOUT_EXER_ID + " = " + id ;
+        Cursor cursor = database.query(MwSQLiteHelper.TABLE_WORKOUT_EXER,
+                allColumns, query, null,
+                null, null, null);
+        cursor.moveToFirst();
+        WorkoutExerDetail workoutExerDetail = (WorkoutExerDetail)cursorTo(cursor);
+        cursor.close();
+        return workoutExerDetail;
+    }
+
 
     @Override
     public List<Model> getAll() {
@@ -100,6 +129,7 @@ public class WorkoutExerController implements IDataSource {
             workout.setSet(cursor.getInt(5));
             workout.setRepeat(cursor.getInt(6));
             workout.setWeight(cursor.getFloat(7));
+            workout.setTime(cursor.getFloat(8));
         }catch (Exception ex){
             //don't do anything
         }

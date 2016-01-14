@@ -60,6 +60,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WORKOUT_EXER_SET = "num_set";
     public static final String COLUMN_WORKOUT_EXER_REPEAT = "num_repeat";
     public static final String COLUMN_WORKOUT_EXER_WEIGHT = "weight";
+    public static final String COLUMN_WORKOUT_EXER_TIME = "time";
 
 
     // table columns
@@ -141,7 +142,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_WORKOUT_EXER_DESC + " text, "
             + COLUMN_WORKOUT_EXER_SET + " integer, "
             + COLUMN_WORKOUT_EXER_REPEAT + " integer, "
-            + COLUMN_WORKOUT_EXER_WEIGHT + " float "
+            + COLUMN_WORKOUT_EXER_WEIGHT + " float not null,  "
+            + COLUMN_WORKOUT_EXER_TIME + " float not null "
             + ");";
 
     private static final String TRANS_CREATE = "CREATE TABLE "

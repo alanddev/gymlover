@@ -1,6 +1,7 @@
 package com.alanddev.gymlover.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Workout;
+import com.alanddev.gymlover.ui.WorkoutSettingActivity;
 import com.alanddev.gymlover.util.Utils;
 
 import java.util.List;
@@ -55,7 +57,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
         Drawable image = convertView.getResources().getDrawable(id);
         imgIcon.setImageDrawable(image);
 
-        /*imgChecked.setOnClickListener(new View.OnClickListener() {
+        imgChecked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -70,7 +72,9 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
                                 switch (item.getItemId()) {
                                     case R.id.install:
                                         //Or Some other code you want to put here.. This is just an example.
-                                        Toast.makeText(getContext(), " Install Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
+                                        Intent intentSetting = new Intent(getContext(),WorkoutSettingActivity.class);
+                                        getContext().startActivity(intentSetting);
+//                                        Toast.makeText(getContext(), " Install Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
                                         break;
                                     case R.id.addtowishlist:
                                         Toast.makeText(getContext(), "Add to Wish List Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
@@ -89,9 +93,8 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
                         break;
                 }
 
-
             }
-        });*/
+        });
 //        if (wallet.getId() == utils.getSharedPreferencesValue(convertView.getContext(), Constant.WALLET_ID)){
 //            imgChecked.setImageResource(R.mipmap.ic_check_green);
 //        }

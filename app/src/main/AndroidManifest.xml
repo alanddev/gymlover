@@ -72,7 +72,12 @@
         <activity
             android:name=".ui.WorkOutExerActivity"
             android:label="@string/title_activity_work_out_exer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.WorkoutSettingActivity"
+            android:label="@string/title_activity_workout_setting"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

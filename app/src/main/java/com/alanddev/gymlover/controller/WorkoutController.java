@@ -2,6 +2,7 @@ package com.alanddev.gymlover.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,6 +12,7 @@ import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Workout;
+import com.alanddev.gymlover.model.WorkoutExerDetail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +41,26 @@ public class WorkoutController implements IDataSource {
 
 
     public  void init(){
+
+
         String[] arrayWOName = mContext.getResources().getStringArray(R.array.wo_names);
         String[] arrayWOImg = mContext.getResources().getStringArray(R.array.wo_images);
         String[] arrayWODesc = mContext.getResources().getStringArray(R.array.wo_descs);
         String[] arrayWOWeek = mContext.getResources().getStringArray(R.array.wo_weeks);
+
+//        WorkoutExerController workoutExerController = new WorkoutExerController(mContext);
+//        TypedArray ta = mContext.getResources().obtainTypedArray(R.array.wo_exer);
+//        int length = ta.length();
+//        String[][] arrayWOExericise = new String[length][];
+//        for (int i = 0; i < length; ++i) {
+//            int id = ta.getResourceId(i, 0);
+//            if (id > 0) {
+//                arrayWOExericise[i] =  mContext.getResources().getStringArray(id);
+//            } else {
+//                // something wrong with the XML
+//            }
+//        }
+
 
         for(int j=0;j<arrayWOName.length;j++){
             Workout workout = new Workout();
@@ -53,8 +71,39 @@ public class WorkoutController implements IDataSource {
             workout.setWeek(Integer.valueOf(arrayWOWeek[j]));
             workout.setUses(0);
             create(workout);
+            test(workout);
+
         }
     }
+
+    private void test(Workout workout){
+        WorkoutExerController workoutExerController = new WorkoutExerController(mContext);
+        workoutExerController.open();
+        WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail(workout.getId(),7,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),6,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),3,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerController.create(workoutExerDetail);
+
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),7,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),6,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerController.create(workoutExerDetail);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),3,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerController.create(workoutExerDetail);
+
+
+    }
+
 
     @Override
     public void open() {

@@ -382,6 +382,36 @@
         <item>12</item>
     </string-array>
 
+    <string-array name="wo_exer">
+        <item>@array/exer1</item>
+        <item>@array/exer2</item>
+        <item>@array/exer3</item>
+    </string-array>
+
+    <string-array name="exer1">
+        <item>7</item>
+        <item>6</item>
+        <item>8</item>
+        <item>4</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="exer2">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+
+    <string-array name="exer3">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+
+
+
     <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
     <string name="title_activity_user">UserActivity</string>
@@ -420,4 +450,7 @@
     <string name="reset">Chạy Lại</string>
     <string name="menu_workout_run">Chạy workout</string>
     <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
+    <string name="next">Tiếp</string>
+    <string name="second">s</string>
+    <string name="title_activity_workout_setting">WorkoutSettingActivity</string>
 </resources>

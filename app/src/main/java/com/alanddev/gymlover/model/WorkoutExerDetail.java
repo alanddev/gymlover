@@ -12,6 +12,33 @@ public class WorkoutExerDetail extends Model{
     private int set;
     private int repeat;
     private float weight;
+    private float time;
+
+
+    public WorkoutExerDetail(){
+
+    }
+
+    public WorkoutExerDetail(int workid, int exerid, String desc, int day, int set, int repeat, float weight, float time){
+        this.workid = workid;
+        this.exerid = exerid;
+        this.desc = desc;
+        this.day = day;
+        this.set = set;
+        this.repeat = repeat;
+        this.weight = weight;
+        this.time = time;
+    }
+
+
+    public float getTime() {
+        return time;
+    }
+
+    public void setTime(float time) {
+        this.time = time;
+    }
+
 
     public int getId() {
         return id;
