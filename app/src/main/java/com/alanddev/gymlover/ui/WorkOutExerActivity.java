@@ -10,10 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.adapter.WorkoutExerAdapter;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
+import com.alanddev.gymlover.model.WorkoutExerWeek;
 import com.alanddev.gymlover.util.Utils;
+import com.foound.widget.AmazingListView;
 
-public class WorkOutExerActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class WorkoutExerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,9 @@ public class WorkOutExerActivity extends AppCompatActivity {
         int woId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_ID,0);
         final String woName = getIntent().getExtras().getString(MwSQLiteHelper.COLUMN_WORKOUT_NAME, "");
         getSupportActionBar().setTitle(woName);
+        AmazingListView lstworkoutexer = (AmazingListView)findViewById(R.id.lstworkoutexer);
+        WorkoutExerAdapter adapter = new WorkoutExerAdapter(getApplicationContext(),getLayoutInflater(),getData(woId));
+        lstworkoutexer.setAdapter(adapter);
     }
 
     @Override
@@ -52,6 +61,11 @@ public class WorkOutExerActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    List<WorkoutExerWeek> getData(int workoutId){
+        List<WorkoutExerWeek> lstwes = new ArrayList<WorkoutExerWeek>();
+        return lstwes;
     }
 
 }

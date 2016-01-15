@@ -19,4 +19,7 @@
     <string name="title_activity_select_menu">Lựa chọn hình nền menu</string>
     <string name="title_activity_select_language">Lựa chọn ngôn ngữ</string>
     <string name="setting">Cài đặt</string>
+    <string name="day">Ngày</string>
+    <string name="exercise">bài tập</string>
+    <string name="week">Tuần</string>
 </resources>

@@ -1,13 +1,17 @@
 package com.alanddev.gymlover.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.model.WorkoutExerDay;
 import com.alanddev.gymlover.model.WorkoutExerWeek;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 import com.foound.widget.AmazingAdapter;
 
@@ -42,8 +46,10 @@ public class WorkoutExerAdapter extends AmazingAdapter {
         if (displaySectionHeader) {
             header.setVisibility(View.VISIBLE);
             WorkoutExerWeek exerWeek = datas.get(getSectionForPosition(position));
-            int week = exerWeek.getWeek();
-            TextView txtDate = (TextView) header.findViewById(R.id.txtdate);
+            TextView txtheadname = (TextView) header.findViewById(R.id.txtheadname);
+            TextView txtheaddes = (TextView) header.findViewById(R.id.txtheaddes);
+            txtheadname.setText(mContext.getResources().getString(R.string.week)+" "+exerWeek.getWeek());
+            txtheaddes.setText(exerWeek.getItems().size()+" "+mContext.getResources().getString(R.string.day));
         } else {
             header.setVisibility(View.GONE);
         }
@@ -51,7 +57,16 @@ public class WorkoutExerAdapter extends AmazingAdapter {
 
     @Override
     public View getAmazingView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View res = convertView;
+        if (res == null){
+            res = inflate.inflate(R.layout.item_workout_exer, null);
+        }
+        TextView txtwename = (TextView) res.findViewById(R.id.txtwename);
+        TextView txtwedes = (TextView) res.findViewById(R.id.txtwedes);
+        WorkoutExerDay composer = (WorkoutExerDay) getItem(position);
+        txtwename.setText(mContext.getResources().getString(R.string.day)+" "+composer.getDay());
+        txtwedes.setText(composer.getItems().size()+ " "+mContext.getResources().getString(R.string.exercise));
+        return res;
     }
 
     @Override

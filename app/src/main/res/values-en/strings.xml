@@ -19,4 +19,7 @@
     <string name="title_activity_select_menu">Choose Navigation Background</string>
     <string name="title_activity_select_language">Choose Language</string>
     <string name="setting">Setting</string>
+    <string name="day">Day</string>
+    <string name="exercise">exercises</string>
+    <string name="week">Week</string>
 </resources>
