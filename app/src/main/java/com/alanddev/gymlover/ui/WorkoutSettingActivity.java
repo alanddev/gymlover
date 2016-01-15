@@ -31,17 +31,7 @@ public class WorkoutSettingActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_setting));
 
         workoutExerController = new WorkoutExerController(this);
-        workoutExerController.open();
-        ArrayList<WorkoutExerDetail> listWorkout = new ArrayList<>();
-        listWorkout.add(workoutExerController.getId(1));
-        listWorkout.add(workoutExerController.getId(2));
-        listWorkout.add(workoutExerController.getId(3));
-        listWorkout.add(workoutExerController.getId(4));
-        listWorkout.add(workoutExerController.getId(5));
-
-        ListView listViewWorkout = (ListView)findViewById(R.id.list_workout_detail);
-        listViewWorkout.setAdapter(new WorkoutSettingAdapter(this,listWorkout));
-        workoutExerController.close();
+        reloadData();
     }
 
     @Override
@@ -64,11 +54,26 @@ public class WorkoutSettingActivity extends AppCompatActivity {
         }
         if (id == android.R.id.home) {
             finish();
+
         }
 
         return super.onOptionsItemSelected(item);
     }
 
 
+    public void reloadData(){
+        workoutExerController.open();
+        ArrayList<WorkoutExerDetail> listWorkout = new ArrayList<>();
+        listWorkout.add(workoutExerController.getId(1));
+        listWorkout.add(workoutExerController.getId(2));
+        listWorkout.add(workoutExerController.getId(3));
+        listWorkout.add(workoutExerController.getId(4));
+        listWorkout.add(workoutExerController.getId(5));
+
+        ListView listViewWorkout = (ListView)findViewById(R.id.list_workout_detail);
+        listViewWorkout.setAdapter(new WorkoutSettingAdapter(this,listWorkout));
+        workoutExerController.close();
+
+    }
 
 }
