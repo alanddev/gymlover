@@ -410,6 +410,9 @@
     <string name="start">Chạy</string>
     <string name="start_time">00:00:00</string>
     <string name="reset">Chạy Lại</string>
+    <string name ="next">Tiếp</string>
     <string name="menu_workout_run">Chạy workout</string>
+    <string name="title_activity_workout_setting"> Cấu hình Workout </string>
     <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
+    <string name="second">s</string>
 </resources>
