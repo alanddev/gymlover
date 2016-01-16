@@ -71,39 +71,39 @@ public class WorkoutController implements IDataSource {
             workout.setWeek(Integer.valueOf(arrayWOWeek[j]));
             workout.setUses(0);
             create(workout);
-            //test(workout);
+            test(workout);
 
         }
     }
 
-    /*private void test(Workout workout){
+    private void test(Workout workout){
         WorkoutExerController workoutExerController = new WorkoutExerController(mContext);
         workoutExerController.open();
-        WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail(workout.getId(),7,"Stronglift 5*5",1,5,5,"10",20);
+        WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail(workout.getId(),2000,"Stronglift 5*5",1,5,"5",10,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),6,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),2001,"Stronglift 5*5",1,5,"5",10,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4000,"Stronglift 5*5",1,5,"5",10,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),7000,"Stronglift 5*5",1,5,"5",10,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),3,"Stronglift 5*5",1,5,5,10,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8000,"Stronglift 5*5",1,5,"5",10,20);
         workoutExerController.create(workoutExerDetail);
 
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),7,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),2000,"Stronglift 5*5",2,5,"5",12,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),6,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),2001,"Stronglift 5*5",2,5,"5",12,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4000,"Stronglift 5*5",2,5,"5",12,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),7000,"Stronglift 5*5",2,5,"5",12,20);
         workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),3,"Stronglift 5*5",2,5,5,12,20);
+        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8000,"Stronglift 5*5",2,5,"5",12,20);
         workoutExerController.create(workoutExerDetail);
 
 
     }
-*/
+
 
     @Override
     public void open() {
