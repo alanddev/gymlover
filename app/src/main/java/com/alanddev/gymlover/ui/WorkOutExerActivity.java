@@ -1,5 +1,6 @@
 package com.alanddev.gymlover.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,10 +9,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.adapter.ExerciseGrpAdapter;
 import com.alanddev.gymlover.adapter.WorkoutExerAdapter;
+import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
+import com.alanddev.gymlover.model.ExcerciseGroup;
 import com.alanddev.gymlover.model.WorkoutExerWeek;
 import com.alanddev.gymlover.util.Utils;
 import com.foound.widget.AmazingListView;
@@ -30,18 +36,30 @@ public class WorkoutExerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        int woId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_ID,0);
-        final String woName = getIntent().getExtras().getString(MwSQLiteHelper.COLUMN_WORKOUT_NAME, "");
-        getSupportActionBar().setTitle(woName);
-        AmazingListView lstworkoutexer = (AmazingListView)findViewById(R.id.lstworkoutexer);
-        WorkoutExerAdapter adapter = new WorkoutExerAdapter(getApplicationContext(),getLayoutInflater(),getData(woId));
-        lstworkoutexer.setAdapter(adapter);
+        int workoutId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_ID);
+        String workoutName = getIntent().getExtras().getString(MwSQLiteHelper.COLUMN_WORKOUT_NAME);
+        int workoutWeek = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_WEEK);
+        getSupportActionBar().setTitle(workoutName);
+        AmazingListView lvSetting = (AmazingListView)findViewById(R.id.lstworkoutexer);
+        final WorkoutExerAdapter adapter = new WorkoutExerAdapter(this,getLayoutInflater(),getData(workoutId,workoutWeek));
+        lvSetting.setAdapter(adapter);
+        lvSetting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+                ExcerciseGroup grp = (ExcerciseGroup) parent.getAdapter().getItem(position);
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID, grp.getId());
+                intent.putExtra(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grp.getName());
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_workout, menu);
+        getMenuInflater().inflate(R.menu.menu_category, menu);
         return true;
     }
 
@@ -52,20 +70,19 @@ public class WorkoutExerActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
         if (id == android.R.id.home) {
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    List<WorkoutExerWeek> getData(int workoutId){
-        List<WorkoutExerWeek> lstwes = new ArrayList<WorkoutExerWeek>();
-        return lstwes;
+    private List<WorkoutExerWeek> getData(int workoutId,int workoutWeek){
+        List<WorkoutExerWeek> weeks = new ArrayList<WorkoutExerWeek>();
+        WorkoutExerController controller = new WorkoutExerController(this);
+        controller.open();
+        weeks = controller.getWorkoutExer(workoutId, workoutWeek);
+        controller.close();
+        return weeks;
     }
 
 }

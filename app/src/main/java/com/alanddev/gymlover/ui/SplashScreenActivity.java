@@ -10,6 +10,7 @@ import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.ExcerciseGroupController;
 import com.alanddev.gymlover.controller.UserController;
 import com.alanddev.gymlover.controller.WorkoutController;
+import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.service.NotifyService;
@@ -84,6 +85,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         workoutController.open();
         workoutController.init();
         workoutController.close();
+
+        WorkoutExerController exerController = new WorkoutExerController(getApplicationContext());
+        exerController.open();
+        exerController.init();
+        exerController.close();
 
 
     }

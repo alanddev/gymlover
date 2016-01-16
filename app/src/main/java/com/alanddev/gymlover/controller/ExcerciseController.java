@@ -153,7 +153,6 @@ public class ExcerciseController implements IDataSource {
 
     public void init(){
         String[] arrayExgrp = mContext.getResources().getStringArray(R.array.excercise_grp_ex) ;
-        List<Exercise> lstExercises = new ArrayList<Exercise>();
         for(int i=0;i<arrayExgrp.length;i++){
             String temp = arrayExgrp[i];
             String[] itemTemp = temp.split(",");
@@ -169,13 +168,8 @@ public class ExcerciseController implements IDataSource {
                 exercise.setImage(arrayExImage[j]);
                 exercise.setVideolink(arrayVideo[j]);
                 exercise.setExgroup_id(i + 1);
-                lstExercises.add(exercise);
+                create(exercise);
             }
-        }
-
-        //create
-        for(int i=0;i<lstExercises.size();i++){
-            create(lstExercises.get(i));
         }
     }
 }

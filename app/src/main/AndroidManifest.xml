@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.alanddev.gymlover" >
+    package="com.alanddev.gymlover">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.SplashScreenActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +32,7 @@
 
         <service android:name=".service.NotifyService" />
 
-        <receiver android:name=".service.MyScheduleReceiver" >
+        <receiver android:name=".service.MyScheduleReceiver">
             <intent-filter>
                 <action android:name="com.alanddev.manwal.CUSTOM_INTENT" />
             </intent-filter>
@@ -66,18 +66,16 @@
         <activity
             android:name=".ui.WorkoutRunActivity"
             android:label="@string/title_activity_workout_run"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.WorkoutExerActivity"
-            android:label="@string/title_activity_work_out_exer"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.WorkoutSettingActivity"
             android:label="@string/title_activity_workout_setting"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.WorkoutExerActivity"
+            android:label="@string/title_activity_workout_exer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

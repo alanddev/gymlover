@@ -55,6 +55,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WORKOUT_EXER_ID = "id";
     public static final String COLUMN_WORKOUT_EXER_WORK_ID = "workout_id";
     public static final String COLUMN_WORKOUT_EXER_EXER_ID = "exer_id";
+    public static final String COLUMN_WORKOUT_EXER_WEEK = "week";
     public static final String COLUMN_WORKOUT_EXER_DAY = "day";
     public static final String COLUMN_WORKOUT_EXER_DESC = "desc";
     public static final String COLUMN_WORKOUT_EXER_SET = "num_set";
@@ -135,13 +136,14 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
 
     private static final String WORKOUT_EXER_CREATE = "CREATE TABLE "
             + TABLE_WORKOUT_EXER + "("
-            + COLUMN_WORKOUT_EXER_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_WORKOUT_EXER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_WORKOUT_EXER_WORK_ID + " integer not null, "
             + COLUMN_WORKOUT_EXER_EXER_ID + " integer not null, "
+            + COLUMN_WORKOUT_EXER_WEEK + " integer not null, "
             + COLUMN_WORKOUT_EXER_DAY + " integer not null, "
             + COLUMN_WORKOUT_EXER_DESC + " text, "
             + COLUMN_WORKOUT_EXER_SET + " integer, "
-            + COLUMN_WORKOUT_EXER_REPEAT + " integer, "
+            + COLUMN_WORKOUT_EXER_REPEAT + " text, "
             + COLUMN_WORKOUT_EXER_WEIGHT + " float not null,  "
             + COLUMN_WORKOUT_EXER_TIME + " float not null "
             + ");";

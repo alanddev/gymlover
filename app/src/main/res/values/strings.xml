@@ -172,14 +172,10 @@
     <string name="grp_shou">Shoulders</string>
     <string name="grp_tric">Triceps</string>
 
-    <string-array name="ex_abdominals_names">
-    </string-array>
-    <string-array name="ex_abdominals_imgs">
-    </string-array>
-    <string-array name="ex_abdominals_descs">
-    </string-array>
-    <string-array name="ex_abdominals_videos">
-    </string-array>
+    <string-array name="ex_abdominals_names"></string-array>
+    <string-array name="ex_abdominals_imgs"></string-array>
+    <string-array name="ex_abdominals_descs"></string-array>
+    <string-array name="ex_abdominals_videos"></string-array>
 
 
     <string-array name="ex_back_names">
@@ -214,12 +210,9 @@
     <string-array name="ex_biceps_names">
 
     </string-array>
-    <string-array name="ex_biceps_imgs">
-    </string-array>
-    <string-array name="ex_biceps_descs">
-    </string-array>
-    <string-array name="ex_biceps_videos">
-    </string-array>
+    <string-array name="ex_biceps_imgs"></string-array>
+    <string-array name="ex_biceps_descs"></string-array>
+    <string-array name="ex_biceps_videos"></string-array>
 
 
     <string-array name="ex_chest_names">
@@ -279,32 +272,20 @@
             5. Repeat for the recommended amount of repetitions.
     </string>
 
-    <string-array name="ex_triceps_names">
-    </string-array>
-    <string-array name="ex_triceps_imgs">
-    </string-array>
-    <string-array name="ex_triceps_descs">
-    </string-array>
-    <string-array name="ex_triceps_videos">
-    </string-array>
+    <string-array name="ex_triceps_names"></string-array>
+    <string-array name="ex_triceps_imgs"></string-array>
+    <string-array name="ex_triceps_descs"></string-array>
+    <string-array name="ex_triceps_videos"></string-array>
 
-    <string-array name="ex_forearms_names">
-    </string-array>
-    <string-array name="ex_forearms_imgs">
-    </string-array>
-    <string-array name="ex_forearms_descs">
-    </string-array>
-    <string-array name="ex_forearms_videos">
-    </string-array>
+    <string-array name="ex_forearms_names"></string-array>
+    <string-array name="ex_forearms_imgs"></string-array>
+    <string-array name="ex_forearms_descs"></string-array>
+    <string-array name="ex_forearms_videos"></string-array>
 
-    <string-array name="ex_gluters_names">
-    </string-array>
-    <string-array name="ex_gluters_imgs">
-    </string-array>
-    <string-array name="ex_gluters_descs">
-    </string-array>
-    <string-array name="ex_gluters_videos">
-    </string-array>
+    <string-array name="ex_gluters_names"></string-array>
+    <string-array name="ex_gluters_imgs"></string-array>
+    <string-array name="ex_gluters_descs"></string-array>
+    <string-array name="ex_gluters_videos"></string-array>
 
     <string-array name="wo_names">
         <item>StrongLift 5*5</item>
@@ -322,9 +303,12 @@
         <item>1</item>
     </string-array>
     <string-array name="wo_weeks">
-        <item>3</item>
+        <item>2</item>
         <item>9</item>
         <item>12</item>
+    </string-array>
+    <string-array name="wo_exers">
+        <item>wo_1_week,wo_1_day,wo_1_exer,wo_1_set,wo_1_repeat,wo_1_weight,wo_1_times</item>
     </string-array>
 
     <string-array name="wo_1_week">
@@ -333,19 +317,58 @@
         <item>1</item>
         <item>1</item>
         <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
     </string-array>
     <string-array name="wo_1_day">
         <item>1</item>
         <item>1</item>
         <item>1</item>
-        <item>1</item>
-        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
     </string-array>
     <string-array name="wo_1_exer">
         <item>7000</item>
         <item>4000</item>
-        <item>8000</item>
         <item>2001</item>
+        <item>7000</item>
+        <item>8000</item>
+        <item>2000</item>
+        <item>7000</item>
+        <item>4000</item>
+        <item>2001</item>
+        <item>7000</item>
+        <item>8000</item>
+        <item>2000</item>
+        <item>7000</item>
+        <item>4000</item>
+        <item>2001</item>
+        <item>7000</item>
+        <item>8000</item>
         <item>2000</item>
     </string-array>
     <string-array name="wo_1_set">
@@ -353,21 +376,80 @@
         <item>5</item>
         <item>5</item>
         <item>5</item>
+        <item>5</item>
+        <item>1</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>1</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
         <item>1</item>
     </string-array>
     <string-array name="wo_1_repeat">
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
         <item>5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
         <item>5</item>
-        <item>5</item>
-        <item>5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
+        <item>5,5,5,5,5</item>
         <item>5</item>
     </string-array>
     <string-array name="wo_1_weight">
-        <item>5</item>
-        <item>5</item>
-        <item>5</item>
-        <item>5</item>
-        <item>5</item>
+        <item>20</item>
+        <item>20</item>
+        <item>30</item>
+        <item>22.5</item>
+        <item>20</item>
+        <item>40</item>
+        <item>25</item>
+        <item>22.5</item>
+        <item>32.5</item>
+        <item>27.5</item>
+        <item>22.5</item>
+        <item>45</item>
+        <item>30</item>
+        <item>25</item>
+        <item>35</item>
+        <item>32.5</item>
+        <item>25</item>
+        <item>50</item>
+    </string-array>
+    <string-array name="wo_1_times">
+        <item>120</item>
+        <item>120</item>
+        <item>130</item>
+        <item>122</item>
+        <item>120</item>
+        <item>140</item>
+        <item>125</item>
+        <item>122</item>
+        <item>132</item>
+        <item>127</item>
+        <item>122</item>
+        <item>145</item>
+        <item>130</item>
+        <item>125</item>
+        <item>135</item>
+        <item>132</item>
+        <item>125</item>
+        <item>150</item>
     </string-array>
 
     <string name="day">Day</string>
@@ -410,9 +492,10 @@
     <string name="start">Chạy</string>
     <string name="start_time">00:00:00</string>
     <string name="reset">Chạy Lại</string>
-    <string name ="next">Tiếp</string>
+    <string name="next">Tiếp</string>
     <string name="menu_workout_run">Chạy workout</string>
     <string name="title_activity_workout_setting"> Cấu hình Workout </string>
     <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
     <string name="second">s</string>
+    <string name="title_activity_workout_exer">WorkoutExerActivity</string>
 </resources>

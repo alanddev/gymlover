@@ -71,15 +71,15 @@ public class WorkoutController implements IDataSource {
             workout.setWeek(Integer.valueOf(arrayWOWeek[j]));
             workout.setUses(0);
             create(workout);
-            test(workout);
+            //test(workout);
 
         }
     }
 
-    private void test(Workout workout){
+    /*private void test(Workout workout){
         WorkoutExerController workoutExerController = new WorkoutExerController(mContext);
         workoutExerController.open();
-        WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail(workout.getId(),7,"Stronglift 5*5",1,5,5,10,20);
+        WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail(workout.getId(),7,"Stronglift 5*5",1,5,5,"10",20);
         workoutExerController.create(workoutExerDetail);
         workoutExerDetail = new WorkoutExerDetail(workout.getId(),6,"Stronglift 5*5",1,5,5,10,20);
         workoutExerController.create(workoutExerDetail);
@@ -103,7 +103,7 @@ public class WorkoutController implements IDataSource {
 
 
     }
-
+*/
 
     @Override
     public void open() {

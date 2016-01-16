@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -106,13 +107,10 @@ public class WorkoutRunActivity extends AppCompatActivity {
         currentExercise = 0;
 
         listExercise = new ArrayList<>();
-        listExercise.add(7);
-        listExercise.add(6);
-        listExercise.add(8);
-        listExercise.add(4);
-        listExercise.add(3);
+        listExercise.add(1);
 
-        final Exercise exercise = getData(listExercise.get(currentExercise));
+
+        final Exercise exercise = getData(2000);
         getSupportActionBar().setTitle(exercise.getName());
         String strImgs = exercise.getImage();
         imageArray = strImgs.split(",");

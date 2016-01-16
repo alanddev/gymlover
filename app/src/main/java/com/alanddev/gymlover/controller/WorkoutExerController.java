@@ -4,13 +4,19 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
+import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.User;
+import com.alanddev.gymlover.model.WorkoutExerDay;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
+import com.alanddev.gymlover.model.WorkoutExerWeek;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +61,7 @@ public class WorkoutExerController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, workout.getWorkid());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, workout.getExerid());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DESC, workout.getDesc());
+        values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, workout.getWeek());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, workout.getDay());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_SET, workout.getSet());
         values.put(MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT, workout.getRepeat());
@@ -125,11 +132,12 @@ public class WorkoutExerController implements IDataSource {
             workout.setWorkid(cursor.getInt(1));
             workout.setExerid(cursor.getInt(2));
             workout.setDesc(cursor.getString(3));
-            workout.setDay(cursor.getInt(4));
-            workout.setSet(cursor.getInt(5));
-            workout.setRepeat(cursor.getInt(6));
-            workout.setWeight(cursor.getFloat(7));
-            workout.setTime(cursor.getFloat(8));
+            workout.setWeek(cursor.getInt(4));
+            workout.setDay(cursor.getInt(5));
+            workout.setSet(cursor.getInt(6));
+            workout.setRepeat(cursor.getString(7));
+            workout.setWeight(cursor.getFloat(8));
+            workout.setTime(cursor.getFloat(9));
         }catch (Exception ex){
             //don't do anything
         }
@@ -139,5 +147,79 @@ public class WorkoutExerController implements IDataSource {
     @Override
     public void delete() {
         database.delete(MwSQLiteHelper.TABLE_WORKOUT, null, null);
+    }
+
+    public List<WorkoutExerWeek> getWorkoutExer(int workoutId,int numweek){
+        Log.d("AAAAAA",workoutId+" "+numweek);
+        List<WorkoutExerWeek> weeks = new ArrayList<WorkoutExerWeek>();
+        for(int i=1;i<=numweek;i++){
+            WorkoutExerWeek week = new WorkoutExerWeek();
+            StringBuffer sql = new StringBuffer("SELECT * FROM ").
+                    append(MwSQLiteHelper.TABLE_WORKOUT_EXER).append(" WHERE ").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID)
+                    .append("= ?").append(" AND ").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK).append("= ?");
+            String[] atts = new String[]{String.valueOf(workoutId),String.valueOf(i)};
+            Cursor cursor = database.rawQuery(sql.toString(),atts);
+            cursor.moveToFirst();
+            List<WorkoutExerDetail> workoutExerDetails = new ArrayList<WorkoutExerDetail>();
+            int number_day=1;
+            while (!cursor.isAfterLast()) {
+                Log.d("CCCC","DDDDDDDD");
+                WorkoutExerDetail workoutExerDetail = (WorkoutExerDetail)cursorTo(cursor);
+                workoutExerDetails.add(workoutExerDetail);
+                number_day=workoutExerDetail.getDay();
+                cursor.moveToNext();
+            }
+            // make sure to close the cursor
+            cursor.close();
+
+            //add workoutday, workoutweek
+            List<WorkoutExerDay> exerDays = new ArrayList<WorkoutExerDay>();
+            for (int j=1;j<=number_day;j++){
+                WorkoutExerDay workoutExerDay = new WorkoutExerDay();
+                List<WorkoutExerDetail> details = new ArrayList<WorkoutExerDetail>();
+                for(int k=0;k<workoutExerDetails.size();k++){
+                    WorkoutExerDetail temp = workoutExerDetails.get(k);
+                    if(temp.getDay()==j){
+                        details.add(temp);
+                    }
+                }
+                workoutExerDay.setDay(j);
+                workoutExerDay.setItems(details);
+                exerDays.add(workoutExerDay);
+            }
+            week.setWeek(i);
+            week.setItems(exerDays);
+            weeks.add(week);
+        }
+        Log.d("EEEEEEE",weeks.size()+"");
+        return weeks;
+    }
+
+    public void init(){
+        String[] arrayExgrp = mContext.getResources().getStringArray(R.array.wo_exers) ;
+        for(int i=0;i<arrayExgrp.length;i++){
+            String temp = arrayExgrp[i];
+            String[] itemTemp = temp.split(",");
+            String[] arrayWoExWeek = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[0], "array", mContext.getPackageName()));
+            String[] arrayWoExDay = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[1],"array",mContext.getPackageName()));
+            String[] arrayWoEx = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[2],"array",mContext.getPackageName()));
+            String[] arrayWoSet = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[3], "array", mContext.getPackageName()));
+            String[] arrayWoRepeat = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[4], "array", mContext.getPackageName()));
+            String[] arrayWoExWeight = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[5], "array", mContext.getPackageName()));
+            String[] arrayWoExTimes = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[6], "array", mContext.getPackageName()));
+            for(int j=0;j<arrayWoExWeek.length;j++){
+                WorkoutExerDetail detail = new WorkoutExerDetail();
+                detail.setWorkid(i+1);
+                detail.setExerid(Integer.valueOf(arrayWoEx[j]));
+                detail.setWeek(Integer.valueOf(arrayWoExWeek[j]));
+                detail.setDay(Integer.valueOf(arrayWoExDay[j]));
+                detail.setDay(Integer.valueOf(arrayWoExDay[j]));
+                detail.setSet(Integer.valueOf(arrayWoSet[j]));
+                detail.setRepeat(arrayWoRepeat[j]);
+                detail.setWeight(Float.valueOf(arrayWoExWeight[j]));
+                detail.setTime(Float.valueOf(arrayWoExTimes[j]));
+                create(detail);
+            }
+        }
     }
 }

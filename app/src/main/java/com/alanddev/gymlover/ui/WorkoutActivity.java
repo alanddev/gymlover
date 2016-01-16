@@ -151,6 +151,7 @@ public class WorkoutActivity extends AppCompatActivity {
                     Workout workout = (Workout) parent.getAdapter().getItem(position);
                     intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_ID, workout.getId());
                     intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_NAME, workout.getName());
+                    intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_WEEK, workout.getWeek());
                     startActivity(intent);
                 }
             });

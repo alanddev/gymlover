@@ -10,16 +10,17 @@ public class WorkoutExerDetail extends Model{
     private String desc;
     private int day;
     private int set;
-    private int repeat;
+    private String repeat;
     private float weight;
     private float time;
+    private int week;
 
 
     public WorkoutExerDetail(){
 
     }
 
-    public WorkoutExerDetail(int workid, int exerid, String desc, int day, int set, int repeat, float weight, float time){
+    public WorkoutExerDetail(int workid, int exerid, String desc, int day, int set, String repeat, float weight, float time){
         this.workid = workid;
         this.exerid = exerid;
         this.desc = desc;
@@ -88,11 +89,11 @@ public class WorkoutExerDetail extends Model{
         this.set = set;
     }
 
-    public int getRepeat() {
+    public String getRepeat() {
         return repeat;
     }
 
-    public void setRepeat(int repeat) {
+    public void setRepeat(String repeat) {
         this.repeat = repeat;
     }
 
@@ -102,5 +103,13 @@ public class WorkoutExerDetail extends Model{
 
     public void setWeight(float weight) {
         this.weight = weight;
+    }
+
+    public int getWeek() {
+        return week;
+    }
+
+    public void setWeek(int week) {
+        this.week = week;
     }
 }
