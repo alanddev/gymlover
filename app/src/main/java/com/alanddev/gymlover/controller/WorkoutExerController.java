@@ -132,9 +132,9 @@ public class WorkoutExerController implements IDataSource {
             workout.setId(cursor.getInt(0));
             workout.setWorkid(cursor.getInt(1));
             workout.setExerid(cursor.getInt(2));
-            workout.setDesc(cursor.getString(3));
-            workout.setWeek(cursor.getInt(4));
-            workout.setDay(cursor.getInt(5));
+            workout.setWeek(cursor.getInt(3));
+            workout.setDay(cursor.getInt(4));
+            workout.setDesc(cursor.getString(5));
             workout.setSet(cursor.getInt(6));
             workout.setRepeat(cursor.getString(7));
             workout.setWeight(cursor.getFloat(8));
@@ -165,9 +165,9 @@ public class WorkoutExerController implements IDataSource {
             List<WorkoutExerDetail> workoutExerDetails = new ArrayList<WorkoutExerDetail>();
             int number_day=1;
             while (!cursor.isAfterLast()) {
-                Log.d("CCCC","DDDDDDDD");
                 WorkoutExerDetail workoutExerDetail = (WorkoutExerDetail)cursorTo(cursor);
                 workoutExerDetails.add(workoutExerDetail);
+                Log.d("CCCCCCCC",number_day+"");
                 number_day=workoutExerDetail.getDay();
                 cursor.moveToNext();
             }
@@ -190,6 +190,7 @@ public class WorkoutExerController implements IDataSource {
                 exerDays.add(workoutExerDay);
             }
             week.setWeek(i);
+            Log.d("BBBBBBB",exerDays.size()+"");
             week.setItems(exerDays);
             weeks.add(week);
         }

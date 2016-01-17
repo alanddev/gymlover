@@ -147,7 +147,7 @@ public class WorkoutActivity extends AppCompatActivity {
             listWorkout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getActivity(), WorkOutExerActivity.class);
+                    Intent intent = new Intent(getActivity(), WorkoutExerActivity.class);
                     Workout workout = (Workout) parent.getAdapter().getItem(position);
                     intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_ID, workout.getId());
                     intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_NAME, workout.getName());
