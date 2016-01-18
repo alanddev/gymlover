@@ -10,7 +10,7 @@
     tools:showIn="@layout/activity_report" tools:context="com.alanddev.gymlover.ui.ReportActivity">
 
 
-    <com.github.mikephil.charting.charts.BarChart
+    <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_barchart_trend" />
