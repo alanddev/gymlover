@@ -32,6 +32,7 @@ public class WorkoutExerController implements IDataSource {
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_DESC,
+            MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_SET,
             MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT,
@@ -140,6 +141,7 @@ public class WorkoutExerController implements IDataSource {
             workout.setTime(cursor.getFloat(9));
         }catch (Exception ex){
             //don't do anything
+            ex.printStackTrace();
         }
         return workout;
     }

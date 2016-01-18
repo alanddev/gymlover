@@ -25,7 +25,7 @@ import com.foound.widget.AmazingListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkoutExerActivity extends AppCompatActivity {
+public class WorkOutExerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
