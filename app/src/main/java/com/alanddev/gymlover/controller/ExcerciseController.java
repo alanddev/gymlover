@@ -30,7 +30,8 @@ public class ExcerciseController implements IDataSource {
             MwSQLiteHelper.COLUMN_EXCERCISE_DESC,
             MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE,
             MwSQLiteHelper.COLUMN_EXCERCISE_VIDEOLINK,
-            MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID
+            MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID,
+            MwSQLiteHelper.COLUMN_EXCERCISE_CALO
     };
 
     public ExcerciseController(Context context){
@@ -58,6 +59,7 @@ public class ExcerciseController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE, exercise.getImage());
         values.put(MwSQLiteHelper.COLUMN_EXCERCISE_VIDEOLINK, exercise.getVideolink());
         values.put(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID, exercise.getExgroup_id());
+        values.put(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, exercise.getCalo());
         database.insert(MwSQLiteHelper.TABLE_EXCERCISE, null,
                 values);
         return exercise;
@@ -110,6 +112,7 @@ public class ExcerciseController implements IDataSource {
             exercise.setImage(cursor.getString(3));
             exercise.setVideolink(cursor.getString(4));
             exercise.setExgroup_id(cursor.getInt(5));
+            exercise.setCalo(cursor.getFloat(6));
         }catch (Exception ex){
             //don't do anything
         }
@@ -160,6 +163,7 @@ public class ExcerciseController implements IDataSource {
             String[] arrayExDesc = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[1],"array",mContext.getPackageName()));
             String[] arrayExImage = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[2],"array",mContext.getPackageName()));
             String[] arrayVideo = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[3],"array",mContext.getPackageName()));
+            String[] arrayCalo = mContext.getResources().getStringArray(mContext.getResources().getIdentifier(itemTemp[4],"array",mContext.getPackageName()));
             for(int j=0;j<arrayExName.length;j++){
                 Exercise exercise = new Exercise();
                 exercise.setId((i+1)*1000+j);
@@ -168,6 +172,7 @@ public class ExcerciseController implements IDataSource {
                 exercise.setImage(arrayExImage[j]);
                 exercise.setVideolink(arrayVideo[j]);
                 exercise.setExgroup_id(i + 1);
+                exercise.setCalo(Float.parseFloat(arrayCalo[j]));
                 create(exercise);
             }
         }

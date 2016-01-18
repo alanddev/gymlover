@@ -385,17 +385,25 @@ public class Utils {
 
     // size waist -- > YCMA formula;
     // way 2 is Navy body fat;
-    public static double calculatorBodyFat(double weight, double sizeRoundTwo, int gender){
-        double result ;
-        sizeRoundTwo = sizeRoundTwo/2.54; // convert cm --> to inches; 1inches = 2.54 cm;
-        weight = weight * 2.2; // 1kg = 2.2 pounds
+    public static float calculatorBodyFat(float weight, float sizeRoundTwo, int gender){
+        float result ;
+        sizeRoundTwo = sizeRoundTwo/2.54f; // convert cm --> to inches; 1inches = 2.54 cm;
+        weight = weight * 2.2f; // 1kg = 2.2 pounds
 
         if (gender == Constant.GENDER_BOY){
-            result = (-98.42 + (4.15 * sizeRoundTwo) - (0.082 *weight))/weight ;
+            result = (-98.42f + (4.15f * sizeRoundTwo) - (0.082f *weight))/weight ;
         }else{
-            result = (-76.76 + (4.15 * sizeRoundTwo) - (0.082 * weight))/weight;
+            result = (-76.76f + (4.15f * sizeRoundTwo) - (0.082f * weight))/weight;
         }
         return Math.round(result * 100);
+    }
+
+
+    // base 150 lbs ( ~ 68 kg) in 60 minutes.
+    public static float calculatorCalo(float weight, float time, float caloBase){
+        float result;
+        result = (((weight*2.2f/150f)* caloBase)/3600f)*time;
+        return Math.round(result);
     }
 
 

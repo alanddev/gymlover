@@ -21,6 +21,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_EXCERCISE_IMAGE = "image";
     public static final String COLUMN_EXCERCISE_VIDEOLINK = "videolink";
     public static final String COLUMN_EXCERCISE_GRP_ID = "group_id";
+    public static final String COLUMN_EXCERCISE_CALO = "calo";
 
     public static final String COLUMN_EX_GROUP_ID = "id";
     public static final String COLUMN_EX_GROUP_NAME = "name";
@@ -113,7 +114,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_EXCERCISE_DESC + " text not null, "
             + COLUMN_EXCERCISE_IMAGE + " text, "
             + COLUMN_EXCERCISE_VIDEOLINK + " text, "
-            + COLUMN_EXCERCISE_GRP_ID + " integer not null "
+            + COLUMN_EXCERCISE_GRP_ID + " integer not null, "
+            + COLUMN_EXCERCISE_CALO + " float not null "
             + ");";
 
     private static final String EX_GROUP_CREATE = "CREATE TABLE "

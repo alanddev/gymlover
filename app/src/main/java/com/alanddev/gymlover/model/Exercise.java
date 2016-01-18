@@ -11,6 +11,18 @@ public class Exercise extends Model{
     private String image;
     private String description;
     private String videolink;
+    private float calo;
+
+
+    public float getCalo() {
+        return calo;
+    }
+
+    public void setCalo(float calo) {
+        this.calo = calo;
+    }
+
+
 
     public int getId() {
         return id;

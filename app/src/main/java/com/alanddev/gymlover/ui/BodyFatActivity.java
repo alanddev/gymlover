@@ -78,10 +78,12 @@ public class BodyFatActivity extends AppCompatActivity {
     }
 
     public void onClickCalculate(View v){
-        double weight = Double.parseDouble(tvWeight.getText().toString());
-        double waist = Double.parseDouble(tvWaist.getText().toString());
-        double bodyFat = Utils.calculatorBodyFat(weight,waist,gender);
+        float weight = Float.parseFloat(tvWeight.getText().toString());
+        float waist = Float.parseFloat(tvWaist.getText().toString());
+        float bodyFat = Utils.calculatorBodyFat(weight,waist,gender);
         tvBodyFat.setText(String.valueOf(bodyFat));
+//        float calos = Utils.calculatorCalo(weight, 120, 510);
+//        tvWaist.setText(String.valueOf(calos));
         //finish();
     }
 
