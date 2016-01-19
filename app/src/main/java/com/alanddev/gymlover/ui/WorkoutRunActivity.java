@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.util.Utils;
 
@@ -98,7 +99,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_run));
-
+        int exerId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, 0);
         btnstart = (Button) findViewById(R.id.start);
         btnreset = (Button) findViewById(R.id.reset);
         btnext = (Button)findViewById(R.id.next);
@@ -110,7 +111,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         listExercise.add(1);
 
 
-        final Exercise exercise = getData(2000);
+        final Exercise exercise = getData(exerId);
         getSupportActionBar().setTitle(exercise.getName());
         String strImgs = exercise.getImage();
         imageArray = strImgs.split(",");

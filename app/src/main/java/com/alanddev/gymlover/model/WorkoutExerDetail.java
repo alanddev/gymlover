@@ -14,6 +14,8 @@ public class WorkoutExerDetail extends Model{
     private float weight;
     private float time;
     private int week;
+    private String exername;
+    private String exerimg;
 
 
     public WorkoutExerDetail(){
@@ -111,5 +113,21 @@ public class WorkoutExerDetail extends Model{
 
     public void setWeek(int week) {
         this.week = week;
+    }
+
+    public String getExername() {
+        return exername;
+    }
+
+    public void setExername(String exername) {
+        this.exername = exername;
+    }
+
+    public String getExerimg() {
+        return exerimg;
+    }
+
+    public void setExerimg(String exerimg) {
+        this.exerimg = exerimg;
     }
 }

@@ -152,7 +152,6 @@ public class WorkoutExerController implements IDataSource {
     }
 
     public List<WorkoutExerWeek> getWorkoutExer(int workoutId,int numweek){
-        Log.d("AAAAAA",workoutId+" "+numweek);
         List<WorkoutExerWeek> weeks = new ArrayList<WorkoutExerWeek>();
         for(int i=1;i<=numweek;i++){
             WorkoutExerWeek week = new WorkoutExerWeek();
@@ -167,7 +166,6 @@ public class WorkoutExerController implements IDataSource {
             while (!cursor.isAfterLast()) {
                 WorkoutExerDetail workoutExerDetail = (WorkoutExerDetail)cursorTo(cursor);
                 workoutExerDetails.add(workoutExerDetail);
-                Log.d("CCCCCCCC",number_day+"");
                 number_day=workoutExerDetail.getDay();
                 cursor.moveToNext();
             }
@@ -190,12 +188,34 @@ public class WorkoutExerController implements IDataSource {
                 exerDays.add(workoutExerDay);
             }
             week.setWeek(i);
-            Log.d("BBBBBBB",exerDays.size()+"");
             week.setItems(exerDays);
             weeks.add(week);
         }
-        Log.d("EEEEEEE",weeks.size()+"");
         return weeks;
+    }
+
+    public List<WorkoutExerDetail> getExercisebyWD(int workoutId,int day,int week){
+        StringBuffer sql = new StringBuffer("SELECT e.").append(MwSQLiteHelper.COLUMN_EXCERCISE_ID).append(",e.").
+                append(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE).append(",e.").append(MwSQLiteHelper.COLUMN_EXCERCISE_NAME).
+                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT).append(" FROM ").append(MwSQLiteHelper.TABLE_WORKOUT_EXER).
+                append(" we inner join ").append(MwSQLiteHelper.TABLE_EXCERCISE).append(" e ON we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID).
+                append(" = e.").append(MwSQLiteHelper.COLUMN_EXCERCISE_ID).append(" WHERE we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID)
+                .append("= ?").append(" AND we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY).append("= ?").
+                        append(" AND we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK).append("= ?");
+        String[] atts = new String[]{String.valueOf(workoutId),String.valueOf(day),String.valueOf(week)};
+        Cursor cursor = database.rawQuery(sql.toString(),atts);
+        cursor.moveToFirst();
+        List<WorkoutExerDetail> workoutExerDetails = new ArrayList<WorkoutExerDetail>();
+        while (!cursor.isAfterLast()) {
+            WorkoutExerDetail detail = new WorkoutExerDetail();
+            detail.setExerid(cursor.getInt(0));
+            detail.setExerimg(cursor.getString(1));
+            detail.setExername(cursor.getString(2));
+            detail.setRepeat(cursor.getString(3));
+            workoutExerDetails.add(detail);
+            cursor.moveToNext();
+        }
+        return workoutExerDetails;
     }
 
     public void init(){
