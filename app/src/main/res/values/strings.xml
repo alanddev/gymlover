@@ -523,5 +523,8 @@
     <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
     <string name="second">s</string>
     <string name="title_activity_workout_exer">WorkoutExerActivity</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="action_next">Tiếp</string>
+    <string name="menu_report">Báo cáo</string>
     <string name="title_activity_exercise_wo">ExerciseWoActivity</string>
 </resources>

@@ -18,6 +18,12 @@
             android:id="@+id/nav_run_workout"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_workout_run" />
+
+        <item
+            android:id="@+id/nav_run_report"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_report" />
+
     </group>
 
     <item android:title="Communicate">
