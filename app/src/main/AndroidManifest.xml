@@ -73,7 +73,7 @@
             android:label="@string/title_activity_workout_setting"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".ui.WorkoutExerActivity"
+            android:name=".ui.WorkOutExerActivity"
             android:label="@string/title_activity_workout_exer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
@@ -81,10 +81,10 @@
             android:label="@string/title_activity_report"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity
-            android:name=".ui.ExerciseWoActivity"
-            android:label="@string/title_activity_exercise_wo"
-            android:theme="@style/AppTheme.NoActionBar"><
-    </application>
+<activity
+android:name=".ui.ExerciseWoActivity"
+android:label="@string/title_activity_exercise_wo"
+android:theme="@style/AppTheme.NoActionBar"></activity>
+</application>
 
-</manifest>
+    </manifest>
