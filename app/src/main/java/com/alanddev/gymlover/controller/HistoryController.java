@@ -88,6 +88,7 @@ public class HistoryController implements IDataSource {
         return count;
 
     }
+
     @Override
     public List<Model> getAll() {
         List<Model> hists = new ArrayList<Model>();
@@ -117,7 +118,6 @@ public class HistoryController implements IDataSource {
     }
 
 
-
     public History getId(int id) {
         String query = MwSQLiteHelper.COLUMN_HISTORY_ID + " = " + id ;
         Cursor cursor = database.query(MwSQLiteHelper.TABLE_HISTORY,
@@ -128,7 +128,6 @@ public class HistoryController implements IDataSource {
         cursor.close();
         return history;
     }
-
 
     @Override
     public List<Model> getAll(String query) {

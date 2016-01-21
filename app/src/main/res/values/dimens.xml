@@ -23,5 +23,6 @@
     <dimen name="margin_top_sub_title">25dp</dimen>
     <dimen name="size_barchart_trend">300dp</dimen>
     <dimen name="size_image_medium">40dp</dimen>
+    <dimen name="size_text_workout_transaction">14sp</dimen>
 
 </resources>

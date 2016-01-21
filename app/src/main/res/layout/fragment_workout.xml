@@ -15,8 +15,8 @@
 
 
     <ListView android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list_workout"
-        />
+    android:layout_height="wrap_content"
+    android:id="@+id/list_workout"
+    />
 
 </RelativeLayout>
