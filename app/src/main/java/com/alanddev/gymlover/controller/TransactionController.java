@@ -125,6 +125,9 @@ public class TransactionController implements IDataSource {
         return transaction;
     }
 
+
+
+
     @Override
     public void delete() {
         database.delete(MwSQLiteHelper.TABLE_TRANSACTION, null, null);
