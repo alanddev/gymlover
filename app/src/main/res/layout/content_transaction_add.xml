@@ -9,13 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.WorkOutExerActivity"
-    tools:showIn="@layout/activity_work_out_exer">
-    <com.foound.widget.AmazingListView
-        android:id="@+id/lstworkoutexer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/colorWhite"
-        android:layout_marginBottom="120dp">
-    </com.foound.widget.AmazingListView>
+    tools:context="com.alanddev.gymlover.ui.TransactionAddActivity"
+    tools:showIn="@layout/activity_transaction_add">
+
 </RelativeLayout>

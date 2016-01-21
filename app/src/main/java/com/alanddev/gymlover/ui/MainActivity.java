@@ -1,6 +1,7 @@
 package com.alanddev.gymlover.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,24 +27,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.adapter.TransSectionPagerAdapter;
+import com.alanddev.gymlover.controller.TransactionController;
+import com.alanddev.gymlover.controller.UserController;
+import com.alanddev.gymlover.fragment.TransactionFragment;
 import com.alanddev.gymlover.model.ExcerciseGroup;
+import com.alanddev.gymlover.model.Transaction;
+import com.alanddev.gymlover.model.Transactions;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
 import java.io.File;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private TransSectionPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
     private final int REQUEST_SETTING = 100;
+    private SharedPreferences mShaPref;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +69,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), TransactionAddActivity.class);
+                startActivityForResult(intent, Constant.ADD_TRANSACTION_REQUEST);
             }
         });
 
@@ -68,15 +80,21 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setNavHeader(navigationView);
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mShaPref = Utils.getSharedPreferences(this);
+        int viewType = mShaPref.getInt(Constant.VIEW_TYPE, 0);
+        List<Transactions> transactionses = getData(viewType);
+        mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager(),transactionses);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        if(transactionses.size()>0) {
+            mViewPager.setCurrentItem(transactionses.size() - 2);
+        }
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -101,14 +119,42 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        if(mShaPref!=null){
+            mShaPref = Utils.getSharedPreferences(this);
+        }
+        int viewtype=mShaPref.getInt(Constant.VIEW_TYPE, 0);
+        Boolean isState = true;
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_view_day) {
+            if(viewtype!=Constant.VIEW_TYPE_DAY) {
+                viewtype = Constant.VIEW_TYPE_DAY;
+                isState=false;
+            }
+        }else if (id == R.id.action_view_week) {
+            if(viewtype!=Constant.VIEW_TYPE_WEEK) {
+                viewtype = Constant.VIEW_TYPE_WEEK;
+                isState=false;
+            }
+        }else if(id == R.id.action_view_month) {
+            if(viewtype!=Constant.VIEW_TYPE_MONTH) {
+                viewtype = Constant.VIEW_TYPE_MONTH;
+                isState=false;
+            }
+        }else if (id == R.id.action_view_year) {
+            if(viewtype!=Constant.VIEW_TYPE_YEAR) {
+                viewtype = Constant.VIEW_TYPE_YEAR;
+                isState=false;
+            }
+        }/*else if (id == R.id.action_view_trans) {
+            if(viewtype!=Constant.VIEW_TYPE_CATE) {
+                viewtype = Constant.VIEW_TYPE_CATE;
+                isState=false;
+            }
+        }*/
+        Utils.setSharedPreferencesValue(this, Constant.VIEW_TYPE, viewtype);
+        if(!isState){
+            notifyDataSetChanged();
         }
 
         return super.onOptionsItemSelected(item);
@@ -146,75 +192,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "SECTION 1";
-                case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
-            }
-            return null;
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -229,7 +206,28 @@ public class MainActivity extends AppCompatActivity
     private void setNavHeader(NavigationView navigationView){
         View header = navigationView.getHeaderView(0);
         String naviheader = Utils.getCurrentNavHeader(this);
-        header.setBackgroundResource(getResources().getIdentifier(naviheader,"mipmap",getPackageName()));
+        header.setBackgroundResource(getResources().getIdentifier(naviheader, "mipmap", getPackageName()));
 
     }
+
+    private void notifyDataSetChanged(){
+        List<Transactions> transactionses = getData(mShaPref.getInt(Constant.VIEW_TYPE, 0));
+        mSectionsPagerAdapter.setData(transactionses);
+        mSectionsPagerAdapter.notifyDataSetChanged();
+        Log.d("AAAAAAAAAA",transactionses.size()+"");
+        if(transactionses.size()>0) {
+            mViewPager.setCurrentItem(transactionses.size() - 2);
+        }
+        //updateNaviHeader(navigationView);
+    }
+
+    private List<Transactions> getData(int viewType){
+        TransactionController controller = new TransactionController(this);
+        controller.open();
+        List<Transactions> lstTrans = controller.getAll(viewType);
+        controller.close();
+        return lstTrans;
+    }
+
+
 }

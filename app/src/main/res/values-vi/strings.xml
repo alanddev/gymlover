@@ -22,4 +22,14 @@
     <string name="day">Ngày</string>
     <string name="exercise">bài tập</string>
     <string name="week">Tuần</string>
+    <string name="action_view_day">Xem theo ngày</string>
+    <string name="action_view_month">Xem theo tháng</string>
+    <string name="action_view_week">Xem theo tuần</string>
+    <string name="action_view_year">Xem theo năm</string>
+    <string name="future">Tương lai</string>
+    <string name="onmonth">Tháng này</string>
+    <string name="onweek">Tuần này</string>
+    <string name="premonth">Tháng trước</string>
+    <string name="preweek">Tuần trước</string>
+    <string name="title_activity_transaction_add">Thêm bài tập</string>
 </resources>

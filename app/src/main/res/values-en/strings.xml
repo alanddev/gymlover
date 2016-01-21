@@ -22,4 +22,15 @@
     <string name="day">Day</string>
     <string name="exercise">exercises</string>
     <string name="week">Week</string>
+
+    <string name="action_view_day">View by day</string>
+    <string name="action_view_month">View by month</string>
+    <string name="action_view_week">View by week</string>
+    <string name="action_view_year">View by year</string>
+    <string name="future">Future</string>
+    <string name="onmonth">This month</string>
+    <string name="onweek">This week</string>
+    <string name="preweek">Last week</string>
+    <string name="premonth">Last month</string>
+    <string name="title_activity_transaction_add">Add Exercise</string>
 </resources>

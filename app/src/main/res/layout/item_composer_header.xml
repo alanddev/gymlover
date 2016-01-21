@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/header">
+    <TableRow
+        android:id="@+id/hr5"
+        android:layout_width="fill_parent"
+        android:layout_height="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorDivider" >
+    </TableRow>
+    <RelativeLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txtdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextColor"/>
+
+    <TextView
+        android:id="@+id/txtday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/txtdate"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="13dp"
+        android:textColor="@color/colorTextColor"/>
+
+    <TextView
+        android:id="@+id/txtyear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtdate"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="13dp"
+        android:layout_toRightOf="@id/txtdate"
+        android:textSize="11sp"
+        android:textColor="@color/colorNote"/>
+
+    <TextView
+        android:id="@+id/txtheadamout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorNetAmount"/>
+    </RelativeLayout>
+    <TableRow
+        android:id="@+id/hr4"
+        android:layout_width="fill_parent"
+        android:layout_height="8dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorDivider" >
+    </TableRow>
+
+</LinearLayout>

@@ -66,25 +66,28 @@
         <activity
             android:name=".ui.WorkoutRunActivity"
             android:label="@string/title_activity_workout_run"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.WorkoutSettingActivity"
             android:label="@string/title_activity_workout_setting"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.WorkOutExerActivity"
             android:label="@string/title_activity_workout_exer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.ReportActivity"
             android:label="@string/title_activity_report"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-<activity
-android:name=".ui.ExerciseWoActivity"
-android:label="@string/title_activity_exercise_wo"
-android:theme="@style/AppTheme.NoActionBar"></activity>
-</application>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.ExerciseWoActivity"
+            android:label="@string/title_activity_exercise_wo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.TransactionAddActivity"
+            android:label="@string/title_activity_transaction_add"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
 
-    </manifest>
+</manifest>

@@ -13,7 +13,9 @@ public class Transaction extends Model {
     private float time;
     private float calo;
     private String note;
-
+    private String exer_name;
+    private String exer_desc;
+    private String exer_img;
 
     public int getId() {
         return id;
@@ -79,9 +81,29 @@ public class Transaction extends Model {
         this.note = note;
     }
 
+    public String getExer_name() {
+        return exer_name;
+    }
 
+    public void setExer_name(String exer_name) {
+        this.exer_name = exer_name;
+    }
 
+    public String getExer_desc() {
+        return exer_desc;
+    }
 
+    public void setExer_desc(String exer_desc) {
+        this.exer_desc = exer_desc;
+    }
+
+    public String getExer_img() {
+        return exer_img;
+    }
+
+    public void setExer_img(String exer_img) {
+        this.exer_img = exer_img;
+    }
 
     public Transaction(){
 
