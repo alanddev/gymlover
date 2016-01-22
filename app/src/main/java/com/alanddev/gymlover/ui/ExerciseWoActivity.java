@@ -32,10 +32,10 @@ public class ExerciseWoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        int workoutId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, 0);
+        final int workoutId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, 0);
         final String workoutName = getIntent().getExtras().getString(MwSQLiteHelper.COLUMN_WORKOUT_NAME, "");
-        int day = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, 0);
-        int week = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, 0);
+        final int day = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, 0);
+        final int week = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, 0);
         getSupportActionBar().setTitle(workoutName + ", "+ getResources().getString(R.string.week)+" "+week + ", "+ getResources().getString(R.string.day)+" "+day);
         ListView lvSetting = (ListView)findViewById(R.id.lstExerciseWo);
         ExerciseWoAdapter adapter = new ExerciseWoAdapter(this,getData(workoutId,day,week));
@@ -45,9 +45,27 @@ public class ExerciseWoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), WorkoutRunActivity.class);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, (int) parent.getAdapter().getItemId(position));
+                intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID,workoutId);
+                intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, day);
+                intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, week);
+                intent.putExtra("position", position);
                 startActivity(intent);
             }
         });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WorkoutRunActivity.class);
+                intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID,workoutId);
+                intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, day);
+                intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, week);
+                intent.putExtra("autoRun", 1);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -72,9 +90,11 @@ public class ExerciseWoActivity extends AppCompatActivity {
     private List<WorkoutExerDetail> getData(int woid,int day,int week){
         WorkoutExerController controller = new WorkoutExerController(this);
         controller.open();
-        List<WorkoutExerDetail> details = controller.getExercisebyWD(woid,day,week);
+        List<WorkoutExerDetail> details = controller.getExercisebyWD(woid, day, week);
         controller.close();
         return details;
     }
+
+
 
 }

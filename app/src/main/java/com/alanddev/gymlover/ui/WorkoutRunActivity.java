@@ -28,40 +28,66 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.adapter.WorkoutAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.Workout;
+import com.alanddev.gymlover.model.WorkoutExerDetail;
 import com.alanddev.gymlover.util.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WorkoutRunActivity extends AppCompatActivity {
 
     Button btnstart, btnreset, btnext;
     TextView time;
+    TextView timeTotal;
     long starttime = 0L;
     long timeInMilliseconds = 0L;
     long timeSwapBuff = 0L;
     long updatedtime = 0L;
+    long totalTime = 0L;
+    long timeInMillisecondsTotal = 0L;
+    long timeSwapBuffTotal = 0L;
+    long updatedtimeTotal = 0L;
+
     int t = 1;
     int secs = 0;
     int mins = 0;
     int milliseconds = 0;
+    int secsTotal = 0;
+    int minsTotal = 0;
+    int millisecondsTotal = 0;
+
+
     Handler handler = new Handler();
+    Handler handlerTotalTime = new Handler();
     Handler handlerNextImg = new Handler();
     Handler handlerPrevImg = new Handler();
+
 
 
     private ImageView imgEx;
     private String[] imageArray;
     private int currentIndex;
     private int startIndex;
-    private int exerId;
+
     private int endIndex;
-    private ArrayList<Integer> listExercise;
+    private List<WorkoutExerDetail> listExercise;
     private int currentExercise;
-    ArrayList<Transaction> transactions;
+    private ArrayList<Transaction> transactions;
+    private int day;
+    private int week;
+    private int exerId;
+    private int workId;
+    private float timeRunAuto;
+
+    private boolean autoRun = false;
+
+    WorkoutExerController workoutExerController;
+
 
     public Runnable updateTimer = new Runnable() {
         public void run() {
@@ -73,8 +99,45 @@ public class WorkoutRunActivity extends AppCompatActivity {
             milliseconds = (int) (updatedtime % 1000);
             time.setText("" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
             time.setTextColor(Color.RED);
-            handler.postDelayed(this, 0);
+            if (autoRun) {
+                if (updatedtime <= (timeRunAuto + 1)* 1000) {
+                    handler.postDelayed(this, 0);
+                }else{
+                    if (currentExercise < listExercise.size()-1) {
+                        currentExercise++;
+                        resetTime();
+                        handler.postDelayed(updateTimer, 0);
+                        reloadImage();
+                    }
+                }
+            }else{
+                handler.postDelayed(this, 0);
+            }
         }};
+
+
+    public Runnable updateTimerTotal = new Runnable() {
+        public void run() {
+            timeInMillisecondsTotal = SystemClock.uptimeMillis() - totalTime;
+            updatedtimeTotal = timeSwapBuffTotal + timeInMillisecondsTotal;
+            secsTotal = (int) (updatedtimeTotal / 1000);
+            minsTotal = secsTotal / 60;
+            secsTotal= secsTotal % 60;
+            millisecondsTotal = (int) (updatedtimeTotal % 1000);
+            timeTotal.setText("" + String.format("%02d", minsTotal) + ":" + String.format("%02d", secsTotal));
+            timeTotal.setTextColor(Color.RED);
+
+            if (autoRun){
+                if (currentExercise <= listExercise.size()-1){
+                    handlerTotalTime.postDelayed(this, 0);
+                }
+            }else{
+                handlerTotalTime.postDelayed(this, 0);
+            }
+
+        }};
+
+
 
     public Runnable nextImgTimer = new Runnable() {
         @Override
@@ -109,56 +172,66 @@ public class WorkoutRunActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_run));
-        exerId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, 0);
-        btnstart = (Button) findViewById(R.id.start);
-        btnreset = (Button) findViewById(R.id.reset);
-        btnext = (Button)findViewById(R.id.next);
-        time = (TextView) findViewById(R.id.timer);
-
-        currentExercise = 0;
-
-        listExercise = new ArrayList<>();
-        listExercise.add(1);
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            exerId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, 0);
+            workId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, 0);
+            day = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, 0);
+            week = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, 0);
 
 
-        final Exercise exercise = getData(exerId);
-        getSupportActionBar().setTitle(exercise.getName());
-        String strImgs = exercise.getImage();
-        imageArray = strImgs.split(",");
-        imgEx = (ImageView)findViewById(R.id.imgex);
-        startIndex = 0;
-        endIndex = imageArray.length-1;
-        nextImage();
+            btnstart = (Button) findViewById(R.id.start);
+            btnreset = (Button) findViewById(R.id.reset);
+            btnext = (Button) findViewById(R.id.next);
+            time = (TextView) findViewById(R.id.timer);
+            timeTotal = (TextView) findViewById(R.id.subTimer);
 
-        initData();
+            if (b.getInt("autoRun",0) >0 ){
+                autoRun = true;
+            }
+
+
+            if (exerId > 0) {
+                currentExercise = b.getInt("position", 0);
+            }else {
+                currentExercise = 0;
+            }
+
+
+            workoutExerController = new WorkoutExerController(this);
+            workoutExerController.open();
+            listExercise = workoutExerController.getExercisebyWD(workId, day, week);
+
+
+            final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
+
+            getSupportActionBar().setTitle(exercise.getName());
+            String strImgs = exercise.getImage();
+            imageArray = strImgs.split(",");
+            imgEx = (ImageView) findViewById(R.id.imgex);
+            startIndex = 0;
+            endIndex = imageArray.length - 1;
+            nextImage();
+            initData();
+            if  (autoRun){
+                starttime = SystemClock.uptimeMillis();
+                totalTime = SystemClock.uptimeMillis();
+                timeRunAuto = workoutExerController.getTime(workId,exercise.getId());
+                handler.postDelayed(updateTimer,0);
+                handlerTotalTime.postDelayed(updateTimerTotal,0);
+            }
+            workoutExerController.close();
+
+
+        }
 
     }
 
-//    private void drawText(String value){
-//        ImageView imageClock = (ImageView)findViewById(R.id.myImageView);
-//        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.clock_background);
-//        Bitmap.Config config = bm.getConfig();
-//        int width = bm.getWidth();
-//        int height = bm.getHeight();
-//        Bitmap newImage = Bitmap.createBitmap(width, height, config);
-//        Canvas c = new Canvas(newImage);
-//        c.drawBitmap(bm, 0, 0, null);
-//        Paint paint = new Paint();
-//        paint.setColor(Color.WHITE);
-//        paint.setStyle(Paint.Style.FILL);
-////        Rect bounds = new Rect();
-////        paint.getTextBounds(value, 0, value.length(), bounds);
-////        int x = (imageClock.getWidth() - bounds.width())/2;
-////        int y = (imageClock.getHeight() + bounds.height())/2;
-//        paint.setTextSize(40);
-//        c.drawText(value, imageClock.getWidth()/2, 150, paint);
-//        imageClock.setImageBitmap(newImage);
-//
-//    }
+
 
 
     private void initData(){
-        transactions = new ArrayList<Transaction>();
+        transactions = new ArrayList<>();
         Transaction transaction1 = new Transaction("21/01/2016",exerId,5,20.0f,25,10,"5*5");
         Transaction transaction2 = new Transaction("21/01/2016",exerId,5,22.0f,25,10,"5*5");
         Transaction transaction3 = new Transaction("21/01/2016",exerId,5,24.0f,25,10,"5*5");
@@ -201,7 +274,6 @@ public class WorkoutRunActivity extends AppCompatActivity {
     }
 
 
-
     public void nextImage() {
         imgEx.setImageResource(getResources().getIdentifier("ic_ex_" + imageArray[currentIndex], "mipmap", getPackageName()));
         Animation rotateimage = AnimationUtils.loadAnimation(this, R.anim.fade_in);
@@ -218,7 +290,6 @@ public class WorkoutRunActivity extends AppCompatActivity {
         handlerPrevImg.postDelayed(prevImgTimer, 1000);
     }
 
-
     private Exercise getData(int exId){
         ExcerciseController controller = new ExcerciseController(getApplicationContext());
         controller.open();
@@ -232,16 +303,21 @@ public class WorkoutRunActivity extends AppCompatActivity {
         if (t == 1) {
             btnstart.setText("Pause");
             starttime = SystemClock.uptimeMillis();
+            totalTime = SystemClock.uptimeMillis();
             handler.postDelayed(updateTimer, 0);
+            handlerTotalTime.postDelayed(updateTimerTotal, 0);
             t = 0;
         } else {
             btnstart.setText("Start");
             time.setTextColor(Color.BLUE);
             timeSwapBuff += timeInMilliseconds;
+            timeSwapBuffTotal += timeInMillisecondsTotal;
             handler.removeCallbacks(updateTimer);
+            handlerTotalTime.removeCallbacks(updateTimerTotal);
             t = 1;
         }
     }
+
 
     public void onClickReset(View v){
         starttime = 0L;
@@ -252,9 +328,21 @@ public class WorkoutRunActivity extends AppCompatActivity {
         secs = 0;
         mins = 0;
         milliseconds = 0;
+
+        totalTime = 0L;
+        timeInMillisecondsTotal = 0L;
+        timeSwapBuffTotal = 0L;
+        updatedtimeTotal = 0L;
+        secsTotal = 0;
+        minsTotal = 0;
+        millisecondsTotal = 0;
+
+
         btnstart.setText("Start");
         handler.removeCallbacks(updateTimer);
-        time.setText("00:00");
+        handlerTotalTime.removeCallbacks(updateTimerTotal);
+        time.setText(getResources().getText(R.string.start_time));
+        timeTotal.setText(getResources().getText(R.string.start_time));
         currentExercise = 0;
         btnext.setEnabled(true);
         reloadImage();
@@ -278,9 +366,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
     }
 
 
-
     private void reloadImage(){
-        final Exercise exercise = getData(listExercise.get(currentExercise));
+        final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
         String strImgs = exercise.getImage();
         imageArray = strImgs.split(",");
         imgEx = (ImageView) findViewById(R.id.imgex);
@@ -293,14 +380,35 @@ public class WorkoutRunActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(exercise.getName());
     }
 
+
     public void onClickNext(View v){
         if (currentExercise < listExercise.size()-1) {
+//            if (currentExercise ==0){
+//                handlerTotalTime.postDelayed(updateTimerTotal,0);
+//            }
+
             currentExercise++;
+            resetTime();
+            handler.postDelayed(updateTimer, 0);
             reloadImage();
             if (currentExercise == listExercise.size() - 1){
                 btnext.setEnabled(false);
             }
         }
+    }
+
+
+    private void resetTime(){
+        starttime = SystemClock.uptimeMillis();
+        timeInMilliseconds = 0L;
+        timeSwapBuff = 0L;
+        updatedtime = 0L;
+        t = 1;
+        secs = 0;
+        mins = 0;
+        milliseconds = 0;
+        handler.removeCallbacks(updateTimer);
+        time.setText(getResources().getText(R.string.start_time));
     }
 
 
