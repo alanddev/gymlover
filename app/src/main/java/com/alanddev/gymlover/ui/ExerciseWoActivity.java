@@ -61,6 +61,7 @@ public class ExerciseWoActivity extends AppCompatActivity {
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID,workoutId);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, day);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, week);
+                intent.putExtra("autoRun", 1);
                 startActivity(intent);
             }
         });

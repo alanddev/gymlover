@@ -82,6 +82,10 @@ public class WorkoutRunActivity extends AppCompatActivity {
     private int week;
     private int exerId;
     private int workId;
+    private float timeRunAuto;
+
+    private boolean autoRun = false;
+
     WorkoutExerController workoutExerController;
 
 
@@ -95,7 +99,20 @@ public class WorkoutRunActivity extends AppCompatActivity {
             milliseconds = (int) (updatedtime % 1000);
             time.setText("" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
             time.setTextColor(Color.RED);
-            handler.postDelayed(this, 0);
+            if (autoRun) {
+                if (updatedtime <= (timeRunAuto + 1)* 1000) {
+                    handler.postDelayed(this, 0);
+                }else{
+                    if (currentExercise < listExercise.size()-1) {
+                        currentExercise++;
+                        resetTime();
+                        handler.postDelayed(updateTimer, 0);
+                        reloadImage();
+                    }
+                }
+            }else{
+                handler.postDelayed(this, 0);
+            }
         }};
 
 
@@ -109,7 +126,15 @@ public class WorkoutRunActivity extends AppCompatActivity {
             millisecondsTotal = (int) (updatedtimeTotal % 1000);
             timeTotal.setText("" + String.format("%02d", minsTotal) + ":" + String.format("%02d", secsTotal));
             timeTotal.setTextColor(Color.RED);
-            handlerTotalTime.postDelayed(this, 0);
+
+            if (autoRun){
+                if (currentExercise <= listExercise.size()-1){
+                    handlerTotalTime.postDelayed(this, 0);
+                }
+            }else{
+                handlerTotalTime.postDelayed(this, 0);
+            }
+
         }};
 
 
@@ -161,18 +186,25 @@ public class WorkoutRunActivity extends AppCompatActivity {
             time = (TextView) findViewById(R.id.timer);
             timeTotal = (TextView) findViewById(R.id.subTimer);
 
+            if (b.getInt("autoRun",0) >0 ){
+                autoRun = true;
+            }
+
+
             if (exerId > 0) {
                 currentExercise = b.getInt("position", 0);
+            }else {
+                currentExercise = 0;
             }
-            currentExercise = 0;
 
 
             workoutExerController = new WorkoutExerController(this);
             workoutExerController.open();
             listExercise = workoutExerController.getExercisebyWD(workId, day, week);
-            workoutExerController.close();
 
-            final Exercise exercise = getData(exerId);
+
+            final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
+
             getSupportActionBar().setTitle(exercise.getName());
             String strImgs = exercise.getImage();
             imageArray = strImgs.split(",");
@@ -180,16 +212,26 @@ public class WorkoutRunActivity extends AppCompatActivity {
             startIndex = 0;
             endIndex = imageArray.length - 1;
             nextImage();
-
             initData();
+            if  (autoRun){
+                starttime = SystemClock.uptimeMillis();
+                totalTime = SystemClock.uptimeMillis();
+                timeRunAuto = workoutExerController.getTime(workId,exercise.getId());
+                handler.postDelayed(updateTimer,0);
+                handlerTotalTime.postDelayed(updateTimerTotal,0);
+            }
+            workoutExerController.close();
+
+
         }
 
     }
 
 
 
+
     private void initData(){
-        transactions = new ArrayList<Transaction>();
+        transactions = new ArrayList<>();
         Transaction transaction1 = new Transaction("21/01/2016",exerId,5,20.0f,25,10,"5*5");
         Transaction transaction2 = new Transaction("21/01/2016",exerId,5,22.0f,25,10,"5*5");
         Transaction transaction3 = new Transaction("21/01/2016",exerId,5,24.0f,25,10,"5*5");
@@ -340,23 +382,33 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
     public void onClickNext(View v){
-
         if (currentExercise < listExercise.size()-1) {
-            starttime = 0L;
-            timeInMilliseconds = 0L;
-            timeSwapBuff = 0L;
-            updatedtime = 0L;
-            t = 1;
-            secs = 0;
-            mins = 0;
-            milliseconds = 0;
+//            if (currentExercise ==0){
+//                handlerTotalTime.postDelayed(updateTimerTotal,0);
+//            }
+
             currentExercise++;
-            time.setText(getResources().getText(R.string.start_time));
+            resetTime();
+            handler.postDelayed(updateTimer, 0);
             reloadImage();
             if (currentExercise == listExercise.size() - 1){
                 btnext.setEnabled(false);
             }
         }
+    }
+
+
+    private void resetTime(){
+        starttime = SystemClock.uptimeMillis();
+        timeInMilliseconds = 0L;
+        timeSwapBuff = 0L;
+        updatedtime = 0L;
+        t = 1;
+        secs = 0;
+        mins = 0;
+        milliseconds = 0;
+        handler.removeCallbacks(updateTimer);
+        time.setText(getResources().getText(R.string.start_time));
     }
 
 

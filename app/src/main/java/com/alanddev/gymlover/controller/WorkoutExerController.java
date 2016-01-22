@@ -92,6 +92,18 @@ public class WorkoutExerController implements IDataSource {
 
     }
 
+
+    public float getTime(int workoutId, int exerciseId){
+        StringBuffer sql = new StringBuffer("SELECT ").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME).append(" FROM ").
+                append(MwSQLiteHelper.TABLE_WORKOUT_EXER).append(" WHERE ").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID)
+                .append("= ?").append(" AND ").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID).append("= ?");
+        String[] atts = new String[]{String.valueOf(workoutId),String.valueOf(exerciseId)};
+        Cursor cursor = database.rawQuery(sql.toString(),atts);
+        cursor.moveToFirst();
+        return cursor.getFloat(0);
+    }
+
+
     @Override
     public int getCount() {
         return 0;
