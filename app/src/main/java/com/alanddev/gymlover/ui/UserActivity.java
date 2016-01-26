@@ -106,6 +106,8 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 now.get(Calendar.MONTH),
                 now.get(Calendar.DAY_OF_MONTH)
         );
+        now.set(2000,1,1);
+        dpd.setMaxDate(now);
         dpd.show(getFragmentManager(), "Datepickerdialog");
     }
 
