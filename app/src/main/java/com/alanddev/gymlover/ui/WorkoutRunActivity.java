@@ -35,6 +35,7 @@ import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
 import com.alanddev.gymlover.util.Utils;
+import com.plattysoft.leonids.ParticleSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +100,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             milliseconds = (int) (updatedtime % 1000);
             time.setText("" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
             time.setTextColor(Color.RED);
+
             if (autoRun) {
                 if (updatedtime <= (timeRunAuto + 1)* 1000) {
                     handler.postDelayed(this, 0);
@@ -108,6 +110,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
                         resetTime();
                         handler.postDelayed(updateTimer, 0);
                         reloadImage();
+                    }else{
+                        firework(findViewById(R.id.subTimer));
                     }
                 }
             }else{
@@ -351,20 +355,24 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
     public void onClickSave(View v){
-        if (t == 1) {
-            btnstart.setText("Pause");
-            starttime = SystemClock.uptimeMillis();
-            handler.postDelayed(updateTimer, 0);
-            t = 0;
-        } else {
-            btnstart.setText("Start");
-            time.setTextColor(Color.BLUE);
-            timeSwapBuff += timeInMilliseconds;
-            handler.removeCallbacks(updateTimer);
-            t = 1;
-        }
+
+        new ParticleSystem(this, 50, R.mipmap.star, 10000)
+                .setSpeedRange(0.2f, 0.5f)
+                .oneShot(v, 50);
+
+//        new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
+//                .setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
+//                .setRotationSpeed(144)
+//                .setAcceleration(0.00005f, 90)
+//                .emit(findViewById(R.id.emiter_top_right), 8);
     }
 
+
+    private void firework(View v){
+        new ParticleSystem(this, 50, R.mipmap.star, 10000)
+                .setSpeedRange(0.2f, 0.5f)
+                .oneShot(v, 50);
+    }
 
     private void reloadImage(){
         final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
