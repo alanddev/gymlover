@@ -84,6 +84,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
     private int exerId;
     private int workId;
     private float timeRunAuto;
+    ListView listWorkout;
 
     private boolean autoRun = false;
 
@@ -247,9 +248,20 @@ public class WorkoutRunActivity extends AppCompatActivity {
         transactions.add(transaction4);
         transactions.add(transaction5);
 
-        ListView listWorkout = (ListView)findViewById(R.id.list_transaction);
+        listWorkout = (ListView)findViewById(R.id.list_transaction);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
         Utils.ListUtils.setDynamicHeight(listWorkout);
+    }
+
+
+    public void reloadData(){
+        ListView listWorkout = (ListView)findViewById(R.id.list_transaction);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
+
+    public void updateTime(float fTime, int position){
+        transactions.get(position).setTime(fTime);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
 
     @Override

@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtdate"
+            android:focusable="false"
             android:hint="@string/birthday"
             android:layout_marginLeft="15dp"/>
     </LinearLayout>
