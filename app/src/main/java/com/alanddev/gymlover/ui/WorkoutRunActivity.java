@@ -264,10 +264,12 @@ public class WorkoutRunActivity extends AppCompatActivity {
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_workout, menu);
+        getMenuInflater().inflate(R.menu.menu_workout_run, menu);
         return true;
     }
 
