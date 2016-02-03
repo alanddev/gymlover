@@ -28,6 +28,7 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.adapter.WorkoutAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
+import com.alanddev.gymlover.controller.TransactionController;
 import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Exercise;
@@ -89,6 +90,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
     private boolean autoRun = false;
 
     WorkoutExerController workoutExerController;
+    TransactionController transactionController;
 
 
     public Runnable updateTimer = new Runnable() {
@@ -178,6 +180,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_run));
         Bundle b = getIntent().getExtras();
+        transactionController = new TransactionController(this);
         if (b!=null) {
             exerId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, 0);
             workId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, 0);
@@ -235,13 +238,14 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
 
+
     private void initData(){
-        transactions = new ArrayList<>();
         Transaction transaction1 = new Transaction("21/01/2016",exerId,5,20.0f,25,10,"5*5");
         Transaction transaction2 = new Transaction("21/01/2016",exerId,5,22.0f,25,10,"5*5");
         Transaction transaction3 = new Transaction("21/01/2016",exerId,5,24.0f,25,10,"5*5");
         Transaction transaction4 = new Transaction("21/01/2016",exerId,5,26.0f,25,10,"5*5");
         Transaction transaction5 = new Transaction("21/01/2016",exerId,5,28.0f,25,10,"5*5");
+        transactions = new ArrayList<>();
         transactions.add(transaction1);
         transactions.add(transaction2);
         transactions.add(transaction3);
@@ -408,7 +412,9 @@ public class WorkoutRunActivity extends AppCompatActivity {
 //            if (currentExercise ==0){
 //                handlerTotalTime.postDelayed(updateTimerTotal,0);
 //            }
-
+            transactionController.open();
+            transactionController.create(transactions);
+            transactionController.close();
             currentExercise++;
             resetTime();
             handler.postDelayed(updateTimer, 0);

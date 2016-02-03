@@ -61,9 +61,16 @@ public class TransactionController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_TRANS_CALO, transaction.getCalo());
         values.put(MwSQLiteHelper.COLUMN_TRANS_NOTE, transaction.getNote());
 
-        database.insert(MwSQLiteHelper.TABLE_EXCERCISE, null,
+        database.insert(MwSQLiteHelper.TABLE_TRANSACTION, null,
                 values);
         return transaction;
+    }
+
+
+    public void create(ArrayList<Transaction> transactions){
+        for (int i = 0; i<transactions.size();i++){
+            create(transactions.get(i));
+        }
     }
 
     @Override
