@@ -33,7 +33,7 @@ public class Constant {
     public static final int TRANS_DETAIL_REQUEST = 8;
     public static final int TRANS_DETAIL_UPDATE = 9;
     public static final String PUT_EXTRA_DATE = "PUT_EXTRA_DATE";
-    public static final int PICK_CATEGORY = 1;
+    public static final int PICK_EXERCISE = 1;
     public static final int ADD_TRANSACTION_REQUEST = 2;
     public static final int TREND_TYPE_INCOME = 1;
     public static final int TREND_TYPE_EXPENSE = 0;
@@ -60,4 +60,6 @@ public class Constant {
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
     public static int WORKOUT_USED = 2;
+
+    public static String TAKE_EXERCISE = "TAKE_EXERCISE";
 }

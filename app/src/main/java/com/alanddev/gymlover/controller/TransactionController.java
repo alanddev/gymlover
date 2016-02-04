@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
@@ -182,6 +183,7 @@ public class TransactionController implements IDataSource {
                 trans.add(tran);
                 cursor.moveToNext();
             }
+            Log.d("DDDD",strDate2 + " "+strDate1);
             cursor.close();
             transactionDay.setItems(trans);
 
@@ -316,6 +318,7 @@ public class TransactionController implements IDataSource {
         List<String> lstDisplayDate = new ArrayList<String>();
         while (!cursor.isAfterLast()) {
             String strDisplayDate = cursor.getString(0);
+            Log.d("BBBBBBB",strDisplayDate);
             lstDisplayDate.add(strDisplayDate);
             cursor.moveToNext();
         }
@@ -334,13 +337,13 @@ public class TransactionController implements IDataSource {
             StringBuffer sql = new StringBuffer("SELECT * FROM ").append(MwSQLiteHelper.TABLE_TRANSACTION).append(" s inner join ")
                     .append(MwSQLiteHelper.TABLE_EXCERCISE).append(" c ON s.").append(MwSQLiteHelper.COLUMN_TRANS_EXERCISE).append(" = c.")
                     .append(MwSQLiteHelper.COLUMN_EXCERCISE_ID)
-                    .append(" AND (s.").append(MwSQLiteHelper.COLUMN_TRANS_EXERCISE).append(" BETWEEN ").append("Datetime(?) AND (?))");
+                    .append(" AND (s.").append(MwSQLiteHelper.COLUMN_TRANS_DATE).append(" BETWEEN ").append("Datetime(?) AND Datetime(?))");
             Date dipslayDt = Utils.changeStr2Date(strDisplayDt, Constant.DATE_FORMAT_DB);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dipslayDt);
             calendar.add(Calendar.DATE, -1);
             String strDate2 = Utils.changeDate2Str(calendar.getTime());
-            String[] atts = new String[]{Utils.getWallet_id() + "", strDate2, strDisplayDt};
+            String[] atts = new String[]{strDate2, strDisplayDt};
             Cursor cursor = database.rawQuery(sql.toString(), atts);
             cursor.moveToFirst();
             List<Transaction> trans = new ArrayList<Transaction>();
@@ -349,6 +352,7 @@ public class TransactionController implements IDataSource {
                 trans.add(tran);
                 cursor.moveToNext();
             }
+            Log.d("CCCCC",strDate2+" "+strDisplayDt+" "+trans.size());
             cursor.close();
             transactionDay.setItems(trans);
 
@@ -448,7 +452,7 @@ public class TransactionController implements IDataSource {
                     .append(MwSQLiteHelper.COLUMN_EXCERCISE_ID)
                     .append(" WHERE (s.").append(MwSQLiteHelper.COLUMN_TRANS_DATE).append(" BETWEEN ").append("Datetime(?) AND (?))");
 
-            String[] atts = new String[]{Utils.getWallet_id() + "", startDt, endDt};
+            String[] atts = new String[]{startDt, endDt};
             Cursor cursor = database.rawQuery(sql.toString(), atts);
             cursor.moveToFirst();
             List<Transaction> trans = new ArrayList<Transaction>();

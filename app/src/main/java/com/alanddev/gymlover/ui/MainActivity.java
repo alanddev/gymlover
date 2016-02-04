@@ -1,5 +1,6 @@
 package com.alanddev.gymlover.ui;
 
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
@@ -11,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
     }
 
     @Override
@@ -146,12 +150,8 @@ public class MainActivity extends AppCompatActivity
                 viewtype = Constant.VIEW_TYPE_YEAR;
                 isState=false;
             }
-        }/*else if (id == R.id.action_view_trans) {
-            if(viewtype!=Constant.VIEW_TYPE_CATE) {
-                viewtype = Constant.VIEW_TYPE_CATE;
-                isState=false;
-            }
-        }*/
+        }
+
         Utils.setSharedPreferencesValue(this, Constant.VIEW_TYPE, viewtype);
         if(!isState){
             notifyDataSetChanged();
@@ -198,6 +198,10 @@ public class MainActivity extends AppCompatActivity
             Utils.onActivityCreateSetTheme(this);
             Utils.refresh(this);
         }
+        if(requestCode==Constant.ADD_TRANSACTION_REQUEST&&resultCode==Constant.ADD_TRANSACTION_SUCCESS) {
+            notifyDataSetChanged();
+        }
+
     }
 
     private void setNavHeader(NavigationView navigationView){
@@ -211,9 +215,8 @@ public class MainActivity extends AppCompatActivity
         List<Transactions> transactionses = getData(mShaPref.getInt(Constant.VIEW_TYPE, 0));
         mSectionsPagerAdapter.setData(transactionses);
         mSectionsPagerAdapter.notifyDataSetChanged();
-        Log.d("AAAAAAAAAA",transactionses.size()+"");
         if(transactionses.size()>0) {
-            mViewPager.setCurrentItem(transactionses.size() - 2);
+            mViewPager.setCurrentItem(1);
         }
         //updateNaviHeader(navigationView);
     }

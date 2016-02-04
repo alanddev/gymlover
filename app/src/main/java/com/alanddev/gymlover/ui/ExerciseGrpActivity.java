@@ -17,12 +17,16 @@ import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.ExcerciseGroupController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.ExcerciseGroup;
+import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
 import java.util.List;
 
 public class ExerciseGrpActivity extends AppCompatActivity {
+
+    private int isWorkout=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,9 @@ public class ExerciseGrpActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_exercise_grp));
+        if(getIntent().getExtras()!=null){
+            isWorkout=getIntent().getExtras().getInt(Constant.TAKE_EXERCISE,0);
+        }
         ListView lvSetting = (ListView)findViewById(R.id.lstExerciseGrp);
         final ExerciseGrpAdapter adapter = new ExerciseGrpAdapter(this,getData());
         lvSetting.setAdapter(adapter);
@@ -44,9 +51,15 @@ public class ExerciseGrpActivity extends AppCompatActivity {
                 ExcerciseGroup grp = (ExcerciseGroup)parent.getAdapter().getItem(position);
                 intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID, grp.getId());
                 intent.putExtra(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grp.getName());
-                startActivity(intent);
+                intent.putExtra(Constant.TAKE_EXERCISE, isWorkout);
+                if(isWorkout==1){
+                    startActivityForResult(intent, Constant.PICK_EXERCISE);
+                }else{
+                    startActivity(intent);
+                }
             }
         });
+
     }
 
     @Override
@@ -75,6 +88,24 @@ public class ExerciseGrpActivity extends AppCompatActivity {
         List<Model> lstGrp = controller.getAll();
         controller.close();
         return lstGrp;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==Constant.PICK_EXERCISE)
+        {
+            if(data!=null) {
+                Intent intent=new Intent();
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, data.getIntExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, 0));
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_NAME, data.getStringExtra(MwSQLiteHelper.COLUMN_EXCERCISE_NAME));
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, data.getFloatExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, 0.0f));
+                setResult(Constant.PICK_EXERCISE, intent);
+                finish();//finishing activity
+            }
+        }
     }
 
 }

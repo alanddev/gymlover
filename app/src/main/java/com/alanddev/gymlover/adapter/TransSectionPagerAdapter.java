@@ -38,9 +38,8 @@ public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
         if(datas!=null&&datas.size()>0) {
-            return 3;
+            return datas.size();
         }else{
             return 0;
         }
@@ -50,6 +49,8 @@ public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return datas.get(position).getTitle();
     }
+
+
 
     public void setData(List<Transactions> datas){
         this.datas = datas;

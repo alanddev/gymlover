@@ -33,4 +33,9 @@
     <string name="preweek">Last week</string>
     <string name="premonth">Last month</string>
     <string name="title_activity_transaction_add">Add Exercise</string>
+    <string name="select_exercise">Select Exercise</string>
+    <string name="check_exercise_exist">No exercise, please check</string>
+    <string name="repeat">Repeat</string>
+    <string name="time">Time</string>
+    <string name="check_time_exist">No time, please check</string>
 </resources>

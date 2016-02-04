@@ -73,7 +73,7 @@
             android:label="@string/title_activity_workout_setting"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.WorkOutExerActivity"
+            android:name=".ui.WorkoutExerActivity"
             android:label="@string/title_activity_workout_exer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

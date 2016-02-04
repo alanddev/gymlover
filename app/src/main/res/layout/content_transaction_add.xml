@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +10,94 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.alanddev.gymlover.ui.TransactionAddActivity"
-    tools:showIn="@layout/activity_transaction_add">
-
-</RelativeLayout>
+    tools:showIn="@layout/activity_transaction_add"
+    android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/imgcate"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/edtcate"
+            android:hint="@string/select_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:textSize="19sp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/imgdate"
+            android:src="@mipmap/calendar"
+            android:layout_gravity="center_vertical"/>
+        <TextView android:id="@+id/edtdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/today"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="@string/repeat"
+            android:layout_gravity="center_vertical"/>
+        <EditText android:id="@+id/edtrepeat"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="@string/time"
+            android:layout_gravity="center_vertical"/>
+        <EditText android:id="@+id/edttime"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:id="@+id/imgminus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/minus"
+            android:layout_gravity="center_vertical"/>
+        <EditText android:id="@+id/edtweight"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"/>
+        <ImageView
+            android:id="@+id/imgadd"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@mipmap/add"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+</LinearLayout>

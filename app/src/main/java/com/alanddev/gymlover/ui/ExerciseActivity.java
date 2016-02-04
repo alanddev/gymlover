@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,12 +19,16 @@ import com.alanddev.gymlover.adapter.ExerciseGrpAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.ExcerciseGroupController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
+import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
 import java.util.List;
 
 public class ExerciseActivity extends AppCompatActivity {
+
+    private int isWorkout=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +42,27 @@ public class ExerciseActivity extends AppCompatActivity {
         ListView lvSetting = (ListView)findViewById(R.id.lstExercise);
         int grpId = getIntent().getExtras().getInt(MwSQLiteHelper.COLUMN_EXCERCISE_GRP_ID,0);
         final String grpName = getIntent().getExtras().getString(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, "");
+        isWorkout=getIntent().getExtras().getInt(Constant.TAKE_EXERCISE,0);
         getSupportActionBar().setTitle(grpName);
         ExerciseAdapter adapter = new ExerciseAdapter(this,getData(grpId));
         lvSetting.setAdapter(adapter);
         lvSetting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),ExerciseDetailActivity.class);
-                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID,(int)parent.getAdapter().getItemId(position));
-                intent.putExtra(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grpName);
-                startActivity(intent);
+                Exercise exercise = (Exercise) parent.getAdapter().getItem(position);
+                if(isWorkout==1){
+                    Intent intent=new Intent();
+                    intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, exercise.getId());
+                    intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_NAME, exercise.getName());
+                    intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, exercise.getCalo());
+                    setResult(Constant.PICK_EXERCISE, intent);
+                    finish();//finishing activity
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), ExerciseDetailActivity.class);
+                    intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, exercise.getId());
+                    intent.putExtra(MwSQLiteHelper.COLUMN_EX_GROUP_NAME, grpName);
+                    startActivity(intent);
+                }
             }
         });
     }
