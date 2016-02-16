@@ -69,7 +69,6 @@ public class WorkoutSettingActivity extends AppCompatActivity {
         ListView listViewWorkout = (ListView)findViewById(R.id.list_workout_detail);
         listViewWorkout.setAdapter(new WorkoutSettingAdapter(this,listWorkout));
         workoutExerController.close();
-
     }
 
 }
