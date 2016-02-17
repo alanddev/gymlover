@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Transaction;
@@ -42,6 +43,8 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
         Transaction transaction = (Transaction)getItem(position);
+        ExcerciseController exerciseController = new ExcerciseController(getContext());
+        exerciseController.open();
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_transaction_workout, parent, false);
@@ -52,7 +55,7 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
         final TextView tvTime = (TextView) convertView.findViewById(R.id.time);
         TextView tvCalos = (TextView) convertView.findViewById(R.id.calos);
         ImageView imgMinusTime = (ImageView)convertView.findViewById(R.id.minusTime);
-
+        ImageView imgEx = (ImageView)convertView.findViewById(R.id.exImg);
         //ImageView imgIcon = (ImageView)convertView.findViewById(R.id.icon);
         //ImageView imgChecked = (ImageView)convertView.findViewById(R.id.checked);
         // Populate the data into the template view using the data object
@@ -60,6 +63,17 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
         tvWeight.setText(transaction.getWeight() + " " + getContext().getString(R.string.weight_kg));
         tvTime.setText(transaction.getTime() + " " + getContext().getString(R.string.second));
         tvCalos.setText(transaction.getCalo() + " " + getContext().getString(R.string.calos));
+
+
+
+        String strImage = exerciseController.getById(transaction.getExericise()).getImage();
+        exerciseController.close();
+        String image1 = strImage.split(",")[0];
+        if(image1!=null) {
+            imgEx.setImageResource(convertView.getResources().getIdentifier("ic_ex_" + image1, "mipmap", getContext().getPackageName()));
+        }
+
+        //imgEx.setImageDrawable(image);
 
 
         imgMinusTime.setOnClickListener(new View.OnClickListener() {
