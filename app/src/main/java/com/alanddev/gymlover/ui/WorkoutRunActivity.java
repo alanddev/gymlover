@@ -267,7 +267,9 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
     public void reloadData(){
         ListView listWorkout = (ListView)findViewById(R.id.list_transaction);
-        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+        TransactionWoAdapter transactionWoAdapter = new  TransactionWoAdapter(this, transactions);
+        transactionWoAdapter.setIsResult(false);
+        listWorkout.setAdapter(transactionWoAdapter);
     }
 
     public void updateTime(float fTime, int position){

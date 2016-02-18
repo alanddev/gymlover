@@ -64,7 +64,9 @@ public class ResultWorkoutActivity extends AppCompatActivity {
 
 
         listWorkout = (ListView)findViewById(R.id.list_transaction);
-        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+        TransactionWoAdapter transactionWoAdapter = new  TransactionWoAdapter(this, transactions);
+        transactionWoAdapter.setIsResult(true);
+        listWorkout.setAdapter(transactionWoAdapter);
         Utils.ListUtils.setDynamicHeight(listWorkout);
         transactionController = new TransactionController(this);
         transactionController.open();
@@ -108,7 +110,9 @@ public class ResultWorkoutActivity extends AppCompatActivity {
     }
 
     public void reloadData(){
-        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+        TransactionWoAdapter transactionWoAdapter = new  TransactionWoAdapter(this, transactions);
+        transactionWoAdapter.setIsResult(true);
+        listWorkout.setAdapter(transactionWoAdapter);
     }
 
     public void updateTime(float fTime, int position){

@@ -91,7 +91,7 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                         String sTime = tvTime.getText().toString();
                         sTime = sTime.substring(0, sTime.length() - 2);
                         float fTime = Float.valueOf(sTime) - 1;
-                        if (isResult) {
+                        if (!isResult) {
                             WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
                             workoutRunActivity.updateTime(fTime, position);
                             workoutRunActivity.reloadData();
