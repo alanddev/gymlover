@@ -258,7 +258,9 @@ public class WorkoutRunActivity extends AppCompatActivity {
         Utils.addListResult(transactions);
 
         listWorkout = (ListView)findViewById(R.id.list_transaction);
-        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+        TransactionWoAdapter transactionWoAdapter =  new TransactionWoAdapter(this, transactions);
+        transactionWoAdapter.setIsResult(false);
+        listWorkout.setAdapter(transactionWoAdapter);
         Utils.ListUtils.setDynamicHeight(listWorkout);
 }
 

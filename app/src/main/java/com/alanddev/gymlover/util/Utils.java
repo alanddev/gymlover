@@ -101,6 +101,8 @@ public class Utils {
         return listResult;
     }
 
+
+
     public static void setListResult(ArrayList<Transaction> list){
         listResult = list;
     }

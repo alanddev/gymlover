@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.Workout;
+import com.alanddev.gymlover.ui.ResultWorkoutActivity;
 import com.alanddev.gymlover.ui.WorkoutRunActivity;
 import com.alanddev.gymlover.ui.WorkoutSettingActivity;
 import com.alanddev.gymlover.util.Utils;
@@ -34,9 +36,14 @@ import java.util.List;
  */
 public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
 
+    private boolean isResult;
     public TransactionWoAdapter(Context context, List<Transaction> workouts) {
         super(context, 0, workouts);
 
+    }
+
+    public void setIsResult(boolean isResult){
+        this.isResult = isResult;
     }
 
     @Override
@@ -84,10 +91,17 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                         String sTime = tvTime.getText().toString();
                         sTime = sTime.substring(0, sTime.length() - 2);
                         float fTime = Float.valueOf(sTime) - 1;
-                        WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
-                        workoutRunActivity.updateTime(fTime, position);
-                        workoutRunActivity.reloadData();
-                        v.invalidate();
+                        if (isResult) {
+                            WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
+                            workoutRunActivity.updateTime(fTime, position);
+                            workoutRunActivity.reloadData();
+                            v.invalidate();
+                        }else{
+                            ResultWorkoutActivity resultWorkoutActivity = (ResultWorkoutActivity) getContext();
+                            resultWorkoutActivity.updateTime(fTime, position);
+                            resultWorkoutActivity.reloadData();
+                            v.invalidate();
+                        }
                         break;
                     default:
                         break;

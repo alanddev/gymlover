@@ -43,6 +43,7 @@ public class ResultWorkoutActivity extends AppCompatActivity {
 //        }};
 
     ListView listWorkout;
+    ArrayList<Transaction>transactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +56,13 @@ public class ResultWorkoutActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_result_workout));
 
+        transactions = Utils.getListResult();
         new ParticleSystem(this, 50, R.mipmap.star, 10000)
                 .setSpeedRange(0.2f, 0.5f)
                 .oneShot(findViewById(R.id.done), 50);
 
 
 
-        final ArrayList<Transaction>transactions = Utils.getListResult();
         listWorkout = (ListView)findViewById(R.id.list_transaction);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
         Utils.ListUtils.setDynamicHeight(listWorkout);
@@ -72,8 +73,6 @@ public class ResultWorkoutActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
                 transactionController.create(transactions);
                 Utils.emptyListResult();
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
@@ -108,5 +107,12 @@ public class ResultWorkoutActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void reloadData(){
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
 
+    public void updateTime(float fTime, int position){
+        transactions.get(position).setTime(fTime);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
 }
