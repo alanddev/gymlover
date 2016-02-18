@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.R;
 
@@ -30,6 +31,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -44,6 +46,7 @@ public class Utils {
     private static Locale locale;
     private static Locale localDefault = new Locale("vi","VI");
     private static String sTheme;
+    private static ArrayList<Transaction> listResult = new ArrayList<>();
 
     public static Locale getLocale() {
         if(locale==null){
@@ -94,7 +97,28 @@ public class Utils {
         res.updateConfiguration(configuration,res.getDisplayMetrics());
     }
 
+    public static ArrayList<Transaction> getListResult(){
+        return listResult;
+    }
 
+    public static void setListResult(ArrayList<Transaction> list){
+        listResult = list;
+    }
+
+    public static void addListResult(Transaction tran){
+        listResult.add(tran);
+    }
+
+    public static void addListResult(ArrayList<Transaction> trans){
+        for (int i = 0 ; i <trans.size(); i++){
+         listResult.add(trans.get(i));
+        }
+    }
+
+
+    public static void emptyListResult(){
+        listResult = new ArrayList<>();
+    }
 
     public static String changeDateStr2Str(String dateStr){
         DateFormat fromFormat = new SimpleDateFormat(Constant.DATE_FORMAT_PICKER);

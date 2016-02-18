@@ -22,7 +22,7 @@
     tools:showIn="@layout/activity_workout_run"
     android:orientation="vertical"
     tools:context="com.alanddev.gymlover.ui.WorkoutRunActivity"
-    android:background="@mipmap/background_1"
+    android:background="@mipmap/background_4"
     android:weightSum="1">
 
 
@@ -103,4 +103,5 @@
 
 
     </LinearLayout>
+
 </ScrollView>

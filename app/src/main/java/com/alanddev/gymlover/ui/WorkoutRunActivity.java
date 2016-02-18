@@ -1,5 +1,6 @@
 package com.alanddev.gymlover.ui;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -40,6 +41,8 @@ import com.plattysoft.leonids.ParticleSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.transform.Result;
 
 public class WorkoutRunActivity extends AppCompatActivity {
 
@@ -174,6 +177,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
+        Utils.setLanguage(this);
         setContentView(R.layout.activity_workout_run);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -236,26 +241,26 @@ public class WorkoutRunActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private void initData(){
-        Transaction transaction1 = new Transaction("21/01/2016",exerId,5,20.0f,25,10,"5*5");
-        Transaction transaction2 = new Transaction("21/01/2016",exerId,5,22.0f,25,10,"5*5");
-        Transaction transaction3 = new Transaction("21/01/2016",exerId,5,24.0f,25,10,"5*5");
-        Transaction transaction4 = new Transaction("21/01/2016",exerId,5,26.0f,25,10,"5*5");
-        Transaction transaction5 = new Transaction("21/01/2016",exerId,5,28.0f,25,10,"5*5");
+        Transaction transaction1 = new Transaction(Utils.getStrToday(),exerId,5,20.0f,25,10,"5*5");
+        Transaction transaction2 = new Transaction(Utils.getStrToday(),exerId,5,22.0f,25,10,"5*5");
+        Transaction transaction3 = new Transaction(Utils.getStrToday(),exerId,5,24.0f,25,10,"5*5");
+        Transaction transaction4 = new Transaction(Utils.getStrToday(),exerId,5,26.0f,25,10,"5*5");
+        Transaction transaction5 = new Transaction(Utils.getStrToday(),exerId,5,28.0f,25,10,"5*5");
         transactions = new ArrayList<>();
+
         transactions.add(transaction1);
         transactions.add(transaction2);
         transactions.add(transaction3);
         transactions.add(transaction4);
         transactions.add(transaction5);
 
+        Utils.addListResult(transactions);
+
         listWorkout = (ListView)findViewById(R.id.list_transaction);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
         Utils.ListUtils.setDynamicHeight(listWorkout);
-    }
+}
 
 
     public void reloadData(){
@@ -267,7 +272,6 @@ public class WorkoutRunActivity extends AppCompatActivity {
         transactions.get(position).setTime(fTime);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
-
 
 
     @Override
@@ -374,10 +378,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
     public void onClickSave(View v){
 
-        new ParticleSystem(this, 50, R.mipmap.star, 10000)
-                .setSpeedRange(0.2f, 0.5f)
-                .oneShot(v, 50);
-
+        Intent intent = new Intent(this, ResultWorkoutActivity.class);
+        startActivity(intent);
 //        new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
 //                .setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
 //                .setRotationSpeed(144)
@@ -393,7 +395,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
     }
 
     private void reloadImage(){
-        final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
+        exerId = listExercise.get(currentExercise).getExerid();
+        final Exercise exercise = getData(exerId);
         String strImgs = exercise.getImage();
         imageArray = strImgs.split(",");
         imgEx = (ImageView) findViewById(R.id.imgex);
@@ -419,6 +422,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             resetTime();
             handler.postDelayed(updateTimer, 0);
             reloadImage();
+            initData();
             if (currentExercise == listExercise.size() - 1){
                 btnext.setEnabled(false);
             }

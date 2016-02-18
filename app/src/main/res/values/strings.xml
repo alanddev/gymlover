@@ -531,4 +531,6 @@
     <string name="repeat">lần</string>
     <string name="calos">calos</string>
     <string name="title_activity_transaction_add">TransactionAddActivity</string>
+    <string name="title_activity_result_workout">ResultWorkoutActivity</string>
+    <string name="rest_time">00:00</string>
 </resources>
