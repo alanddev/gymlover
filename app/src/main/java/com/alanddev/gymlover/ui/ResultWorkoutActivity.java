@@ -119,4 +119,15 @@ public class ResultWorkoutActivity extends AppCompatActivity {
         transactions.get(position).setTime(fTime);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
+
+    public void updateWeight(float fWeight, int position){
+        transactions.get(position).setWeight(fWeight);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
+
+    public void updateReps(int repeat, int position){
+        transactions.get(position).setRepeat(repeat);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
+
 }

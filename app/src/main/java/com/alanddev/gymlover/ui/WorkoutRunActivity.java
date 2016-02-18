@@ -277,6 +277,18 @@ public class WorkoutRunActivity extends AppCompatActivity {
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
 
+    public void updateWeight(float fWeight, int position){
+        transactions.get(position).setWeight(fWeight);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
+
+    public void updateReps(int repeat, int position){
+        transactions.get(position).setRepeat(repeat);
+        listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
+    }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

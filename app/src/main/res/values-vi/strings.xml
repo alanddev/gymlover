@@ -34,7 +34,7 @@
     <string name="title_activity_transaction_add">Thêm bài tập</string>
     <string name="select_exercise">Chọn bài tập</string>
     <string name="check_exercise_exist">Bạn phải nhập bài tập</string>
-    <string name="repeat">Số lần</string>
+    <string name="repeat">Lần</string>
     <string name="time">Thời gian</string>
     <string name="check_time_exist">Bạn phải nhập thời gian</string>
 </resources>

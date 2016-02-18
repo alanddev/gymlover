@@ -57,11 +57,16 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_transaction_workout, parent, false);
         }
         // Lookup view for data population
-        TextView tvReps = (TextView) convertView.findViewById(R.id.reps);
+        final TextView tvReps = (TextView) convertView.findViewById(R.id.reps);
         final TextView tvWeight = (TextView) convertView.findViewById(R.id.weight);
         final TextView tvTime = (TextView) convertView.findViewById(R.id.time);
         TextView tvCalos = (TextView) convertView.findViewById(R.id.calos);
         ImageView imgMinusTime = (ImageView)convertView.findViewById(R.id.minusTime);
+        ImageView imgMinusWeight = (ImageView)convertView.findViewById(R.id.minusWeight);
+        ImageView imgMinusReps = (ImageView)convertView.findViewById(R.id.minusReps);
+        ImageView imgAddTime = (ImageView)convertView.findViewById(R.id.addTime);
+        ImageView imgAddWeight = (ImageView)convertView.findViewById(R.id.addWeight);
+        ImageView imgAddReps = (ImageView)convertView.findViewById(R.id.addReps);
         ImageView imgEx = (ImageView)convertView.findViewById(R.id.exImg);
         //ImageView imgIcon = (ImageView)convertView.findViewById(R.id.icon);
         //ImageView imgChecked = (ImageView)convertView.findViewById(R.id.checked);
@@ -90,7 +95,7 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                     case R.id.minusTime:
                         String sTime = tvTime.getText().toString();
                         sTime = sTime.substring(0, sTime.length() - 2);
-                        float fTime = Float.valueOf(sTime) - 1;
+                        float fTime = Float.valueOf(sTime) - 5;
                         if (!isResult) {
                             WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
                             workoutRunActivity.updateTime(fTime, position);
@@ -108,6 +113,141 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                 }
             }
         });
+
+        imgAddTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.addTime:
+                        String sTime = tvTime.getText().toString();
+                        sTime = sTime.substring(0, sTime.length() - 2);
+                        float fTime = Float.valueOf(sTime) + 5;
+                        if (!isResult) {
+                            WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
+                            workoutRunActivity.updateTime(fTime, position);
+                            workoutRunActivity.reloadData();
+                            v.invalidate();
+                        }else{
+                            ResultWorkoutActivity resultWorkoutActivity = (ResultWorkoutActivity) getContext();
+                            resultWorkoutActivity.updateTime(fTime, position);
+                            resultWorkoutActivity.reloadData();
+                            v.invalidate();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+
+
+        imgMinusWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.minusWeight:
+                        String sWeight = tvWeight.getText().toString();
+                        sWeight = sWeight.substring(0, sWeight.length() - 2);
+                        float fWeight = Float.valueOf(sWeight) - 2.5f;
+                        if (!isResult) {
+                            WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
+                            workoutRunActivity.updateWeight(fWeight, position);
+                            workoutRunActivity.reloadData();
+                            v.invalidate();
+                        }else{
+                            ResultWorkoutActivity resultWorkoutActivity = (ResultWorkoutActivity) getContext();
+                            resultWorkoutActivity.updateWeight(fWeight, position);
+                            resultWorkoutActivity.reloadData();
+                            v.invalidate();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        imgAddWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.addWeight:
+                        String sWeight = tvWeight.getText().toString();
+                        sWeight = sWeight.substring(0, sWeight.length() - 2);
+                        float fWeight = Float.valueOf(sWeight) + 2.5f;
+                        if (!isResult) {
+                            WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
+                            workoutRunActivity.updateWeight(fWeight, position);
+                            workoutRunActivity.reloadData();
+                            v.invalidate();
+                        }else{
+                            ResultWorkoutActivity resultWorkoutActivity = (ResultWorkoutActivity) getContext();
+                            resultWorkoutActivity.updateWeight(fWeight, position);
+                            resultWorkoutActivity.reloadData();
+                            v.invalidate();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+
+
+        imgMinusReps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.minusReps:
+                        String sReps = tvReps.getText().toString();
+                        sReps = sReps.substring(0, sReps.length() - 4);
+                        int fReps = Integer.valueOf(sReps) - 1;
+                        if (!isResult) {
+                            WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
+                            workoutRunActivity.updateReps(fReps, position);
+                            workoutRunActivity.reloadData();
+                            v.invalidate();
+                        }else{
+                            ResultWorkoutActivity resultWorkoutActivity = (ResultWorkoutActivity) getContext();
+                            resultWorkoutActivity.updateReps(fReps, position);
+                            resultWorkoutActivity.reloadData();
+                            v.invalidate();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        imgAddReps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.addReps:
+                        String sReps = tvReps.getText().toString();
+                        sReps = sReps.substring(0, sReps.length() - 4);
+                        int fReps = Integer.valueOf(sReps) + 1;
+                        if (!isResult) {
+                            WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
+                            workoutRunActivity.updateReps(fReps, position);
+                            workoutRunActivity.reloadData();
+                            v.invalidate();
+                        }else{
+                            ResultWorkoutActivity resultWorkoutActivity = (ResultWorkoutActivity) getContext();
+                            resultWorkoutActivity.updateReps(fReps, position);
+                            resultWorkoutActivity.reloadData();
+                            v.invalidate();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
 
 
         // Return the completed view to render on screen
