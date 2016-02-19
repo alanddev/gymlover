@@ -1,6 +1,7 @@
 package com.alanddev.gymlover.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,17 +100,21 @@ public class TransactionAdapter extends AmazingAdapter {
 		}
 
 		TextView txttype = (TextView) res.findViewById(R.id.txttitle);
-		TextView txtdes = (TextView) res.findViewById(R.id.txtdes);
+		TextView txtrepeat = (TextView) res.findViewById(R.id.txt_repeat);
+		TextView txtweight = (TextView) res.findViewById(R.id.txtWeight);
+		TextView txttime = (TextView) res.findViewById(R.id.txttime);
 		TextView txtamout = (TextView) res.findViewById(R.id.txtamout);
 		ImageView imgicon = (ImageView) res.findViewById(R.id.imgicon);
 		Transaction composer = (Transaction) getItem(position);
 		txttype.setText(composer.getExer_name());
-		txtdes.setText(composer.getNote());
+		txtrepeat.setText(composer.getRepeat()+" rep");
+		txtweight.setText(composer.getWeight()+" kg");
+		txttime.setText(composer.getTime()+" s");
 
 		Float fAmount = composer.getCalo();
 		NumberFormat formatter = new DecimalFormat("###,###,###,###.##");
 		String sAmount =  formatter.format(fAmount);
-		txtamout.setText(sAmount);
+		txtamout.setText(sAmount+" calo");
 
 		String strImgs = composer.getExer_img();
 		String exer_img=null;
@@ -120,7 +125,7 @@ public class TransactionAdapter extends AmazingAdapter {
 			}
 		}
 		if(exer_img!=null) {
-			imgicon.setImageResource(mContext.getResources().getIdentifier("ic_exer_" + exer_img, "mipmap", mContext.getPackageName()));
+			imgicon.setImageResource(mContext.getResources().getIdentifier("ic_ex_" + exer_img, "mipmap", mContext.getPackageName()));
 		}
 
 		return res;

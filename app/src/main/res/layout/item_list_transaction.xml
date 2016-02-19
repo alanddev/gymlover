@@ -13,8 +13,8 @@
         android:layout_height="wrap_content" >
         <ImageView
             android:id="@+id/imgicon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
@@ -33,7 +33,7 @@
             android:textColor="@color/colorTextColor"/>
 
         <TextView
-            android:id="@+id/txtdes"
+            android:id="@+id/txt_repeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txttitle"
@@ -42,6 +42,25 @@
             android:textSize="11sp"
             android:textColor="@color/colorNote"/>
 
+        <TextView
+            android:id="@+id/txtWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_repeat"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/imgicon"
+            android:textSize="11sp"
+            android:textColor="@color/colorNote"/>
+
+        <TextView
+            android:id="@+id/txttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtWeight"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/imgicon"
+            android:textSize="11sp"
+            android:textColor="@color/colorNote"/>
 
         <TextView
             android:id="@+id/txtamout"
@@ -50,7 +69,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
     </RelativeLayout>
 
 </LinearLayout>

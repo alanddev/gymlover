@@ -14,6 +14,7 @@ import com.alanddev.gymlover.adapter.TransactionAdapter;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.Transactions;
+import com.alanddev.gymlover.ui.TransactionDetailActivity;
 import com.alanddev.gymlover.util.Constant;
 import com.foound.widget.AmazingListView;
 
@@ -61,6 +62,36 @@ public class TransactionFragment extends Fragment {
         AmazingListView lsComposer = (AmazingListView) rootView.findViewById(R.id.lsttransaction);
         final TransactionAdapter adapter = new TransactionAdapter(getActivity().getApplicationContext(), inflater, transactions.getItems());
         lsComposer.setAdapter(adapter);
+
+        View header = inflater.inflate(R.layout.trans_header_list, null, false);
+        if(transactions.getItems()!=null&&transactions.getItems().size()>0){
+            TextView txtInflowAmt = (TextView)header.findViewById(R.id.txtInflowAmt);
+            Float fInAmount = transactions.getCalo();
+
+            NumberFormat formatter = new DecimalFormat("###,###,###,###.##");
+            String sInAmount =  formatter.format(fInAmount);
+
+            txtInflowAmt.setText(sInAmount + " calo");
+
+            lsComposer.addHeaderView(header);
+        }
+
+        lsComposer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View arg1, int position, long arg3) {
+                Transaction transaction= (Transaction)adapter.getItem(position-1);
+                Intent intent = new Intent(getContext(), TransactionDetailActivity.class);
+                intent.putExtra(MwSQLiteHelper.COLUMN_TRANS_ID,transaction.getId());
+                startActivityForResult(intent, Constant.TRANS_DETAIL_REQUEST);
+            }
+        });
+
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //to report
+            }
+        });
         return rootView;
     }
 }
