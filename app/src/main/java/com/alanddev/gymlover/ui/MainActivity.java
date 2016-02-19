@@ -4,6 +4,7 @@ package com.alanddev.gymlover.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     private final int REQUEST_SETTING = 100;
     private SharedPreferences mShaPref;
     private NavigationView navigationView;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +100,11 @@ public class MainActivity extends AppCompatActivity
             mViewPager.setCurrentItem(transactionses.size() - 2);
         }
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
+
 
     }
 
@@ -154,7 +158,7 @@ public class MainActivity extends AppCompatActivity
 
         Utils.setSharedPreferencesValue(this, Constant.VIEW_TYPE, viewtype);
         if(!isState){
-            notifyDataSetChanged();
+            notifyDataSetChanged(true);
         }
 
         return super.onOptionsItemSelected(item);
@@ -199,7 +203,7 @@ public class MainActivity extends AppCompatActivity
             Utils.refresh(this);
         }
         if(requestCode==Constant.ADD_TRANSACTION_REQUEST&&resultCode==Constant.ADD_TRANSACTION_SUCCESS) {
-            notifyDataSetChanged();
+            notifyDataSetChanged(false);
         }
 
     }
@@ -211,14 +215,22 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void notifyDataSetChanged(){
+    private void notifyDataSetChanged(Boolean isChangeType){
+
         List<Transactions> transactionses = getData(mShaPref.getInt(Constant.VIEW_TYPE, 0));
+
         mSectionsPagerAdapter.setData(transactionses);
         mSectionsPagerAdapter.notifyDataSetChanged();
-        if(transactionses.size()>0) {
-            mViewPager.setCurrentItem(1);
-        }
         //updateNaviHeader(navigationView);
+
+
+        if(isChangeType) {
+            tabLayout.setupWithViewPager(mViewPager);
+        }
+        if(transactionses.size() > 0) {
+            mViewPager.setCurrentItem(transactionses.size() - 2);
+        }
+
     }
 
     private List<Transactions> getData(int viewType){
