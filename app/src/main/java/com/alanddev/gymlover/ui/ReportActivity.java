@@ -14,8 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.alanddev.gymlover.R;
+import com.alanddev.gymlover.adapter.TransSumGrpAdapter;
+import com.alanddev.gymlover.adapter.TransactionWoAdapter;
+import com.alanddev.gymlover.controller.TransactionController;
+import com.alanddev.gymlover.model.TransactionSumGroup;
+import com.alanddev.gymlover.util.Utils;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -30,6 +36,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReportActivity extends AppCompatActivity {
 
@@ -37,6 +44,7 @@ public class ReportActivity extends AppCompatActivity {
     String year;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private TransactionController transactionController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,7 @@ public class ReportActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_report));
 
 
+        transactionController = new TransactionController(this);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
@@ -96,6 +105,7 @@ public class ReportActivity extends AppCompatActivity {
         private static final String ARG_SECTION_NUMBER = "section_number";
         LineChart chart;
         PieChart chartPie;
+        private TransactionController transactionController;
         public PlaceholderFragment() {
         }
 
@@ -116,6 +126,7 @@ public class ReportActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             int tabPage = getArguments().getInt(ARG_SECTION_NUMBER);
             View rootView =  inflater.inflate(R.layout.fragment_report_line, container, false);
+            transactionController = new TransactionController(getContext());
             switch(tabPage)
             {
                 case 0:
@@ -124,12 +135,20 @@ public class ReportActivity extends AppCompatActivity {
                     break;
                 case 1:
                     rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
-                    setDataPie(rootView);
+                    ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
+                    transactionController.open();
+                    ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroupByDate(new Date());
+                    listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
+                    setDataPie(rootView,tranSumGrps);
+                    Utils.ListUtils.setDynamicHeight(listTransaction);
                     break;
             }
 
             return rootView;
         }
+
+
+
 
         public void setDataLine(View rootView){
             chart = (LineChart)rootView.findViewById(R.id.chart);
@@ -181,7 +200,7 @@ public class ReportActivity extends AppCompatActivity {
 
         }
 
-        public void setDataPie(View rootView){
+        public void setDataPie(View rootView, ArrayList<TransactionSumGroup>trans){
             chartPie = (PieChart)rootView.findViewById(R.id.chart);
             float[] yData = { 5, 10, 15, 30, 40 };
             String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
@@ -192,13 +211,13 @@ public class ReportActivity extends AppCompatActivity {
             float total = 0.0f;
 
 
-            for (int i = 0; i < yData.length; i++)
-                yVals.add(new Entry(yData[i], i));
+            for (int i = 0; i < trans.size(); i++)
+                yVals.add(new Entry(trans.get(i).getCalo(), i));
 
             ArrayList<String> xVals = new ArrayList<String>();
 
-            for (int i = 0; i < xData.length; i++)
-                xVals.add(xData[i]);
+            for (int i = 0; i < trans.size(); i++)
+                xVals.add(trans.get(i).getName());
 
             PieDataSet pieDataSet = new PieDataSet(yVals, "expenses");
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);

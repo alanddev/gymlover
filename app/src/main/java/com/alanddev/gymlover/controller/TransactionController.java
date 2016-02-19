@@ -13,10 +13,12 @@ import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.TransactionDay;
+import com.alanddev.gymlover.model.TransactionSumGroup;
 import com.alanddev.gymlover.model.Transactions;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -479,5 +481,141 @@ public class TransactionController implements IDataSource {
         transactions.setTitle(year + "");
         return transactions;
     }
+
+    public ArrayList<TransactionSumGroup> getCaloGroupByDate(Date dateReport){
+        String date =  new SimpleDateFormat("yyyy-MM-dd").format(dateReport);
+
+        StringBuffer sql = new StringBuffer("SELECT SUM( t." +dbHelper.COLUMN_TRANS_CALO +")" + ",c."+ dbHelper.COLUMN_EX_GROUP_ID +
+                ",c."+ dbHelper.COLUMN_EX_GROUP_NAME +  ",c."+ dbHelper.COLUMN_EX_GROUP_IMAGE +
+                " FROM " + dbHelper.TABLE_TRANSACTION +" as t JOIN " +
+                dbHelper.TABLE_EXCERCISE + " as e ON t."+dbHelper.COLUMN_TRANS_EXERCISE +"=e."+dbHelper.COLUMN_EXCERCISE_ID +
+                " JOIN " + dbHelper.TABLE_EXCERCISE_GROUP  + " as c ON e." + dbHelper.COLUMN_EXCERCISE_GRP_ID +"=c."
+                + dbHelper.COLUMN_EX_GROUP_ID + " where t."
+                + dbHelper.COLUMN_TRANS_DATE + " = '"+ date +"'" +
+                " group by (c." + dbHelper.COLUMN_EX_GROUP_ID + ")" );
+
+        Cursor cursor = database.rawQuery(sql.toString(), null);
+
+        cursor.moveToFirst();
+        ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
+        while (!cursor.isAfterLast()) {
+            TransactionSumGroup tran = new TransactionSumGroup();
+            tran.setCalo(cursor.getFloat(0));
+            tran.setName(cursor.getString(1));
+            tran.setImage(cursor.getString(2));
+            trans.add(tran);
+            cursor.moveToNext();
+        }
+
+        return trans;
+    }
+
+
+
+    public ArrayList<TransactionSumGroup> getCaloGroupByDate(ArrayList<Date> dates){
+        Date dateStart = dates.get(0);
+        Date dateEnd = dates.get(1);
+        String sDateStart =  new SimpleDateFormat("yyyy-MM-dd").format(dateStart);
+        String sDateEnd =  new SimpleDateFormat("yyyy-MM-dd").format(dateEnd);
+
+        StringBuffer sql = new StringBuffer("SELECT SUM( t." +dbHelper.COLUMN_TRANS_CALO +")" + ",c."+ dbHelper.COLUMN_EX_GROUP_ID +
+                ",c."+ dbHelper.COLUMN_EX_GROUP_NAME +  ",c."+ dbHelper.COLUMN_EX_GROUP_IMAGE +
+                " FROM " + dbHelper.TABLE_TRANSACTION +" as t JOIN " +
+                dbHelper.TABLE_EXCERCISE + " as e ON t."+dbHelper.COLUMN_TRANS_EXERCISE +"=e."+dbHelper.COLUMN_EXCERCISE_ID +
+                " JOIN " + dbHelper.TABLE_EXCERCISE_GROUP  + " as c ON e." + dbHelper.COLUMN_EXCERCISE_GRP_ID +"=c."
+                +dbHelper.COLUMN_EX_GROUP_ID + " where t."
+                + dbHelper.COLUMN_TRANS_DATE + " >= '"+ sDateStart +"'"+
+                " and t." + dbHelper.COLUMN_TRANS_DATE + " <= '"+ sDateEnd +"'"+
+                " group by (c." + dbHelper.COLUMN_EX_GROUP_ID + ")" );
+
+        Cursor cursor = database.rawQuery(sql.toString(), null);
+
+        cursor.moveToFirst();
+        ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
+        while (!cursor.isAfterLast()) {
+            TransactionSumGroup tran = new TransactionSumGroup();
+            tran.setCalo(cursor.getFloat(0));
+            tran.setName(cursor.getString(1));
+            tran.setImage(cursor.getString(2));
+            trans.add(tran);
+            cursor.moveToNext();
+        }
+
+        return trans;
+    }
+
+
+    public ArrayList<TransactionSumGroup> getCaloGroupByWeek(Date date){
+        ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
+        ArrayList<Date> dates = getDateOfWeek(date);
+        trans = getCaloGroupByDate(dates);
+        return trans;
+    }
+
+
+    public ArrayList<TransactionSumGroup> getCaloGroupByMonth(Date date){
+        ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
+        ArrayList<Date> dates = getDateOfMonth(date);
+        trans = getCaloGroupByDate(dates);
+        return trans;
+    }
+
+
+
+    private ArrayList<Date> getDateOfWeek(Date date){
+        //Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+        c.add(Calendar.DAY_OF_MONTH, -dayOfWeek);
+
+        Date weekStart = c.getTime();
+        // we do not need the same day a week after, that's why use 6, not 7
+        c.add(Calendar.DAY_OF_MONTH, 6);
+        Date weekEnd = c.getTime();
+        ArrayList<Date>dates = new ArrayList<Date>();
+        dates.add(weekStart);
+        dates.add(weekEnd);
+        return dates;
+    }
+    private ArrayList<Date>getDateOfMonth(Date date){
+        Calendar c = Calendar.getInstance();   // this takes current date
+        c.setTime(date);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        Date monthStart = c.getTime();
+
+        //c.set(Calendar.DATE, 1);
+        //c.add(Calendar.DATE, -1);
+        c.set(Calendar.DATE, c.getActualMaximum(Calendar.DATE));
+        Date monthEnd = c.getTime();
+        ArrayList<Date>dates = new ArrayList<Date>();
+        dates.add(monthStart);
+        dates.add(monthEnd);
+        //System.out.println(c.getTime());
+        return dates;
+
+    }
+
+
+    private ArrayList<Date>getDateOfMonths(int fromMonth, int toMonth, String year){
+        String beginDateOfMonth = year + "-" + fromMonth + "-01";
+        Date dateStart = Utils.changeStr2Date(beginDateOfMonth, Constant.DATE_FORMAT_DB);
+
+        String endDateOfMonth = year + "-" + toMonth + "-01";
+        Date dateTo = Utils.changeStr2Date(endDateOfMonth, Constant.DATE_FORMAT_DB);
+        Calendar c = Calendar.getInstance();   // this takes current date
+        c.setTime(dateTo);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        c.set(Calendar.DATE, c.getActualMaximum(Calendar.DATE));
+        Date dateEnd = c.getTime();
+
+        ArrayList<Date>dates = new ArrayList<Date>();
+        dates.add(dateStart);
+        dates.add(dateEnd);
+        //System.out.println(c.getTime());
+        return dates;
+
+    }
+
 
 }

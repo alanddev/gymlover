@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="60dp"
+android:paddingTop="5dp"
+android:paddingBottom="5dp"
+    >
+    <ImageView
+        android:id="@+id/grpImg"
+        android:src="@mipmap/up"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:layout_centerVertical = "true"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentLeft="true" />
+
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical = "true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="65dp"
+        android:hint ="5"
+        android:textSize="@dimen/size_text_workout_transaction"
+        android:text=""
+        android:textStyle="bold" />
+
+
+    <TextView android:id="@+id/txtWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="155dp"
+        android:layout_centerVertical = "true"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/size_text_workout_transaction"
+        android:inputType="numberDecimal"
+        android:text=""
+        android:textColor="@color/colorfab"
+        android:layout_below="@+id/name" />
+
+
+
+<TextView android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="225dp"
+        android:layout_centerVertical = "true"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/size_text_workout_transaction"
+        android:text=""
+        android:textColor="@color/colorDarkGreen"
+        android:layout_toRightOf="@+id/reps" />
+
+
+<TextView android:id="@+id/txtCalos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="275dp"
+        android:layout_centerVertical = "true"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/size_text_workout_transaction"
+        android:text=""
+        android:textColor="@color/colorChocolate"
+        android:layout_toRightOf="@+id/reps" />
+
+
+</RelativeLayout>
