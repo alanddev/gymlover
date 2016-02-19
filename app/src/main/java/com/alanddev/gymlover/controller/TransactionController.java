@@ -140,6 +140,10 @@ public class TransactionController implements IDataSource {
         database.delete(MwSQLiteHelper.TABLE_TRANSACTION, null, null);
     }
 
+    public Boolean delete(long tranId){
+        return database.delete(MwSQLiteHelper.TABLE_TRANSACTION, MwSQLiteHelper.COLUMN_TRANS_ID + "=" + tranId, null) > 0;
+    }
+
     public List<Transactions> getAll(int viewtype) {
         List<Transactions> transactionses = new ArrayList<Transactions>();
         switch (viewtype) {
@@ -616,6 +620,21 @@ public class TransactionController implements IDataSource {
         return dates;
 
     }
+
+
+    public Transaction getTransbyId(long id){
+        StringBuffer sql = new StringBuffer("SELECT * FROM ").append(MwSQLiteHelper.TABLE_TRANSACTION).append(" s inner join ")
+                .append(MwSQLiteHelper.TABLE_EXCERCISE).append(" c ON s.").append(MwSQLiteHelper.COLUMN_TRANS_EXERCISE).append(" = c.")
+                .append(MwSQLiteHelper.COLUMN_EXCERCISE_ID)
+                .append(" AND s.").append(MwSQLiteHelper.COLUMN_TRANS_ID).append(" = ?");
+        String[] atts = new String[]{id+""};
+        Cursor cursor = database.rawQuery(sql.toString(), atts);
+        cursor.moveToFirst();
+        Transaction tran = (Transaction) cursorTo(cursor);
+        cursor.close();
+        return tran;
+    }
+
 
 
 }
