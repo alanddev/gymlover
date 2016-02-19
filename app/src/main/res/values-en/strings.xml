@@ -36,6 +36,7 @@
     <string name="select_exercise">Select Exercise</string>
     <string name="check_exercise_exist">No exercise, please check</string>
     <string name="repeat">Rep</string>
+    <string name="kg">kg</string>
     <string name="time">Time</string>
     <string name="check_time_exist">No time, please check</string>
 </resources>

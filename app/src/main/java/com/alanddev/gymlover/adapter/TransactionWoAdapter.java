@@ -72,7 +72,7 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
         //ImageView imgChecked = (ImageView)convertView.findViewById(R.id.checked);
         // Populate the data into the template view using the data object
         tvReps.setText(transaction.getRepeat() + " " + getContext().getString(R.string.repeat));
-        tvWeight.setText(transaction.getWeight() + " " + getContext().getString(R.string.weight_kg));
+        tvWeight.setText(transaction.getWeight() + " " + getContext().getString(R.string.kg));
         tvTime.setText(transaction.getTime() + " " + getContext().getString(R.string.second));
         tvCalos.setText(transaction.getCalo() + " " + getContext().getString(R.string.calos));
 

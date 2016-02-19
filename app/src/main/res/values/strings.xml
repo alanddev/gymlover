@@ -527,7 +527,7 @@
     <string name="action_next">Tiếp</string>
     <string name="menu_report">Báo cáo</string>
     <string name="title_activity_exercise_wo">ExerciseWoActivity</string>
-    <string name="weight_kg">kg</string>
+    <string name="kg">kg</string>
     <string name="repeat">lần</string>
     <string name="calos">calos</string>
     <string name="title_activity_transaction_add">TransactionAddActivity</string>
