@@ -21,6 +21,7 @@ import com.alanddev.gymlover.adapter.TransSumGrpAdapter;
 import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.controller.TransactionController;
 import com.alanddev.gymlover.model.TransactionSumGroup;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -42,6 +43,8 @@ public class ReportActivity extends AppCompatActivity {
 
 
     String year;
+
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TransactionController transactionController;
@@ -105,6 +108,9 @@ public class ReportActivity extends AppCompatActivity {
         private static final String ARG_SECTION_NUMBER = "section_number";
         LineChart chart;
         PieChart chartPie;
+        Date dateReport;
+        int typeReport;
+
         private TransactionController transactionController;
         public PlaceholderFragment() {
         }
@@ -127,6 +133,7 @@ public class ReportActivity extends AppCompatActivity {
             int tabPage = getArguments().getInt(ARG_SECTION_NUMBER);
             View rootView =  inflater.inflate(R.layout.fragment_report_line, container, false);
             transactionController = new TransactionController(getContext());
+            getData();
             switch(tabPage)
             {
                 case 0:
@@ -137,9 +144,10 @@ public class ReportActivity extends AppCompatActivity {
                     rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
                     ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
                     transactionController.open();
-                    ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroupByDate(new Date());
+                    ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroupByDate(dateReport);
                     listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
-                    setDataPie(rootView,tranSumGrps);
+                    setDataPie(rootView, tranSumGrps);
+
                     Utils.ListUtils.setDynamicHeight(listTransaction);
                     break;
             }
@@ -148,7 +156,17 @@ public class ReportActivity extends AppCompatActivity {
         }
 
 
-
+        public void getData(){
+            Bundle b = getActivity().getIntent().getExtras();
+            if (b!=null) {
+                typeReport = b.getInt(Constant.VIEW_TYPE, 0);
+                String dateStr = b.getString(Constant.PUT_EXTRA_DATE);
+                dateReport = Utils.changeStr2Date(dateStr, Constant.DATE_FORMAT_DB);
+            }else {
+                typeReport = Constant.VIEW_TYPE_DAY;
+                dateReport = new Date();
+            }
+        }
 
         public void setDataLine(View rootView){
             chart = (LineChart)rootView.findViewById(R.id.chart);
