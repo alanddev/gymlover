@@ -505,8 +505,8 @@ public class TransactionController implements IDataSource {
         while (!cursor.isAfterLast()) {
             TransactionSumGroup tran = new TransactionSumGroup();
             tran.setCalo(cursor.getFloat(0));
-            tran.setName(cursor.getString(1));
-            tran.setImage(cursor.getString(2));
+            tran.setName(cursor.getString(2));
+            tran.setImage(cursor.getString(3));
             trans.add(tran);
             cursor.moveToNext();
         }
@@ -539,8 +539,8 @@ public class TransactionController implements IDataSource {
         while (!cursor.isAfterLast()) {
             TransactionSumGroup tran = new TransactionSumGroup();
             tran.setCalo(cursor.getFloat(0));
-            tran.setName(cursor.getString(1));
-            tran.setImage(cursor.getString(2));
+            tran.setName(cursor.getString(2));
+            tran.setImage(cursor.getString(3));
             trans.add(tran);
             cursor.moveToNext();
         }

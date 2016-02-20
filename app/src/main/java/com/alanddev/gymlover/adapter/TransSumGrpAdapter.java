@@ -48,15 +48,15 @@ public class TransSumGrpAdapter extends ArrayAdapter<TransactionSumGroup> {
         }
         // Lookup view for data population
         TextView tvName = (TextView) convertView.findViewById(R.id.txtName);
-        TextView tvTime = (TextView) convertView.findViewById(R.id.txtTime);
-        TextView tvWeight = (TextView) convertView.findViewById(R.id.txtWeight);
+        //TextView tvTime = (TextView) convertView.findViewById(R.id.txtTime);
+        //TextView tvWeight = (TextView) convertView.findViewById(R.id.txtWeight);
         TextView tvCalos = (TextView) convertView.findViewById(R.id.txtCalos);
         ImageView imgGrp = (ImageView) convertView.findViewById(R.id.grpImg);
 
         // Populate the data into the template view using the data object
         tvName.setText(transactionSumGroup.getName());
-        tvTime.setText(transactionSumGroup.getTime() + " " + getContext().getString(R.string.time));
-        tvWeight.setText(transactionSumGroup.getWeight() + " " + getContext().getString(R.string.kg));
+        //tvTime.setText(transactionSumGroup.getTime() + " " + getContext().getString(R.string.time));
+        //tvWeight.setText(transactionSumGroup.getWeight() + " " + getContext().getString(R.string.kg));
         tvCalos.setText(transactionSumGroup.getCalo() + " " + getContext().getString(R.string.calos));
 
         Resources res = convertView.getResources();
