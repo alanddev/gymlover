@@ -84,7 +84,15 @@ public class TransactionController implements IDataSource {
 
     @Override
     public void update(Model data) {
-
+        ContentValues values = new ContentValues();
+        Transaction trans = (Transaction) data;
+        values.put(MwSQLiteHelper.COLUMN_TRANS_EXERCISE, trans.getExericise());
+        values.put(MwSQLiteHelper.COLUMN_TRANS_DATE, trans.getDate());
+        values.put(MwSQLiteHelper.COLUMN_TRANS_REPEAT, trans.getRepeat());
+        values.put(MwSQLiteHelper.COLUMN_TRANS_WEIGHT, trans.getWeight());
+        values.put(MwSQLiteHelper.COLUMN_TRANS_TIME, trans.getTime());
+        values.put(MwSQLiteHelper.COLUMN_TRANS_CALO, trans.getCalo());
+        database.update(MwSQLiteHelper.TABLE_TRANSACTION, values, MwSQLiteHelper.COLUMN_TRANS_ID + " = ?", new String[]{String.valueOf(trans.getId())});
     }
 
     @Override

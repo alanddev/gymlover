@@ -102,6 +102,7 @@ public class ExerciseGrpActivity extends AppCompatActivity {
                 intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, data.getIntExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, 0));
                 intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_NAME, data.getStringExtra(MwSQLiteHelper.COLUMN_EXCERCISE_NAME));
                 intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, data.getFloatExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, 0.0f));
+                intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE, data.getStringExtra(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE));
                 setResult(Constant.PICK_EXERCISE, intent);
                 finish();//finishing activity
             }

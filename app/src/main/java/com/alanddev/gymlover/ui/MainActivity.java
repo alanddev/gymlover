@@ -206,6 +206,10 @@ public class MainActivity extends AppCompatActivity
             notifyDataSetChanged(false);
         }
 
+        if(requestCode==Constant.TRANS_DETAIL_REQUEST&&resultCode==Constant.TRANS_DETAIL_UPDATE) {
+            notifyDataSetChanged(false);
+        }
+
     }
 
     private void setNavHeader(NavigationView navigationView){

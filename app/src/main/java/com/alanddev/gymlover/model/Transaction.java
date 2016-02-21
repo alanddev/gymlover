@@ -5,7 +5,7 @@ package com.alanddev.gymlover.model;
  */
 public class Transaction extends Model {
 
-    private int id;
+    private long id;
     private int exericise;
     private String date;
     private int repeat;
@@ -17,11 +17,11 @@ public class Transaction extends Model {
     private String exer_desc;
     private String exer_img;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

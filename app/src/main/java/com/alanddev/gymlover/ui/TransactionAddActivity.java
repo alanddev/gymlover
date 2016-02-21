@@ -38,6 +38,7 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
     private EditText edtrepeat;
     private EditText edtweight;
     private EditText edttime;
+    private ImageView imgcate;
     private Exercise exercise;
     private Float weight_base = 2.5f;
 
@@ -64,6 +65,7 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
         edtweight = (EditText)findViewById(R.id.edtweight);
         edtweight.setText(weight_base.toString());
         edttime = (EditText)findViewById(R.id.edttime);
+        imgcate = (ImageView)findViewById(R.id.imgcate);
     }
 
     @Override
@@ -180,6 +182,11 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
                 exercise.setCalo(data.getFloatExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, 0.0f));
                 exercise.setId(data.getIntExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, 0));
                 edtCate.setText(cateName);
+                String imgs = data.getStringExtra(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE);
+                String[] lstImgs = imgs.split(",");
+                if(lstImgs.length>=1){
+                    imgcate.setImageResource(getResources().getIdentifier("ic_ex_" + lstImgs[0], "mipmap", getPackageName()));
+                }
             }
         }
     }

@@ -55,6 +55,7 @@ public class ExerciseActivity extends AppCompatActivity {
                     intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_ID, exercise.getId());
                     intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_NAME, exercise.getName());
                     intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_CALO, exercise.getCalo());
+                    intent.putExtra(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE, exercise.getImage());
                     setResult(Constant.PICK_EXERCISE, intent);
                     finish();//finishing activity
                 }else {

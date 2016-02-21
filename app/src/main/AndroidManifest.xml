@@ -92,7 +92,9 @@
             android:name=".ui.ResultWorkoutActivity"
             android:label="@string/title_activity_result_workout"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ui.TransactionDetailActivity"></activity>
+        <activity
+            android:name=".ui.TransactionDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
