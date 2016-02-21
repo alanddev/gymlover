@@ -205,8 +205,7 @@ public class MainActivity extends AppCompatActivity
         if(requestCode==Constant.ADD_TRANSACTION_REQUEST&&resultCode==Constant.ADD_TRANSACTION_SUCCESS) {
             notifyDataSetChanged(false);
         }
-
-        if(requestCode==Constant.TRANS_DETAIL_REQUEST&&resultCode==Constant.TRANS_DETAIL_UPDATE) {
+        if(resultCode==Constant.TRANS_DETAIL_UPDATE) {
             notifyDataSetChanged(false);
         }
 
