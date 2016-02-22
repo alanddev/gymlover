@@ -62,4 +62,8 @@ public class Constant {
     public static int WORKOUT_USED = 2;
 
     public static String TAKE_EXERCISE = "TAKE_EXERCISE";
+    public static int REPORT_TYPE_BODY = 0;
+    public static int REPORT_TYPE_WORKOUT = 1;
+    public static String REPORT_TYPE = "REPORT_TYPE";
+
 }

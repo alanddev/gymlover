@@ -1,5 +1,6 @@
 package com.alanddev.gymlover.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -34,6 +35,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.location.places.Place;
 
 
 import java.util.ArrayList;
@@ -48,6 +50,8 @@ public class ReportActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TransactionController transactionController;
+    private int typeReport;
+    private String dateStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +65,38 @@ public class ReportActivity extends AppCompatActivity {
 
         transactionController = new TransactionController(this);
 
+
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        getData();
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
     }
 
+    public void getData(){
+        Bundle b = getIntent().getExtras();
+        typeReport=Constant.REPORT_TYPE_BODY;
+        if (b!=null){
+            typeReport = b.getInt(Constant.REPORT_TYPE,Constant.REPORT_TYPE_BODY);
+            dateStr =  b.getString(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
+        }
+        mSectionsPagerAdapter.typeReport = typeReport;
+    }
 
+    public void reloadData(int viewType){
+        finish();
+        Intent intent = new Intent(this,ReportActivity.class);
+        intent.putExtra(Constant.REPORT_TYPE, typeReport);
+        intent.putExtra(Constant.VIEW_TYPE,viewType);
+        intent.putExtra(Constant.PUT_EXTRA_DATE,dateStr);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,6 +116,18 @@ public class ReportActivity extends AppCompatActivity {
         if (id == android.R.id.home) {
             finish();
         }
+
+        if (id == R.id.action_view_day) {
+             reloadData(Constant.VIEW_TYPE_DAY);
+        }else if (id == R.id.action_view_week) {
+            reloadData(Constant.VIEW_TYPE_WEEK);
+        }else if(id == R.id.action_view_month) {
+            reloadData(Constant.VIEW_TYPE_MONTH);
+        }else if (id == R.id.action_view_year) {
+            reloadData(Constant.VIEW_TYPE_YEAR);
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -109,8 +145,10 @@ public class ReportActivity extends AppCompatActivity {
         LineChart chart;
         PieChart chartPieCalo;
         PieChart chartPieWeight;
-        Date dateReport;
-        int typeReport;
+        public Date dateReport;
+        public int typeView;
+        public int tabPage;
+        public int typeReport;
 
         private TransactionController transactionController;
         public PlaceholderFragment() {
@@ -131,26 +169,26 @@ public class ReportActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            int tabPage = getArguments().getInt(ARG_SECTION_NUMBER);
+            tabPage = getArguments().getInt(ARG_SECTION_NUMBER);
+
             View rootView =  inflater.inflate(R.layout.fragment_report_line, container, false);
             transactionController = new TransactionController(getContext());
             getData();
             switch(tabPage)
             {
                 case 0:
-//                    rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
-//                    setDataLine(rootView);
-                    rootView = getFrameLine(inflater,rootView,container);
+                    if (typeReport == Constant.REPORT_TYPE_WORKOUT) {
+                        rootView = getFramePie(inflater, rootView, container);
+                    }else{
+                        rootView = getFrameLine(inflater,rootView,container);
+                    }
                     break;
                 case 1:
-//                    rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
-//                    ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
-//                    transactionController.open();
-//                    ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroup(dateReport,typeReport);
-//                    listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
-//                    setDataPie(rootView, tranSumGrps);
-//                    Utils.ListUtils.setDynamicHeight(listTransaction);
-                    rootView = getFramePie(inflater,rootView,container);
+                    if (typeReport == Constant.REPORT_TYPE_WORKOUT) {
+                        rootView = getFrameLine(inflater, rootView, container);
+                    }else{
+                        rootView = getFramePie(inflater,rootView,container);
+                    }
                     break;
             }
 
@@ -158,17 +196,17 @@ public class ReportActivity extends AppCompatActivity {
         }
 
 
-        public View getFramePie(LayoutInflater inflater,View rootView,ViewGroup container){
+        public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
             rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
             setDataLine(rootView);
             return rootView;
         }
 
-        public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
+        public View getFramePie(LayoutInflater inflater,View rootView,ViewGroup container){
             rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
             ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
             transactionController.open();
-            ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroup(dateReport,typeReport);
+            ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroup(dateReport,typeView);
             listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
             setDataPieCalo(rootView, tranSumGrps);
             setDataPieWeight(rootView, tranSumGrps);
@@ -182,12 +220,14 @@ public class ReportActivity extends AppCompatActivity {
         public void getData(){
             Bundle b = getActivity().getIntent().getExtras();
             if (b!=null) {
-                typeReport = b.getInt(Constant.VIEW_TYPE, 0);
-                String dateStr = b.getString(Constant.PUT_EXTRA_DATE);
+                typeView = b.getInt(Constant.VIEW_TYPE, 0);
+                String dateStr = b.getString(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
                 dateReport = Utils.changeStr2Date(dateStr, Constant.DATE_FORMAT_DB);
+                typeReport = b.getInt(Constant.REPORT_TYPE,0);
             }else {
-                typeReport = Constant.VIEW_TYPE_DAY;
+                typeView = Constant.VIEW_TYPE_DAY;
                 dateReport = new Date();
+                typeReport = Constant.REPORT_TYPE_WORKOUT;
             }
         }
 
@@ -368,6 +408,7 @@ public class ReportActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        public int typeReport;
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -375,7 +416,6 @@ public class ReportActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position);
         }
 
@@ -385,14 +425,26 @@ public class ReportActivity extends AppCompatActivity {
             return 2;
         }
 
+
+
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Body Fat";
+                    if (typeReport == Constant.REPORT_TYPE_WORKOUT) {
+                        return "Workout";
+                    }else{
+                        return "Body Fat";
+                    }
+
                 case 1:
-                    return "Workout";
+                    if (typeReport == Constant.REPORT_TYPE_WORKOUT) {
+                        return "Body Fat";
+                    }else{
+                        return "Workout";
+                    }
             }
+            //fragment = PlaceholderFragment.newInstance(position);
             return null;
         }
     }

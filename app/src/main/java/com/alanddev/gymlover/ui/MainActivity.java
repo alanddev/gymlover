@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_setting) {
             // Handle the camera action
             Intent intent = new Intent(this,SettingActivity.class);
+
             startActivityForResult(intent,REQUEST_SETTING);
         }else if(id == R.id.nav_exercise){
             Intent intent = new Intent(this,ExerciseGrpActivity.class);
@@ -185,6 +186,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }else if(id == R.id.nav_run_report){
             Intent intent = new Intent(this,ReportActivity.class);
+            intent.putExtra(Constant.REPORT_TYPE, Constant.REPORT_TYPE_WORKOUT);
             startActivity(intent);
         }
 

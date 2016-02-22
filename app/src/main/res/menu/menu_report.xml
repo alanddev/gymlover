@@ -2,6 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".UserActivity">
 
-    <item android:id="@+id/save" android:title="@string/action_save"
-        android:orderInCategory="100" app:showAsAction="always" />
+    <item android:id="@+id/action_view_day" android:title="@string/action_view_day"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_view_week" android:title="@string/action_view_week"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_view_month" android:title="@string/action_view_month"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_view_year" android:title="@string/action_view_year"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>
