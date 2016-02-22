@@ -65,8 +65,8 @@ public class WorkoutActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        /*TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);*/
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +179,7 @@ public class WorkoutActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 1;
         }
 
         @Override
@@ -187,8 +187,6 @@ public class WorkoutActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return "List Workout";
-                case 1:
-                    return "My Workout";
             }
             return null;
         }

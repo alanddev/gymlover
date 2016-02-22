@@ -64,9 +64,11 @@ public class WorkoutExerAdapter extends AmazingAdapter {
         }
         TextView txtwename = (TextView) res.findViewById(R.id.txtwename);
         TextView txtwedes = (TextView) res.findViewById(R.id.txtwedes);
+        TextView txtwe = (TextView)res.findViewById(R.id.txtwe);
         WorkoutExerDay composer = (WorkoutExerDay) getItem(position);
         txtwename.setText(mContext.getResources().getString(R.string.day)+" "+composer.getDay());
         txtwedes.setText(composer.getItems().size()+ " "+mContext.getResources().getString(R.string.exercise));
+        txtwe.setText(composer.getDay()+"");
         return res;
     }
 

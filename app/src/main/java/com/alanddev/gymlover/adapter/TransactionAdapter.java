@@ -86,7 +86,7 @@ public class TransactionAdapter extends AmazingAdapter {
 			TextView txtAmount = (TextView) header.findViewById(R.id.txtheadamout);
 			NumberFormat formatter = new DecimalFormat("###,###,###,###.##");
 			String sCalo =  formatter.format(transactionDay.getCalo());
-			txtAmount.setText(sCalo);
+			txtAmount.setText(sCalo + " calo");
 		} else {
 			header.setVisibility(View.GONE);
 		}

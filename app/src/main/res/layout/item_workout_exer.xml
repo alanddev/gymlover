@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical">
     <include
@@ -14,42 +14,43 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:paddingTop="10dp">
-        <ImageView
-            android:id="@+id/imgwe"
-            android:layout_width="@dimen/size_image_small"
-            android:layout_height="@dimen/size_image_small"
+        <TextView
+            android:id="@+id/txtwe"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:scaleType="fitXY" />
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/circle"
+            android:paddingLeft="18dp"
+            android:paddingTop="12dp"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/txtwename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/txtwe"
+            android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text=""
-            android:textSize="@dimen/text_size_default_big"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtwedes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_toRightOf="@+id/txtwe"
+            android:layout_marginLeft="10dp"
             android:layout_below="@+id/txtwename"
-            android:layout_marginLeft="50dp"
-            android:layout_toRightOf="@+id/icon"
-            android:text=""
-            android:textSize="14sp" />
+            android:textSize="12dp" />
 
         <ImageView
             android:layout_width="@dimen/size_image_checked"
             android:layout_height="@dimen/size_image_checked"
             android:layout_alignBottom="@+id/icon"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
             android:src="@mipmap/ic_arrow_right" />
     </RelativeLayout>
