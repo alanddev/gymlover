@@ -497,8 +497,8 @@ public class TransactionController implements IDataSource {
     public ArrayList<TransactionSumGroup> getCaloGroupByDate(Date dateReport){
         String date =  new SimpleDateFormat("yyyy-MM-dd").format(dateReport);
 
-        StringBuffer sql = new StringBuffer("SELECT SUM( t." +dbHelper.COLUMN_TRANS_CALO +")" + ",c."+ dbHelper.COLUMN_EX_GROUP_ID +
-                ",c."+ dbHelper.COLUMN_EX_GROUP_NAME +  ",c."+ dbHelper.COLUMN_EX_GROUP_IMAGE +
+        StringBuffer sql = new StringBuffer("SELECT SUM(t." +dbHelper.COLUMN_TRANS_CALO +")" + ",sum(t."+ dbHelper.COLUMN_TRANS_WEIGHT +
+                "),c."+ dbHelper.COLUMN_EX_GROUP_NAME +  ",c."+ dbHelper.COLUMN_EX_GROUP_IMAGE +
                 " FROM " + dbHelper.TABLE_TRANSACTION +" as t JOIN " +
                 dbHelper.TABLE_EXCERCISE + " as e ON t."+dbHelper.COLUMN_TRANS_EXERCISE +"=e."+dbHelper.COLUMN_EXCERCISE_ID +
                 " JOIN " + dbHelper.TABLE_EXCERCISE_GROUP  + " as c ON e." + dbHelper.COLUMN_EXCERCISE_GRP_ID +"=c."
@@ -513,6 +513,7 @@ public class TransactionController implements IDataSource {
         while (!cursor.isAfterLast()) {
             TransactionSumGroup tran = new TransactionSumGroup();
             tran.setCalo(cursor.getFloat(0));
+            tran.setWeight(cursor.getFloat(1));
             tran.setName(cursor.getString(2));
             tran.setImage(cursor.getString(3));
             trans.add(tran);
@@ -523,6 +524,26 @@ public class TransactionController implements IDataSource {
     }
 
 
+    public ArrayList<TransactionSumGroup>getCaloGroup(Date date, int type){
+        ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
+        switch (type){
+            case Constant.VIEW_TYPE_DAY:
+                trans = getCaloGroupByDate(date);
+                break;
+            case Constant.VIEW_TYPE_WEEK:
+                trans =getCaloGroupByWeek(date);
+                break;
+            case Constant.VIEW_TYPE_MONTH:
+                trans=getCaloGroupByMonth(date);
+                break;
+            case Constant.VIEW_TYPE_YEAR:
+                trans=getCaloGroupByYear(date);
+                break;
+
+        }
+        return trans;
+    }
+
 
     public ArrayList<TransactionSumGroup> getCaloGroupByDate(ArrayList<Date> dates){
         Date dateStart = dates.get(0);
@@ -530,8 +551,8 @@ public class TransactionController implements IDataSource {
         String sDateStart =  new SimpleDateFormat("yyyy-MM-dd").format(dateStart);
         String sDateEnd =  new SimpleDateFormat("yyyy-MM-dd").format(dateEnd);
 
-        StringBuffer sql = new StringBuffer("SELECT SUM( t." +dbHelper.COLUMN_TRANS_CALO +")" + ",c."+ dbHelper.COLUMN_EX_GROUP_ID +
-                ",c."+ dbHelper.COLUMN_EX_GROUP_NAME +  ",c."+ dbHelper.COLUMN_EX_GROUP_IMAGE +
+        StringBuffer sql = new StringBuffer("SELECT SUM( t." +dbHelper.COLUMN_TRANS_CALO +")" + ",sum (t."+ dbHelper.COLUMN_TRANS_WEIGHT +
+                "), c."+ dbHelper.COLUMN_EX_GROUP_NAME +  ",c."+ dbHelper.COLUMN_EX_GROUP_IMAGE +
                 " FROM " + dbHelper.TABLE_TRANSACTION +" as t JOIN " +
                 dbHelper.TABLE_EXCERCISE + " as e ON t."+dbHelper.COLUMN_TRANS_EXERCISE +"=e."+dbHelper.COLUMN_EXCERCISE_ID +
                 " JOIN " + dbHelper.TABLE_EXCERCISE_GROUP  + " as c ON e." + dbHelper.COLUMN_EXCERCISE_GRP_ID +"=c."
@@ -547,8 +568,10 @@ public class TransactionController implements IDataSource {
         while (!cursor.isAfterLast()) {
             TransactionSumGroup tran = new TransactionSumGroup();
             tran.setCalo(cursor.getFloat(0));
+            tran.setWeight(cursor.getFloat(1));
             tran.setName(cursor.getString(2));
             tran.setImage(cursor.getString(3));
+
             trans.add(tran);
             cursor.moveToNext();
         }
@@ -568,6 +591,14 @@ public class TransactionController implements IDataSource {
     public ArrayList<TransactionSumGroup> getCaloGroupByMonth(Date date){
         ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
         ArrayList<Date> dates = getDateOfMonth(date);
+        trans = getCaloGroupByDate(dates);
+        return trans;
+    }
+
+    public ArrayList<TransactionSumGroup> getCaloGroupByYear(Date date){
+        ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
+        String year = Utils.getYear(date);
+        ArrayList<Date> dates = getDateOfMonths(1, 12, year);
         trans = getCaloGroupByDate(dates);
         return trans;
     }

@@ -107,7 +107,8 @@ public class ReportActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
         LineChart chart;
-        PieChart chartPie;
+        PieChart chartPieCalo;
+        PieChart chartPieWeight;
         Date dateReport;
         int typeReport;
 
@@ -137,23 +138,45 @@ public class ReportActivity extends AppCompatActivity {
             switch(tabPage)
             {
                 case 0:
-                    rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
-                    setDataLine(rootView);
+//                    rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
+//                    setDataLine(rootView);
+                    rootView = getFrameLine(inflater,rootView,container);
                     break;
                 case 1:
-                    rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
-                    ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
-                    transactionController.open();
-                    ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroupByDate(dateReport);
-                    listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
-                    setDataPie(rootView, tranSumGrps);
-
-                    Utils.ListUtils.setDynamicHeight(listTransaction);
+//                    rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
+//                    ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
+//                    transactionController.open();
+//                    ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroup(dateReport,typeReport);
+//                    listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
+//                    setDataPie(rootView, tranSumGrps);
+//                    Utils.ListUtils.setDynamicHeight(listTransaction);
+                    rootView = getFramePie(inflater,rootView,container);
                     break;
             }
 
             return rootView;
         }
+
+
+        public View getFramePie(LayoutInflater inflater,View rootView,ViewGroup container){
+            rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
+            setDataLine(rootView);
+            return rootView;
+        }
+
+        public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
+            rootView = inflater.inflate(R.layout.fragment_report_pie, container, false);
+            ListView listTransaction = (ListView)rootView.findViewById(R.id.list_transaction);
+            transactionController.open();
+            ArrayList<TransactionSumGroup> tranSumGrps = transactionController.getCaloGroup(dateReport,typeReport);
+            listTransaction.setAdapter(new TransSumGrpAdapter(getContext(), tranSumGrps));
+            setDataPieCalo(rootView, tranSumGrps);
+            setDataPieWeight(rootView, tranSumGrps);
+            Utils.ListUtils.setDynamicHeight(listTransaction);
+            return rootView;
+        }
+
+
 
 
         public void getData(){
@@ -218,11 +241,10 @@ public class ReportActivity extends AppCompatActivity {
 
         }
 
-        public void setDataPie(View rootView, ArrayList<TransactionSumGroup>trans){
-            chartPie = (PieChart)rootView.findViewById(R.id.chart);
+        public void setDataPieCalo(View rootView, ArrayList<TransactionSumGroup>trans){
+            chartPieCalo = (PieChart)rootView.findViewById(R.id.chartCalo);
             float[] yData = { 5, 10, 15, 30, 40 };
             String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
-            //String[] xData = { "ic_category", "Huawei", "LG", "Apple", "Samsung" };
 
             ArrayList<Entry> yVals = new ArrayList<Entry>();
 
@@ -237,7 +259,7 @@ public class ReportActivity extends AppCompatActivity {
             for (int i = 0; i < trans.size(); i++)
                 xVals.add(trans.get(i).getName());
 
-            PieDataSet pieDataSet = new PieDataSet(yVals, "expenses");
+            PieDataSet pieDataSet = new PieDataSet(yVals, "Calo");
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
             pieDataSet.setDrawValues(false);
 
@@ -247,11 +269,43 @@ public class ReportActivity extends AppCompatActivity {
             data.setValueTextSize(11f);
             data.setValueTextColor(Color.GRAY);
 
-            chartPie.setData(data);
-            decorationChart(chartPie, pieDataSet);
+            chartPieCalo.setData(data);
+            decorationChart(chartPieCalo, pieDataSet);
 
         }
 
+        public void setDataPieWeight(View rootView, ArrayList<TransactionSumGroup>trans){
+            chartPieWeight = (PieChart)rootView.findViewById(R.id.chartWeight);
+            float[] yData = { 5, 10, 15, 30, 40 };
+            String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
+
+            ArrayList<Entry> yVals = new ArrayList<Entry>();
+
+            float total = 0.0f;
+
+
+            for (int i = 0; i < trans.size(); i++)
+                yVals.add(new Entry(trans.get(i).getWeight(), i));
+
+            ArrayList<String> xVals = new ArrayList<String>();
+
+            for (int i = 0; i < trans.size(); i++)
+                xVals.add(trans.get(i).getName());
+
+            PieDataSet pieDataSet = new PieDataSet(yVals, "Weight");
+            pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            pieDataSet.setDrawValues(false);
+
+
+            PieData data = new PieData(xVals, pieDataSet);
+            data.setValueFormatter(new PercentFormatter());
+            data.setValueTextSize(11f);
+            data.setValueTextColor(Color.GRAY);
+
+            chartPieWeight.setData(data);
+            decorationChart(chartPieWeight, pieDataSet);
+
+        }
 
         private void decorationChart(PieChart chart,PieDataSet dataSet){
 

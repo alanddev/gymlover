@@ -352,6 +352,14 @@ public class Utils {
     }
 
 
+    public static String getYear(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        return String.valueOf(year);
+    }
+
+
     public static class ListUtils {
         public static void setDynamicHeight(ListView mListView) {
             ListAdapter mListAdapter = mListView.getAdapter();
