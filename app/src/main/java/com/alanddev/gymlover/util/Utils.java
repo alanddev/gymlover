@@ -360,6 +360,67 @@ public class Utils {
     }
 
 
+
+    public static ArrayList<Date> getDateOfWeek(Date date){
+        //Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
+        c.add(Calendar.DAY_OF_MONTH, -dayOfWeek);
+
+        Date weekStart = c.getTime();
+        // we do not need the same day a week after, that's why use 6, not 7
+        c.add(Calendar.DAY_OF_MONTH, 6);
+        Date weekEnd = c.getTime();
+        ArrayList<Date>dates = new ArrayList<Date>();
+        dates.add(weekStart);
+        dates.add(weekEnd);
+        return dates;
+    }
+
+    public static ArrayList<Date>getDateOfMonth(Date date){
+        Calendar c = Calendar.getInstance();   // this takes current date
+        c.setTime(date);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        Date monthStart = c.getTime();
+
+        //c.set(Calendar.DATE, 1);
+        //c.add(Calendar.DATE, -1);
+        c.set(Calendar.DATE, c.getActualMaximum(Calendar.DATE));
+        Date monthEnd = c.getTime();
+        ArrayList<Date>dates = new ArrayList<Date>();
+        dates.add(monthStart);
+        dates.add(monthEnd);
+        //System.out.println(c.getTime());
+        return dates;
+
+    }
+
+
+    public static ArrayList<Date>getDateOfMonths(int fromMonth, int toMonth, String year){
+        String beginDateOfMonth = year + "-" + fromMonth + "-01";
+        Date dateStart = Utils.changeStr2Date(beginDateOfMonth, Constant.DATE_FORMAT_DB);
+
+        String endDateOfMonth = year + "-" + toMonth + "-01";
+        Date dateTo = Utils.changeStr2Date(endDateOfMonth, Constant.DATE_FORMAT_DB);
+        Calendar c = Calendar.getInstance();   // this takes current date
+        c.setTime(dateTo);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        c.set(Calendar.DATE, c.getActualMaximum(Calendar.DATE));
+        Date dateEnd = c.getTime();
+
+        ArrayList<Date>dates = new ArrayList<Date>();
+        dates.add(dateStart);
+        dates.add(dateEnd);
+        //System.out.println(c.getTime());
+        return dates;
+
+    }
+
+
+
+
+
     public static class ListUtils {
         public static void setDynamicHeight(ListView mListView) {
             ListAdapter mListAdapter = mListView.getAdapter();
