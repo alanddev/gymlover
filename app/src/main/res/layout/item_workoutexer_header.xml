@@ -1,51 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/header">
+    android:id="@+id/header"
+    android:background="@color/colorWeek">
 
-    <TableRow
-        android:id="@+id/hr5"
-        android:layout_width="fill_parent"
-        android:layout_height="8dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/colorDivider"></TableRow>
+    <ImageView
+        android:id="@+id/imgweekicon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/week"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"/>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txtheadname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgweekicon"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/colorTextColor"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/txtheadname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:textColor="@color/colorTextColor"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:text="anbc"/>
-
-        <TextView
-            android:id="@+id/txtheaddes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/txtheadname"
-            android:textColor="@color/colorTextColor"
-            android:textSize="15sp"
-            android:text="bac"/>
-    </RelativeLayout>
-    <TableRow
-        android:id="@+id/hr4"
-        android:layout_width="fill_parent"
-        android:layout_height="8dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/colorDivider"></TableRow>
-</LinearLayout>
+    <TextView
+        android:id="@+id/txtheaddes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgweekicon"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/txtheadname"
+        android:textColor="@color/colorTextColor"
+        android:textSize="12sp"
+        android:text="bac"/>
+</RelativeLayout>

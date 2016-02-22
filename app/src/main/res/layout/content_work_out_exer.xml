@@ -16,6 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/colorWhite"
-        android:layout_marginBottom="120dp">
+        android:layout_marginBottom="40dp">
     </com.foound.widget.AmazingListView>
 </RelativeLayout>

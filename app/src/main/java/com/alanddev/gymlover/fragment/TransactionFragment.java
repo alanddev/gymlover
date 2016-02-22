@@ -1,6 +1,7 @@
 package com.alanddev.gymlover.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,9 +15,12 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransactionAdapter;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Transaction;
+import com.alanddev.gymlover.model.TransactionDay;
 import com.alanddev.gymlover.model.Transactions;
+import com.alanddev.gymlover.ui.ReportActivity;
 import com.alanddev.gymlover.ui.TransactionDetailActivity;
 import com.alanddev.gymlover.util.Constant;
+import com.alanddev.gymlover.util.Utils;
 import com.foound.widget.AmazingListView;
 
 import java.text.DecimalFormat;
@@ -55,7 +59,7 @@ public class TransactionFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.trans_fragment_tabbed, container, false);
         Integer sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
         final Transactions transactions;
-        if(transactionses.size()>=sectionNumber) {
+        if(transactionses!=null&&transactionses.size()>=sectionNumber) {
             transactions = transactionses.get(sectionNumber - 1);
         }else{
             transactions = new Transactions();
@@ -90,7 +94,18 @@ public class TransactionFragment extends Fragment {
         header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //to report
+                if (transactions.getItems() != null && transactions.getItems().size() > 0) {
+                    TransactionDay transactionDay = transactions.getItems().get(0);
+                    if (transactionDay.getItems() != null && transactionDay.getItems().size() > 0) {
+                        Transaction transactionDetail = transactionDay.getItems().get(0);
+                        SharedPreferences mShaPref = Utils.getSharedPreferences(getContext());
+                        int viewtype = mShaPref.getInt(Constant.VIEW_TYPE, 0);
+                        Intent intent = new Intent(getContext(), ReportActivity.class);
+                        intent.putExtra(Constant.VIEW_TYPE, viewtype);
+                        intent.putExtra(Constant.PUT_EXTRA_DATE, transactionDetail.getDate());
+                        startActivity(intent);
+                    }
+                }
             }
         });
         return rootView;
