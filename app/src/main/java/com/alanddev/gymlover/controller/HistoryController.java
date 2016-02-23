@@ -60,6 +60,7 @@ public class HistoryController implements IDataSource {
         values.put(MwSQLiteHelper.COLUMN_HISTORY_HEIGHT, history.getHeight());
         values.put(MwSQLiteHelper.COLUMN_HISTORY_WEIGHT, history.getWeight());
         values.put(MwSQLiteHelper.COLUMN_HISTORY_FAT, history.getFat());
+        values.put(MwSQLiteHelper.COLUMN_HISTORY_DATE,Utils.changeDate2Str(new Date()));
         database.insert(MwSQLiteHelper.TABLE_HISTORY, null,
                 values);
         return history;
@@ -95,20 +96,31 @@ public class HistoryController implements IDataSource {
     }
 
     @Override
-    public List<Model> getAll() {
-        List<Model> hists = new ArrayList<Model>();
-        Cursor cursor = database.query(MwSQLiteHelper.TABLE_HISTORY,
-                allColumns, null, null, null, null, null);
+    public List<Model>getAll(){
+        return null;
+    }
+
+
+    public ArrayList<History> getAllHist() {
+        StringBuffer sql = new StringBuffer("SELECT h." +dbHelper.COLUMN_HISTORY_FAT +",h."+ dbHelper.COLUMN_HISTORY_WEIGHT +
+                ", h."+ dbHelper.COLUMN_HISTORY_HEIGHT + ",h."+dbHelper.COLUMN_HISTORY_DATE+
+                " FROM " + dbHelper.TABLE_HISTORY  + " as h");
+
+        Cursor cursor = database.rawQuery(sql.toString(), null);
 
         cursor.moveToFirst();
+        ArrayList<History> histories = new ArrayList<History>();
         while (!cursor.isAfterLast()) {
-            History hist = (History)cursorTo(cursor);
-            hists.add(hist);
+            History history = new History();
+            history.setFat(cursor.getFloat(0));
+            history.setWeight(cursor.getFloat(1));
+            history.setHeight(cursor.getFloat(2));
+            history.setDate(cursor.getString(3));
+            histories.add(history);
             cursor.moveToNext();
         }
-        // make sure to close the cursor
-        cursor.close();
-        return hists;
+
+        return histories;
     }
 
     @Override
@@ -155,13 +167,14 @@ public class HistoryController implements IDataSource {
 
         StringBuffer sql = new StringBuffer("SELECT h." +dbHelper.COLUMN_HISTORY_FAT +",h."+ dbHelper.COLUMN_HISTORY_WEIGHT +
                 ", h."+ dbHelper.COLUMN_HISTORY_HEIGHT + ",h."+dbHelper.COLUMN_HISTORY_DATE+
-                " FROM " + dbHelper.TABLE_HISTORY  + " where h."
+                " FROM " + dbHelper.TABLE_HISTORY  + " as h where h."
                 + dbHelper.COLUMN_HISTORY_DATE + " = '"+ sDateStart +"'");
 
         Cursor cursor = database.rawQuery(sql.toString(), null);
 
         cursor.moveToFirst();
         ArrayList<History> histories = new ArrayList<History>();
+
         while (!cursor.isAfterLast()) {
             History history = new History();
             history.setFat(cursor.getFloat(0));
@@ -188,7 +201,7 @@ public class HistoryController implements IDataSource {
 
         StringBuffer sql = new StringBuffer("SELECT h." +dbHelper.COLUMN_HISTORY_FAT +",h."+ dbHelper.COLUMN_HISTORY_WEIGHT +
                 ", h."+ dbHelper.COLUMN_HISTORY_HEIGHT + ",h."+dbHelper.COLUMN_HISTORY_DATE+
-                " FROM " + dbHelper.TABLE_HISTORY  + " where h."
+                " FROM " + dbHelper.TABLE_HISTORY  + " as h where h."
                 + dbHelper.COLUMN_HISTORY_DATE + " >= '"+ sDateStart +"' and h." + dbHelper.COLUMN_HISTORY_DATE +"<='"+sDateEnd +"'");
 
         Cursor cursor = database.rawQuery(sql.toString(), null);
@@ -212,7 +225,7 @@ public class HistoryController implements IDataSource {
         ArrayList<History> trans = new ArrayList<History>();
         switch (type){
             case Constant.VIEW_TYPE_DAY:
-                trans = getBodyIndexByDate(date);
+                trans = getBodyIndexByWeek(date);
                 break;
             case Constant.VIEW_TYPE_WEEK:
                 trans =getBodyIndexByWeek(date);

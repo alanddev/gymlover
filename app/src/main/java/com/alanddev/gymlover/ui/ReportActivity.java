@@ -204,6 +204,7 @@ public class ReportActivity extends AppCompatActivity {
 
         public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
             rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
+            historyController.open();
             ArrayList<History>histories = historyController.getBodyIndex(dateReport,typeView);
             setDataLineBodyFat(rootView,histories);
             setDataLineBMI(rootView, histories);
@@ -320,9 +321,6 @@ public class ReportActivity extends AppCompatActivity {
             chartBMI.setData(data);
             chartBMI.animateY(800, Easing.EasingOption.EaseInBounce);
         }
-
-
-
 
 
         public void setDataPieCalo(View rootView, ArrayList<TransactionSumGroup>trans){

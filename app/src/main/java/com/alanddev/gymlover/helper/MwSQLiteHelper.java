@@ -103,7 +103,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_HISTORY_HEIGHT + " float not null, "
             + COLUMN_HISTORY_WEIGHT + " float not null, "
             + COLUMN_HISTORY_FAT + " float not null, "
-            + COLUMN_HISTORY_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP"
+            + COLUMN_HISTORY_DATE + " DATETIME not null"
             + ");";
 
 
