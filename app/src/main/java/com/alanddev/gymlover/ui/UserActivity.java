@@ -36,6 +36,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class UserActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, View.OnClickListener{
@@ -207,8 +208,10 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 userController.update(newUser);
             }
             historyController.open();
-            History hist = new History(newUser.getId(),newUser.getHeight(),newUser.getWeight(),newUser.getFat());
-            historyController.create(hist);
+            if (historyController.checkDate(new Date())) {
+                History hist = new History(newUser.getId(), newUser.getHeight(), newUser.getWeight(), newUser.getFat());
+                historyController.create(hist);
+            }
 
             historyController.close();
             userController.close();

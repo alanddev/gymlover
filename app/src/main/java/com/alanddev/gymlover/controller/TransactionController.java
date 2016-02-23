@@ -332,7 +332,7 @@ public class TransactionController implements IDataSource {
         List<String> lstDisplayDate = new ArrayList<String>();
         while (!cursor.isAfterLast()) {
             String strDisplayDate = cursor.getString(0);
-            Log.d("BBBBBBB",strDisplayDate);
+            Log.d("BBBBBBB", strDisplayDate);
             lstDisplayDate.add(strDisplayDate);
             cursor.moveToNext();
         }
@@ -366,7 +366,7 @@ public class TransactionController implements IDataSource {
                 trans.add(tran);
                 cursor.moveToNext();
             }
-            Log.d("CCCCC",strDate2+" "+strDisplayDt+" "+trans.size());
+            Log.d("CCCCC", strDate2 + " " + strDisplayDt + " " + trans.size());
             cursor.close();
             transactionDay.setItems(trans);
 
@@ -582,7 +582,7 @@ public class TransactionController implements IDataSource {
 
     public ArrayList<TransactionSumGroup> getCaloGroupByWeek(Date date){
         ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
-        ArrayList<Date> dates = getDateOfWeek(date);
+        ArrayList<Date> dates = Utils.getDateOfWeek(date);
         trans = getCaloGroupByDate(dates);
         return trans;
     }
@@ -590,7 +590,7 @@ public class TransactionController implements IDataSource {
 
     public ArrayList<TransactionSumGroup> getCaloGroupByMonth(Date date){
         ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
-        ArrayList<Date> dates = getDateOfMonth(date);
+        ArrayList<Date> dates = Utils.getDateOfMonth(date);
         trans = getCaloGroupByDate(dates);
         return trans;
     }
@@ -598,67 +598,13 @@ public class TransactionController implements IDataSource {
     public ArrayList<TransactionSumGroup> getCaloGroupByYear(Date date){
         ArrayList<TransactionSumGroup> trans = new ArrayList<TransactionSumGroup>();
         String year = Utils.getYear(date);
-        ArrayList<Date> dates = getDateOfMonths(1, 12, year);
+        ArrayList<Date> dates = Utils.getDateOfMonths(1, 12, year);
         trans = getCaloGroupByDate(dates);
         return trans;
     }
 
 
 
-    private ArrayList<Date> getDateOfWeek(Date date){
-        //Date date = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek();
-        c.add(Calendar.DAY_OF_MONTH, -dayOfWeek);
-
-        Date weekStart = c.getTime();
-        // we do not need the same day a week after, that's why use 6, not 7
-        c.add(Calendar.DAY_OF_MONTH, 6);
-        Date weekEnd = c.getTime();
-        ArrayList<Date>dates = new ArrayList<Date>();
-        dates.add(weekStart);
-        dates.add(weekEnd);
-        return dates;
-    }
-    private ArrayList<Date>getDateOfMonth(Date date){
-        Calendar c = Calendar.getInstance();   // this takes current date
-        c.setTime(date);
-        c.set(Calendar.DAY_OF_MONTH, 1);
-        Date monthStart = c.getTime();
-
-        //c.set(Calendar.DATE, 1);
-        //c.add(Calendar.DATE, -1);
-        c.set(Calendar.DATE, c.getActualMaximum(Calendar.DATE));
-        Date monthEnd = c.getTime();
-        ArrayList<Date>dates = new ArrayList<Date>();
-        dates.add(monthStart);
-        dates.add(monthEnd);
-        //System.out.println(c.getTime());
-        return dates;
-
-    }
-
-
-    private ArrayList<Date>getDateOfMonths(int fromMonth, int toMonth, String year){
-        String beginDateOfMonth = year + "-" + fromMonth + "-01";
-        Date dateStart = Utils.changeStr2Date(beginDateOfMonth, Constant.DATE_FORMAT_DB);
-
-        String endDateOfMonth = year + "-" + toMonth + "-01";
-        Date dateTo = Utils.changeStr2Date(endDateOfMonth, Constant.DATE_FORMAT_DB);
-        Calendar c = Calendar.getInstance();   // this takes current date
-        c.setTime(dateTo);
-        c.set(Calendar.DAY_OF_MONTH, 1);
-        c.set(Calendar.DATE, c.getActualMaximum(Calendar.DATE));
-        Date dateEnd = c.getTime();
-
-        ArrayList<Date>dates = new ArrayList<Date>();
-        dates.add(dateStart);
-        dates.add(dateEnd);
-        //System.out.println(c.getTime());
-        return dates;
-
-    }
 
 
     public Transaction getTransbyId(long id){

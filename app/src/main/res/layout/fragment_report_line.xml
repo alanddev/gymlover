@@ -9,10 +9,42 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_report" tools:context="com.alanddev.gymlover.ui.ReportActivity">
 
+    <TextView
+        android:id="@+id/txtTotalCalo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal = "true"
+        android:text="@string/totalFat"
+        android:textSize="@dimen/text_size_default_big"
+        android:textStyle="bold" />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart"
+        android:id="@+id/chartBodyFat"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_barchart_trend" />
+    <TableRow
+        android:id="@+id/hr1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorDivider" >
+    </TableRow>
+
+    <TextView
+        android:id="@+id/txtTotalWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal = "true"
+        android:text="@string/totalBMI"
+        android:textSize="@dimen/text_size_default_big"
+        android:textStyle="bold" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chartBMI"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_barchart_trend" />
+
 
 </LinearLayout>

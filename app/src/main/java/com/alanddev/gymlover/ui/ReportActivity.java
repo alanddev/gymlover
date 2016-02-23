@@ -20,7 +20,9 @@ import android.widget.ListView;
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransSumGrpAdapter;
 import com.alanddev.gymlover.adapter.TransactionWoAdapter;
+import com.alanddev.gymlover.controller.HistoryController;
 import com.alanddev.gymlover.controller.TransactionController;
+import com.alanddev.gymlover.model.History;
 import com.alanddev.gymlover.model.TransactionSumGroup;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
@@ -94,7 +96,7 @@ public class ReportActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ReportActivity.class);
         intent.putExtra(Constant.REPORT_TYPE, typeReport);
         intent.putExtra(Constant.VIEW_TYPE,viewType);
-        intent.putExtra(Constant.PUT_EXTRA_DATE,dateStr);
+        intent.putExtra(Constant.PUT_EXTRA_DATE, dateStr);
         startActivity(intent);
     }
 
@@ -142,7 +144,8 @@ public class ReportActivity extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-        LineChart chart;
+        LineChart chartBodyFat;
+        LineChart chartBMI;
         PieChart chartPieCalo;
         PieChart chartPieWeight;
         public Date dateReport;
@@ -151,6 +154,7 @@ public class ReportActivity extends AppCompatActivity {
         public int typeReport;
 
         private TransactionController transactionController;
+        private HistoryController historyController;
         public PlaceholderFragment() {
         }
 
@@ -173,6 +177,8 @@ public class ReportActivity extends AppCompatActivity {
 
             View rootView =  inflater.inflate(R.layout.fragment_report_line, container, false);
             transactionController = new TransactionController(getContext());
+            historyController = new HistoryController(getContext());
+
             getData();
             switch(tabPage)
             {
@@ -198,7 +204,9 @@ public class ReportActivity extends AppCompatActivity {
 
         public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
             rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
-            setDataLine(rootView);
+            ArrayList<History>histories = historyController.getBodyIndex(dateReport,typeView);
+            setDataLineBodyFat(rootView,histories);
+            setDataLineBMI(rootView, histories);
             return rootView;
         }
 
@@ -231,26 +239,19 @@ public class ReportActivity extends AppCompatActivity {
             }
         }
 
-        public void setDataLine(View rootView){
-            chart = (LineChart)rootView.findViewById(R.id.chart);
+        public void setDataLineBodyFat(View rootView,ArrayList<History> histories){
+            chartBodyFat = (LineChart)rootView.findViewById(R.id.chartBodyFat);
             int count = 15;
             int range = 20;
             ArrayList<String> xVals = new ArrayList<String>();
-            for (int i = 0; i < count; i++) {
-                xVals.add((15 + i) + "/01/2016" );
-            }
-
             ArrayList<Entry> yVals = new ArrayList<Entry>();
-
-            for (int i = 0; i < count; i++) {
-
-                float mult = (range + 1);
-                float val = (float) (Math.random() * mult) + 3;// + (float)
-                yVals.add(new Entry(val, i));
+            for (int i = 0; i < histories.size(); i++) {
+                History hist = histories.get(i);
+                xVals.add(hist.getDate());
+                yVals.add(new Entry(hist.getFat(),i));
             }
-
             // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(yVals, "DataSet 1");
+            LineDataSet set1 = new LineDataSet(yVals, "Body Fat");
             // set1.setFillAlpha(110);
             // set1.setFillColor(Color.RED);
 
@@ -275,11 +276,54 @@ public class ReportActivity extends AppCompatActivity {
             LineData data = new LineData(xVals, dataSets);
 
             // set data
-            chart.setData(data);
-            chart.animateY(800, Easing.EasingOption.EaseInBounce);
-
-
+            chartBodyFat.setData(data);
+            chartBodyFat.animateY(800, Easing.EasingOption.EaseInBounce);
         }
+
+
+        public void setDataLineBMI(View rootView,ArrayList<History> histories){
+            chartBMI = (LineChart)rootView.findViewById(R.id.chartBMI);
+            ArrayList<String> xVals = new ArrayList<String>();
+            ArrayList<Entry> yVals = new ArrayList<Entry>();
+            for (int i = 0; i < histories.size(); i++) {
+                History hist = histories.get(i);
+                xVals.add(hist.getDate());
+                float BMI = hist.getWeight()/((hist.getHeight()/100)*(hist.getHeight()/100));
+                yVals.add(new Entry(BMI,i));
+            }
+            // create a dataset and give it a type
+            LineDataSet set1 = new LineDataSet(yVals, "Body Fat");
+            // set1.setFillAlpha(110);
+            // set1.setFillColor(Color.RED);
+
+            // set the line to be drawn like this "- - - - - -"
+            set1.enableDashedLine(10f, 5f, 0f);
+            set1.enableDashedHighlightLine(10f, 5f, 0f);
+            set1.setColor(Color.CYAN);
+            set1.setCircleColor(Color.BLACK);
+            set1.setLineWidth(1f);
+            //set1.setCircleRadius(3f);
+            set1.setDrawCircleHole(false);
+            set1.setValueTextSize(9f);
+            set1.setFillAlpha(65);
+            set1.setFillColor(Color.CYAN);
+            set1.setDrawFilled(true);
+
+
+            ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+            dataSets.add(set1); // add the datasets
+
+            // create a data object with the datasets
+            LineData data = new LineData(xVals, dataSets);
+
+            // set data
+            chartBMI.setData(data);
+            chartBMI.animateY(800, Easing.EasingOption.EaseInBounce);
+        }
+
+
+
+
 
         public void setDataPieCalo(View rootView, ArrayList<TransactionSumGroup>trans){
             chartPieCalo = (PieChart)rootView.findViewById(R.id.chartCalo);
