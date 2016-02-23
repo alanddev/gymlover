@@ -33,8 +33,6 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
 
     private TextView edtDate;
     private TextView edtCate;
-    private ImageView imgminus;
-    private ImageView imgadd;
     private EditText edtrepeat;
     private EditText edtweight;
     private EditText edttime;
@@ -56,14 +54,8 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
         edtDate.setOnClickListener(this);
         edtCate = (TextView)findViewById(R.id.edtcate);
         edtCate.setOnClickListener(this);
-        imgminus = (ImageView)findViewById(R.id.imgminus);
-        imgminus.setOnClickListener(this);
-        imgadd = (ImageView)findViewById(R.id.imgadd);
-        imgadd.setOnClickListener(this);
         edtrepeat = (EditText)findViewById(R.id.edtrepeat);
-        edtrepeat.setText("1");
         edtweight = (EditText)findViewById(R.id.edtweight);
-        edtweight.setText(weight_base.toString());
         edttime = (EditText)findViewById(R.id.edttime);
         imgcate = (ImageView)findViewById(R.id.imgcate);
     }
@@ -120,20 +112,6 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
         }
         if(v.getId()==R.id.edtdate){
             showDatePickerDialog(v);
-        }
-        if(v.getId()==R.id.imgadd){
-            Float weight = Float.valueOf(edtweight.getText().toString());
-            weight = weight+weight_base;
-            edtweight.setText(weight.toString());
-        }
-
-        if(v.getId()==R.id.imgminus){
-            Float weight = Float.valueOf(edtweight.getText().toString());
-            weight = weight-weight_base;
-            if(weight<0){
-                weight=0f;
-            }
-            edtweight.setText(weight.toString());
         }
     }
 

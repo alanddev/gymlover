@@ -7,8 +7,8 @@ android:paddingBottom="10dp">
 
 <ImageView
     android:id="@+id/icon"
-    android:layout_width="@dimen/size_image_small"
-    android:layout_height="@dimen/size_image_small"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
     android:scaleType="fitXY"
     android:layout_alignParentLeft="true"
     android:layout_marginLeft="2dp"
@@ -18,21 +18,17 @@ android:paddingBottom="10dp">
     android:id="@+id/name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="@dimen/text_size_default_big"
-    android:gravity="center_vertical"
-    android:layout_alignParentLeft="true"
-    android:layout_marginLeft="50dp"
-    android:text=""
-    android:textStyle="bold"
-     />
+    android:textSize="16dp"
+    android:layout_toRightOf="@+id/icon"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="5dp"
+    android:textStyle="bold" />
 
 <TextView android:id="@+id/weeks"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="50dp"
-    android:layout_alignParentLeft="true"
-    android:textSize="14sp"
-    android:text=""
+    android:layout_marginLeft="12dp"
+    android:textSize="12dp"
     android:layout_toRightOf="@+id/icon"
     android:layout_below="@+id/name" />
 
@@ -43,7 +39,7 @@ android:paddingBottom="10dp">
     android:layout_height="@dimen/size_image_checked"
     android:layout_marginRight="20dp"
     android:layout_alignParentRight="true"
-    android:layout_alignBottom="@+id/icon"
+    android:layout_centerVertical="true"
  />
 
 

@@ -36,8 +36,6 @@ public class TransactionDetailActivity extends AppCompatActivity implements View
     private Transaction transaction;
     private TextView edtDate;
     private TextView edtCate;
-    private ImageView imgminus;
-    private ImageView imgadd;
     private EditText edtrepeat;
     private EditText edtweight;
     private EditText edttime;
@@ -66,10 +64,7 @@ public class TransactionDetailActivity extends AppCompatActivity implements View
         edtCate.setOnClickListener(this);
         edtCate.setText(transaction.getExer_name());
 
-        imgminus = (ImageView)findViewById(R.id.imgminus);
-        imgminus.setOnClickListener(this);
-        imgadd = (ImageView)findViewById(R.id.imgadd);
-        imgadd.setOnClickListener(this);
+
         edtrepeat = (EditText)findViewById(R.id.edtrepeat);
         edtrepeat.setText(transaction.getRepeat()+"");
         edtweight = (EditText)findViewById(R.id.edtweight);
@@ -98,20 +93,7 @@ public class TransactionDetailActivity extends AppCompatActivity implements View
             showDatePickerDialog(v);
         }
 
-        if(v.getId()==R.id.imgadd){
-            Float weight = Float.valueOf(edtweight.getText().toString());
-            weight = weight+weight_base;
-            edtweight.setText(weight.toString());
-        }
 
-        if(v.getId()==R.id.imgminus){
-            Float weight = Float.valueOf(edtweight.getText().toString());
-            weight = weight-weight_base;
-            if(weight<0){
-                weight=0f;
-            }
-            edtweight.setText(weight.toString());
-        }
     }
 
     @Override

@@ -29,9 +29,10 @@ import java.util.List;
  */
 public class WorkoutAdapter extends ArrayAdapter<Workout> {
 
+    private Context mContext;
     public WorkoutAdapter(Context context, List<Workout> workouts) {
         super(context, 0, workouts);
-
+        mContext=context;
     }
 
     @Override
@@ -50,13 +51,8 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
         // Populate the data into the template view using the data object
         tvName.setText(workout.getName());
         tvWeek.setText(workout.getWeek() + " " + getContext().getString(R.string.week));
-
-        Resources res = convertView.getResources();
-        String srcImg = "ic_workout_" + workout.getImage().toLowerCase();
-        int id = res.getIdentifier(srcImg, "mipmap", getContext().getPackageName());
-        Drawable image = convertView.getResources().getDrawable(id);
-        imgIcon.setImageDrawable(image);
-
+        int temp = position%5+1;
+        imgIcon.setImageResource(mContext.getResources().getIdentifier("workout_" + temp, "mipmap", mContext.getPackageName()));
         imgChecked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
