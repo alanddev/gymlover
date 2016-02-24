@@ -57,47 +57,46 @@
         android:textColor="@color/colorDeepSkyBlue"
         android:layout_gravity="center_horizontal"
         />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/start"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:text="@string/start"
+            android:onClick="onClickStart" />
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickReset"
+            android:text="@string/reset" />
 
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:onClick="onClickNext"
+            />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_save"
+            android:onClick="onClickSave"
+            />
+
+    </LinearLayout>
 
     <ListView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:id="@+id/list_transaction" />
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-            <Button
-                android:id="@+id/start"
-                android:layout_width="90dp"
-                android:layout_height="45dp"
-                android:text="@string/start"
-                android:onClick="onClickStart"
-                android:layout_marginBottom="78dp" />
-            <Button
-                android:id="@+id/reset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClickReset"
-                android:text="@string/reset" />
 
-            <Button
-                    android:id="@+id/next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/next"
-                    android:onClick="onClickNext"
-                />
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/action_save"
-                android:onClick="onClickSave"
-                />
-
-    </LinearLayout>
 
 
 

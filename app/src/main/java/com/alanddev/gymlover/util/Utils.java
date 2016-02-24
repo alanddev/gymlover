@@ -497,7 +497,7 @@ public class Utils {
     // base 150 lbs ( ~ 68 kg) in 60 minutes.
     public static float calculatorCalo(float weight, float time, float caloBase){
         float result;
-        result = (((weight*2.2f/150f)* caloBase)/3600f)*time;
+        result = (((weight*Constant.KG_TO_LB/150f)* caloBase)/3600f)*time;
         return Math.round(result);
     }
 

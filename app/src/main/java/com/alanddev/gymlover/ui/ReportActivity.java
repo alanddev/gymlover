@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.alanddev.gymlover.R;
@@ -204,6 +205,12 @@ public class ReportActivity extends AppCompatActivity {
 
         public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
             rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
+            Button btUpdate = (Button)rootView.findViewById(R.id.update);
+            btUpdate.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    onClickUpdate(v);
+                }
+            });
             historyController.open();
             ArrayList<History>histories = historyController.getBodyIndex(dateReport,typeView);
             setDataLineBodyFat(rootView,histories);
@@ -293,7 +300,7 @@ public class ReportActivity extends AppCompatActivity {
                 yVals.add(new Entry(BMI,i));
             }
             // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(yVals, "Body Fat");
+            LineDataSet set1 = new LineDataSet(yVals, "BMI");
             // set1.setFillAlpha(110);
             // set1.setFillColor(Color.RED);
 
@@ -325,8 +332,8 @@ public class ReportActivity extends AppCompatActivity {
 
         public void setDataPieCalo(View rootView, ArrayList<TransactionSumGroup>trans){
             chartPieCalo = (PieChart)rootView.findViewById(R.id.chartCalo);
-            float[] yData = { 5, 10, 15, 30, 40 };
-            String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
+            //float[] yData = { 5, 10, 15, 30, 40 };
+            //String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
 
             ArrayList<Entry> yVals = new ArrayList<Entry>();
 
@@ -439,6 +446,14 @@ public class ReportActivity extends AppCompatActivity {
             chart.invalidate(); // refresh
 
         }
+
+        public void onClickUpdate(View v){
+            Intent intent = new Intent(getActivity(),UserActivity.class);
+            intent.putExtra("update", 1);
+            getActivity().finish();
+            startActivity(intent);
+        }
+
 
     }
 

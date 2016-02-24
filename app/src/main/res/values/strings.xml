@@ -499,6 +499,20 @@
     <string name="gender_boy">Nam</string>
     <string name="gender_girl">Nữ</string>
 
+    <string-array name="weight_choice">
+        <item>@string/kg</item>
+        <item>@string/lb</item>
+    </string-array>
+    <string name="lb">lb</string>
+
+    <string-array name="height_choice">
+        <item>@string/cm</item>
+        <item>@string/inch</item>
+    </string-array>
+
+    <string name="inch">inch</string>
+    <string name="cm">cm</string>
+
     <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
     <string name="user_waist">Vòng eo</string>
     <string name="bodyfat_guide_begin">Bạn hãy nhìn vào hình bên dưới để có thể dễ hình dung về lượng mỡ cơ thể của mình nhé.</string>
@@ -537,4 +551,6 @@
     <string name="totalWeight">Weight Statistic</string>
     <string name="totalFat">Body Fat</string>
     <string name="totalBMI">Total BMI</string>
+    <string name="noticebody">Hãy thường xuyên cập nhật số đo cơ thể để theo dõi sức khỏe hàng ngày nhé :)</string>
+    <string name="update">Cập nhật</string>
 </resources>

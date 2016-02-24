@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -48,13 +49,20 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
     String imagePath = "";
     private int counter = 0;
     private Spinner spinnerGender;
+    private Spinner spinnerWeight;
+    private Spinner spinnerHeight;
     private ShowcaseView showcaseView;
     private TextView txtBodyFat;
     private TextView tvWeight;
     private TextView txtBirthday;
     private TextView txtHeight;
     private TextView txtName;
+    private ImageView imgDate;
     private Bundle bundle;
+    private int update;
+    private String heightChoice;
+    private String weightChoice;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +77,15 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_user));
 
         spinnerGender = (Spinner) findViewById(R.id.spinner_gender);
+        spinnerHeight = (Spinner) findViewById(R.id.spinner_height);
+        spinnerWeight = (Spinner) findViewById(R.id.spinner_weight);
+
         setDataSpinner();
         txtBodyFat = (TextView)findViewById(R.id.txtFat);
         tvWeight = (TextView)findViewById(R.id.txtWeight);
         txtHeight = (TextView)findViewById(R.id.txtHeight);
         txtName = (TextView)findViewById(R.id.txtName);
+        imgDate = (ImageView)findViewById(R.id.imgdate);
 
         txtBirthday = (TextView)findViewById(R.id.txtdate);
         txtBirthday.setOnClickListener(this);
@@ -95,9 +107,26 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         //userController.open();
         //userController.close();
         utils = new Utils();
-
+        getUpdateType();
     }
 
+
+    private void getUpdateType(){
+        bundle = getIntent().getExtras();
+        if (bundle!=null){
+            update = bundle.getInt("update",0);
+            if (update == 1){
+                txtName.setEnabled(false);
+                txtBirthday.setEnabled(false);
+                imgDate.setEnabled(false);
+                txtHeight.setFocusable(true);
+            }else{
+                txtName.setEnabled(true);
+                txtBirthday.setEnabled(true);
+                imgDate.setEnabled(true);
+            }
+        }
+    }
 
     public void showDatePickerDialog(View v) {
         Calendar now = Calendar.getInstance();
@@ -117,6 +146,56 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 R.array.gender_array, android.R.layout.simple_spinner_item);
         adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(adapterType);
+        heightChoice= getResources().getString(R.string.cm);
+        weightChoice= getResources().getString(R.string.kg);
+
+        spinnerHeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                float fHeight = Float.valueOf(txtHeight.getText().toString());
+                if (selected != heightChoice ) {
+                    if (selected == getResources().getString(R.string.cm)) {
+                        fHeight = Math.round(fHeight * Constant.INCH_TO_CM);
+                        txtHeight.setText(String.valueOf(fHeight));
+                    } else {
+                        fHeight = Math.round(fHeight / Constant.INCH_TO_CM);
+                        txtHeight.setText(String.valueOf(fHeight));
+                    }
+                }
+                heightChoice = selected;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnerWeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                float fWeight = Float.valueOf(tvWeight.getText().toString());
+                if (selected !=weightChoice){
+                    if (selected==getResources().getString(R.string.lb)){
+                        fWeight = Math.round(fWeight * Constant.KG_TO_LB);
+                        tvWeight.setText(String.valueOf(fWeight));
+                    }else{
+                        fWeight = Math.round(fWeight / Constant.KG_TO_LB);
+                        tvWeight.setText(String.valueOf(fWeight));
+                    }
+                }
+                weightChoice = selected;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
 
@@ -186,6 +265,17 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         }
 
         String sGender = spinnerGender.getSelectedItem().toString();
+        heightChoice = spinnerHeight.getSelectedItem().toString();
+        if (heightChoice == getResources().getString(R.string.inch)){
+            fHeight = Math.round(fHeight*Constant.INCH_TO_CM);
+        }
+
+        weightChoice = spinnerWeight.getSelectedItem().toString();
+        if (weightChoice == getResources().getString(R.string.lb)){
+            fHeight = Math.round(fWeight / Constant.KG_TO_LB);
+        }
+
+
         int gender = 1;
         if (sGender == getResources().getString(R.string.gender_boy)){
             gender = Constant.GENDER_BOY;
@@ -208,7 +298,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 userController.update(newUser);
             }
             historyController.open();
-            if (historyController.checkDate(new Date())) {
+            if (!historyController.checkDate(new Date())) {
                 History hist = new History(newUser.getId(), newUser.getHeight(), newUser.getWeight(), newUser.getFat());
                 historyController.create(hist);
             }
@@ -216,12 +306,20 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             historyController.close();
             userController.close();
 
-            Intent intent = new Intent (this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            if (update==0) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }else{
+                Intent intent = new Intent(this, ReportActivity.class);
+                intent.putExtra(Constant.VIEW_TYPE,Constant.VIEW_TYPE_WEEK);
+                intent.putExtra(Constant.REPORT_TYPE,Constant.REPORT_TYPE_BODY);
+                intent.putExtra(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
+                startActivity(intent);
+                finish();
+            }
         }
     }
-
 
 
     @Override

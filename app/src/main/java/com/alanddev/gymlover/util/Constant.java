@@ -60,6 +60,8 @@ public class Constant {
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
     public static int WORKOUT_USED = 2;
+    public static float INCH_TO_CM = 2.5f;
+    public static float KG_TO_LB = 2.20462f;
 
     public static String TAKE_EXERCISE = "TAKE_EXERCISE";
     public static int REPORT_TYPE_BODY = 0;

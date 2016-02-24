@@ -148,15 +148,16 @@ public class HistoryController implements IDataSource {
 
 
     public boolean checkDate(Date date){
-        String query = MwSQLiteHelper.COLUMN_HISTORY_DATE + " = " + Utils.changeDate2Str(date) ;
-        Cursor cursor = database.query(MwSQLiteHelper.TABLE_HISTORY,
-                allColumns, query, null,
-                null, null, null);
-        if(cursor == null){
+        String sql = "SELECT  * FROM " + dbHelper.TABLE_HISTORY + " where date = '" + Utils.changeDate2Str(new Date()) +"'";
+        Cursor cursor = database.rawQuery(sql, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+
+        if(cursor.getCount() <=0){
             return false;
         }
         else{
-            cursor.close();
+            //cursor.close();
             return true;
         }
     }
