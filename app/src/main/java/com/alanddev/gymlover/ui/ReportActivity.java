@@ -20,7 +20,6 @@ import android.widget.ListView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransSumGrpAdapter;
-import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.controller.HistoryController;
 import com.alanddev.gymlover.controller.TransactionController;
 import com.alanddev.gymlover.model.History;
@@ -38,7 +37,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.google.android.gms.location.places.Place;
 
 
 import java.util.ArrayList;
@@ -86,7 +84,7 @@ public class ReportActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         typeReport=Constant.REPORT_TYPE_BODY;
         if (b!=null){
-            typeReport = b.getInt(Constant.REPORT_TYPE,Constant.REPORT_TYPE_BODY);
+            typeReport = b.getInt(Constant.KEY_REPORT_TYPE,Constant.REPORT_TYPE_BODY);
             dateStr =  b.getString(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
         }
         mSectionsPagerAdapter.typeReport = typeReport;
@@ -95,7 +93,7 @@ public class ReportActivity extends AppCompatActivity {
     public void reloadData(int viewType){
         finish();
         Intent intent = new Intent(this,ReportActivity.class);
-        intent.putExtra(Constant.REPORT_TYPE, typeReport);
+        intent.putExtra(Constant.KEY_REPORT_TYPE, typeReport);
         intent.putExtra(Constant.VIEW_TYPE,viewType);
         intent.putExtra(Constant.PUT_EXTRA_DATE, dateStr);
         startActivity(intent);
@@ -239,7 +237,7 @@ public class ReportActivity extends AppCompatActivity {
                 typeView = b.getInt(Constant.VIEW_TYPE, 0);
                 String dateStr = b.getString(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
                 dateReport = Utils.changeStr2Date(dateStr, Constant.DATE_FORMAT_DB);
-                typeReport = b.getInt(Constant.REPORT_TYPE,0);
+                typeReport = b.getInt(Constant.KEY_REPORT_TYPE,0);
             }else {
                 typeView = Constant.VIEW_TYPE_DAY;
                 dateReport = new Date();

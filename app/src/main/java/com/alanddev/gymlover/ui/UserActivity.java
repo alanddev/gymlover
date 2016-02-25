@@ -2,13 +2,9 @@ package com.alanddev.gymlover.ui;
 
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -153,7 +148,10 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
-                float fHeight = Float.valueOf(txtHeight.getText().toString());
+                float fHeight = 0f;
+                if(!txtHeight.getText().toString().equals("")) {
+                    fHeight = Float.valueOf(txtHeight.getText().toString());
+                }
                 if (selected != heightChoice ) {
                     if (selected == getResources().getString(R.string.cm)) {
                         fHeight = Math.round(fHeight * Constant.INCH_TO_CM);
@@ -176,8 +174,11 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
-                float fWeight = Float.valueOf(tvWeight.getText().toString());
-                if (selected !=weightChoice){
+                float fWeight = 0f;
+                if (!tvWeight.getText().toString().equals("")) {
+                    fWeight = Float.valueOf(tvWeight.getText().toString());
+                }
+                if (selected != weightChoice){
                     if (selected==getResources().getString(R.string.lb)){
                         fWeight = Math.round(fWeight * Constant.KG_TO_LB);
                         tvWeight.setText(String.valueOf(fWeight));
@@ -267,7 +268,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         String sGender = spinnerGender.getSelectedItem().toString();
         heightChoice = spinnerHeight.getSelectedItem().toString();
         if (heightChoice == getResources().getString(R.string.inch)){
-            fHeight = Math.round(fHeight*Constant.INCH_TO_CM);
+            fHeight = Math.round(fHeight * Constant.INCH_TO_CM);
         }
 
         weightChoice = spinnerWeight.getSelectedItem().toString();
@@ -313,7 +314,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             }else{
                 Intent intent = new Intent(this, ReportActivity.class);
                 intent.putExtra(Constant.VIEW_TYPE,Constant.VIEW_TYPE_WEEK);
-                intent.putExtra(Constant.REPORT_TYPE,Constant.REPORT_TYPE_BODY);
+                intent.putExtra(Constant.KEY_REPORT_TYPE,Constant.REPORT_TYPE_BODY);
                 intent.putExtra(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
                 startActivity(intent);
                 finish();
@@ -347,7 +348,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             //if (requestCode == Constant.CUR_WALLET_REQUEST) {
             case Constant.BODYFAT_USER_REQUEST:
                 if (data != null) {
-                    String bodyFat = data.getStringExtra("bodyFat");
+                    String bodyFat = data.getStringExtra(Constant.KEY_BODY_FAT);
                     txtBodyFat.setText(bodyFat);
                 }
                 break;
@@ -373,8 +374,10 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         if (spinnerGender.getSelectedItem().toString() == getResources().getString(R.string.gender_girl)){
             gender = Constant.GENDER_GIRL;
         }
-        intent.putExtra("gender", gender);
-        intent.putExtra("weight", tvWeight.getText().toString());
+        intent.putExtra(Constant.KEY_GENDER, gender);
+        intent.putExtra(Constant.KEY_WEIGHT, tvWeight.getText().toString());
+        intent.putExtra(Constant.KEY_WEIGHT_CHOICE,weightChoice);
+        intent.putExtra(Constant.KEY_HEIGHT_CHOICE,heightChoice);
         startActivityForResult(intent, Constant.BODYFAT_USER_REQUEST);
         //finish();
     }

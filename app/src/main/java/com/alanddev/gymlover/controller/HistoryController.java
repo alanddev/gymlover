@@ -227,7 +227,7 @@ public class HistoryController implements IDataSource {
         ArrayList<History> trans = new ArrayList<History>();
         switch (type){
             case Constant.VIEW_TYPE_DAY:
-                trans = getBodyIndexByWeek(date);
+                trans = getBodyIndexByDate(date);
                 break;
             case Constant.VIEW_TYPE_WEEK:
                 trans =getBodyIndexByWeek(date);

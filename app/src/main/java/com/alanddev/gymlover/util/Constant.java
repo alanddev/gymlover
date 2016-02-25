@@ -56,6 +56,11 @@ public class Constant {
     public static final String LANGUAGE_CURRENT = "LANGUAGE_CURRENT";
     public static int GENDER_BOY = 0;
     public static int GENDER_GIRL = 1;
+    public static String KEY_GENDER="gender";
+    public static String KEY_WEIGHT_CHOICE="weight_choice";
+    public static String KEY_HEIGHT_CHOICE="height_choice";
+    public static String KEY_BODY_FAT="bodyfat";
+    public static String KEY_WEIGHT="weight";
 
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
@@ -66,6 +71,6 @@ public class Constant {
     public static String TAKE_EXERCISE = "TAKE_EXERCISE";
     public static int REPORT_TYPE_BODY = 0;
     public static int REPORT_TYPE_WORKOUT = 1;
-    public static String REPORT_TYPE = "REPORT_TYPE";
+    public static String KEY_REPORT_TYPE = "KEY_REPORT_TYPE";
 
 }

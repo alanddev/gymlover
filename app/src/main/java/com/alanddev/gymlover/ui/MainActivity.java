@@ -3,19 +3,11 @@ package com.alanddev.gymlover.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,25 +17,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransSectionPagerAdapter;
 import com.alanddev.gymlover.controller.TransactionController;
-import com.alanddev.gymlover.controller.UserController;
-import com.alanddev.gymlover.fragment.TransactionFragment;
-import com.alanddev.gymlover.model.ExcerciseGroup;
-import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.Transactions;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
-import java.io.File;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -186,7 +167,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }else if(id == R.id.nav_run_report){
             Intent intent = new Intent(this,ReportActivity.class);
-            intent.putExtra(Constant.REPORT_TYPE, Constant.REPORT_TYPE_WORKOUT);
+            intent.putExtra(Constant.KEY_REPORT_TYPE, Constant.REPORT_TYPE_WORKOUT);
             startActivity(intent);
         }
 
