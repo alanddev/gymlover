@@ -217,7 +217,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
             final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
-
+            exerId = exercise.getId();
             getSupportActionBar().setTitle(exercise.getName());
             String strImgs = exercise.getImage();
             imageArray = strImgs.split(",");
@@ -229,7 +229,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
             if  (autoRun){
                 starttime = SystemClock.uptimeMillis();
                 totalTime = SystemClock.uptimeMillis();
-                timeRunAuto = workoutExerController.getTime(workId,exercise.getId());
+                exerId = exercise.getId();
+                timeRunAuto = workoutExerController.getTime(workId,exerId);
                 handler.postDelayed(updateTimer,0);
                 handlerTotalTime.postDelayed(updateTimerTotal,0);
             }

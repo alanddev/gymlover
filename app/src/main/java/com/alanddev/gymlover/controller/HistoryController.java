@@ -152,14 +152,15 @@ public class HistoryController implements IDataSource {
         Cursor cursor = database.rawQuery(sql, null);
         int cnt = cursor.getCount();
         cursor.close();
-
-        if(cursor.getCount() <=0){
-            return false;
-        }
-        else{
-            //cursor.close();
-            return true;
-        }
+        // temporary save all records
+        return false;
+//        if(cursor.getCount() <=0){
+//            return false;
+//        }
+//        else{
+//            //cursor.close();
+//            return true;
+//        }
     }
 
     public ArrayList<History> getBodyIndexByDate(Date date){
