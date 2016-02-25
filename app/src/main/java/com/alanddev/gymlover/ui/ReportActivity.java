@@ -255,7 +255,8 @@ public class ReportActivity extends AppCompatActivity {
             ArrayList<Entry> yVals = new ArrayList<Entry>();
             for (int i = 0; i < histories.size(); i++) {
                 History hist = histories.get(i);
-                xVals.add(hist.getDate());
+                String sDate = hist.getDate();
+                xVals.add(sDate.substring(5, sDate.length()));
                 yVals.add(new Entry(hist.getFat(),i));
             }
             // create a dataset and give it a type
@@ -295,7 +296,9 @@ public class ReportActivity extends AppCompatActivity {
             ArrayList<Entry> yVals = new ArrayList<Entry>();
             for (int i = 0; i < histories.size(); i++) {
                 History hist = histories.get(i);
-                xVals.add(hist.getDate());
+                String sDate = hist.getDate();
+                xVals.add(sDate.substring(5,sDate.length()));
+                //xVals.add(hist.getDate());
                 float BMI = hist.getWeight()/((hist.getHeight()/100)*(hist.getHeight()/100));
                 yVals.add(new Entry(BMI,i));
             }
