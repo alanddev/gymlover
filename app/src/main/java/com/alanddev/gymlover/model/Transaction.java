@@ -118,8 +118,4 @@ public class Transaction extends Model {
         this.time = time;
         this.note = note;
     }
-
-
-
 }
-

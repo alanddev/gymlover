@@ -10,6 +10,7 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.ExcerciseGroup;
+import com.alanddev.gymlover.model.History;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
@@ -134,7 +135,27 @@ public class WorkoutController implements IDataSource {
 
     }
 
+    public Workout getById(int id){
+        Workout workout = new Workout();
+        StringBuffer sql = new StringBuffer("SELECT * " +
+                " FROM " + dbHelper.TABLE_WORKOUT  + " where  "
+                + dbHelper.COLUMN_WORKOUT_ID + " = "+ id);
 
+        Cursor cursor = database.rawQuery(sql.toString(), null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            workout.setId(cursor.getInt(0));
+            workout.setName(cursor.getString(1));
+            workout.setDesc(cursor.getString(2));
+            workout.setImage(cursor.getString(3));
+            workout.setUses(cursor.getInt(4));
+            workout.setWeek(cursor.getInt(5));
+            cursor.moveToNext();
+        }
+
+        return workout;
+    }
 
     public ArrayList<Workout> getWorkoutStatus(int status){
         StringBuffer sql = new StringBuffer("SELECT * from " + dbHelper.TABLE_WORKOUT + " where " + dbHelper.COLUMN_WORKOUT_USES +" = " + status);

@@ -12,11 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.controller.TransactionController;
 import com.alanddev.gymlover.model.Transaction;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 import com.plattysoft.leonids.ParticleSystem;
 
@@ -25,25 +27,9 @@ import java.util.ArrayList;
 public class ResultWorkoutActivity extends AppCompatActivity {
 
     TransactionController transactionController;
-//    public Runnable updateTimerTotal = new Runnable() {
-//        public void run() {
-//            timeInMillisecondsTotal = SystemClock.uptimeMillis() - totalTime;
-//            updatedtimeTotal = timeSwapBuffTotal + timeInMillisecondsTotal;
-//            secsTotal = (int) (updatedtimeTotal / 1000);
-//            minsTotal = secsTotal / 60;
-//            secsTotal= secsTotal % 60;
-//            millisecondsTotal = (int) (updatedtimeTotal % 1000);
-//            timeTotal.setText("" + String.format("%02d", minsTotal) + ":" + String.format("%02d", secsTotal));
-//            timeTotal.setTextColor(Color.RED);
-//
-//
-//            handlerTotalTime.postDelayed(this, 0);
-//
-//
-//        }};
-
     ListView listWorkout;
     ArrayList<Transaction>transactions;
+    private TextView tvTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +68,16 @@ public class ResultWorkoutActivity extends AppCompatActivity {
                 finish();
             }
         });
+        tvTime = (TextView)findViewById(R.id.totalTime);
+        getData();
+    }
+
+    private void getData(){
+        Bundle b = getIntent().getExtras();
+        if (b !=null){
+            String time = b.getString(Constant.KEY_TIME, getResources().getString(R.string.start_time));
+            tvTime.setText(time);
+        }
     }
 
     @Override

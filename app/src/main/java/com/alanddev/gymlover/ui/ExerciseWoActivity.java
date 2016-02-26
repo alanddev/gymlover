@@ -17,6 +17,7 @@ import com.alanddev.gymlover.adapter.ExerciseWoAdapter;
 import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class ExerciseWoActivity extends AppCompatActivity {
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID,workoutId);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, day);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, week);
-                intent.putExtra("position", position);
+                intent.putExtra(Constant.KEY_POSITION, position);
                 startActivity(intent);
             }
         });
@@ -61,7 +62,7 @@ public class ExerciseWoActivity extends AppCompatActivity {
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID,workoutId);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, day);
                 intent.putExtra(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, week);
-                intent.putExtra("autoRun", 1);
+                intent.putExtra(Constant.KEY_AUTORUN, 1);
                 startActivity(intent);
             }
         });

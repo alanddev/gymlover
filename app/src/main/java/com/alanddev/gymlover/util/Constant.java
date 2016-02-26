@@ -61,6 +61,10 @@ public class Constant {
     public static String KEY_HEIGHT_CHOICE="height_choice";
     public static String KEY_BODY_FAT="bodyfat";
     public static String KEY_WEIGHT="weight";
+    public static String KEY_POSITION = "position";
+    public static String KEY_AUTORUN = "autorun";
+    public static String KEY_TIME = "time_total";
+
 
 
     public static int WORKOUT_NEW = 0;

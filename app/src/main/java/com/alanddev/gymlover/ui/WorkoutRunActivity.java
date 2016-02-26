@@ -30,12 +30,14 @@ import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.adapter.WorkoutAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.TransactionController;
+import com.alanddev.gymlover.controller.WorkoutController;
 import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 import com.plattysoft.leonids.ParticleSystem;
 
@@ -87,6 +89,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
     private int week;
     private int exerId;
     private int workId;
+    private String workoutName;
     private float timeRunAuto;
     ListView listWorkout;
 
@@ -94,6 +97,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
     WorkoutExerController workoutExerController;
     TransactionController transactionController;
+    WorkoutController workoutController;
 
 
     public Runnable updateTimer = new Runnable() {
@@ -105,7 +109,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             secs = secs % 60;
             milliseconds = (int) (updatedtime % 1000);
             time.setText("" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
-            time.setTextColor(Color.RED);
+            //time.setTextColor(Color.RED);
 
             if (autoRun) {
                 if (updatedtime <= (timeRunAuto + 1)* 1000) {
@@ -135,7 +139,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             secsTotal= secsTotal % 60;
             millisecondsTotal = (int) (updatedtimeTotal % 1000);
             timeTotal.setText("" + String.format("%02d", minsTotal) + ":" + String.format("%02d", secsTotal));
-            timeTotal.setTextColor(Color.RED);
+            //timeTotal.setTextColor(Color.RED);
 
             if (autoRun){
                 if (currentExercise <= listExercise.size()-1){
@@ -186,6 +190,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_run));
         Bundle b = getIntent().getExtras();
         transactionController = new TransactionController(this);
+        workoutController = new WorkoutController(this);
         if (b!=null) {
             exerId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, 0);
             workId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, 0);
@@ -199,13 +204,13 @@ public class WorkoutRunActivity extends AppCompatActivity {
             time = (TextView) findViewById(R.id.timer);
             timeTotal = (TextView) findViewById(R.id.subTimer);
 
-            if (b.getInt("autoRun",0) >0 ){
+            if (b.getInt(Constant.KEY_AUTORUN,0) >0 ){
                 autoRun = true;
             }
 
 
             if (exerId > 0) {
-                currentExercise = b.getInt("position", 0);
+                currentExercise = b.getInt(Constant.KEY_POSITION, 0);
             }else {
                 currentExercise = 0;
             }
@@ -214,7 +219,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
             workoutExerController = new WorkoutExerController(this);
             workoutExerController.open();
             listExercise = workoutExerController.getExercisebyWD(workId, day, week);
-
+            workoutController.open();
+            workoutName = workoutController.getById(workId).getName();
 
             final Exercise exercise = getData(listExercise.get(currentExercise).getExerid());
             exerId = exercise.getId();
@@ -243,11 +249,11 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
     private void initData(){
-        Transaction transaction1 = new Transaction(Utils.getStrToday(),exerId,5,20.0f,25,10,"5*5");
-        Transaction transaction2 = new Transaction(Utils.getStrToday(),exerId,5,22.0f,25,10,"5*5");
-        Transaction transaction3 = new Transaction(Utils.getStrToday(),exerId,5,24.0f,25,10,"5*5");
-        Transaction transaction4 = new Transaction(Utils.getStrToday(),exerId,5,26.0f,25,10,"5*5");
-        Transaction transaction5 = new Transaction(Utils.getStrToday(),exerId,5,28.0f,25,10,"5*5");
+        Transaction transaction1 = new Transaction(Utils.getStrToday(),exerId,5,20.0f,25,10,workoutName);
+        Transaction transaction2 = new Transaction(Utils.getStrToday(),exerId,5,22.0f,25,10,workoutName);
+        Transaction transaction3 = new Transaction(Utils.getStrToday(),exerId,5,24.0f,25,10,workoutName);
+        Transaction transaction4 = new Transaction(Utils.getStrToday(),exerId,5,26.0f,25,10,workoutName);
+        Transaction transaction5 = new Transaction(Utils.getStrToday(),exerId,5,28.0f,25,10,workoutName);
         transactions = new ArrayList<>();
 
         transactions.add(transaction1);
@@ -256,7 +262,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         transactions.add(transaction4);
         transactions.add(transaction5);
 
-        Utils.addListResult(transactions);
+        //Utils.addListResult(transactions);
 
         listWorkout = (ListView)findViewById(R.id.list_transaction);
         TransactionWoAdapter transactionWoAdapter =  new TransactionWoAdapter(this, transactions);
@@ -396,6 +402,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
     public void onClickSave(View v){
 
         Intent intent = new Intent(this, ResultWorkoutActivity.class);
+        intent.putExtra(Constant.KEY_TIME, timeTotal.getText().toString());
         startActivity(intent);
 //        new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
 //                .setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
