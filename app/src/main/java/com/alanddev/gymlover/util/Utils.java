@@ -492,10 +492,11 @@ public class Utils {
         }
 
         result = Math.round(result * 100);
+        result = result + 3.0f;
         if (result < 0){
             result = 0;
         }
-        result = result + 3.0f;
+
         return result;
     }
 
