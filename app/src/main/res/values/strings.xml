@@ -114,7 +114,7 @@
         <item>Tiếng Việt</item>
         <item>English</item>
     </string-array>
-    <string name="title_activity_main">MainActivity</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -479,11 +479,7 @@
 
     <string name="day">Day</string>
     <string name="exercise">exercises</string>
-
-
-    <string name="title_activity_exercise_grp">ExerciseGrpActivity</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
-    <string name="title_activity_user">UserActivity</string>
     <string name="title_activity_body_fat">Xác định lượng mỡ</string>
     <string name="name_user">Tên Bạn</string>
     <string name="user_height">Chiều cao</string>
@@ -519,11 +515,7 @@
     <string name="calBodyFat">Tính nhanh</string>
     <string name="title_activity_exercise_detail">ExerciseDetailActivity</string>
     <string name="exercise_desc">Description</string>
-    <string name="title_activity_workout">WorkoutActivity</string>
-    <string name="menu_exercise_title">Exercise</string>
-    <string name="menu_workout_title">Workout</string>
     <string name="birthday">Ngày Sinh</string>
-    <string name="menu_user_title">Sửa thông tin</string>
     <string name="week">tuần</string>
     <string name="action_install">Cài đặt</string>
     <string name="action_finish">Kết thúc</string>
@@ -539,7 +531,6 @@
     <string name="title_activity_workout_exer">WorkoutExerActivity</string>
     <string name="title_activity_report">ReportActivity</string>
     <string name="action_next">Tiếp</string>
-    <string name="menu_report">Báo cáo</string>
     <string name="title_activity_exercise_wo">ExerciseWoActivity</string>
     <string name="kg">kg</string>
     <string name="repeat">lần</string>
@@ -553,4 +544,6 @@
     <string name="totalBMI">Total BMI</string>
     <string name="noticebody">Hãy thường xuyên cập nhật số đo cơ thể để theo dõi sức khỏe hàng ngày nhé :)</string>
     <string name="update">Cập nhật</string>
+    <string name="menu_exercise_title">Exercise</string>
+    <string name="menu_workout_title">Workout</string>
 </resources>
