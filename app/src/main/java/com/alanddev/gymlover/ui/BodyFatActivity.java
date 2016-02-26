@@ -42,6 +42,7 @@ public class BodyFatActivity extends AppCompatActivity {
 
         tvBodyFat = (TextView)findViewById(R.id.txtBodyFat);
         tvWeight = (TextView)findViewById(R.id.txtWeight);
+        tvWeight.setEnabled(false);
         tvWaist = (TextView)findViewById(R.id.txtWaist);
         tvWeightChoice = (TextView)findViewById(R.id.txtWeightChoice);
         tvHeightChoice = (TextView)findViewById(R.id.txtHeightChoice);
@@ -53,18 +54,22 @@ public class BodyFatActivity extends AppCompatActivity {
         imgGender = (ImageView)findViewById(R.id.imageGender);
         Bundle b = getIntent().getExtras();
         if (b!=null) {
-            gender = b.getInt("gender");
+            gender = b.getInt(Constant.KEY_GENDER);
             if (gender == Constant.GENDER_GIRL){
                 imgGender.setImageResource(R.mipmap.ic_bodyfat_girl);
             }else{
                 imgGender.setImageResource(R.mipmap.ic_bodyfat_boy);
             }
+            String fat = b.getString(Constant.KEY_BODY_FAT,"");
+
+
             String weight = b.getString("weight");
             weightChoice = b.getString(Constant.KEY_WEIGHT_CHOICE);
             heightChoice = b.getString(Constant.KEY_HEIGHT_CHOICE);
             tvWeightChoice.setText(weightChoice);
             tvHeightChoice.setText(heightChoice);
             tvWeight.setText(weight);
+            tvBodyFat.setText(String.valueOf(fat));
 
         }
     }

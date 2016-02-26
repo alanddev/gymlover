@@ -490,7 +490,13 @@ public class Utils {
         }else{
             result = (-76.76f + (4.15f * sizeRoundTwo) - (0.082f * weight))/weight;
         }
-        return Math.round(result * 100);
+
+        result = Math.round(result * 100);
+        if (result < 0){
+            result = 0;
+        }
+        result = result + 3.0f;
+        return result;
     }
 
 

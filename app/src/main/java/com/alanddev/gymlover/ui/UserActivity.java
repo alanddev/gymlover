@@ -378,6 +378,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         intent.putExtra(Constant.KEY_WEIGHT, tvWeight.getText().toString());
         intent.putExtra(Constant.KEY_WEIGHT_CHOICE,weightChoice);
         intent.putExtra(Constant.KEY_HEIGHT_CHOICE,heightChoice);
+        intent.putExtra(Constant.KEY_BODY_FAT,txtBodyFat.getText().toString());
         startActivityForResult(intent, Constant.BODYFAT_USER_REQUEST);
         //finish();
     }

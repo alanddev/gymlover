@@ -62,6 +62,7 @@ public class Constant {
     public static String KEY_BODY_FAT="bodyfat";
     public static String KEY_WEIGHT="weight";
 
+
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
     public static int WORKOUT_USED = 2;
