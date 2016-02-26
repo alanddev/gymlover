@@ -3,11 +3,14 @@ package com.alanddev.gymlover.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,14 +20,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransSectionPagerAdapter;
 import com.alanddev.gymlover.controller.TransactionController;
+import com.alanddev.gymlover.controller.UserController;
+import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Transactions;
+import com.alanddev.gymlover.model.User;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -37,9 +49,11 @@ public class MainActivity extends AppCompatActivity
      */
     private ViewPager mViewPager;
     private final int REQUEST_SETTING = 100;
+    private final int REQUEST_USER_EDIT = 101;
     private SharedPreferences mShaPref;
     private NavigationView navigationView;
     private TabLayout tabLayout;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_main));
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +168,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_setting) {
             // Handle the camera action
             Intent intent = new Intent(this,SettingActivity.class);
-
             startActivityForResult(intent,REQUEST_SETTING);
         }else if(id == R.id.nav_exercise){
             Intent intent = new Intent(this,ExerciseGrpActivity.class);
@@ -164,7 +177,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }else if(id == R.id.nav_user){
             Intent intent = new Intent(this,UserActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,REQUEST_USER_EDIT);
         }else if(id == R.id.nav_run_report){
             Intent intent = new Intent(this,ReportActivity.class);
             intent.putExtra(Constant.KEY_REPORT_TYPE, Constant.REPORT_TYPE_WORKOUT);
@@ -192,14 +205,34 @@ public class MainActivity extends AppCompatActivity
             notifyDataSetChanged(false);
         }
 
+        if(requestCode==Constant.GALLERY_USER_REQUEST){
+            if (data !=null){
+                Utils utils = new Utils();
+                Uri selectedImageUri = data.getData();
+                String imagePath = utils.getRealPathFromURI(this, selectedImageUri);
+                File image = new File(imagePath);
+                String imageFileName = image.getName();
+                try {
+                    utils.copyFile(imagePath, Constant.PATH_IMG + "/" + imageFileName);
+                    UserController controller = new UserController(this);
+                    controller.open();
+                    User user = controller.getId(1);
+                    user.setImg(imageFileName);
+                    controller.update(user);
+                    controller.close();
+                    imageView.setImageBitmap(BitmapFactory.decodeFile(Constant.PATH_IMG + "/" + imageFileName));
+                }
+                catch (IOException e){
+                };
+            }
+        }
+
+        if(requestCode==REQUEST_USER_EDIT&&resultCode==Constant.EDIT_USER_RESULT){
+            setNavHeader(navigationView);
+        }
+
     }
 
-    private void setNavHeader(NavigationView navigationView){
-        View header = navigationView.getHeaderView(0);
-        String naviheader = Utils.getCurrentNavHeader(this);
-        header.setBackgroundResource(getResources().getIdentifier(naviheader, "mipmap", getPackageName()));
-
-    }
 
     private void notifyDataSetChanged(Boolean isChangeType){
 
@@ -227,5 +260,45 @@ public class MainActivity extends AppCompatActivity
         return lstTrans;
     }
 
+    private void setNavHeader(NavigationView navigationView){
+        View header = navigationView.getHeaderView(0);
+        UserController controller = new UserController(this);
+        controller.open();
+        User user = controller.getId(1);
+        controller.close();
+
+        TextView txtWallet = (TextView) header.findViewById(R.id.txtWallet);
+        imageView = (ImageView)header.findViewById(R.id.imageView);
+        txtWallet.setText(user.getName());
+
+        if (!user.getImg().equals("")){
+            imageView.setImageBitmap(BitmapFactory.decodeFile(Constant.PATH_IMG + "/" + user.getImg()));
+        }else {
+            imageView.setImageResource(R.mipmap.avatar);
+        }
+
+        String naviheader = Utils.getCurrentNavHeader(this);
+
+        header.setBackgroundResource(getResources().getIdentifier(naviheader, "mipmap", getPackageName()));
+
+        /*TextView textAmt = (TextView)header.findViewById(R.id.textAmt);
+        TransactionController transactionController = new TransactionController(this);
+        transactionController.open();
+        float fAmount = transactionController.getAmountByWallet(wallet.getId());
+        transactionController.close();
+        NumberFormat formatter = new DecimalFormat("###,###,###,###.##");
+        String sAmount =  formatter.format(fAmount) + "  " + wallet.getCurrency();
+        textAmt.setText(sAmount);*/
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent galleryIntent = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, Constant.GALLERY_USER_REQUEST);
+            }
+        } );
+    }
 
 }

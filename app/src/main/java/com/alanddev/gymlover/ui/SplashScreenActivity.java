@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.controller.ExcerciseController;
@@ -34,24 +35,27 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 //userController.open();
                 if (checkDB()) {
-                    /*Utils.setWallet_id(Utils.getSharedPreferencesValue(getApplicationContext(), Constant.WALLET_ID));*/
-                    UserController userController = new UserController(getApplicationContext());
-                    userController.open();
-                    if (userController.getCount() > 0) {
-                        sleep(Constant.SPLASH_DISPLAY_SHORT);
-                        Intent i = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(i);
-                    } else{
-                        sleep(Constant.SPLASH_DISPLAY_SHORT);
-                        Intent i = new Intent(getBaseContext(), UserActivity.class);
-                        startActivity(i);
-                    }
-
+                    sleep(Constant.SPLASH_DISPLAY_SHORT);
                 } else {
                     initfor1st();
                     sleep(Constant.SPLASH_DISPLAY_LONG);
-                    Intent i = new Intent(getBaseContext(), UserActivity.class);
+                }
+                UserController userController = new UserController(getApplicationContext());
+                userController.open();
+                if (userController.getCount() > 0) {
+                    sleep(Constant.SPLASH_DISPLAY_SHORT);
+                    Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
+                } else if(Utils.getCurrentLanguage(getApplicationContext()).equals("")){
+                    Intent intent = new Intent(SplashScreenActivity.this, SelectThemeActivity.class);
+                    intent.putExtra("SETTING_EXTRA",Constant.CHANGE_LANGUAGE_ID);
+                    intent.putExtra("SETTING_FIRST",Constant.CHANGE_LANGUAGE_ID);
+                    startActivity(intent);
+                } else{
+                    sleep(Constant.SPLASH_DISPLAY_SHORT);
+                    Intent intent = new Intent(getBaseContext(), UserActivity.class);
+                    intent.putExtra("SETTING_FIRST",1);
+                    startActivity(intent);
                 }
                 finish();
             } catch (Exception e) {

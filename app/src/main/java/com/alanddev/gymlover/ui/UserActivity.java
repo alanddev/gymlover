@@ -58,6 +58,8 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
     private int update;
     private String heightChoice;
     private String weightChoice;
+    private ImageView imguser;
+    private int settingFirst;
 
 
     @Override
@@ -82,6 +84,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         txtHeight = (TextView)findViewById(R.id.txtHeight);
         txtName = (TextView)findViewById(R.id.txtName);
         imgDate = (ImageView)findViewById(R.id.imgdate);
+        imguser = (ImageView)findViewById(R.id.imageUser);
 
         txtBirthday = (TextView)findViewById(R.id.txtdate);
         txtBirthday.setOnClickListener(this);
@@ -98,6 +101,11 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             tvWeight.setText(String.valueOf(user.getWeight()));
             txtBirthday.setText(user.getBirthday());
             spinnerGender.setSelection(user.getGender());
+            if(user.getImg()!=null&&!user.getImg().equals("")) {
+                imguser.setImageBitmap(BitmapFactory.decodeFile(Constant.PATH_IMG + "/" + user.getImg()));
+            }else{
+                imguser.setImageResource(R.mipmap.avatar);
+            }
         }
         userController.close();
         //userController.open();
@@ -111,6 +119,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         bundle = getIntent().getExtras();
         if (bundle!=null){
             update = bundle.getInt("update",0);
+            settingFirst = bundle.getInt("SETTING_FIRST",0);
             if (update == 1){
                 txtName.setEnabled(false);
                 txtBirthday.setEnabled(false);
@@ -150,10 +159,10 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
                 float fHeight = 0f;
-                if(!txtHeight.getText().toString().equals("")) {
+                if (!txtHeight.getText().toString().equals("")) {
                     fHeight = Float.valueOf(txtHeight.getText().toString());
                 }
-                if (selected != heightChoice ) {
+                if (selected != heightChoice) {
                     if (selected == getResources().getString(R.string.cm)) {
                         fHeight = Math.round(fHeight * Constant.INCH_TO_CM);
                         txtHeight.setText(String.valueOf(fHeight));
@@ -179,11 +188,11 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 if (!tvWeight.getText().toString().equals("")) {
                     fWeight = Float.valueOf(tvWeight.getText().toString());
                 }
-                if (selected != weightChoice){
-                    if (selected==getResources().getString(R.string.lb)){
+                if (selected != weightChoice) {
+                    if (selected == getResources().getString(R.string.lb)) {
                         fWeight = Math.round(fWeight * Constant.KG_TO_LB);
                         tvWeight.setText(String.valueOf(fWeight));
-                    }else{
+                    } else {
                         fWeight = Math.round(fWeight / Constant.KG_TO_LB);
                         tvWeight.setText(String.valueOf(fWeight));
                     }
@@ -307,10 +316,13 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
 
             historyController.close();
             userController.close();
-
             if (update==0) {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                if(settingFirst>0){
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    setResult(Constant.EDIT_USER_RESULT,new Intent());
+                }
                 finish();
             }else{
                 Intent intent = new Intent(this, ReportActivity.class);
@@ -358,8 +370,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                     Uri selectedImageUri = data.getData();
                     imagePath = utils.getRealPathFromURI(this,selectedImageUri);
                     File image = new File(imagePath);
-                    ImageView imgUser = (ImageView)findViewById(R.id.imageUser);
-                    imgUser.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+                    imguser.setImageBitmap(BitmapFactory.decodeFile(imagePath));
                 }
                 break;
             default:

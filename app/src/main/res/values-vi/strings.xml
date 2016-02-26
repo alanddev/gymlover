@@ -46,4 +46,11 @@
     <string name="dialog_no_button">Không</string>
     <string name="dialog_yes_button">Có</string>
     <string name="check_change_data">Bạn chưa nhập mới thông tin</string>
+    <string name="menu_user_title">Sửa thông tin</string>
+    <string name="menu_report">Báo cáo</string>
+    <string name="title_activity_exercise_grp">Nhóm bài tập</string>
+    <string name="title_activity_workout">Workout</string>
+    <string name="title_activity_user">Thông tin</string>
+    <string name="title_activity_report">Báo cáo</string>
+    <string name="title_activity_main">Exercise Tracker</string>
 </resources>

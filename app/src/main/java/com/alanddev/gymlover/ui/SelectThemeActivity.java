@@ -73,6 +73,7 @@ public class SelectThemeActivity extends AppCompatActivity {
                         groupController.init();
                         exController.init();
                         Intent intent = new Intent(SelectThemeActivity.this, UserActivity.class);
+                        intent.putExtra("SETTING_FIRST",1);
                         startActivity(intent);
                     }else{
                         groupController.delete();
