@@ -84,7 +84,7 @@ public class ReportActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         typeReport=Constant.REPORT_TYPE_BODY;
         if (b!=null){
-            typeReport = b.getInt(Constant.KEY_REPORT_TYPE,Constant.REPORT_TYPE_BODY);
+            typeReport = b.getInt(Constant.KEY_REPORT_TYPE,Constant.REPORT_TYPE_WORKOUT);
             dateStr =  b.getString(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
         }
         mSectionsPagerAdapter.typeReport = typeReport;
@@ -237,7 +237,7 @@ public class ReportActivity extends AppCompatActivity {
                 typeView = b.getInt(Constant.VIEW_TYPE, 0);
                 String dateStr = b.getString(Constant.PUT_EXTRA_DATE,Utils.changeDate2Str(new Date()));
                 dateReport = Utils.changeStr2Date(dateStr, Constant.DATE_FORMAT_DB);
-                typeReport = b.getInt(Constant.KEY_REPORT_TYPE,0);
+                typeReport = b.getInt(Constant.KEY_REPORT_TYPE,Constant.REPORT_TYPE_WORKOUT);
             }else {
                 typeView = Constant.VIEW_TYPE_DAY;
                 dateReport = new Date();
