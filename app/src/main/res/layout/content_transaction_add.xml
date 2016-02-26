@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="@string/time" />
+            android:hint="@string/time"
+            android:inputType="numberDecimal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,7 +82,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:src="@mipmap/ic_repeat" />
+                android:src="@mipmap/ic_repeat"/>
 
             <EditText
                 android:id="@+id/edtrepeat"
@@ -89,6 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
+                android:inputType="numberSigned"
                 android:hint="@string/repeat" />
         </LinearLayout>
 
@@ -110,7 +112,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
-                android:hint="@string/weight" />
+                android:hint="@string/weight"
+                android:inputType="numberDecimal"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

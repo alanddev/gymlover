@@ -36,11 +36,14 @@ public class TransactionAdapter extends AmazingAdapter {
 	
 	@Override
 	public int getCount() {
-		int res = 0;
-		for (int i = 0; i < datas.size(); i++) {
-			res += datas.get(i).getItems().size();
+		if(datas!=null) {
+			int res = 0;
+			for (int i = 0; i < datas.size(); i++) {
+				res += datas.get(i).getItems().size();
+			}
+			return res;
 		}
-		return res;
+		return 0;
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -356,7 +357,6 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 if (data !=null){
                     Uri selectedImageUri = data.getData();
                     imagePath = utils.getRealPathFromURI(this,selectedImageUri);
-                    //Toast.makeText(this,path,Toast.LENGTH_LONG).show();
                     File image = new File(imagePath);
                     ImageView imgUser = (ImageView)findViewById(R.id.imageUser);
                     imgUser.setImageBitmap(BitmapFactory.decodeFile(imagePath));
