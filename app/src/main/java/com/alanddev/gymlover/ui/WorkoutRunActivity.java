@@ -98,7 +98,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
     WorkoutExerController workoutExerController;
     TransactionController transactionController;
     WorkoutController workoutController;
-
+    ExcerciseController exerciseController;
+    WorkoutExerDetail workoutExerDetail;
 
     public Runnable updateTimer = new Runnable() {
         public void run() {
@@ -110,7 +111,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             milliseconds = (int) (updatedtime % 1000);
             time.setText("" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
             //time.setTextColor(Color.RED);
-
+            updateData();
             if (autoRun) {
                 if (updatedtime <= (timeRunAuto + 1)* 1000) {
                     handler.postDelayed(this, 0);
@@ -118,10 +119,13 @@ public class WorkoutRunActivity extends AppCompatActivity {
                     if (currentExercise < listExercise.size()-1) {
                         currentExercise++;
                         resetTime();
+                        Utils.addListResult(transactions);
+                        initData();
                         handler.postDelayed(updateTimer, 0);
                         reloadImage();
                     }else{
-                        firework(findViewById(R.id.subTimer));
+                        //firework(findViewById(R.id.subTimer));
+                        save();
                     }
                 }
             }else{
@@ -148,7 +152,6 @@ public class WorkoutRunActivity extends AppCompatActivity {
             }else{
                 handlerTotalTime.postDelayed(this, 0);
             }
-
         }};
 
 
@@ -183,6 +186,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         Utils.setLanguage(this);
+        Utils.emptyListResult();
         setContentView(R.layout.activity_workout_run);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -191,8 +195,13 @@ public class WorkoutRunActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         transactionController = new TransactionController(this);
         workoutController = new WorkoutController(this);
+        exerciseController = new ExcerciseController(this);
+        //workoutExerController = new WorkoutExerController(this);
         if (b!=null) {
             exerId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID, 0);
+            //workoutExerController.open();
+            //workoutExerController.getId(exerId);
+
             workId = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID, 0);
             day = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY, 0);
             week = b.getInt(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK, 0);
@@ -240,7 +249,10 @@ public class WorkoutRunActivity extends AppCompatActivity {
                 handler.postDelayed(updateTimer,0);
                 handlerTotalTime.postDelayed(updateTimerTotal,0);
             }
+
+
             workoutExerController.close();
+
 
 
         }
@@ -249,19 +261,19 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
 
     private void initData(){
-        Transaction transaction1 = new Transaction(Utils.getStrToday(),exerId,5,20.0f,25,10,workoutName);
-        Transaction transaction2 = new Transaction(Utils.getStrToday(),exerId,5,22.0f,25,10,workoutName);
-        Transaction transaction3 = new Transaction(Utils.getStrToday(),exerId,5,24.0f,25,10,workoutName);
-        Transaction transaction4 = new Transaction(Utils.getStrToday(),exerId,5,26.0f,25,10,workoutName);
-        Transaction transaction5 = new Transaction(Utils.getStrToday(),exerId,5,28.0f,25,10,workoutName);
+        workoutExerDetail = listExercise.get(currentExercise);
+        String []repeats = workoutExerDetail.getRepeat().split(",");
+        exerciseController.open();
+        float time = 0f;
+        //ExerciseController exercise
         transactions = new ArrayList<>();
-
-        transactions.add(transaction1);
-        transactions.add(transaction2);
-        transactions.add(transaction3);
-        transactions.add(transaction4);
-        transactions.add(transaction5);
-
+        for (int i=0;i<repeats.length;i++){
+            //exerciseController.getById(exerId).getCalo();
+            float calo = Utils.calculatorCalo(workoutExerDetail.getWeight(),time,exerciseController.getById(exerId).getCalo());
+            Transaction transaction = new Transaction(Utils.getStrToday(),exerId, Integer.parseInt(repeats[i]),workoutExerDetail.getWeight(),time,calo,workoutName);
+            transactions.add(transaction);
+        }
+        //exerciseController.close();
         //Utils.addListResult(transactions);
 
         listWorkout = (ListView)findViewById(R.id.list_transaction);
@@ -270,6 +282,20 @@ public class WorkoutRunActivity extends AppCompatActivity {
         listWorkout.setAdapter(transactionWoAdapter);
         Utils.ListUtils.setDynamicHeight(listWorkout);
 }
+
+
+    private void updateData(){
+        exerciseController.open();
+        for (int i = 0; i < transactions.size();i++){
+            Transaction transaction = transactions.get(i);
+            float time = Math.round((updatedtime / 1000.0f) / transactions.size());
+            transaction.setTime(time);
+            float calo = Utils.calculatorCalo(workoutExerDetail.getWeight(),time,exerciseController.getById(exerId).getCalo());
+            transaction.setCalo(calo);
+        }
+        exerciseController.close();
+        reloadData();
+    }
 
 
     public void reloadData(){
@@ -398,12 +424,20 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
     }
 
-
-    public void onClickSave(View v){
-
+    private void save(){
+        Utils.addListResult(transactions);
+        exerciseController.close();
+        transactionController.close();
+        workoutExerController.close();
         Intent intent = new Intent(this, ResultWorkoutActivity.class);
         intent.putExtra(Constant.KEY_TIME, timeTotal.getText().toString());
+        finish();
         startActivity(intent);
+    }
+
+
+    public void onClickSave(View v) {
+        save();
 //        new ParticleSystem(this, 80, R.drawable.confeti2, 10000)
 //                .setSpeedModuleAndAngleRange(0f, 0.3f, 180, 180)
 //                .setRotationSpeed(144)
@@ -446,6 +480,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             resetTime();
             handler.postDelayed(updateTimer, 0);
             reloadImage();
+            Utils.addListResult(transactions);
             initData();
             if (currentExercise == listExercise.size() - 1){
                 btnext.setEnabled(false);
