@@ -96,6 +96,9 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                         String sTime = tvTime.getText().toString();
                         sTime = sTime.substring(0, sTime.length() - 2);
                         float fTime = Float.valueOf(sTime) - 5;
+                        if (fTime <= 0f){
+                            fTime = 0f;
+                        }
                         if (!isResult) {
                             WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
                             workoutRunActivity.updateTime(fTime, position);
@@ -150,6 +153,9 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                         String sWeight = tvWeight.getText().toString();
                         sWeight = sWeight.substring(0, sWeight.length() - 2);
                         float fWeight = Float.valueOf(sWeight) - 2.5f;
+                        if (fWeight <= 0f){
+                            fWeight = 0f;
+                        }
                         if (!isResult) {
                             WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
                             workoutRunActivity.updateWeight(fWeight, position);
@@ -204,6 +210,9 @@ public class TransactionWoAdapter extends ArrayAdapter<Transaction> {
                         String sReps = tvReps.getText().toString();
                         sReps = sReps.substring(0, sReps.length() - 4);
                         int fReps = Integer.valueOf(sReps) - 1;
+                        if (fReps <= 0){
+                            fReps = 0;
+                        }
                         if (!isResult) {
                             WorkoutRunActivity workoutRunActivity = (WorkoutRunActivity) getContext();
                             workoutRunActivity.updateReps(fReps, position);

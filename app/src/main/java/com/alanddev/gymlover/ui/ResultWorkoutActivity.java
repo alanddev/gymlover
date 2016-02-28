@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.TransactionWoAdapter;
+import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.TransactionController;
 import com.alanddev.gymlover.model.Transaction;
 import com.alanddev.gymlover.util.Constant;
@@ -30,6 +31,8 @@ public class ResultWorkoutActivity extends AppCompatActivity {
     ListView listWorkout;
     ArrayList<Transaction>transactions;
     private TextView tvTime;
+    ExcerciseController exerciseController;
+    private float userWeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,9 @@ public class ResultWorkoutActivity extends AppCompatActivity {
                 .oneShot(findViewById(R.id.done), 50);
 
 
-
+        exerciseController = new ExcerciseController(this);
+        exerciseController.open();
+        userWeight = Utils.getUserWeight(this);
         listWorkout = (ListView)findViewById(R.id.list_transaction);
         TransactionWoAdapter transactionWoAdapter = new  TransactionWoAdapter(this, transactions);
         transactionWoAdapter.setIsResult(true);
@@ -112,7 +117,11 @@ public class ResultWorkoutActivity extends AppCompatActivity {
     }
 
     public void updateTime(float fTime, int position){
-        transactions.get(position).setTime(fTime);
+        Transaction transaction = transactions.get(position);
+        transaction.setTime(fTime);
+        float baseCalo = exerciseController.getById(transaction.getExericise()).getCalo();
+        float calo = Utils.calculatorCalo(userWeight,fTime,baseCalo);
+        transaction.setCalo(calo);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
 

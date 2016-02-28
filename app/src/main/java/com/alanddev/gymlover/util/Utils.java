@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.alanddev.gymlover.controller.UserController;
 import com.alanddev.gymlover.model.Transaction;
+import com.alanddev.gymlover.model.User;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.R;
 
@@ -508,5 +510,13 @@ public class Utils {
         return Math.round(result);
     }
 
+    public static float getUserWeight(Activity activity){
+        UserController userController = new UserController(activity);
+        userController.open();
+        User user  = userController.getId(1);
+        float weight = user.getWeight();
+        userController.close();
+        return weight;
+    }
 
 }

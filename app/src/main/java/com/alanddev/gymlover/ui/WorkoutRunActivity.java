@@ -30,6 +30,7 @@ import com.alanddev.gymlover.adapter.TransactionWoAdapter;
 import com.alanddev.gymlover.adapter.WorkoutAdapter;
 import com.alanddev.gymlover.controller.ExcerciseController;
 import com.alanddev.gymlover.controller.TransactionController;
+import com.alanddev.gymlover.controller.UserController;
 import com.alanddev.gymlover.controller.WorkoutController;
 import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
@@ -48,7 +49,7 @@ import javax.xml.transform.Result;
 
 public class WorkoutRunActivity extends AppCompatActivity {
 
-    Button btnstart, btnreset, btnext;
+    Button btnstart, btnreset, btnext,btnsave;
     TextView time;
     TextView timeTotal;
     long starttime = 0L;
@@ -91,6 +92,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
     private int workId;
     private String workoutName;
     private float timeRunAuto;
+    private float userWeight;
     ListView listWorkout;
 
     private boolean autoRun = false;
@@ -111,18 +113,21 @@ public class WorkoutRunActivity extends AppCompatActivity {
             milliseconds = (int) (updatedtime % 1000);
             time.setText("" + String.format("%02d", mins) + ":" + String.format("%02d", secs));
             //time.setTextColor(Color.RED);
-            updateData();
+
             if (autoRun) {
+                updateData();
                 if (updatedtime <= (timeRunAuto + 1)* 1000) {
                     handler.postDelayed(this, 0);
+
                 }else{
                     if (currentExercise < listExercise.size()-1) {
                         currentExercise++;
                         resetTime();
                         Utils.addListResult(transactions);
+                        reloadImage();
                         initData();
                         handler.postDelayed(updateTimer, 0);
-                        reloadImage();
+
                     }else{
                         //firework(findViewById(R.id.subTimer));
                         save();
@@ -192,6 +197,8 @@ public class WorkoutRunActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_run));
+
+        userWeight = Utils.getUserWeight(this);
         Bundle b = getIntent().getExtras();
         transactionController = new TransactionController(this);
         workoutController = new WorkoutController(this);
@@ -210,6 +217,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             btnstart = (Button) findViewById(R.id.start);
             btnreset = (Button) findViewById(R.id.reset);
             btnext = (Button) findViewById(R.id.next);
+            btnsave = (Button)findViewById(R.id.save);
             time = (TextView) findViewById(R.id.timer);
             timeTotal = (TextView) findViewById(R.id.subTimer);
 
@@ -247,7 +255,11 @@ public class WorkoutRunActivity extends AppCompatActivity {
                 exerId = exercise.getId();
                 timeRunAuto = workoutExerController.getTime(workId,exerId);
                 handler.postDelayed(updateTimer,0);
-                handlerTotalTime.postDelayed(updateTimerTotal,0);
+                handlerTotalTime.postDelayed(updateTimerTotal, 0);
+                btnext.setEnabled(false);
+                btnreset.setEnabled(false);
+                btnstart.setEnabled(false);
+                btnsave.setEnabled(false);
             }
 
 
@@ -269,7 +281,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
         transactions = new ArrayList<>();
         for (int i=0;i<repeats.length;i++){
             //exerciseController.getById(exerId).getCalo();
-            float calo = Utils.calculatorCalo(workoutExerDetail.getWeight(),time,exerciseController.getById(exerId).getCalo());
+            float calo = Utils.calculatorCalo(userWeight,time,exerciseController.getById(exerId).getCalo());
             Transaction transaction = new Transaction(Utils.getStrToday(),exerId, Integer.parseInt(repeats[i]),workoutExerDetail.getWeight(),time,calo,workoutName);
             transactions.add(transaction);
         }
@@ -290,7 +302,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
             Transaction transaction = transactions.get(i);
             float time = Math.round((updatedtime / 1000.0f) / transactions.size());
             transaction.setTime(time);
-            float calo = Utils.calculatorCalo(workoutExerDetail.getWeight(),time,exerciseController.getById(exerId).getCalo());
+            float calo = Utils.calculatorCalo(userWeight,time,exerciseController.getById(exerId).getCalo());
             transaction.setCalo(calo);
         }
         exerciseController.close();
@@ -306,7 +318,11 @@ public class WorkoutRunActivity extends AppCompatActivity {
     }
 
     public void updateTime(float fTime, int position){
-        transactions.get(position).setTime(fTime);
+        Transaction transaction = transactions.get(position);
+        transaction.setTime(fTime);
+        float baseCalo = exerciseController.getById(exerId).getCalo();
+        float calo = Utils.calculatorCalo(userWeight,fTime,baseCalo);
+        transaction.setCalo(calo);
         listWorkout.setAdapter(new TransactionWoAdapter(this, transactions));
     }
 
