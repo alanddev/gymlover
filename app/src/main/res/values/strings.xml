@@ -172,11 +172,31 @@
     <string name="grp_shou">Shoulders</string>
     <string name="grp_tric">Triceps</string>
 
-    <string-array name="ex_abdominals_names"></string-array>
-    <string-array name="ex_abdominals_imgs"></string-array>
-    <string-array name="ex_abdominals_descs"></string-array>
-    <string-array name="ex_abdominals_videos"></string-array>
-    <string-array name="ex_abdominals_calos"></string-array>
+    <string-array name="ex_abdominals_names">
+        <item>Crunches</item>
+    </string-array>
+    <string-array name="ex_abdominals_imgs">
+        <item>crunches_1,crunches_2</item>
+    </string-array>
+
+    <string-array name="ex_abdominals_descs">
+        <item>@string/ex_abdominals_crunches</item>
+    </string-array>
+    <string-array name="ex_abdominals_videos">
+        <item>https://www.youtube.com/watch?feature=player_embedded&amp;v=2yOFvV-NSeY</item>
+    </string-array>
+    <string-array name="ex_abdominals_calos">
+        <item>204</item>
+    </string-array>
+
+     <string name="ex_abdominals_crunches">
+         Lie on the floor with your knees bent at about 60 degrees and your feet flat on the floor about shoulder width or, if feasible, with your lower legs lying across a flat bench.\n
+         Place your hands behind your head without interlocking your fingers.\n
+         Slowly curl your upper body towards your hips until your shoulder blades come off the floor, while simultaneously pulling your hips toward your shoulders; return to the starting position.\n
+         The entire motion should be done in a smooth, controlled manner that lasts about 3 seconds, with the downward movement no faster than the upward.\n
+    </string>
+
+
 
     <string-array name="ex_back_names">
         <item>Deadlift</item>
