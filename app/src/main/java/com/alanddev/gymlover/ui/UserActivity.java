@@ -59,6 +59,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
     private String heightChoice;
     private String weightChoice;
     private ImageView imguser;
+    private ImageView imgGender;
     private int settingFirst;
 
 
@@ -85,7 +86,7 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
         txtName = (TextView)findViewById(R.id.txtName);
         imgDate = (ImageView)findViewById(R.id.imgdate);
         imguser = (ImageView)findViewById(R.id.imageUser);
-
+        imgGender = (ImageView)findViewById(R.id.imageGender);
         txtBirthday = (TextView)findViewById(R.id.txtdate);
         txtBirthday.setOnClickListener(this);
 
@@ -199,6 +200,27 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 }
                 weightChoice = selected;
             }
+
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                if (selected.equals(getResources().getString(R.string.gender_boy))) {
+                    imgGender.setImageResource(R.mipmap.ic_gender_male);
+                }else if(selected.equals(getResources().getString(R.string.gender_girl))){
+                    imgGender.setImageResource(R.mipmap.ic_gender_female);
+                }
+                weightChoice = selected;
+            }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

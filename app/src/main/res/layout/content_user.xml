@@ -136,13 +136,13 @@
         android:orientation="horizontal"
         android:layout_marginLeft="10dp">
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:id="@+id/imageGender"
             android:clickable="false"
             android:scaleType="fitXY"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_gender"
+            android:src="@mipmap/ic_gender_male"
             />
 
         <Spinner
@@ -161,8 +161,8 @@
         android:orientation="horizontal"
         android:layout_marginLeft="10dp">
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/imageFat"
             android:clickable="false"
             android:scaleType="fitXY"
