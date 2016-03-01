@@ -126,40 +126,92 @@
         <item>@string/settings_menu</item>
         <item>@string/settings_language</item>
     </string-array>
+    <string name="day">Day</string>
+    <string name="exercise">exercises</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
+    <string name="title_activity_body_fat">Xác định lượng mỡ</string>
+    <string name="name_user">Tên Bạn</string>
+    <string name="user_height">Chiều cao</string>
+    <string name="user_weight">Cân nặng</string>
+    <string name="user_fat">Phần trăm mỡ cơ thể</string>
+    <string name="action_save">Lưu</string>
+    <string name="warning_user_name">Chưa nhập tên bạn mà :)</string>
+
+    <string-array name="gender_array">
+        <item>@string/gender_boy</item>
+        <item>@string/gender_girl</item>
+    </string-array>
+    <string name="gender_boy">Nam</string>
+    <string name="gender_girl">Nữ</string>
+
+    <string-array name="weight_choice">
+        <item>@string/kg</item>
+        <item>@string/lb</item>
+    </string-array>
+    <string name="lb">lb</string>
+
+    <string-array name="height_choice">
+        <item>@string/cm</item>
+        <item>@string/inch</item>
+    </string-array>
+
+    <string name="inch">inch</string>
+    <string name="cm">cm</string>
+
+    <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
+    <string name="user_waist">Vòng eo</string>
+    <string name="bodyfat_guide_begin">Bạn hãy nhìn vào hình bên dưới để có thể dễ hình dung về lượng mỡ cơ thể của mình nhé.</string>
+    <string name="calBodyFat">Tính nhanh</string>
+    <string name="title_activity_exercise_detail">ExerciseDetailActivity</string>
+    <string name="exercise_desc">Description</string>
+    <string name="birthday">Ngày Sinh</string>
+    <string name="week">tuần</string>
+    <string name="action_install">Cài đặt</string>
+    <string name="action_finish">Kết thúc</string>
+    <string name="title_activity_workout_run">Workout Run Activity</string>
+    <string name="start">Chạy</string>
+    <string name="start_time_total">00:00:00</string>
+    <string name="start_time">00:00</string>
+    <string name="reset">Chạy Lại</string>
+    <string name="next">Tiếp</string>
+    <string name="menu_workout_run">Chạy workout</string>
+    <string name="title_activity_workout_setting"> Cấu hình Workout </string>
+    <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
+    <string name="second">s</string>
+    <string name="title_activity_workout_exer">WorkoutExerActivity</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="action_next">Tiếp</string>
+    <string name="title_activity_exercise_wo">ExerciseWoActivity</string>
+    <string name="kg">kg</string>
+    <string name="repeat">lần</string>
+    <string name="calos">calos</string>
+    <string name="title_activity_transaction_add">TransactionAddActivity</string>
+    <string name="title_activity_result_workout">ResultWorkoutActivity</string>
+    <string name="rest_time">00:00</string>
+    <string name="totalCalo">Calo Statistic</string>
+    <string name="totalWeight">Weight Statistic</string>
+    <string name="totalFat">Body Fat</string>
+    <string name="totalBMI">Total BMI</string>
+    <string name="noticebody">Hãy thường xuyên cập nhật số đo cơ thể để theo dõi sức khỏe hàng ngày nhé :)</string>
+    <string name="update">Cập nhật</string>
+    <string name="menu_exercise_title">Exercise</string>
+    <string name="menu_workout_title">Workout</string>
+
+    <!-- start conntent here -->
+    <!-- exercise group-->
     <string-array name="excercise_grp_names">
         <item>@string/grp_abdo</item>
         <item>@string/grp_back</item>
         <item>@string/grp_bice</item>
         <item>@string/grp_ches</item>
-        <item>@string/grp_legs</item>
-        <item>@string/grp_shou</item>
-        <item>@string/grp_tric</item>
         <item>@string/grp_fore</item>
         <item>@string/grp_glut</item>
-    </string-array>
+        <item>@string/grp_legs</item>
+        <item>@string/grp_quad</item>
+        <item>@string/grp_shou</item>
+        <item>@string/grp_tric</item>
 
-    <string-array name="excercise_grp_imgs">
-        <item>abdominals</item>
-        <item>back</item>
-        <item>biceps</item>
-        <item>chest</item>
-        <item>legs</item>
-        <item>shoulders</item>
-        <item>triceps</item>
-        <item>forearms</item>
-        <item>gluter</item>
-    </string-array>
 
-    <string-array name="excercise_grp_ex">
-        <item>ex_abdominals_names,ex_abdominals_descs,ex_abdominals_imgs,ex_abdominals_videos,ex_abdominals_calos</item>
-        <item>ex_back_names,ex_back_descs,ex_back_imgs,ex_back_videos,ex_back_calos</item>
-        <item>ex_biceps_names,ex_biceps_descs,ex_biceps_imgs,ex_biceps_videos,ex_biceps_calos</item>
-        <item>ex_chest_names,ex_chest_descs,ex_chest_imgs,ex_chest_videos,ex_chest_calos</item>
-        <item>ex_forearms_names,ex_forearms_descs,ex_forearms_imgs,ex_forearms_videos,ex_forearms_calos</item>
-        <item>ex_gluters_names,ex_gluters_descs,ex_gluters_imgs,ex_gluters_videos,ex_gluters_calos</item>
-        <item>ex_legs_names,ex_legs_descs,ex_legs_imgs,ex_legs_videos,ex_legs_calos</item>
-        <item>ex_shoulder_names,ex_shoulder_descs,ex_shoulder_imgs,ex_shoulder_videos,ex_shoulder_calos</item>
-        <item>ex_triceps_names,ex_triceps_descs,ex_triceps_imgs,ex_triceps_videos,ex_triceps_calos</item>
     </string-array>
 
     <string name="grp_abdo">Abdominals</string>
@@ -171,6 +223,37 @@
     <string name="grp_back">Back</string>
     <string name="grp_shou">Shoulders</string>
     <string name="grp_tric">Triceps</string>
+    <string name="grp_quad">Quadricep</string>
+
+    <string-array name="excercise_grp_imgs">
+        <item>abdominals</item>
+        <item>back</item>
+        <item>biceps</item>
+        <item>chest</item>
+        <item>forearms</item>
+        <item>gluter</item>
+        <item>legs</item>
+        <item>quadriceps</item>
+        <item>shoulders</item>
+        <item>triceps</item>
+
+
+    </string-array>
+
+    <string-array name="excercise_grp_ex">
+        <item>ex_abdominals_names,ex_abdominals_descs,ex_abdominals_imgs,ex_abdominals_videos,ex_abdominals_calos</item>
+        <item>ex_back_names,ex_back_descs,ex_back_imgs,ex_back_videos,ex_back_calos</item>
+        <item>ex_biceps_names,ex_biceps_descs,ex_biceps_imgs,ex_biceps_videos,ex_biceps_calos</item>
+        <item>ex_chest_names,ex_chest_descs,ex_chest_imgs,ex_chest_videos,ex_chest_calos</item>
+        <item>ex_forearms_names,ex_forearms_descs,ex_forearms_imgs,ex_forearms_videos,ex_forearms_calos</item>
+        <item>ex_gluters_names,ex_gluters_descs,ex_gluters_imgs,ex_gluters_videos,ex_gluters_calos</item>
+        <item>ex_legs_names,ex_legs_descs,ex_legs_imgs,ex_legs_videos,ex_legs_calos</item>
+        <item>ex_quad_names,ex_quad_descs,ex_quad_imgs,ex_quad_videos,ex_quad_calos</item>
+        <item>ex_shoulder_names,ex_shoulder_descs,ex_shoulder_imgs,ex_shoulder_videos,ex_shoulder_calos</item>
+        <item>ex_triceps_names,ex_triceps_descs,ex_triceps_imgs,ex_triceps_videos,ex_triceps_calos</item>
+    </string-array>
+
+
 
     <string-array name="ex_abdominals_names">
         <item>Crunches</item>
@@ -195,29 +278,31 @@
          Slowly curl your upper body towards your hips until your shoulder blades come off the floor, while simultaneously pulling your hips toward your shoulders; return to the starting position.\n
          The entire motion should be done in a smooth, controlled manner that lasts about 3 seconds, with the downward movement no faster than the upward.\n
     </string>
-
-
-
     <string-array name="ex_back_names">
         <item>Deadlift</item>
         <item>Barbell Row</item>
+        <item>Inverted Row</item>
     </string-array>
     <string-array name="ex_back_imgs">
         <item>deadlift_1,deadlift_2,deadlift_3</item>
         <item>barbellrow_1,barbellrow_2,barbellrow_3</item>
+        <item>inverted_1,inverted_2</item>
     </string-array>
     <string-array name="ex_back_descs">
         <item>@string/ex_back_deadlift</item>
         <item>@string/ex_back_barbellrow</item>
+        <item>@string/ex_back_inverted</item>
     </string-array>
     <string-array name="ex_back_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/90000/90642m.mp4</item>
     </string-array>
 
     <string-array name="ex_back_calos">
         <item>510</item>
         <item>408</item>
+        <item>374</item>
     </string-array>
 
 
@@ -233,6 +318,14 @@
             4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
             5. Repeat for the recommended amount of repetitions.
     </string>
+    <string name="ex_back_inverted">\n
+        1. Position a bar in a rack to about waist height. You can also use a smith machine.\n
+        2. Take a wider than shoulder width grip on the bar and position yourself hanging underneath the bar. Your body should be straight with your heels on the ground with your arms fully extended. This will be your starting position.\n
+        3. Begin by flexing the elbow, pulling your chest towards the bar. Retract your shoulder blades as you perform the movement.\n
+        4. Pause at the top of the motion, and return yourself to the start position.\n
+        5. Repeat for the desired number of repetitions.\n
+    </string>
+
 
     <string-array name="ex_biceps_names">
 
@@ -244,19 +337,24 @@
 
     <string-array name="ex_chest_names">
         <item>Bench Press</item>
+        <item>Pushups</item>
     </string-array>
     <string-array name="ex_chest_imgs">
         <item>benchpress_1,benchpress_2</item>
+        <item>pushups_1,pushups_2</item>
     </string-array>
     <string-array name="ex_chest_descs">
         <item>@string/ex_chest_benchpress</item>
+        <item>@string/ex_chest_pushups</item>
     </string-array>
     <string-array name="ex_chest_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/40811m.mp4</item>
     </string-array>
 
     <string-array name="ex_chest_calos">
         <item>459</item>
+        <item>340</item>
     </string-array>
 
     <string name="ex_chest_benchpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
@@ -265,6 +363,24 @@
             4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
             5. Repeat for the recommended amount of repetitions.
     </string>
+    <string name="ex_chest_pushups">\n
+        1. Lie on the floor face down and place your hands about 36 inches apart while holding your torso up at arms length.\n
+        2. Next, lower yourself downward until your chest almost touches the floor as you inhale.\n
+        3. Now breathe out and press your upper body back up to the starting position while squeezing your chest.\n
+        4. After a brief pause at the top contracted position, you can begin to lower yourself downward again for as many repetitions as needed.\n
+    </string>
+
+    <string-array name="ex_forearms_names"></string-array>
+    <string-array name="ex_forearms_imgs"></string-array>
+    <string-array name="ex_forearms_descs"></string-array>
+    <string-array name="ex_forearms_videos"></string-array>
+    <string-array name="ex_forearms_calos"></string-array>
+
+    <string-array name="ex_gluters_names"></string-array>
+    <string-array name="ex_gluters_imgs"></string-array>
+    <string-array name="ex_gluters_descs"></string-array>
+    <string-array name="ex_gluters_videos"></string-array>
+    <string-array name="ex_gluters_calos"></string-array>
 
     <string-array name="ex_legs_names">
         <item>Squats</item>
@@ -289,6 +405,40 @@
             4. At the top of the contraction your torso should be perpendicular to the ground. Reverse the motion, going only ¾ of the way down. \n
             5. Repeat for the recommended amount of repetitions.
     </string>
+
+    <string-array name="ex_quad_names">
+        <item>Bodyweight Squat</item>
+        <item>Dumbbell Lunges</item>
+    </string-array>
+    <string-array name="ex_quad_imgs">
+        <item>bodyweight_1,bodyweight_2</item>
+        <item>dumbbell_1,dumbbell_2</item>
+    </string-array>
+    <string-array name="ex_quad_descs">
+        <item>@string/ex_quad_bodyweight</item>
+        <item>@string/ex_quad_dumbbell</item>
+    </string-array>
+    <string-array name="ex_quad_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/90000/90572m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/52000/53981m.mp4</item>
+    </string-array>
+    <string-array name="ex_quad_calos">
+        <item>306</item>
+        <item>493</item>
+    </string-array>
+
+    <string name="ex_quad_bodyweight">\n 1. Stand with your feet shoulder width apart. You can place your hands behind your head. This will be your starting position. \n
+        2. Begin the movement by flexing your knees and hips, sitting back with your hips. \n
+        3. Continue down to full depth if you are able,and quickly reverse the motion until you return to the starting position. As you squat, keep your head and chest up and push your knees out. \n
+    </string>
+    <string name="ex_quad_dumbbell">\n
+        1. Stand with your torso upright holding two dumbbells in your hands by your sides. This will be your starting position.
+        2. Step forward with your right leg around 2 feet or so from the foot being left stationary behind and lower your upper body down, while keeping the torso upright and maintaining balance. Inhale as you go down. \n
+        3. Using mainly the heel of your foot, push up and go back to the starting position as you exhale.\n
+        4. Repeat the movement for the recommended amount of repetitions and then perform with the left leg.\n
+    </string>
+
+
 
     <string-array name="ex_shoulder_names">
         <item>Overhead Press</item>
@@ -320,40 +470,24 @@
     <string-array name="ex_triceps_videos"></string-array>
     <string-array name="ex_triceps_calos"></string-array>
 
-    <string-array name="ex_forearms_names"></string-array>
-    <string-array name="ex_forearms_imgs"></string-array>
-    <string-array name="ex_forearms_descs"></string-array>
-    <string-array name="ex_forearms_videos"></string-array>
-    <string-array name="ex_forearms_calos"></string-array>
 
-    <string-array name="ex_gluters_names"></string-array>
-    <string-array name="ex_gluters_imgs"></string-array>
-    <string-array name="ex_gluters_descs"></string-array>
-    <string-array name="ex_gluters_videos"></string-array>
-    <string-array name="ex_gluters_calos"></string-array>
 
+    <!-- workout here -->
     <string-array name="wo_names">
         <item>StrongLift 5*5</item>
-        <item>StrongLift 5*5</item>
-        <item>StrongLift 5*5</item>
+        <item>7-Day Beginner Trainer</item>
     </string-array>
     <string-array name="wo_descs">
         <item>StrongLift for beginner</item>
-        <item>StrongLift for intermediate</item>
-        <item>StrongLift for advanced</item>
-    </string-array>
-    <string-array name="wo_images">
-        <item>1</item>
-        <item>1</item>
-        <item>1</item>
+        <item></item>
     </string-array>
     <string-array name="wo_weeks">
         <item>2</item>
-        <item>9</item>
-        <item>12</item>
+        <item>1</item>
     </string-array>
     <string-array name="wo_exers">
         <item>wo_1_week,wo_1_day,wo_1_exer,wo_1_set,wo_1_repeat,wo_1_weight,wo_1_times</item>
+        <item>wo_2_week,wo_2_day,wo_2_exer,wo_2_set,wo_2_repeat,wo_2_weight,wo_2_times</item>
     </string-array>
 
     <string-array name="wo_1_week">
@@ -401,19 +535,19 @@
         <item>4000</item>
         <item>2001</item>
         <item>7000</item>
-        <item>8000</item>
+        <item>9000</item>
         <item>2000</item>
         <item>7000</item>
         <item>4000</item>
         <item>2001</item>
         <item>7000</item>
-        <item>8000</item>
+        <item>9000</item>
         <item>2000</item>
         <item>7000</item>
         <item>4000</item>
         <item>2001</item>
         <item>7000</item>
-        <item>8000</item>
+        <item>9000</item>
         <item>2000</item>
     </string-array>
     <string-array name="wo_1_set">
@@ -497,74 +631,46 @@
         <item>150</item>
     </string-array>
 
-    <string name="day">Day</string>
-    <string name="exercise">exercises</string>
-    <string name="title_activity_exercise">ExerciseActivity</string>
-    <string name="title_activity_body_fat">Xác định lượng mỡ</string>
-    <string name="name_user">Tên Bạn</string>
-    <string name="user_height">Chiều cao</string>
-    <string name="user_weight">Cân nặng</string>
-    <string name="user_fat">Phần trăm mỡ cơ thể</string>
-    <string name="action_save">Lưu</string>
-    <string name="warning_user_name">Chưa nhập tên bạn mà :)</string>
-
-    <string-array name="gender_array">
-        <item>@string/gender_boy</item>
-        <item>@string/gender_girl</item>
+    <string-array name="wo_2_week">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
     </string-array>
-    <string name="gender_boy">Nam</string>
-    <string name="gender_girl">Nữ</string>
-
-    <string-array name="weight_choice">
-        <item>@string/kg</item>
-        <item>@string/lb</item>
+    <string-array name="wo_2_day">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
     </string-array>
-    <string name="lb">lb</string>
-
-    <string-array name="height_choice">
-        <item>@string/cm</item>
-        <item>@string/inch</item>
+    <string-array name="wo_2_exer">
+        <item>8000</item>
+        <item>2002</item>
+        <item>4001</item>
+        <item>8001</item>
     </string-array>
-
-    <string name="inch">inch</string>
-    <string name="cm">cm</string>
-
-    <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
-    <string name="user_waist">Vòng eo</string>
-    <string name="bodyfat_guide_begin">Bạn hãy nhìn vào hình bên dưới để có thể dễ hình dung về lượng mỡ cơ thể của mình nhé.</string>
-    <string name="calBodyFat">Tính nhanh</string>
-    <string name="title_activity_exercise_detail">ExerciseDetailActivity</string>
-    <string name="exercise_desc">Description</string>
-    <string name="birthday">Ngày Sinh</string>
-    <string name="week">tuần</string>
-    <string name="action_install">Cài đặt</string>
-    <string name="action_finish">Kết thúc</string>
-    <string name="title_activity_workout_run">Workout Run Activity</string>
-    <string name="start">Chạy</string>
-    <string name="start_time_total">00:00:00</string>
-    <string name="start_time">00:00</string>
-    <string name="reset">Chạy Lại</string>
-    <string name="next">Tiếp</string>
-    <string name="menu_workout_run">Chạy workout</string>
-    <string name="title_activity_workout_setting"> Cấu hình Workout </string>
-    <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
-    <string name="second">s</string>
-    <string name="title_activity_workout_exer">WorkoutExerActivity</string>
-    <string name="title_activity_report">ReportActivity</string>
-    <string name="action_next">Tiếp</string>
-    <string name="title_activity_exercise_wo">ExerciseWoActivity</string>
-    <string name="kg">kg</string>
-    <string name="repeat">lần</string>
-    <string name="calos">calos</string>
-    <string name="title_activity_transaction_add">TransactionAddActivity</string>
-    <string name="title_activity_result_workout">ResultWorkoutActivity</string>
-    <string name="rest_time">00:00</string>
-    <string name="totalCalo">Calo Statistic</string>
-    <string name="totalWeight">Weight Statistic</string>
-    <string name="totalFat">Body Fat</string>
-    <string name="totalBMI">Total BMI</string>
-    <string name="noticebody">Hãy thường xuyên cập nhật số đo cơ thể để theo dõi sức khỏe hàng ngày nhé :)</string>
-    <string name="update">Cập nhật</string>
-    <string name="menu_exercise_title">Exercise</string>
-    <string name="menu_workout_title">Workout</string>
+    <string-array name="wo_2_set">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="wo_2_repeat">
+        <item>8</item>
+        <item>8</item>
+        <item>8</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="wo_2_weight">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="wo_2_times">
+        <item>30</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+    </string-array>
 </resources>

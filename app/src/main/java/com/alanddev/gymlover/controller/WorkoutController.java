@@ -45,7 +45,6 @@ public class WorkoutController implements IDataSource {
 
 
         String[] arrayWOName = mContext.getResources().getStringArray(R.array.wo_names);
-        String[] arrayWOImg = mContext.getResources().getStringArray(R.array.wo_images);
         String[] arrayWODesc = mContext.getResources().getStringArray(R.array.wo_descs);
         String[] arrayWOWeek = mContext.getResources().getStringArray(R.array.wo_weeks);
 
@@ -67,43 +66,14 @@ public class WorkoutController implements IDataSource {
             Workout workout = new Workout();
             workout.setId(j + 1);
             workout.setName(arrayWOName[j]);
-            workout.setImage(arrayWOImg[j]);
             workout.setDesc(arrayWODesc[j]);
             workout.setWeek(Integer.valueOf(arrayWOWeek[j]));
             workout.setUses(0);
             create(workout);
-            test(workout);
-
         }
     }
 
-    private void test(Workout workout){
-        WorkoutExerController workoutExerController = new WorkoutExerController(mContext);
-        workoutExerController.open();
-        WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail(workout.getId(),2000,"Stronglift 5*5",1,5,"5",10,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),2001,"Stronglift 5*5",1,5,"5",10,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4000,"Stronglift 5*5",1,5,"5",10,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),7000,"Stronglift 5*5",1,5,"5",10,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8000,"Stronglift 5*5",1,5,"5",10,20);
-        workoutExerController.create(workoutExerDetail);
 
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),2000,"Stronglift 5*5",2,5,"5",12,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),2001,"Stronglift 5*5",2,5,"5",12,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),4000,"Stronglift 5*5",2,5,"5",12,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),7000,"Stronglift 5*5",2,5,"5",12,20);
-        workoutExerController.create(workoutExerDetail);
-        workoutExerDetail = new WorkoutExerDetail(workout.getId(),8000,"Stronglift 5*5",2,5,"5",12,20);
-        workoutExerController.create(workoutExerDetail);
-
-
-    }
 
 
     @Override
