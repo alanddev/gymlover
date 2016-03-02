@@ -256,53 +256,59 @@
 
 
     <string-array name="ex_abdominals_names">
-        <item>Crunches</item>
+        <item>Reverse Crunch</item>
     </string-array>
     <string-array name="ex_abdominals_imgs">
-        <item>crunches_1,crunches_2</item>
+        <item>reverse_1,reverse_2</item>
     </string-array>
 
     <string-array name="ex_abdominals_descs">
-        <item>@string/ex_abdominals_crunches</item>
+        <item>@string/ex_abdominals_reverse</item>
     </string-array>
     <string-array name="ex_abdominals_videos">
-        <item>https://www.youtube.com/watch?feature=player_embedded&amp;v=2yOFvV-NSeY</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/40771m.mp4</item>
     </string-array>
     <string-array name="ex_abdominals_calos">
-        <item>204</item>
+        <item>391</item>
     </string-array>
 
-     <string name="ex_abdominals_crunches">
-         Lie on the floor with your knees bent at about 60 degrees and your feet flat on the floor about shoulder width or, if feasible, with your lower legs lying across a flat bench.\n
-         Place your hands behind your head without interlocking your fingers.\n
-         Slowly curl your upper body towards your hips until your shoulder blades come off the floor, while simultaneously pulling your hips toward your shoulders; return to the starting position.\n
-         The entire motion should be done in a smooth, controlled manner that lasts about 3 seconds, with the downward movement no faster than the upward.\n
+     <string name="ex_abdominals_reverse">\n
+         1. Lie down on the floor with your legs fully extended and arms to the side of your torso with the palms on the floor. Your arms should be stationary for the entire exercise.\n
+         2. Move your legs up so that your thighs are perpendicular to the floor and feet are together and parallel to the floor. This is the starting position.\n
+         3. While inhaling, move your legs towards the torso as you roll your pelvis backwards and you raise your hips off the floor. At the end of this movement your knees will be touching your chest.\n
+         4. Hold the contraction for a second and move your legs back to the starting position while exhaling.\n
+         5. Repeat for the recommended amount of repetitions.
     </string>
     <string-array name="ex_back_names">
         <item>Deadlift</item>
         <item>Barbell Row</item>
         <item>Inverted Row</item>
+        <item>One-Arm Dumbbell Row</item>
     </string-array>
     <string-array name="ex_back_imgs">
         <item>deadlift_1,deadlift_2,deadlift_3</item>
         <item>barbellrow_1,barbellrow_2,barbellrow_3</item>
         <item>inverted_1,inverted_2</item>
+        <item>onearm_dumbbell_1,onearm_dumbbell_2</item>
     </string-array>
     <string-array name="ex_back_descs">
         <item>@string/ex_back_deadlift</item>
         <item>@string/ex_back_barbellrow</item>
         <item>@string/ex_back_inverted</item>
+        <item>@string/ex_back_onearm_dumbbell</item>
     </string-array>
     <string-array name="ex_back_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/90000/90642m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/54000/54321m.mp4</item>
     </string-array>
 
     <string-array name="ex_back_calos">
         <item>510</item>
         <item>408</item>
         <item>374</item>
+        <item>406</item>
     </string-array>
 
 
@@ -324,6 +330,15 @@
         3. Begin by flexing the elbow, pulling your chest towards the bar. Retract your shoulder blades as you perform the movement.\n
         4. Pause at the top of the motion, and return yourself to the start position.\n
         5. Repeat for the desired number of repetitions.\n
+    </string>
+    <string name="ex_back_onearm_dumbbell">\n
+        1. Choose a flat bench and place a dumbbell on each side of it.\n
+        2. Place the right leg on top of the end of the bench, bend your torso forward from the waist until your upper body is parallel to the floor, and place your right hand on the other end of the bench for support.\n
+        3. Use the left hand to pick up the dumbbell on the floor and hold the weight while keeping your lower back straight. The palm of the hand should be facing your torso. This will be your starting position.\n
+        4. Pull the resistance straight up to the side of your chest, keeping your upper arm close to your side and keeping the torso stationary. Breathe out as you perform this step. Tip: Concentrate on squeezing the back muscles once you reach the full contracted position. Also, make sure that the force is performed with the back muscles and not the arms. Finally, the upper torso should remain stationary and only the arms should move. The forearms should do no other work except for holding the dumbbell; therefore do not try to pull the dumbbell up using the forearms.\n
+        5. Lower the resistance straight down to the starting position. Breathe in as you perform this step.\n
+        6. Repeat the movement for the specified amount of repetitions.\n
+        7. Switch sides and repeat again with the other arm.
     </string>
 
 
@@ -409,22 +424,47 @@
     <string-array name="ex_quad_names">
         <item>Bodyweight Squat</item>
         <item>Dumbbell Lunges</item>
+        <item>Dumbbell Squat</item>
+        <item>Dumbbell Rear Lunge</item>
+        <item>Mountain Climbers</item>
+        <item>Barbell Squat</item>
+        <item>Burpee</item>
     </string-array>
     <string-array name="ex_quad_imgs">
         <item>bodyweight_1,bodyweight_2</item>
         <item>dumbbell_1,dumbbell_2</item>
+        <item>dumbbell_squat_1,dumbbell_squat_2</item>
+        <item>dumbbell_rear_1,dumbbell_rear_2</item>
+        <item>mountain_1,mountain_2</item>
+        <item>barbell_squat_1,barbell_squat_2</item>
+        <item>burpee_1,burpee_2,burpee_3</item>
     </string-array>
     <string-array name="ex_quad_descs">
         <item>@string/ex_quad_bodyweight</item>
         <item>@string/ex_quad_dumbbell</item>
+        <item>@string/ex_quad_dumbbell_squat</item>
+        <item>@string/ex_quad_dumbbell_rear</item>
+        <item>@string/ex_quad_mountain</item>
+        <item>@string/ex_quad_barbell_squat</item>
+        <item>@string/ex_quad_burpee</item>
     </string-array>
     <string-array name="ex_quad_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/90000/90572m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/52000/53981m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/39161m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/39111m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/60000/60192m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118981m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118171m.mp4</item>
     </string-array>
     <string-array name="ex_quad_calos">
         <item>306</item>
         <item>493</item>
+        <item>476</item>
+        <item>408</item>
+        <item>466</item>
+        <item>476</item>
+        <item>476</item>
     </string-array>
 
     <string name="ex_quad_bodyweight">\n 1. Stand with your feet shoulder width apart. You can place your hands behind your head. This will be your starting position. \n
@@ -437,8 +477,35 @@
         3. Using mainly the heel of your foot, push up and go back to the starting position as you exhale.\n
         4. Repeat the movement for the recommended amount of repetitions and then perform with the left leg.\n
     </string>
-
-
+    <string name="ex_quad_dumbbell_squat">\n
+        1. Stand up straight while holding a dumbbell on each hand (palms facing the side of your legs).\n
+        2. Position your legs using a shoulder width medium stance with the toes slightly pointed out. Keep your head up at all times as looking down will get you off balance and also maintain a straight back. This will be your starting position. Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances discussed in the foot stances section.\n
+        3. Begin to slowly lower your torso by bending the knees as you maintain a straight posture with the head up. Continue down until your thighs are parallel to the floor. Tip: If you performed the exercise correctly, the front of the knees should make an imaginary straight line with the toes that is perpendicular to the front. If your knees are past that imaginary line (if they are past your toes) then you are placing undue stress on the knee and the exercise has been performed incorrectly.\n
+        4. Begin to raise your torso as you exhale by pushing the floor with the heel of your foot mainly as you straighten the legs again and go back to the starting position.\n
+        5. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_quad_dumbbell_rear">\n
+        1. Stand with your torso upright holding two dumbbells in your hands by your sides. This will be your starting position.\n
+        2. Step backward with your right leg around two feet or so from the left foot and lower your upper body down, while keeping the torso upright and maintaining balance. Inhale as you go down.\n
+        3. Push up and go back to the starting position as you exhale. Tip: Use the ball of your feet to push in order to accentuate the quadriceps. To focus on the glutes, press with your heels.\n
+        4. Now repeat with the opposite leg.\n
+    </string>
+    <string name="ex_quad_mountain">\n
+        1. Begin in a pushup position, with your weight supported by your hands and toes. Flexing the knee and hip, bring one leg until the knee is approximately under the hip. This will be your starting position.\n
+        2. Explosively reverse the positions of your legs, extending the bent leg until the leg is straight and supported by the toe, and bringing the other foot up with the hip and knee flexed. Repeat in an alternating fashion for 20-30 seconds.
+    </string>
+    <string name="ex_quad_barbell_squat">\n
+        1. Begin with the barbell supported on top of the traps. The chest should be up and the head facing forward. Adopt a hip-width stance with the feet turned out as needed.\n
+        2. Descend by flexing the knees, refraining from moving the hips back as much as possible. This requires that the knees travel forward. Ensure that they stay align with the feet. The goal is to keep the torso as upright as possible.\n
+        3. Continue all the way down, keeping the weight on the front of the heel. At the moment the upper legs contact the lower legs reverse the motion, driving the weight upward.
+    </string>
+    <string name="ex_quad_burpee">\n
+        1. Begin standing with your legs shoulder-width apart.\n
+        2. Place your hands on the floor and kick your legs back so you end up with your stomach and thighs on the floor. Your elbows should be bent.\n
+        3. From this position, press up like you\'re doing a push-up and push your hips up.\n
+        4. Jump your feet under your hips and stand.\n
+        4. Finish the movement by jumping in the air and bringing your hands over your head.\n
+        6. Repeat.</string>
 
     <string-array name="ex_shoulder_names">
         <item>Overhead Press</item>
@@ -636,39 +703,110 @@
         <item>1</item>
         <item>1</item>
         <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
     </string-array>
     <string-array name="wo_2_day">
         <item>1</item>
         <item>1</item>
         <item>1</item>
         <item>1</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
     </string-array>
     <string-array name="wo_2_exer">
         <item>8000</item>
         <item>2002</item>
         <item>4001</item>
         <item>8001</item>
+        <item>8002</item>
+        <item>2003</item>
+        <item>8001</item>
+        <item>4001</item>
+        <item>1000</item>
+        <item>8003</item>
+        <item>4001</item>
+        <item>8004</item>
+        <item>8005</item>
+        <item>8006</item>
     </string-array>
     <string-array name="wo_2_set">
         <item>1</item>
         <item>1</item>
         <item>1</item>
         <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
     </string-array>
     <string-array name="wo_2_repeat">
         <item>8</item>
         <item>8</item>
         <item>8</item>
         <item>8</item>
+        <item>8,8</item>
+        <item>6,6</item>
+        <item>6,6</item>
+        <item>8,8</item>
+        <item>10,10</item>
+        <item>6,6</item>
+        <item>6,6</item>
+        <item>10,10</item>
+        <item>6,6</item>
+        <item>10,10</item>
     </string-array>
     <string-array name="wo_2_weight">
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>5</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>20</item>
         <item>0</item>
     </string-array>
     <string-array name="wo_2_times">
         <item>30</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>140</item>
+        <item>90</item>
+        <item>90</item>
+        <item>110</item>
+        <item>160</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
         <item>60</item>
         <item>60</item>
         <item>60</item>
