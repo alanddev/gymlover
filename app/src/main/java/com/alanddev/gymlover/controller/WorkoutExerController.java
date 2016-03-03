@@ -209,7 +209,12 @@ public class WorkoutExerController implements IDataSource {
     public List<WorkoutExerDetail> getExercisebyWD(int workoutId,int day,int week){
         StringBuffer sql = new StringBuffer("SELECT e.").append(MwSQLiteHelper.COLUMN_EXCERCISE_ID).append(",e.").
                 append(MwSQLiteHelper.COLUMN_EXCERCISE_IMAGE).append(",e.").append(MwSQLiteHelper.COLUMN_EXCERCISE_NAME).
-                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT).append(" FROM ").append(MwSQLiteHelper.TABLE_WORKOUT_EXER).
+                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_REPEAT).
+                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEIGHT).
+                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME).
+                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY).
+                append(",we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_SET).
+                append(" FROM ").append(MwSQLiteHelper.TABLE_WORKOUT_EXER).
                 append(" we inner join ").append(MwSQLiteHelper.TABLE_EXCERCISE).append(" e ON we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID).
                 append(" = e.").append(MwSQLiteHelper.COLUMN_EXCERCISE_ID).append(" WHERE we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID)
                 .append("= ?").append(" AND we.").append(MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY).append("= ?").
@@ -224,6 +229,10 @@ public class WorkoutExerController implements IDataSource {
             detail.setExerimg(cursor.getString(1));
             detail.setExername(cursor.getString(2));
             detail.setRepeat(cursor.getString(3));
+            detail.setWeight(cursor.getFloat(4));
+            detail.setTime(cursor.getFloat(5));
+            detail.setDay(cursor.getInt(6));
+            detail.setSet(cursor.getInt(7));
             workoutExerDetails.add(detail);
             cursor.moveToNext();
         }
