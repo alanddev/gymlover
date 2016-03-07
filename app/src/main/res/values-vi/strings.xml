@@ -53,4 +53,16 @@
     <string name="title_activity_user">Thông tin</string>
     <string name="title_activity_report">Báo cáo</string>
     <string name="title_activity_main">Exercise Tracker</string>
+    <string name="ex_back_barbellrow"></string>
+    <string name="ex_abdominals_reverse"></string>
+    <string name="grp_abdo">Bụng</string>
+    <string name="grp_back">Lưng</string>
+    <string name="grp_bice">Tay trước</string>
+    <string name="grp_ches">Ngực</string>
+    <string name="grp_shou">Vai</string>
+    <string name="grp_tric">Tay sau</string>
+    <string name="grp_quad">Đùi trước</string>
+    <string name="grp_legs">Chân</string>
+    <string name="grp_fore">Cẳng tay</string>
+    <string name="grp_glut">Mông</string>
 </resources>

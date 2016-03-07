@@ -389,7 +389,6 @@ public class WorkoutRunActivity extends AppCompatActivity {
         return excer;
     }
 
-
     public void onClickStart(View v){
         if (t == 1) {
             btnstart.setText("Pause");
@@ -442,6 +441,7 @@ public class WorkoutRunActivity extends AppCompatActivity {
 
     private void save(){
         Utils.addListResult(transactions);
+        updateData();
         exerciseController.close();
         transactionController.close();
         workoutExerController.close();
