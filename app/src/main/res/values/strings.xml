@@ -270,6 +270,9 @@
         <item>Partner 3-Touch Motion Russian Twist</item>
         <item>Partner Sit-Up With High-Five</item>
         <item>Partner Target Sit-Up</item>
+        <item>Partner Facing Planks With Alternating High-Five</item>
+        <item>Partner Side-To-Side Russian Twist Pass</item>
+        <item>Partner Hanging Knee Raise With Throw Down</item>
     </string-array>
     <string-array name="ex_abdominals_imgs">
         <item>reverse_1,reverse_2</item>
@@ -277,6 +280,9 @@
         <item>partner_touch_1,partner_touch_2</item>
         <item>partner_situp_1,partner_situp_2</item>
         <item>partner_target_1,partner_target_2</item>
+        <item>partner_planks_1,partner_planks_2</item>
+        <item>partner_side_1,partner_side_2</item>
+        <item>partner_hanging_1,partner_hanging_2</item>
     </string-array>
 
     <string-array name="ex_abdominals_descs">
@@ -285,6 +291,9 @@
         <item>@string/ex_abdominals_partner_touch</item>
         <item>@string/ex_partner_situp</item>
         <item>@string/ex_partner_target</item>
+        <item>@string/ex_partner_planks</item>
+        <item>@string/ex_partner_side</item>
+        <item>@string/ex_partner_hanging</item>
     </string-array>
     <string-array name="ex_abdominals_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/40771m.mp4</item>
@@ -292,6 +301,9 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118721m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118701m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118791m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118771m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118711m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118621m.mp4</item>
     </string-array>
     <string-array name="ex_abdominals_calos">
         <item>391</item>
@@ -299,6 +311,9 @@
         <item>300</item>
         <item>293</item>
         <item>340</item>
+        <item>300</item>
+        <item>270</item>
+        <item>370</item>
     </string-array>
 
      <string name="ex_abdominals_reverse">\n
@@ -332,6 +347,24 @@
         3. Initiate the movement by contracting your abs to lift your shoulder blades off the floor, reaching to touch your partner’s hand. Use the strength of your abs to drive higher, not simply reaching with your arms.\n
         4. Don’t allow your shoulder blades to come completely down between reps to keep tension on the muscle. Your partner can move the target point higher or lower, and to one side or the other, to increase the challenge.
     </string>
+    <string name="ex_partner_planks">\n
+        1. Get into a plank position with your weight evenly distributed on your elbows and toes, keeping your back straight and your hips in line with your back.\n
+        2. Your partner should mirror your body position about 2 feet in front of and facing you. This will be your starting position.\n
+        3. Maintaining your body weight on three limbs, raise one hand in front of your body and reach across to tap your partner’s hand.\n
+        4. Lower and re-establish the plank position and complete on the opposite side.
+    </string>
+    <string name="ex_partner_side">\n
+        1. Balance your body weight on your hips with your legs semi-extended and off the floor. Lean back so your torso is at a 45-degree angle to the floor, making sure to keep your back straight and not rounded. You should be sitting next to your partner, about 4 feet away.\n
+        2. Hold a weighted medicine ball in your hands just above your chest. This will be your starting position.\n
+        3. Rotate away from your partner, back to the inside, and then back to the outside before passing the ball to your partner. Make sure you’re contracting your obliques to twist, not simply moving only at the shoulders.\n
+        4. Each person should do three touches before passing the medicine ball back.
+    </string>
+    <string name="ex_partner_hanging">\n
+        1. Hang from a pull-up bar with your arms extended and your feet together (use ab straps if your grip is weak). Lock a slight bend in your knees. This will be your starting position.\n
+        2. Without swinging your body, contract your lower abs to raise your knees just past a position in which your thighs are parallel to the floor.\n
+        3. As your pelvis begins to curl upward, your partner should forcefully press down just above your knees to push your legs back to the starting position.\n
+        4. Engage your abs and try to resist the movement. With their free hand your partner can push against your lower back to ensure your body doesn’t swing.
+    </string>
     <string-array name="ex_back_names">
         <item>Deadlift</item>
         <item>Barbell Row</item>
@@ -343,6 +376,7 @@
         <item>Partner Flat-Bench Back Extension</item>
         <item>Partner Supermans With Alternating High-Five</item>
         <item>Suspended Row</item>
+        <item>Partner Facing Side Plank With Band Row</item>
     </string-array>
     <string-array name="ex_back_imgs">
         <item>deadlift_1,deadlift_2,deadlift_3</item>
@@ -355,6 +389,7 @@
         <item>partner_flat_1,partner_flat_2</item>
         <item>partner_superman_1,partner_superman_2</item>
         <item>suspended_row_1,suspended_row_2</item>
+        <item>partner_band_1,partner_band_2</item>
     </string-array>
     <string-array name="ex_back_descs">
         <item>@string/ex_back_deadlift</item>
@@ -367,6 +402,7 @@
         <item>@string/ex_partner_flat</item>
         <item>@string/ex_partner_superman</item>
         <item>@string/ex_suspended_row</item>
+        <item>@string/ex_partner_band</item>
     </string-array>
     <string-array name="ex_back_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118911m.mp4</item>
@@ -379,6 +415,7 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118651m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118821m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/98000/99922m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118741m.mp4</item>
     </string-array>
 
     <string-array name="ex_back_calos">
@@ -391,6 +428,7 @@
         <item>408</item>
         <item>408</item>
         <item>204</item>
+        <item>408</item>
         <item>408</item>
         <item>408</item>
     </string-array>
@@ -455,6 +493,12 @@
         1. Suspend your straps at around chest height. Take a handle in each hand and lean back. Keep your body erect and your head and chest up. Your arms should be fully extended. This will be your starting position.\n
         2. Begin by flexing the elbow to initiate the movement. Protract your shoulder blades as you do so.\n
         3. At the completion of the motion pause, and then return to the starting position.
+    </string>
+    <string name="ex_partner_band">\n
+        1. Get into a side plank position by balancing your weight on one elbow and lifting your hips off of the floor. Keep your body straight and feet stacked. Your body should face your partner, about 7 feet away.\n
+        2. Grasp one end of an elastic band with your top-side hand, arm extended. Your bodies should mirror each other. This will be your starting position.\n
+        3. Simultaneously pull your elbow back as far as possible in a rowing motion to stretch the band, then release and again extending your arm forward.\n
+        4. Do all reps for one side before switching sides.
     </string>
 
     <string-array name="ex_biceps_names">
@@ -666,6 +710,8 @@
         <item>Barbell Lunge</item>
         <item>Single-Leg Box Squat</item>
         <item>Barbell Walking Lunge</item>
+        <item>Split Squat with Dumbbells</item>
+        <item>Barbell Step Ups</item>
     </string-array>
     <string-array name="ex_quad_imgs">
         <item>bodyweight_1,bodyweight_2</item>
@@ -678,6 +724,8 @@
         <item>barbell_lunge_1,barbell_lunge_2</item>
         <item>single_leg_squat_1,single_leg_squat_2</item>
         <item>barbell_walking_1,barbell_walking_2</item>
+        <item>split_squat_1,split_squat_2</item>
+        <item>barbell_stepup_1,barbell_stepup_2</item>
     </string-array>
     <string-array name="ex_quad_descs">
         <item>@string/ex_quad_bodyweight</item>
@@ -690,6 +738,8 @@
         <item>@string/ex_quad_barbell_lunge</item>
         <item>@string/ex_quad_single_leg_squat</item>
         <item>@string/ex_quad_barbell_walking</item>
+        <item>@string/ex_split_squat</item>
+        <item>@string/ex_barbell_stepup</item>
     </string-array>
     <string-array name="ex_quad_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/90000/90572m.mp4</item>
@@ -702,6 +752,8 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/38291m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118661m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/106000/107032m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/94000/94752m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/52000/53861m.mp4</item>
     </string-array>
     <string-array name="ex_quad_calos">
         <item>306</item>
@@ -714,6 +766,8 @@
         <item>510</item>
         <item>442</item>
         <item>510</item>
+        <item>476</item>
+        <item>476</item>
     </string-array>
 
     <string name="ex_quad_bodyweight">\n 1. Stand with your feet shoulder width apart. You can place your hands behind your head. This will be your starting position. \n
@@ -774,31 +828,58 @@
         3. Drive through the heel of your lead foot and extend both knees to raise yourself back up.\n
         4. Step forward with your rear foot, repeating the lunge on the opposite leg.\n
     </string>
+    <string name="ex_split_squat">\n
+        1. Position yourself into a staggered stance with the rear foot elevated and front foot forward.\n
+        2. Hold a dumbbell in each hand, letting them hang at the sides. This will be your starting position.\n
+        3. Begin by descending, flexing your knee and hip to lower your body down. Maintain good posture througout the movement. Keep the front knee in line with the foot as you perform the exercise.\n
+        4. At the bottom of the movement, drive through the heel to extend the knee and hip to return to the starting position.
+    </string>
+    <string name="ex_barbell_stepup">\n
+        1. Stand up straight while holding a barbell placed on the back of your shoulders (slightly below the neck) and stand upright behind an elevated platform (such as the one used for spotting behind a flat bench). This is your starting position.\n
+        2. Place the right foot on the elevated platform. Step on the platform by extending the hip and the knee of your right leg. Use the heel mainly to lift the rest of your body up and place the foot of the left leg on the platform as well. Breathe out as you execute the force required to come up.\n
+        3. Step down with the left leg by flexing the hip and knee of the right leg as you inhale. Return to the original standing position by placing the right foot of to next to the left foot on the initial position.\n
+        4. Repeat with the right leg for the recommended amount of repetitions and then perform with the left leg.
+    </string>
 
     <string-array name="ex_shoulder_names">
         <item>Overhead Press</item>
         <item>Reverse Machine Flyes</item>
         <item>Side Lateral Raise</item>
+        <item>Seated Bent-Over Rear Delt Raise</item>
+        <item>Dumbbell Shoulder Press</item>
+        <item>Front Dumbbell Raise</item>
     </string-array>
     <string-array name="ex_shoulder_imgs">
         <item>overhpress_1,overhpress_2</item>
         <item>reverse_machine_1,reverse_machine_2</item>
         <item>side_lateral_1,side_lateral_2</item>
+        <item>seated_bent_1,seated_bent_2</item>
+        <item>dumbbell_shoulder_1,dumbbell_shoulder_2</item>
+        <item>front_dumbbell_1,front_dumbbell_2,front_dumbbell_3</item>
     </string-array>
     <string-array name="ex_shoulder_descs">
         <item>@string/ex_shoulder_overheadpress</item>
         <item>@string/ex_shoulder_reverse_machine</item>
         <item>@string/ex_side_lateral</item>
+        <item>@string/ex_seated_bent</item>
+        <item>@string/ex_dumbbell_shoulder</item>
+        <item>@string/ex_front_dumbbell</item>
     </string-array>
     <string-array name="ex_shoulder_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/94000/94722m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/41051m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/54000/54401m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/39131m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/39911m.mp4</item>
     </string-array>
 
     <string-array name="ex_shoulder_calos">
         <item>490</item>
         <item>374</item>
+        <item>272</item>
+        <item>408</item>
+        <item>340</item>
         <item>272</item>
     </string-array>
 
@@ -819,6 +900,28 @@
         2. While maintaining the torso in a stationary position (no swinging), lift the dumbbells to your side with a slight bend on the elbow and the hands slightly tilted forward as if pouring water in a glass. Continue to go up until you arms are parallel to the floor. Exhale as you execute this movement and pause for a second at the top.\n
         3. Lower the dumbbells back down slowly to the starting position as you inhale.\n
         4. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_seated_bent">\n
+        1. Place a couple of dumbbells looking forward in front of a flat bench.\n
+        2. Sit on the end of the bench with your legs together and the dumbbells behind your calves.\n
+        3. Bend at the waist while keeping the back straight in order to pick up the dumbbells. The palms of your hands should be facing each other as you pick them. This will be your starting position.\n
+        4. Keeping your torso forward and stationary, and the arms slightly bent at the elbows, lift the dumbbells straight to the side until both arms are parallel to the floor. Exhale as you lift the weights. (Note: avoid swinging the torso or bringing the arms back as opposed to the side.)\n
+        5. After a one second contraction at the top, slowly lower the dumbbells back to the starting position.\n
+        6. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_dumbbell_shoulder">\n
+        1. While holding a dumbbell in each hand, sit on a military press bench or utility bench that has back support. Place the dumbbells upright on top of your thighs.\n
+        2. Now raise the dumbbells to shoulder height one at a time using your thighs to help propel them up into position.\n
+        3. Make sure to rotate your wrists so that the palms of your hands are facing forward. This is your starting position.\n
+        4. Now, exhale and push the dumbbells upward until they touch at the top.\n
+        5. Then, after a brief pause at the top contracted position, slowly lower the weights back down to the starting position while inhaling.\n
+        6. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_front_dumbbell">\n
+        1. Pick a couple of dumbbells and stand with a straight torso and the dumbbells on front of your thighs at arms length with the palms of the hand facing your thighs. This will be your starting position.\n
+        2. While maintaining the torso stationary (no swinging), lift the left dumbbell to the front with a slight bend on the elbow and the palms of the hands always facing down. Continue to go up until you arm is slightly above parallel to the floor. Exhale as you execute this portion of the movement and pause for a second at the top. Inhale after the second pause.\n
+        3. Now lower the dumbbell back down slowly to the starting position as you simultaneously lift the right dumbbell.\n
+        4. Continue alternating in this fashion until all of the recommended amount of repetitions have been performed for each arm.
     </string>
 
     <string-array name="ex_triceps_names">
@@ -884,18 +987,23 @@
 
     <string-array name="ex_lats_names">
         <item>Chin-Up</item>
+        <item>Wide-Grip Lat Pulldown</item>
     </string-array>
     <string-array name="ex_lats_imgs">
         <item>chinup_1,chinup_2</item>
+        <item>wide_grid_1,wide_grid_2</item>
     </string-array>
     <string-array name="ex_lats_descs">
         <item>@string/ex_lats_chinup</item>
+        <item>@string/ex_wide_grid</item>
     </string-array>
     <string-array name="ex_lats_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/38771m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/41441m.mp4</item>
     </string-array>
     <string-array name="ex_lats_calos">
         <item>442</item>
+        <item>408</item>
     </string-array>
 
     <string name="ex_lats_chinup">\n
@@ -905,21 +1013,39 @@
         4. After a second of squeezing the biceps in the contracted position, slowly lower your torso back to the starting position; when your arms are fully extended. Breathe in as you perform this portion of the movement.\n
         5. Repeat this motion for the prescribed amount of repetitions.
     </string>
+    <string name="ex_wide_grid">\n
+        1. Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.\n
+        2. Grab the bar with the palms facing forward using the prescribed grip.\n
+        3. As you have both arms extended in front of you holding the bar at the chosen grip width, bring your torso back around 30 degrees or so while creating a curvature on your lower back and sticking your chest out. This is your starting position.\n
+        4. As you breathe out, bring the bar down until it touches your upper chest by drawing the shoulders and the upper arms down and back. Tip: Concentrate on squeezing the back muscles once you reach the full contracted position. The upper torso should remain stationary and only the arms should move. The forearms should do no other work except for holding the bar; therefore do not try to pull down the bar using the forearms.\n
+        5. After a second at the contracted position squeezing your shoulder blades together, slowly raise the bar back to the starting position when your arms are fully extended and the lats are fully stretched. Inhale during this portion of the movement.\n
+        6. Repeat this motion for the prescribed amount of repetitions.
+    </string>
 
     <string-array name="ex_hams_names">
         <item>Seated Leg Curl</item>
+        <item>Romanian Deadlift</item>
+        <item>Single Leg Deadlift</item>
     </string-array>
     <string-array name="ex_hams_imgs">
         <item>seated-leg_1,seated-leg_2</item>
+        <item>romanian_deadlift_1,romanian_deadlift_2</item>
+        <item>single_leg_1,single_leg_2</item>
     </string-array>
     <string-array name="ex_hams_descs">
         <item>@string/ex_seated_leg</item>
+        <item>@string/ex_romanian_deadlift</item>
+        <item>@string/ex_single_leg</item>
     </string-array>
     <string-array name="ex_hams_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/30000/30521m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/120000/120001m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/116000/116452m.mp4</item>
     </string-array>
     <string-array name="ex_hams_calos">
         <item>408</item>
+        <item>510</item>
+        <item>442</item>
     </string-array>
     <string name="ex_seated_leg">\n
         1. Adjust the machine lever to fit your height and sit on the machine with your back against the back support pad.\n
@@ -928,28 +1054,48 @@
         4. Slowly return to the starting position as you breathe in.\n
         5. Repeat for the recommended amount of repetitions.\n
     </string>
+    <string name="ex_romanian_deadlift">\n
+        1. Hold a bar at hip level with a pronated (palms facing down) grip. Your shoulders should be back, your back arched, and your knees slightly bent. This will be your starting position.\n
+        2. Lower the bar by moving your butt back as far as you can. Keep the bar close to your body, your head looking forward, and your shoulders back. Done correctly, you should reach the maximum range of your hamstring flexibility just below the knee. Any further movement will be compensation and should be avoided for this movement.\n
+        3. At the bottom of your range of motion, return the starting position by driving the hips forward to stand up tall.
+    </string>
+    <string name="ex_single_leg">\n
+        1. Hold a kettlebell in one hand, hanging to the side. Stand on one leg, on the same side that you hold the kettlebell.\n
+        2. Keeping that knee slightly bent, perform a stiff-legged deadlift by bending at the hip, extending your free leg behind you for balance. Continue lowering the kettlebell until you are parallel to the ground, and then return to the upright position. Repeat for the desired number of repetitions.
+    </string>
 
     <string-array name="ex_calv_names">
         <item>Standing Calf Raises</item>
+        <item>Calf Press</item>
     </string-array>
     <string-array name="ex_calv_imgs">
         <item>standing_calf_1,standing_calf_2</item>
+        <item>calf_press_1,calf_press_2</item>
     </string-array>
     <string-array name="ex_calv_descs">
         <item>@string/ex_standing_calf</item>
+        <item>@string/ex_calf_press</item>
     </string-array>
     <string-array name="ex_calv_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/41821m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/94000/94042m.mp4</item>
     </string-array>
     <string-array name="ex_calv_calos">
         <item>204</item>
+        <item>238</item>
     </string-array>
-    <string name="ex_standing_calf">/n
-        1. Adjust the padded lever of the calf raise machine to fit your height./n
-        2. Place your shoulders under the pads provided and position your toes facing forward (or using any of the two other positions described at the beginning of the chapter). The balls of your feet should be secured on top of the calf block with the heels extending off it. Push the lever up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position./n
-        3. Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending at any time. Hold the contracted position by a second before you start to go back down./n
-        4. Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched./n
+    <string name="ex_standing_calf">\n
+        1. Adjust the padded lever of the calf raise machine to fit your height.\n
+        2. Place your shoulders under the pads provided and position your toes facing forward (or using any of the two other positions described at the beginning of the chapter). The balls of your feet should be secured on top of the calf block with the heels extending off it. Push the lever up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position.\n
+        3. Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending at any time. Hold the contracted position by a second before you start to go back down.\n
+        4. Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.\n
         5. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_calf_press">\n
+        1. Adjust the seat so that your legs are only slightly bent in the start position. The balls of your feet should be firmly on the platform.\n
+        2. Select an appropriate weight, and grasp the handles. This will be your starting position.\n
+        3. Straighten the legs by extending the knees, just barely lifting the weight from the stack. Your ankle should be fully flexed, toes pointing up. Execute the movement by pressing downward through the balls of your feet as far as possible.\n
+        4. After a brief pause, reverse the motion and repeat
     </string>
     <!-- workout here -->
     <string-array name="wo_names">
@@ -1839,6 +1985,23 @@
         <item>2</item>
         <item>2</item>
         <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
     </string-array>
     <string-array name="wo_3_day">
         <item>1</item>
@@ -1877,6 +2040,23 @@
         <item>2</item>
         <item>3</item>
         <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
     </string-array>
     <string-array name="wo_3_exer">
         <item>8005</item>
@@ -1915,6 +2095,23 @@
         <item>10003</item>
         <item>2009</item>
         <item>3002</item>
+        <item>11001</item>
+        <item>9003</item>
+        <item>12001</item>
+        <item>8010</item>
+        <item>12002</item>
+        <item>13001</item>
+        <item>9004</item>
+        <item>9005</item>
+        <item>1005</item>
+        <item>1001</item>
+        <item>1006</item>
+        <item>8005</item>
+        <item>12001</item>
+        <item>8011</item>
+        <item>2010</item>
+        <item>1007</item>
+        <item>1006</item>
     </string-array>
     <string-array name="wo_3_set">
         <item>5</item>
@@ -1952,6 +2149,23 @@
         <item>6</item>
         <item>6</item>
         <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>12</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>12</item>
+        <item>6</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
     </string-array>
     <string-array name="wo_3_repeat">
         <item>12,12,12,12,12</item>
@@ -1990,6 +2204,23 @@
         <item>10,10,10,10,10,10</item>
         <item>10,10,10,10,10,10</item>
         <item>10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10,10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10,10,10,10,10,10,10</item>
+        <item>10,10,10,10,10,10</item>
+        <item>10,10,10</item>
+        <item>15,15,15</item>
+        <item>10,10,10</item>
+        <item>8,8,8,8</item>
+        <item>8,8,8,8</item>
+        <item>8,8,8,8</item>
+        <item>10,10,10</item>
+        <item>10,10,10</item>
+        <item>25,25,25</item>
     </string-array>
     <string-array name="wo_3_weight">
         <item>20</item>
@@ -2027,6 +2258,23 @@
         <item>0</item>
         <item>0</item>
         <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>10</item>
+        <item>5</item>
+        <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
     </string-array>
     <string-array name="wo_3_times">
         <item>300</item>
@@ -2065,5 +2313,22 @@
         <item>210</item>
         <item>300</item>
         <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>600</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>600</item>
+        <item>300</item>
+        <item>180</item>
+        <item>225</item>
+        <item>150</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>180</item>
+        <item>180</item>
+        <item>180</item>
     </string-array>
 </resources>
