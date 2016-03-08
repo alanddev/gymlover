@@ -120,7 +120,13 @@ public class TransactionAddActivity extends AppCompatActivity implements View.On
             Toast.makeText(this, getResources().getText(R.string.check_exercise_exist), Toast.LENGTH_LONG).show();
         }else if(edttime.getText().toString().equals("")){
             Toast.makeText(this, getResources().getText(R.string.check_time_exist), Toast.LENGTH_LONG).show();
+        }else if(edtrepeat.getText().toString().equals("")) {
+            Toast.makeText(this, getResources().getText(R.string.check_repeat_exist), Toast.LENGTH_LONG).show();
+
         }else{
+            if(edtweight.getText().toString().equals("")) {
+                edtweight.setText("0");
+            }
             Float bodyweight = 0.0f;
             UserController userController = new UserController(this);
             userController.open();

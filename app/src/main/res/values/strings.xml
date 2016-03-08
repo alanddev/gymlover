@@ -129,20 +129,20 @@
     <string name="day">Day</string>
     <string name="exercise">exercises</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
-    <string name="title_activity_body_fat">Xác định lượng mỡ</string>
-    <string name="name_user">Tên Bạn</string>
-    <string name="user_height">Chiều cao</string>
-    <string name="user_weight">Cân nặng</string>
-    <string name="user_fat">Phần trăm mỡ cơ thể</string>
-    <string name="action_save">Lưu</string>
+    <string name="title_activity_body_fat">Body Fat Percentage</string>
+    <string name="name_user">Your Name</string>
+    <string name="user_height">Height</string>
+    <string name="user_weight">Weight</string>
+    <string name="user_fat">Fat percentage</string>
+    <string name="action_save">Save</string>
     <string name="warning_user_name">Chưa nhập tên bạn mà :)</string>
 
     <string-array name="gender_array">
         <item>@string/gender_boy</item>
         <item>@string/gender_girl</item>
     </string-array>
-    <string name="gender_boy">Nam</string>
-    <string name="gender_girl">Nữ</string>
+    <string name="gender_boy">Boy</string>
+    <string name="gender_girl">Girl</string>
 
     <string-array name="weight_choice">
         <item>@string/kg</item>
@@ -159,31 +159,31 @@
     <string name="cm">cm</string>
 
     <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
-    <string name="user_waist">Vòng eo</string>
-    <string name="bodyfat_guide_begin">Bạn hãy nhìn vào hình bên dưới để có thể dễ hình dung về lượng mỡ cơ thể của mình nhé.</string>
-    <string name="calBodyFat">Tính nhanh</string>
+    <string name="user_waist">Waist</string>
+    <string name="bodyfat_guide_begin">Please see the picture below to figure out your body</string>
+    <string name="calBodyFat">calculator</string>
     <string name="title_activity_exercise_detail">ExerciseDetailActivity</string>
     <string name="exercise_desc">Description</string>
-    <string name="birthday">Ngày Sinh</string>
-    <string name="week">tuần</string>
-    <string name="action_install">Cài đặt</string>
-    <string name="action_finish">Kết thúc</string>
+    <string name="birthday">Birthday</string>
+    <string name="week">Week</string>
+    <string name="action_install">Setting</string>
+    <string name="action_finish">Finish</string>
     <string name="title_activity_workout_run">Workout Run Activity</string>
-    <string name="start">Chạy</string>
+    <string name="start">Start</string>
     <string name="start_time_total">00:00:00</string>
     <string name="start_time">00:00</string>
-    <string name="reset">Chạy Lại</string>
-    <string name="next">Tiếp</string>
-    <string name="menu_workout_run">Chạy workout</string>
+    <string name="reset">Reset</string>
+    <string name="next">Next</string>
+    <string name="menu_workout_run">Run Workout</string>
     <string name="title_activity_workout_setting"> Cấu hình Workout </string>
     <string name="title_activity_work_out_exer">WorkOutExerActivity</string>
     <string name="second">s</string>
     <string name="title_activity_workout_exer">WorkoutExerActivity</string>
     <string name="title_activity_report">ReportActivity</string>
-    <string name="action_next">Tiếp</string>
+    <string name="action_next">Next</string>
     <string name="title_activity_exercise_wo">ExerciseWoActivity</string>
     <string name="kg">kg</string>
-    <string name="repeat">lần</string>
+    <string name="repeat">Rep</string>
     <string name="calos">calos</string>
     <string name="title_activity_transaction_add">TransactionAddActivity</string>
     <string name="title_activity_result_workout">ResultWorkoutActivity</string>
@@ -2487,4 +2487,34 @@
         <item>160</item>
         <item>160</item>
     </string-array>
+    <string name="future">Future</string>
+    <string name="inflow_txt">Total calo</string>
+    <string name="menu_report">Report</string>
+    <string name="menu_user_title">Edit profile</string>
+    <string name="check_exercise_exist">No exercise, please check</string>
+    <string name="check_repeat_exist">No repeat, please check</string>
+    <string name="check_time_exist">No time, please check</string>
+    <string name="check_change_data">Same information, please check</string>
+    <string name="dialog_confirm_delete_trans">Do you want to delete this transaction?</string>
+    <string name="dialog_no_button">No</string>
+    <string name="dialog_yes_button">Yes</string>
+    <string name="notify_afternoon">Good evening, please do not forget update MW today</string>
+    <string name="notify_morning">Happy morning and have a greate </string>
+    <string name="notify_noon">Good night and have a good dream !</string>
+    <string name="notify_startmonth">Good new month !</string>
+    <string name="notify_startweek">Good new week !</string>
+    <string name="notify_startyear">Happy new year !</string>
+    <string name="notify_title">Say hi :)</string>
+    <string name="onmonth">This month</string>
+    <string name="onweek">This week</string>
+    <string name="overview">Overview</string>
+    <string name="overview_click_me">Touch to see full list</string>
+    <string name="premonth">Last month</string>
+    <string name="preweek">Last week</string>
+    <string name="select_exercise">Select Exercise</string>
+    <string name="setting">Setting</string>
+    <string name="settings_language">Choose Language</string>
+    <string name="settings_menu">Choose Menu theme</string>
+    <string name="settings_themes">Choose Theme</string>
+    <string name="time">Time</string>
 </resources>
