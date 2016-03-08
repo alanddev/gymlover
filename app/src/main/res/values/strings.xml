@@ -1157,6 +1157,7 @@
         3. Straighten the legs by extending the knees, just barely lifting the weight from the stack. Your ankle should be fully flexed, toes pointing up. Execute the movement by pressing downward through the balls of your feet as far as possible.\n
         4. After a brief pause, reverse the motion and repeat
     </string>
+    <string name="menu_helper">Guide</string>
     <!-- workout here -->
     <string-array name="wo_names">
         <item>StrongLift 5*5</item>
