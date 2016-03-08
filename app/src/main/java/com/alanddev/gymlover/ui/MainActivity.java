@@ -182,6 +182,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this,ReportActivity.class);
             intent.putExtra(Constant.KEY_REPORT_TYPE, Constant.REPORT_TYPE_WORKOUT);
             startActivity(intent);
+        }else if(id == R.id.nav_helper){
+            Intent intent = new Intent(this,OnboardingActivity.class);
+            //intent.putExtra(Constant.KEY_REPORT_TYPE, Constant.REPORT_TYPE_WORKOUT);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
