@@ -213,7 +213,7 @@
         <item>@string/grp_lats</item>
         <item>@string/grp_hams</item>
         <item>@string/grp_calv</item>
-
+        <item>@string/grp_trap</item>
     </string-array>
 
     <string name="grp_abdo">Abdominals</string>
@@ -229,6 +229,7 @@
     <string name="grp_lats">Lats</string>
     <string name="grp_hams">Hamstrings</string>
     <string name="grp_calv">Calves</string>
+    <string name="grp_trap">Traps</string>
 
     <string-array name="excercise_grp_imgs">
         <item>abdominals</item>
@@ -244,6 +245,7 @@
         <item>lats</item>
         <item>hamstrings</item>
         <item>calves</item>
+        <item>traps</item>
     </string-array>
 
     <string-array name="excercise_grp_ex">
@@ -260,6 +262,7 @@
         <item>ex_lats_names,ex_lats_descs,ex_lats_imgs,ex_lats_videos,ex_lats_calos</item>
         <item>ex_hams_names,ex_hams_descs,ex_hams_imgs,ex_hams_videos,ex_hams_calos</item>
         <item>ex_calv_names,ex_calv_descs,ex_calv_imgs,ex_calv_videos,ex_calv_calos</item>
+        <item>ex_trap_names,ex_trap_descs,ex_trap_imgs,ex_trap_videos,ex_trap_calos</item>
     </string-array>
 
 
@@ -273,6 +276,11 @@
         <item>Partner Facing Planks With Alternating High-Five</item>
         <item>Partner Side-To-Side Russian Twist Pass</item>
         <item>Partner Hanging Knee Raise With Throw Down</item>
+        <item>Supine Two-Arm Overhead Throw</item>
+        <item>Partner Resistance Standing Twist</item>
+        <item>Sit-Up</item>
+        <item>Partner Hanging Knee Raise With Manual Resistance</item>
+        <item>Medicine Ball Full Twist</item>
     </string-array>
     <string-array name="ex_abdominals_imgs">
         <item>reverse_1,reverse_2</item>
@@ -283,6 +291,11 @@
         <item>partner_planks_1,partner_planks_2</item>
         <item>partner_side_1,partner_side_2</item>
         <item>partner_hanging_1,partner_hanging_2</item>
+        <item>supine_arm_1,supine_arm_2,supine_arm_3</item>
+        <item>partner_resistance_1,partner_resistance_2</item>
+        <item>situp_1,situp_2</item>
+        <item>partner_knee_1,partner_knee_2</item>
+        <item>medicine_full_1,medicine_full_2,medicine_full_3</item>
     </string-array>
 
     <string-array name="ex_abdominals_descs">
@@ -294,6 +307,11 @@
         <item>@string/ex_partner_planks</item>
         <item>@string/ex_partner_side</item>
         <item>@string/ex_partner_hanging</item>
+        <item>@string/ex_supine_arm</item>
+        <item>@string/ex_partner_resistance</item>
+        <item>@string/ex_situp</item>
+        <item>@string/ex_partner_knee</item>
+        <item>@string/ex_medicine_full</item>
     </string-array>
     <string-array name="ex_abdominals_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/40771m.mp4</item>
@@ -304,6 +322,11 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118771m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118711m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118621m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/90000/91792m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118681m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/54000/54441m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118611m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/90000/91632m.mp4</item>
     </string-array>
     <string-array name="ex_abdominals_calos">
         <item>391</item>
@@ -314,6 +337,11 @@
         <item>300</item>
         <item>270</item>
         <item>370</item>
+        <item>408</item>
+        <item>270</item>
+        <item>340</item>
+        <item>459</item>
+        <item>323</item>
     </string-array>
 
      <string name="ex_abdominals_reverse">\n
@@ -365,6 +393,37 @@
         3. As your pelvis begins to curl upward, your partner should forcefully press down just above your knees to push your legs back to the starting position.\n
         4. Engage your abs and try to resist the movement. With their free hand your partner can push against your lower back to ensure your body doesn’t swing.
     </string>
+    <string name="ex_supine_arm">\n
+        1. Lay on the ground on your back with your knees bent.\n
+        2. Hold the ball with both hands, extending the arms fully behind your head. This will be your starting position.\n
+        3. Initiate the movement at the shoulder, throwing the ball directly forward of you as you sit up, attempting to go for maximum distance.\n
+        4. The ball can be thrown to a partner or bounced off of a wall.
+    </string>
+    <string name="ex_partner_resistance">\n
+        1. Stand erect with your knees unlocked 3 to 4 feet in front of and facing your partner. Place your hands together and extend your arms out in front of you. This will be your starting position.\n
+        2. Your partner should push your arms out to one side as you resist; then release back toward your midline and repeat for all reps to one side before switching sides.\n
+        3. Make sure to engage your obliques to twist back toward the middle, not just moving at the shoulders.
+    </string>
+    <string name="ex_situp">\n
+        1. Lie down on the floor placing your feet either under something that will not move or by having a partner hold them. Your legs should be bent at the knees.\n
+        2. Place your hands behind your head and lock them together by clasping your fingers. This is the starting position.\n
+        3. Elevate your upper body so that it creates an imaginary V-shape with your thighs. Breathe out when performing this part of the exercise.\n
+        4. Once you feel the contraction for a second, lower your upper body back down to the starting position while inhaling.\n
+        5. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_partner_knee">\n
+        1. Hang from a pull-up bar with your arms extended and your feet together (use ab straps if your grip is weak). Lock a slight bend in your knees. This will be your starting position.\n
+        2. Without swinging your body, contract your lower abs to raise your knees just past a position in which your thighs are parallel to the floor.\n
+        3. As your pelvis begins to curl upward, your partner should place his hand just above your knees to push your legs back down to the starting position, keeping his hand in contact with your legs at all times.\n
+        4. Engage your abs and try to resist the movement. With their free hand your partner can push against your lower back to ensure your body doesn’t swing.
+    </string>
+    <string name="ex_medicine_full">\n
+        1. For this exercise you will need a medicine ball and a partner. Stand back to back with your partner, spaced 2-3 feet apart. This will be your starting position.\n
+        2. Hold the ball in front of the trunk. Open the hips and turn the shoulders at the same time as your partner.\n
+        3. For full rotation, you and your partner should twist in the same direction, i.e. counter-clockwise.\n
+        4. Pass the ball to your partner, and both of you can now twist in the opposite direction to repeat the procedure.
+    </string>
+
     <string-array name="ex_back_names">
         <item>Deadlift</item>
         <item>Barbell Row</item>
@@ -580,6 +639,7 @@
         <item>Barbell Bench Press - Medium Grip</item>
         <item>Incline Dumbbell Press</item>
         <item>Dumbbell Flyes</item>
+        <item>Barbell Incline Bench Press Medium-Grip</item>
     </string-array>
     <string-array name="ex_chest_imgs">
         <item>benchpress_1,benchpress_2</item>
@@ -589,6 +649,7 @@
         <item>barbell_benchpress_1,ballbarbell_benchpress_2</item>
         <item>incline_dumbbell_1,incline_dumbbell_2</item>
         <item>dumbbell_flyes_1,dumbbell_flyes_2</item>
+        <item>barbell_incline_1,barbell_incline_2</item>
     </string-array>
     <string-array name="ex_chest_descs">
         <item>@string/ex_chest_benchpress</item>
@@ -598,6 +659,7 @@
         <item>@string/ex_barbell_bechpress</item>
         <item>@string/ex_incline_dumbbell</item>
         <item>@string/ex_dumbbell_flyes</item>
+        <item>@string/ex_barbell_incline</item>
     </string-array>
     <string-array name="ex_chest_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/52000/53781m.mp4</item>
@@ -607,6 +669,7 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/52000/53781m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/40301m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/39021m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/116000/117671m.mp4</item>
     </string-array>
 
     <string-array name="ex_chest_calos">
@@ -617,6 +680,7 @@
         <item>459</item>
         <item>408</item>
         <item>408</item>
+        <item>442</item>
     </string-array>
 
     <string name="ex_chest_benchpress">\n
@@ -669,27 +733,45 @@
         4. Return your arms back to the starting position as you squeeze your chest muscles and breathe out. Tip: Make sure to use the same arc of motion used to lower the weights.\n
         5. Hold for a second at the contracted position and repeat the movement for the prescribed amount of repetitions.
     </string>
+    <string name="ex_barbell_incline">\n
+        1. Load the bar to an appropriate weight for your training.\n
+        2. Lay on the bench with your feet flat on the ground, driving through to your hips. Your back should be arched, and your shoulder blades retracted.\n
+        3. Take a medium, pronated grip covering the rings on the bar. Remove the bar from the rack, holding the weight above your chest with your arms extended. This will be your starting position.\n
+        4. Lower the bar to the sternum by flexing the elbows. Maintain control and do not bounce the bar off of your chest. Your lats should stay tight and elbows slightly drawn in.\n
+        5. After touching your torso with the bar, extend the elbows to return the bar to the starting position.
+    </string>
 
     <string-array name="ex_forearms_names">
         <item>Partner Farmer\'s Walk Competition</item>
+        <item>Partner Suitcase Carry Competition</item>
     </string-array>
     <string-array name="ex_forearms_imgs">
         <item>partner_farmers_1,partner_farmers_2</item>
+        <item>partner_suitcase_1,partner_suitcase_2</item>
     </string-array>
     <string-array name="ex_forearms_descs">
         <item>@string/ex_partner_farmers</item>
+        <item>@string/ex_partner_suitcase</item>
     </string-array>
     <string-array name="ex_forearms_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/118000/118631m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/118000/118591m.mp4</item>
     </string-array>
     <string-array name="ex_forearms_calos">
         <item>459</item>
+        <item>466</item>
     </string-array>
     <string name="ex_partner_farmers">\n
         1. Place two dumbbells on the floor in front of you, making sure you have enough open space to walk. If you can’t reach the floor safely without rounding your back, elevate the weights off the floor. (When doing this as a competition, start side by side with your partner and make sure there’s enough room for both of you.)\n
         2. Squat down keeping your back flat—don’t bend over—and grasp the weights with a neutral grip. Stand back up by extending at the hips and knees; this will be your starting position.\n
         3. Keeping the weights at your sides, walk forward as far as you can; if necessary turn around and return the other way. Try to beat your partner for both distance and time.\n
         4. Descend into a squat to lower the weights back to the floor.
+    </string>
+    <string name="ex_partner_suitcase">\n
+        1. Place a dumbbell on the floor in front of you, making sure you have enough open space to walk. If you can’t reach the floor safely without rounding and twisting your back, elevate the weight off the floor. (When doing this as a competition, start side by side with your partner and make sure there’s enough room for both of you.)\n
+        2. Squat down keeping your back flat—don’t bend over—and grasp the weight with a neutral grip. Keep your body square as much as possible. Stand back up by extending at the hips and knees; this will be your starting position.\n
+        3. Keeping the weight at your side and maintaining a body position that doesn’t favor one side, walk forward as far as you can; if necessary turn around and return the other way. Try to beat your partner for both distance and time.\n
+        4. Descend into a squat to lower the weight back to the floor.
     </string>
 
 
@@ -750,6 +832,9 @@
         <item>Barbell Walking Lunge</item>
         <item>Split Squat with Dumbbells</item>
         <item>Barbell Step Ups</item>
+        <item>Elevated Back Lunge</item>
+        <item>Front Barbell Squat</item>
+        <item>One Leg Barbell Squat</item>
     </string-array>
     <string-array name="ex_quad_imgs">
         <item>bodyweight_1,bodyweight_2</item>
@@ -764,6 +849,9 @@
         <item>barbell_wakling_1,barbell_wakling_2</item>
         <item>split_squat_1,split_squat_2</item>
         <item>barbell_stepup_1,barbell_stepup_2</item>
+        <item>elevated_back_1,elevated_back_2</item>
+        <item>front_barbell_1,front_barbell_2</item>
+        <item>one_leg_1,one_leg_2</item>
     </string-array>
     <string-array name="ex_quad_descs">
         <item>@string/ex_quad_bodyweight</item>
@@ -778,6 +866,9 @@
         <item>@string/ex_quad_barbell_walking</item>
         <item>@string/ex_split_squat</item>
         <item>@string/ex_barbell_stepup</item>
+        <item>@string/ex_elevated_back</item>
+        <item>@string/ex_front_barbell</item>
+        <item>@string/ex_one_leg</item>
     </string-array>
     <string-array name="ex_quad_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/90000/90572m.mp4</item>
@@ -792,6 +883,9 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/106000/107032m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/94000/94752m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/52000/53861m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/98000/99182m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/54000/54081m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/41241m.mp4</item>
     </string-array>
     <string-array name="ex_quad_calos">
         <item>306</item>
@@ -804,6 +898,9 @@
         <item>510</item>
         <item>442</item>
         <item>510</item>
+        <item>476</item>
+        <item>476</item>
+        <item>493</item>
         <item>476</item>
         <item>476</item>
     </string-array>
@@ -878,6 +975,29 @@
         3. Step down with the left leg by flexing the hip and knee of the right leg as you inhale. Return to the original standing position by placing the right foot of to next to the left foot on the initial position.\n
         4. Repeat with the right leg for the recommended amount of repetitions and then perform with the left leg.
     </string>
+    <string name="ex_elevated_back">\n
+        1. Position a bar onto a rack at shoulder height loaded to an appropriate weight. Place a short, raised platform behind you.\n
+        2. Rack the bar onto your upper back, keeping your back arched and tight. Step onto your raised platform with both feet. This will be your starting position.\n
+        3. Begin by stepping backwards with one leg. Descend by flexing your hips and knees until your knee touches the floor.\n
+        4. Pause, and extend through the hips and knees to rise up, returning all the way to the starting position before alternating.
+    </string>
+    <string name="ex_front_barbell">\n
+        1. This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack that best matches your height. Once the correct height is chosen and the bar is loaded, bring your arms up under the bar while keeping the elbows high and the upper arm slightly above parallel to the floor. Rest the bar on top of the deltoids and cross your arms while grasping the bar for total control.\n
+        2. Lift the bar off the rack by first pushing with your legs and at the same time straightening your torso.\n
+        3. Step away from the rack and position your legs using a shoulder width medium stance with the toes slightly pointed out. Keep your head up at all times as looking down will get you off balance and also maintain a straight back. This will be your starting position. (Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances described in the foot positioning section).\n
+        4. Begin to slowly lower the bar by bending the knees as you maintain a straight posture with the head up. Continue down until the angle between the upper leg and the calves becomes slightly less than 90-degrees (which is the point in which the upper legs are below parallel to the floor). Inhale as you perform this portion of the movement. Tip: If you performed the exercise correctly, the front of the knees should make an imaginary straight line with the toes that is perpendicular to the front. If your knees are past that imaginary line (if they are past your toes) then you are placing undue stress on the knee and the exercise has been performed incorrectly.\n
+        5. Begin to raise the bar as you exhale by pushing the floor mainly with the middle of your foot as you straighten the legs again and go back to the starting position.\n
+        6. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_one_leg">\n
+        1. Start by standing about 2 to 3 feet in front of a flat bench with your back facing the bench. Have a barbell in front of you on the floor. Tip: Your feet should be shoulder width apart from each other.\n
+        2. Bend the knees and use a pronated grip with your hands being wider than shoulder width apart from each other to lift the barbell up until you can rest it on your chest.\n
+        3. Then lift the barbell over your head and rest it on the base of your neck. Move one foot back so that your toe is resting on the flat bench. Your other foot should be stationary in front of you. Keep your head up at all times as looking down will get you off balance and also maintain a straight back.\n
+        4. As you inhale, slowly lower your leg until your thigh is parallel to the floor. At this point, your knee should be over your toes. Your chest should be directly above the middle of your thigh.\n
+        5. Leading with the chest and hips and contracting the quadriceps, elevate your leg back to the starting position as you exhale.\n
+        6. Repeat for the recommended amount of repetitions.\n
+        7. Switch legs and repeat the movement.
+    </string>
 
     <string-array name="ex_shoulder_names">
         <item>Overhead Press</item>
@@ -887,6 +1007,8 @@
         <item>Dumbbell Shoulder Press</item>
         <item>Front Dumbbell Raise</item>
         <item>Suspended Back Fly</item>
+        <item>Standing Dumbbell Press</item>
+        <item>Seated Barbell Military Press</item>
     </string-array>
     <string-array name="ex_shoulder_imgs">
         <item>overhpress_1,overhpress_2</item>
@@ -896,6 +1018,8 @@
         <item>dumbbell_shoulder_1,dumbbell_shoulder_2</item>
         <item>front_dumbbell_1,front_dumbbell_2,front_dumbbell_3</item>
         <item>suspended_back_1,suspended_back_2</item>
+        <item>standing_dumbbel_1,standing_dumbbel_2</item>
+        <item>seated_barbell_1,seated_barbell_2</item>
     </string-array>
     <string-array name="ex_shoulder_descs">
         <item>@string/ex_shoulder_overheadpress</item>
@@ -905,6 +1029,8 @@
         <item>@string/ex_dumbbell_shoulder</item>
         <item>@string/ex_front_dumbbell</item>
         <item>@string/ex_suspended_back</item>
+        <item>@string/ex_standing_dumbbel</item>
+        <item>@string/ex_seated_barbell</item>
     </string-array>
     <string-array name="ex_shoulder_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/104000/105232m.mp4</item>
@@ -914,6 +1040,8 @@
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/39131m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/39911m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/116000/117541m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/94000/94772m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/40321m.mp4</item>
     </string-array>
 
     <string-array name="ex_shoulder_calos">
@@ -924,6 +1052,8 @@
         <item>340</item>
         <item>272</item>
         <item>374</item>
+        <item>442</item>
+        <item>323</item>
     </string-array>
 
     <string name="ex_shoulder_overheadpress">\n 1. Lie down on the floor and secure your feet. Your legs should be bent at the knees. \n
@@ -972,12 +1102,25 @@
         3. With your arms extended, lean back and adjust your relative position to change the degree of difficulty. With your body straight and your arms extended, you will be in the starting position.\n
         4. Abduct the shoulder while keeping the elbow slightly bent to pull yourself up to perform a reverse fly motion.
     </string>
+    <string name="ex_standing_dumbbel">\n
+        1. Standing with your feet shoulder width apart, take a dumbbell in each hand. Raise the dumbbells to head height, the elbows out and about 90 degrees. This will be your starting position.\n
+        2. Maintaining strict technique with no leg drive or leaning back, extend through the elbow to raise the weights together directly above your head.\n
+        3. Pause, and slowly return the weight to the starting position.
+    </string>
+    <string name="ex_seated_barbell">\n
+        1. Sit on a Military Press Bench with a bar behind your head and either have a spotter give you the bar (better on the rotator cuff this way) or pick it up yourself carefully with a pronated grip (palms facing forward).\n
+        2. Once you pick up the barbell with the correct grip length, lift the bar up over your head by locking your arms. Hold at about shoulder level and slightly in front of your head. This is your starting position.\n
+        3. Lower the bar down to the collarbone slowly as you inhale.\n
+        4. Lift the bar back up to the starting position as you exhale.\n
+        5. Repeat for the recommended amount of repetitions.
+    </string>
 
     <string-array name="ex_triceps_names">
         <item>Triceps Pushdown</item>
         <item>Lying Triceps Press</item>
         <item>Seated Dumbbell Press</item>
         <item>Push-Ups - Close Triceps Position</item>
+        <item>Standing Overhead Barbell Triceps Extension</item>
     </string-array>
     <string-array name="ex_triceps_imgs">
         <item>triceps_pushdown_1,triceps_pushdown_2</item>
@@ -985,24 +1128,28 @@
         <item>lying_triceps_1,lying_triceps_2</item>
         <item>seated_dumbbell_1,seated_dumbbell_2</item>
         <item>pushups_triceps_1,pushups_triceps_2</item>
+        <item>standing_barbell_1,standing_barbell_2</item>
     </string-array>
     <string-array name="ex_triceps_descs">
         <item>@string/ex_triceps_pushdown</item>
         <item>@string/ex_lying_triceps</item>
         <item>@string/ex_seated_dumbbell</item>
         <item>@string/ex_pushups_triceps</item>
+        <item>@string/ex_standing_barbell</item>
     </string-array>
     <string-array name="ex_triceps_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/41861m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/42000/42301m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/40081m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/54000/54371m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/42000/42121m.mp4</item>
     </string-array>
     <string-array name="ex_triceps_calos">
         <item>272</item>
         <item>340</item>
         <item>408</item>
         <item>323</item>
+        <item>357</item>
     </string-array>
 
     <string name="ex_triceps_pushdown">\n
@@ -1033,26 +1180,38 @@
         3. Using your triceps and some of your pectoral muscles, press your upper body back up to the starting position and squeeze your chest. Breathe out as you perform this step.\n
         4. After a second pause at the contracted position, repeat the movement for the prescribed amount of repetitions.
     </string>
+    <string name="ex_standing_barbell">\n
+        1. To begin, stand up holding a barbell or e-z bar using a pronated grip (palms facing forward) with your hands closer than shoulder width apart from each other. Your feet should be about shoulder width apart.\n
+        2. Now elevate the barbell above your head until your arms are fully extended. Keep your elbows in. This will be your starting position.\n
+        3. Keeping your upper arms close to your head and elbows in, perpendicular to the floor, lower the resistance in a semicircular motion behind your head until your forearms touch your biceps. Tip: The upper arms should remain stationary and only the forearms should move. Breathe in as you perform this step.\n
+        4. Go back to the starting position by using the triceps to raise the barbell. Breathe out as you perform this step.\n
+        5. Repeat for the recommended amount of repetitions.
+    </string>
 
     <string-array name="ex_lats_names">
         <item>Chin-Up</item>
         <item>Wide-Grip Lat Pulldown</item>
+        <item>Wide-Grip Rear Pull-Up</item>
     </string-array>
     <string-array name="ex_lats_imgs">
         <item>chinup_1,chinup_2</item>
         <item>wide_grid_1,wide_grid_2</item>
+        <item>wide_pullup_1,wide_pullup_2</item>
     </string-array>
     <string-array name="ex_lats_descs">
         <item>@string/ex_lats_chinup</item>
         <item>@string/ex_wide_grid</item>
+        <item>@string/ex_wide_pullup</item>
     </string-array>
     <string-array name="ex_lats_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/38000/38771m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/41441m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/41341m.mp4</item>
     </string-array>
     <string-array name="ex_lats_calos">
         <item>442</item>
         <item>408</item>
+        <item>391</item>
     </string-array>
 
     <string name="ex_lats_chinup">\n
@@ -1069,6 +1228,13 @@
         4. As you breathe out, bring the bar down until it touches your upper chest by drawing the shoulders and the upper arms down and back. Tip: Concentrate on squeezing the back muscles once you reach the full contracted position. The upper torso should remain stationary and only the arms should move. The forearms should do no other work except for holding the bar; therefore do not try to pull down the bar using the forearms.\n
         5. After a second at the contracted position squeezing your shoulder blades together, slowly raise the bar back to the starting position when your arms are fully extended and the lats are fully stretched. Inhale during this portion of the movement.\n
         6. Repeat this motion for the prescribed amount of repetitions.
+    </string>
+    <string name="ex_wide_pullup">\n
+        1. Grab the pull-up bar with the palms facing forward using a wide grip.\n
+        2. As you have both arms extended in front of you holding the bar, bring your torso forward and head so that there is an imaginary line from the pull-up bar to the back of your neck. This is your starting position.\n
+        3. Pull your torso up until the bar is near the back of your neck. To do this, draw the shoulders and upper arms down and back while slightly leaning your head forward. Exhale as you perform this portion of the movement. Tip: Concentrate on squeezing the back muscles once you reach the full contracted position. The upper torso should remain stationary as it moves through space and only the arms should move. The forearms should do no other work other than hold the bar.\n
+        4. After a second on the contracted position, start to inhale and slowly lower your torso back to the starting position when your arms are fully extended and the lats are fully stretched.\n
+        5. Repeat this motion for the prescribed amount of repetitions.
     </string>
 
     <string-array name="ex_hams_names">
@@ -1127,21 +1293,26 @@
     <string-array name="ex_calv_names">
         <item>Standing Calf Raises</item>
         <item>Calf Press</item>
+        <item>Seated Calf Raise</item>
     </string-array>
     <string-array name="ex_calv_imgs">
         <item>standing_calf_1,standing_calf_2</item>
         <item>calf_press_1,calf_press_2</item>
+        <item>seated_calf_1,seated_calf_2</item>
     </string-array>
     <string-array name="ex_calv_descs">
         <item>@string/ex_standing_calf</item>
         <item>@string/ex_calf_press</item>
+        <item>@string/ex_seated_calf</item>
     </string-array>
     <string-array name="ex_calv_videos">
         <item>http://videocdn.bodybuilding.com/video/mp4/40000/41821m.mp4</item>
         <item>http://videocdn.bodybuilding.com/video/mp4/94000/94042m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/40000/40201m.mp4</item>
     </string-array>
     <string-array name="ex_calv_calos">
         <item>204</item>
+        <item>238</item>
         <item>238</item>
     </string-array>
     <string name="ex_standing_calf">\n
@@ -1157,6 +1328,49 @@
         3. Straighten the legs by extending the knees, just barely lifting the weight from the stack. Your ankle should be fully flexed, toes pointing up. Execute the movement by pressing downward through the balls of your feet as far as possible.\n
         4. After a brief pause, reverse the motion and repeat
     </string>
+    <string name="ex_seated_calf">\n
+        1. Sit on the machine and place your toes on the lower portion of the platform provided with the heels extending off. Choose the toe positioning of your choice (forward, in, or out) as per the beginning of this chapter.\n
+        2. Place your lower thighs under the lever pad, which will need to be adjusted according to the height of your thighs. Now place your hands on top of the lever pad in order to prevent it from slipping forward.\n
+        3. Lift the lever slightly by pushing your heels up and release the safety bar. This will be your starting position.\n
+        4. Slowly lower your heels by bending at the ankles until the calves are fully stretched. Inhale as you perform this movement.\n
+        5. Raise the heels by extending the ankles as high as possible as you contract the calves and breathe out. Hold the top contraction for a second.\n
+        6. Repeat for the recommended amount of repetitions.
+    </string>
+
+    <string-array name="ex_trap_names">
+        <item>Barbell Shrug</item>
+        <item>Dumbbell Shrug</item>
+    </string-array>
+    <string-array name="ex_trap_imgs">
+        <item>barbell_shrug_1,barbell_shrug_2</item>
+        <item>dumbbell_shrug_1,dumbbell_shrug_2</item>
+    </string-array>
+    <string-array name="ex_trap_descs">
+        <item>@string/ex_barbell_shrug</item>
+        <item>@string/ex_dumbbell_shrug</item>
+    </string-array>
+    <string-array name="ex_trap_videos">
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/38331m.mp4</item>
+        <item>http://videocdn.bodybuilding.com/video/mp4/38000/39141m.mp4</item>
+    </string-array>
+    <string-array name="ex_trap_calos">
+        <item>374</item>
+        <item>374</item>
+    </string-array>
+    <string name="ex_barbell_shrug">\n
+        1. Stand up straight with your feet at shoulder width as you hold a barbell with both hands in front of you using a pronated grip (palms facing the thighs). Tip: Your hands should be a little wider than shoulder width apart. You can use wrist wraps for this exercise for a better grip. This will be your starting position.\n
+        2. Raise your shoulders up as far as you can go as you breathe out and hold the contraction for a second. Tip: Refrain from trying to lift the barbell by using your biceps.\n
+        3. Slowly return to the starting position as you breathe in.\n
+        4. Repeat for the recommended amount of repetitions.
+    </string>
+    <string name="ex_dumbbell_shrug">\n
+        1. Stand erect with a dumbbell on each hand (palms facing your torso), arms extended on the sides.\n
+        2. Lift the dumbbells by elevating the shoulders as high as possible while you exhale. Hold the contraction at the top for a second. Tip: The arms should remain extended at all times. Refrain from using the biceps to help lift the dumbbells. Only the shoulders should be moving up and down.\n
+        3. Lower the dumbbells back to the original position.\n
+        4. Repeat for the recommended amount of repetitions.\n
+    </string>
+
+
     <string name="menu_helper">Guide</string>
     <!-- workout here -->
     <string-array name="wo_names">
@@ -2076,6 +2290,86 @@
         <item>3</item>
         <item>3</item>
         <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
     </string-array>
     <string-array name="wo_3_day">
         <item>1</item>
@@ -2144,6 +2438,86 @@
         <item>4</item>
         <item>4</item>
         <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
     </string-array>
     <string-array name="wo_3_exer">
         <item>8005</item>
@@ -2162,7 +2536,7 @@
         <item>11000</item>
         <item>3001</item>
         <item>9001</item>
-        <item>2007</item>
+        <item>2006</item>
         <item>8009</item>
         <item>12000</item>
         <item>13000</item>
@@ -2180,9 +2554,11 @@
         <item>10000</item>
         <item>4005</item>
         <item>10003</item>
+        <item>4003</item>
         <item>2009</item>
         <item>3002</item>
         <item>11001</item>
+        <item>3001</item>
         <item>9003</item>
         <item>12001</item>
         <item>8010</item>
@@ -2190,7 +2566,10 @@
         <item>13001</item>
         <item>9004</item>
         <item>9005</item>
+        <item>14001</item>
         <item>1005</item>
+        <item>2007</item>
+        <item>5000</item>
         <item>1001</item>
         <item>1006</item>
         <item>8005</item>
@@ -2210,6 +2589,83 @@
         <item>9006</item>
         <item>12003</item>
         <item>8010</item>
+        <item>8012</item>
+        <item>13001</item>
+        <item>9007</item>
+        <item>9005</item>
+        <item>14000</item>
+        <item>1008</item>
+        <item>2007</item>
+        <item>5001</item>
+        <item>8005</item>
+        <item>8007</item>
+        <item>8011</item>
+        <item>2010</item>
+        <item>1007</item>
+        <item>1009</item>
+        <item>4004</item>
+        <item>10000</item>
+        <item>4005</item>
+        <item>10001</item>
+        <item>4003</item>
+        <item>2005</item>
+        <item>3000</item>
+        <item>11000</item>
+        <item>3001</item>
+        <item>9001</item>
+        <item>12001</item>
+        <item>8010</item>
+        <item>12000</item>
+        <item>13000</item>
+        <item>9008</item>
+        <item>9005</item>
+        <item>14001</item>
+        <item>1010</item>
+        <item>2007</item>
+        <item>5000</item>
+        <item>8005</item>
+        <item>4004</item>
+        <item>10001</item>
+        <item>4001</item>
+        <item>4006</item>
+        <item>11000</item>
+        <item>2009</item>
+        <item>3000</item>
+        <item>9003</item>
+        <item>8013</item>
+        <item>12003</item>
+        <item>8010</item>
+        <item>13002</item>
+        <item>9008</item>
+        <item>9002</item>
+        <item>14001</item>
+        <item>1010</item>
+        <item>1006</item>
+        <item>5001</item>
+        <item>8005</item>
+        <item>2006</item>
+        <item>2009</item>
+        <item>12000</item>
+        <item>10004</item>
+        <item>4004</item>
+        <item>4007</item>
+        <item>10003</item>
+        <item>2005</item>
+        <item>3000</item>
+        <item>11002</item>
+        <item>1008</item>
+        <item>1011</item>
+        <item>2007</item>
+        <item>8013</item>
+        <item>12003</item>
+        <item>8014</item>
+        <item>13001</item>
+        <item>9008</item>
+        <item>9005</item>
+        <item>14000</item>
+        <item>1004</item>
+        <item>1012</item>
+        <item>5001</item>
     </string-array>
     <string-array name="wo_3_set">
         <item>5</item>
@@ -2265,7 +2721,6 @@
         <item>3</item>
         <item>3</item>
         <item>3</item>
-
         <item>4</item>
         <item>4</item>
         <item>4</item>
@@ -2279,6 +2734,86 @@
         <item>4</item>
         <item>4</item>
         <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>4</item>
+        <item>4</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
     </string-array>
     <string-array name="wo_3_repeat">
         <item>12,12,12,12,12</item>
@@ -2334,7 +2869,6 @@
         <item>10,10,10</item>
         <item>10,10,10</item>
         <item>25,25,25</item>
-
         <item>8,8,8,8</item>
         <item>8,8,8,8</item>
         <item>8,8,8,8</item>
@@ -2348,6 +2882,86 @@
         <item>8,8,8,8</item>
         <item>8,8,8,8</item>
         <item>8,8,8,8</item>
+        <item>8,8,8,8</item>
+        <item>8,8,8,8</item>
+        <item>8,8,8,8</item>
+        <item>25,25,25</item>
+        <item>5,5,5</item>
+        <item>1,1,1</item>
+        <item>6,6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>10,10,10</item>
+        <item>10,10,10</item>
+        <item>10,10,10</item>
+        <item>6,6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>12,12,12,12,12</item>
+        <item>12,12,12,12</item>
+        <item>12,12,12,12</item>
+        <item>12,12,12,12</item>
+        <item>12,12,12,12</item>
+        <item>6,6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>6,6,6,6</item>
+        <item>15,15,15</item>
+        <item>10,10,10</item>
+        <item> </item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>15,15,15</item>
+        <item>10,10,10</item>
+        <item>5,5,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>5,5,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>25,25,25</item>
+        <item> </item>
+        <item>3,3,3,2,2</item>
+        <item>3,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>5,5,5,5</item>
+        <item>3,3,3,2,2</item>
+        <item>3,3,3,3</item>
+        <item>3,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>3,3,3,2,2</item>
+        <item>3,3,3,3</item>
+        <item>3,3,3,3</item>
+        <item>25,25,25</item>
+        <item>10,10,10</item>
+        <item>10,10,10</item>
+        <item>3,3,3,2,2</item>
+        <item>3,3,3,3</item>
+        <item>3,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>3,3,3,2,2</item>
+        <item>3,3,3,3</item>
+        <item>5,5,5,5</item>
+        <item>25,25,25</item>
+        <item>25,25,25</item>
+        <item> </item>
     </string-array>
     <string-array name="wo_3_weight">
         <item>20</item>
@@ -2403,7 +3017,6 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-
         <item>20</item>
         <item>20</item>
         <item>10</item>
@@ -2417,6 +3030,86 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
+        <item>0</item>
+        <item>10</item>
+        <item>0</item>
+        <item>20</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>20</item>
+        <item>0</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>10</item>
+        <item>20</item>
+        <item>0</item>
+        <item>30</item>
+        <item>10</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>0</item>
+        <item>20</item>
+        <item>10</item>
+        <item>20</item>
+        <item>0</item>
+        <item>0</item>
+        <item>10</item>
     </string-array>
     <string-array name="wo_3_times">
         <item>300</item>
@@ -2472,7 +3165,6 @@
         <item>180</item>
         <item>180</item>
         <item>180</item>
-
         <item>160</item>
         <item>160</item>
         <item>160</item>
@@ -2486,5 +3178,85 @@
         <item>160</item>
         <item>160</item>
         <item>160</item>
+        <item>160</item>
+        <item>160</item>
+        <item>225</item>
+        <item>75</item>
+        <item>90</item>
+        <item>150</item>
+        <item>120</item>
+        <item>120</item>
+        <item>150</item>
+        <item>150</item>
+        <item>150</item>
+        <item>150</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>300</item>
+        <item>240</item>
+        <item>240</item>
+        <item>240</item>
+        <item>240</item>
+        <item>300</item>
+        <item>240</item>
+        <item>240</item>
+        <item>240</item>
+        <item>300</item>
+        <item>240</item>
+        <item>240</item>
+        <item>225</item>
+        <item>150</item>
+        <item>90</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>225</item>
+        <item>150</item>
+        <item>145</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>145</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>145</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>145</item>
+        <item>100</item>
+        <item>100</item>
+        <item>225</item>
+        <item>225</item>
+        <item>90</item>
+        <item>65</item>
+        <item>60</item>
+        <item>100</item>
+        <item>100</item>
+        <item>65</item>
+        <item>60</item>
+        <item>60</item>
+        <item>100</item>
+        <item>65</item>
+        <item>60</item>
+        <item>60</item>
+        <item>225</item>
+        <item>150</item>
+        <item>150</item>
+        <item>65</item>
+        <item>60</item>
+        <item>60</item>
+        <item>100</item>
+        <item>65</item>
+        <item>60</item>
+        <item>100</item>
+        <item>225</item>
+        <item>225</item>
+        <item>90</item>
     </string-array>
 </resources>
