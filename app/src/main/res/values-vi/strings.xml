@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gymlover</string>
+    <string name="app_name">Gym Lover</string>
     <string name="action_settings">Cấu hình</string>
     <string name="notify_afternoon">Chào buổi tối, Đừng quên cập nhật chi tiêu trong ngày của bạn nhé</string>
     <string name="notify_morning">Chào buổi sáng, Chúc bạn một ngày mới nhiều niềm vui</string>

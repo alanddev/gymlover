@@ -119,7 +119,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="banner_ad_unit_id">ca-app-pub-6762857180801550/2923514625</string>
+    <!--<string name="banner_ad_unit_id">ca-app-pub-6762857180801550/2923514625</string>-->
 
     <string-array name="settings">
         <item>@string/settings_themes</item>

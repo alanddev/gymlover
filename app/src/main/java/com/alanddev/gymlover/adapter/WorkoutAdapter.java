@@ -51,7 +51,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
         // Populate the data into the template view using the data object
         tvName.setText(workout.getName());
         tvWeek.setText(workout.getWeek() + " " + getContext().getString(R.string.week));
-        int temp = position%6;
+        int temp = position%5+1;
         imgIcon.setImageResource(mContext.getResources().getIdentifier("workout_" + temp, "mipmap", mContext.getPackageName()));
         imgChecked.setOnClickListener(new View.OnClickListener() {
             @Override

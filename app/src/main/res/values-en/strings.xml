@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gymlover</string>
+    <string name="app_name">Gym Lover</string>
     <string name="action_settings">Settings</string>
     <string name="notify_afternoon">Good evening, please do not forget update MW today</string>
     <string name="notify_morning">Happy morning and have a greate day </string>
