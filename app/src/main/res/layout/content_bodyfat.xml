@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtBodyFat"
         android:textColor="@color/colorOutFlow"
+        android:inputType="numberDecimal"
         android:hint="@string/user_fat"
         android:layout_marginLeft="15dp"/>
 
@@ -89,6 +90,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtWaist"
             android:imeOptions="actionGo"
+            android:inputType="numberDecimal"
             android:layout_marginLeft="15dp"/>
         <EditText
             android:layout_width="match_parent"

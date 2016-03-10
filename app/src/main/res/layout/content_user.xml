@@ -84,6 +84,7 @@
             android:id="@+id/txtHeight"
             android:hint="@string/user_height"
             android:layout_marginLeft="20dp"
+            android:inputType="numberDecimal"
             android:layout_gravity="center_vertical"/>
 
         <Spinner
