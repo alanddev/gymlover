@@ -10,6 +10,7 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.helper.IDataSource;
 import com.alanddev.gymlover.helper.MwSQLiteHelper;
 import com.alanddev.gymlover.model.Exercise;
+import com.alanddev.gymlover.model.History;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.User;
 import com.alanddev.gymlover.model.WorkoutExerDay;
@@ -80,7 +81,6 @@ public class WorkoutExerController implements IDataSource {
 
     public void updateTime(float time,int workoutId, int exerciseId){
 
-
         String updateQuery = "UPDATE " + MwSQLiteHelper.TABLE_WORKOUT_EXER + " SET " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME + "=" + time +" WHERE " +
                 MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID + "=" +workoutId + " AND " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID + "=" + exerciseId;
         try {
@@ -91,6 +91,23 @@ public class WorkoutExerController implements IDataSource {
         }
 
     }
+
+
+    public void updateTime(float time,int workoutId, int week, int day, int exerciseId){
+        String updateQuery = "UPDATE " + MwSQLiteHelper.TABLE_WORKOUT_EXER + " SET " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_TIME + "=" + time +" WHERE " +
+                MwSQLiteHelper.COLUMN_WORKOUT_EXER_WORK_ID + "=" +workoutId + " AND " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_EXER_ID + "=" + exerciseId
+                + " AND " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_WEEK + "=" + week  + " AND " + MwSQLiteHelper.COLUMN_WORKOUT_EXER_DAY + "=" + day
+                ;
+        try {
+            database.execSQL(updateQuery);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
     public float getTime(int workoutId, int exerciseId){
@@ -136,6 +153,70 @@ public class WorkoutExerController implements IDataSource {
     public List<Model> getAll(String query) {
         return null;
     }
+
+    public ArrayList<WorkoutExerDetail> getAllWorkoutId(int workoutId){
+        StringBuffer sql = new StringBuffer("SELECT w." +dbHelper.COLUMN_WORKOUT_EXER_ID +",w."+ dbHelper.COLUMN_WORKOUT_EXER_WORK_ID +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_EXER_ID + ",w."+dbHelper.COLUMN_WORKOUT_EXER_WEEK +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_DAY + ",w."+dbHelper.COLUMN_WORKOUT_EXER_DESC +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_SET + ",w."+dbHelper.COLUMN_WORKOUT_EXER_REPEAT +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_WEIGHT + ",w."+dbHelper.COLUMN_WORKOUT_EXER_TIME +
+                " FROM " + dbHelper.TABLE_WORKOUT_EXER  + " as w WHERE w." + dbHelper.COLUMN_WORKOUT_EXER_WORK_ID +
+                "="+ workoutId
+        );
+
+        Cursor cursor = database.rawQuery(sql.toString(), null);
+
+        cursor.moveToFirst();
+        ArrayList<WorkoutExerDetail> workoutExerDetails = new ArrayList<WorkoutExerDetail>();
+        while (!cursor.isAfterLast()) {
+            WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail();
+            workoutExerDetail.setId(cursor.getInt(0));
+            workoutExerDetail.setWorkid(cursor.getInt(1));
+            workoutExerDetail.setExerid(cursor.getInt(2));
+            workoutExerDetail.setWeek(cursor.getInt(3));
+            workoutExerDetail.setDay(cursor.getInt(4));
+            workoutExerDetail.setSet(cursor.getInt(5));
+            workoutExerDetail.setRepeat(cursor.getString(6));
+            workoutExerDetail.setWeight(cursor.getFloat(7));
+            workoutExerDetail.setTime(cursor.getFloat(8));
+            workoutExerDetails.add(workoutExerDetail);
+            cursor.moveToNext();
+        }
+
+        return workoutExerDetails;
+    }
+
+    public List<WorkoutExerDetail> getAllWorkout(){
+        StringBuffer sql = new StringBuffer("SELECT w." +dbHelper.COLUMN_WORKOUT_EXER_ID +",w."+ dbHelper.COLUMN_WORKOUT_EXER_WORK_ID +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_EXER_ID + ",w."+dbHelper.COLUMN_WORKOUT_EXER_WEEK +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_DAY + ",w."+dbHelper.COLUMN_WORKOUT_EXER_DESC +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_SET + ",w."+dbHelper.COLUMN_WORKOUT_EXER_REPEAT +
+                ", w."+ dbHelper.COLUMN_WORKOUT_EXER_WEIGHT + ",w."+dbHelper.COLUMN_WORKOUT_EXER_TIME +
+                " FROM " + dbHelper.TABLE_WORKOUT_EXER  + " as w");
+
+        Cursor cursor = database.rawQuery(sql.toString(), null);
+
+        cursor.moveToFirst();
+        ArrayList<WorkoutExerDetail> workoutExerDetails = new ArrayList<WorkoutExerDetail>();
+        while (!cursor.isAfterLast()) {
+            WorkoutExerDetail workoutExerDetail = new WorkoutExerDetail();
+            workoutExerDetail.setId(cursor.getInt(0));
+            workoutExerDetail.setWorkid(cursor.getInt(1));
+            workoutExerDetail.setExerid(cursor.getInt(2));
+            workoutExerDetail.setWeek(cursor.getInt(3));
+            workoutExerDetail.setDay(cursor.getInt(4));
+            workoutExerDetail.setSet(cursor.getInt(5));
+            workoutExerDetail.setRepeat(cursor.getString(6));
+            workoutExerDetail.setWeight(cursor.getFloat(7));
+            workoutExerDetail.setTime(cursor.getFloat(8));
+            workoutExerDetails.add(workoutExerDetail);
+            cursor.moveToNext();
+        }
+
+        return workoutExerDetails;
+    }
+
+
 
     @Override
     public Model cursorTo(Cursor cursor) {

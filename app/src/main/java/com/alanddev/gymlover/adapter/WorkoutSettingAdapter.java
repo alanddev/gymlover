@@ -52,6 +52,7 @@ public class WorkoutSettingAdapter extends ArrayAdapter<WorkoutExerDetail> {
         if (row == null) {
             row = LayoutInflater.from(getContext()).inflate(R.layout.list_item_workout_setting, parent, false);
             holder = new WorkoutHolderView();
+            holder.mWeekDayText = (TextView)row.findViewById(R.id.week_day);
             holder.mTimeText = (TextView) row.findViewById(R.id.time);
             holder.mNameText = (TextView) row.findViewById(R.id.name);
             holder.imgIcon = (ImageView)row.findViewById(R.id.icon);
@@ -66,13 +67,10 @@ public class WorkoutSettingAdapter extends ArrayAdapter<WorkoutExerDetail> {
                             String sTime = holder.mTimeText.getText().toString();
                             sTime = sTime.substring(0, sTime.length() - 2);
                             float fTime = Float.valueOf(sTime) + 1;
-                            workoutExerController.updateTime(fTime, workout.getWorkid(), workout.getExerid());
-//                            Intent intent = new Intent(getContext(),WorkoutSettingActivity.class);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            workoutExerController.updateTime(fTime, workout.getWorkid(),workout.getWeek(),workout.getDay(), workout.getExerid());
+//                            workoutExerController.updateTime(fTime, workout.getWorkid(), workout.getExerid());
                             WorkoutSettingActivity workoutSettingActivity = (WorkoutSettingActivity)getContext();
-                            //workoutSettingActivity.startActivity(intent);
-                            //workoutSettingActivity.finish();
-                            workoutSettingActivity.reloadData();
+                            workoutSettingActivity.reloadData(workout.getWorkid());
                             break;
                         default:
                             break;
@@ -89,9 +87,10 @@ public class WorkoutSettingAdapter extends ArrayAdapter<WorkoutExerDetail> {
                             String sTime = holder.mTimeText.getText().toString();
                             sTime = sTime.substring(0, sTime.length() - 2);
                             float fTime = Float.valueOf(sTime) - 1;
-                            workoutExerController.updateTime(fTime, workout.getWorkid(), workout.getExerid());
+                            workoutExerController.updateTime(fTime, workout.getWorkid(), workout.getWeek(),workout.getDay(), workout.getExerid());
+//                            workoutExerController.updateTime(fTime, workout.getWorkid(), workout.getExerid());
                             WorkoutSettingActivity workoutSettingActivity = (WorkoutSettingActivity)getContext();
-                            workoutSettingActivity.reloadData();
+                            workoutSettingActivity.reloadData(workout.getWorkid());
                             v.invalidate();
                             break;
                         default:
@@ -109,6 +108,7 @@ public class WorkoutSettingAdapter extends ArrayAdapter<WorkoutExerDetail> {
         // Populate the data into the template view using the data object
         int exerId = workout.getExerid();
         Exercise exercise = exerciseController.getById(exerId);
+        holder.mWeekDayText.setText(getContext().getString(R.string.week) + workout.getWeek() + "-" + getContext().getString(R.string.day)+workout.getDay());
         holder.mNameText.setText(exercise.getName());
         holder.mTimeText.setText(workout.getTime() + " " + getContext().getString(R.string.second));
 
@@ -130,6 +130,7 @@ public class WorkoutSettingAdapter extends ArrayAdapter<WorkoutExerDetail> {
 
     class WorkoutHolderView{
         TextView mTimeText;
+        TextView mWeekDayText;
         TextView mNameText;
         ImageView imgAdd;
         ImageView imgMinus;

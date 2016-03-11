@@ -14,14 +14,28 @@ android:paddingBottom="10dp">
     android:layout_marginLeft="2dp"
     />
 
+    <TextView
+        android:id="@+id/week_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_transaction_sub_title"
+        android:gravity="center_vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:text=""
+        android:textStyle="bold"
+        />
+
+
 <TextView
     android:id="@+id/name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="@dimen/text_size_default_big"
+    android:textSize="@dimen/text_size_transaction_title"
     android:gravity="center_vertical"
     android:layout_alignParentLeft="true"
     android:layout_marginLeft="50dp"
+    android:layout_below="@+id/week_day"
     android:text=""
     android:textStyle="bold"
      />
@@ -38,7 +52,7 @@ android:paddingBottom="10dp">
 
 <ImageView
     android:id="@+id/add"
-    android:src="@mipmap/add1"
+    android:src="@mipmap/up"
     android:layout_width="@dimen/size_image_checked"
     android:layout_height="@dimen/size_image_checked"
     android:layout_marginRight="45dp"
@@ -48,7 +62,7 @@ android:paddingBottom="10dp">
 
  <ImageView
         android:id="@+id/minus"
-        android:src="@mipmap/minus1"
+        android:src="@mipmap/down"
         android:layout_width="@dimen/size_image_checked"
         android:layout_height="@dimen/size_image_checked"
         android:layout_marginRight="15dp"

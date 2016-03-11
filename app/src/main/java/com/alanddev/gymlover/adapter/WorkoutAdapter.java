@@ -20,6 +20,7 @@ import com.alanddev.gymlover.model.Exercise;
 import com.alanddev.gymlover.model.Model;
 import com.alanddev.gymlover.model.Workout;
 import com.alanddev.gymlover.ui.WorkoutSettingActivity;
+import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        Workout workout = (Workout)getItem(position);
+        final Workout workout = (Workout)getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_workout, parent, false);
@@ -69,11 +70,12 @@ public class WorkoutAdapter extends ArrayAdapter<Workout> {
                                     case R.id.install:
                                         //Or Some other code you want to put here.. This is just an example.
                                         Intent intentSetting = new Intent(getContext(),WorkoutSettingActivity.class);
+                                        intentSetting.putExtra(Constant.KEY_WORKOUT_SETTING,workout.getId());
                                         getContext().startActivity(intentSetting);
 //                                        Toast.makeText(getContext(), " Install Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
                                         break;
                                     case R.id.addtowishlist:
-                                        Toast.makeText(getContext(), "Add to Wish List Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(getContext(), "Add to Wish List Clicked at position " + " : " + position, Toast.LENGTH_LONG).show();
                                         break;
                                     default:
                                         break;
