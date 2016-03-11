@@ -3289,4 +3289,8 @@
     <string name="settings_menu">Choose Menu theme</string>
     <string name="settings_themes">Choose Theme</string>
     <string name="time">Time</string>
+    <string name="action_view_day">View by day</string>
+    <string name="action_view_month">View by month</string>
+    <string name="action_view_week">View by week</string>
+    <string name="action_view_year">View by year</string>
 </resources>

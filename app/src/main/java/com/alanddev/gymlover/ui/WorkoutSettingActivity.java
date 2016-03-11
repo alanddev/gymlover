@@ -11,12 +11,14 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.adapter.WorkoutSettingAdapter;
 import com.alanddev.gymlover.controller.WorkoutExerController;
 import com.alanddev.gymlover.model.WorkoutExerDetail;
+import com.alanddev.gymlover.util.Constant;
 
 import java.util.ArrayList;
 
 public class WorkoutSettingActivity extends AppCompatActivity {
 
     private WorkoutExerController workoutExerController;
+    private int workoutId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,11 @@ public class WorkoutSettingActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_workout_setting));
 
         workoutExerController = new WorkoutExerController(this);
-        reloadData();
+        Bundle b = getIntent().getExtras();
+        if (b!=null) {
+            workoutId = b.getInt(Constant.KEY_WORKOUT_SETTING);
+        }
+        reloadData(workoutId);
     }
 
     @Override
@@ -57,15 +63,10 @@ public class WorkoutSettingActivity extends AppCompatActivity {
     }
 
 
-    public void reloadData(){
+    public void reloadData(int workoutId){
         workoutExerController.open();
         ArrayList<WorkoutExerDetail> listWorkout = new ArrayList<>();
-        listWorkout.add(workoutExerController.getId(1));
-        listWorkout.add(workoutExerController.getId(2));
-        listWorkout.add(workoutExerController.getId(3));
-        listWorkout.add(workoutExerController.getId(4));
-        listWorkout.add(workoutExerController.getId(5));
-
+        listWorkout = workoutExerController.getAllWorkoutId(workoutId);
         ListView listViewWorkout = (ListView)findViewById(R.id.list_workout_detail);
         listViewWorkout.setAdapter(new WorkoutSettingAdapter(this,listWorkout));
         workoutExerController.close();

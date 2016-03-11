@@ -64,7 +64,7 @@ public class Constant {
     public static String KEY_POSITION = "position";
     public static String KEY_AUTORUN = "autorun";
     public static String KEY_TIME = "time_total";
-
+    public static String KEY_WORKOUT_SETTING ="workout_setting";
 
 
     public static int WORKOUT_NEW = 0;
