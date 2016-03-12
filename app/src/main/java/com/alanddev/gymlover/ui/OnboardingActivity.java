@@ -23,7 +23,7 @@ public class OnboardingActivity extends FragmentActivity {
     private ButtonFlat skip;
     private ButtonFlat next;
     private int length = Constant.LENGTH_GUIDE;
-
+    private int first_guide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,12 @@ public class OnboardingActivity extends FragmentActivity {
         indicator = (SmartTabLayout)findViewById(R.id.indicator);
         skip = (ButtonFlat)findViewById(R.id.skip);
         next = (ButtonFlat)findViewById(R.id.next);
+
+        Bundle bundle = getIntent().getExtras();;
+        first_guide = 0;
+        if (bundle !=null){
+            first_guide = bundle.getInt(Constant.KEY_FIRST_GUIDE);
+        }
 
         FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -98,9 +104,15 @@ public class OnboardingActivity extends FragmentActivity {
     private void finishOnboarding() {
         // Get the shared preferences
         // Launch the main Activity, called MainActivity
-        Intent main = new Intent(this, MainActivity.class);
-        startActivity(main);
-
+        if (first_guide == 1) {
+            Intent intent = new Intent(OnboardingActivity.this, SelectThemeActivity.class);
+            intent.putExtra("SETTING_EXTRA",Constant.CHANGE_LANGUAGE_ID);
+            intent.putExtra("SETTING_FIRST",Constant.CHANGE_LANGUAGE_ID);
+            startActivity(intent);
+        }else {
+            Intent main = new Intent(this, MainActivity.class);
+            startActivity(main);
+        }
         // Close the OnboardingActivity
         finish();
     }

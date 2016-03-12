@@ -66,6 +66,7 @@ public class Constant {
     public static String KEY_TIME = "time_total";
     public static String KEY_WORKOUT_SETTING ="workout_setting";
     public static String KEY_GUIDE_POSITION ="position";
+    public static String KEY_FIRST_GUIDE ="first_guide";
 
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
