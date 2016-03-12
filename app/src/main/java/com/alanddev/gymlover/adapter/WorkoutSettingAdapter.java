@@ -108,7 +108,7 @@ public class WorkoutSettingAdapter extends ArrayAdapter<WorkoutExerDetail> {
         // Populate the data into the template view using the data object
         int exerId = workout.getExerid();
         Exercise exercise = exerciseController.getById(exerId);
-        holder.mWeekDayText.setText(getContext().getString(R.string.week) + workout.getWeek() + "-" + getContext().getString(R.string.day)+workout.getDay());
+        holder.mWeekDayText.setText(getContext().getString(R.string.week) +" " + workout.getWeek() + "-" + getContext().getString(R.string.day)+ " " +workout.getDay());
         holder.mNameText.setText(exercise.getName());
         holder.mTimeText.setText(workout.getTime() + " " + getContext().getString(R.string.second));
 
