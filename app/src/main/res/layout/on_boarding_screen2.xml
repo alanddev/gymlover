@@ -8,15 +8,26 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/title"
         android:text="Welcome!"
         android:textSize="48sp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="15sp"
+        android:id="@+id/guide"
         android:layout_marginTop="20dp"
-        android:text="Please follow our guide to like this app more :D."/>
+        android:text="@string/guide_1"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/guide_1"
+        ></ImageView>
 
 </LinearLayout>

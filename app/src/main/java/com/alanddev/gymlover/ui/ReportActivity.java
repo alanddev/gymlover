@@ -26,6 +26,8 @@ import com.alanddev.gymlover.model.History;
 import com.alanddev.gymlover.model.TransactionSumGroup;
 import com.alanddev.gymlover.util.Constant;
 import com.alanddev.gymlover.util.Utils;
+import com.gc.materialdesign.views.ButtonFlat;
+import com.gc.materialdesign.views.ButtonRectangle;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -203,7 +205,8 @@ public class ReportActivity extends AppCompatActivity {
 
         public View getFrameLine(LayoutInflater inflater,View rootView,ViewGroup container){
             rootView = inflater.inflate(R.layout.fragment_report_line, container, false);
-            Button btUpdate = (Button)rootView.findViewById(R.id.update);
+//            Button btUpdate = (Button)rootView.findViewById(R.id.update);
+            ButtonRectangle btUpdate = (ButtonRectangle)rootView.findViewById(R.id.update);
             btUpdate.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
                     onClickUpdate(v);
@@ -490,16 +493,16 @@ public class ReportActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     if (typeReport == Constant.REPORT_TYPE_WORKOUT) {
-                        return "Workout";
+                        return getResources().getString(R.string.workout_tab);
                     }else{
-                        return "Body Fat";
+                        return getResources().getString(R.string.bodyfat_tab);
                     }
 
                 case 1:
                     if (typeReport == Constant.REPORT_TYPE_WORKOUT) {
-                        return "Body Fat";
+                        return getResources().getString(R.string.bodyfat_tab);
                     }else{
-                        return "Workout";
+                        return getResources().getString(R.string.workout_tab);
                     }
             }
             //fragment = PlaceholderFragment.newInstance(position);

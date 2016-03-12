@@ -171,7 +171,7 @@
             android:src="@mipmap/ic_user_fat" />
 
         <EditText
-            android:layout_width="140dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/txtFat"
             android:focusable="false"

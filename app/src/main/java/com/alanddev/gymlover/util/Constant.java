@@ -65,7 +65,7 @@ public class Constant {
     public static String KEY_AUTORUN = "autorun";
     public static String KEY_TIME = "time_total";
     public static String KEY_WORKOUT_SETTING ="workout_setting";
-
+    public static String KEY_GUIDE_POSITION ="position";
 
     public static int WORKOUT_NEW = 0;
     public static int WORKOUT_USING = 1;
@@ -78,5 +78,5 @@ public class Constant {
     public static int REPORT_TYPE_WORKOUT = 1;
     public static String KEY_REPORT_TYPE = "KEY_REPORT_TYPE";
     public static int EDIT_USER_RESULT = 108;
-
+    public static int LENGTH_GUIDE = 20;
 }
