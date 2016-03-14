@@ -47,9 +47,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
                 } else if(Utils.getCurrentLanguage(getApplicationContext()).equals("")){
-                    Intent intent = new Intent(SplashScreenActivity.this, SelectThemeActivity.class);
-                    intent.putExtra("SETTING_EXTRA",Constant.CHANGE_LANGUAGE_ID);
-                    intent.putExtra("SETTING_FIRST",Constant.CHANGE_LANGUAGE_ID);
+                    Intent intent = new Intent(SplashScreenActivity.this,OnboardingActivity.class);
+                    intent.putExtra(Constant.KEY_FIRST_GUIDE,1);
+                    //Intent intent = new Intent(SplashScreenActivity.this, SelectThemeActivity.class);
+//                    intent.putExtra("SETTING_EXTRA",Constant.CHANGE_LANGUAGE_ID);
+//                    intent.putExtra("SETTING_FIRST",Constant.CHANGE_LANGUAGE_ID);
                     startActivity(intent);
                 } else{
                     sleep(Constant.SPLASH_DISPLAY_SHORT);

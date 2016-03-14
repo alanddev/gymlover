@@ -218,7 +218,6 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
                 }else if(selected.equals(getResources().getString(R.string.gender_girl))){
                     imgGender.setImageResource(R.mipmap.ic_gender_female);
                 }
-                weightChoice = selected;
             }
 
 

@@ -134,7 +134,7 @@
     <string name="user_height">Height</string>
     <string name="user_weight">Weight</string>
     <string name="user_fat">Fat percentage</string>
-    <string name="action_save">Save</string>
+    <string name="action_save">Done</string>
     <string name="warning_user_name">Chưa nhập tên bạn mà :)</string>
 
     <string-array name="gender_array">
@@ -158,7 +158,7 @@
     <string name="inch">inch</string>
     <string name="cm">cm</string>
 
-    <string name="bodyfat_guide"> Nam giới -> 2% -4%: quá ít mỡ, cần thêm mỡ</string>
+    <string name="bodyfat_guide">Body Fat</string>
     <string name="user_waist">Waist</string>
     <string name="bodyfat_guide_begin">Please see the picture below to figure out your body</string>
     <string name="calBodyFat">calculator</string>
@@ -196,7 +196,24 @@
     <string name="update">Cập nhật</string>
     <string name="menu_exercise_title">Exercise</string>
     <string name="menu_workout_title">Workout</string>
-
+    <string name="guide_1">First, please input your body information </string>
+    <string name="guide_2">Input your body fat :) </string>
+    <string name="guide_3">Use menu navigation to easy using</string>
+    <string name="guide_4">Click add button to add exercise work</string>
+    <string name="guide_5">Input information of exercise work</string>
+    <string name="guide_6">And is result</string>
+    <string name="guide_7">You can view result by day ,week, month, year</string>
+    <string name="guide_8">Click to small arrow to view report your work</string>
+    <string name="guide_9">Or view report your body Index</string>
+    <string name="guide_10">You can learn exercise by choose Exercise in Menu navigation</string>
+    <string name="guide_11">And watch the video </string>
+    <string name="guide_12">If confuse the exercise, you can watch the pre-define workout</string>
+    <string name="guide_13">And you will see the list of workout exercise</string>
+    <string name="guide_14">List of workout by day, you can choose run each exercise or click autorun button to run automatic</string>
+    <string name="guide_15">You can configure the workout exercise (in automatic run mode)</string>
+    <string name="guide_16">Configure time to satisfy</string>
+    <string name="guide_17">Click Run to start, and Done when you finish</string>
+    <string name="guide_18">After you click Done, you can edit the value of time, weight, and click Save to save the result </string>
     <!-- start conntent here -->
     <!-- exercise group-->
     <string-array name="excercise_grp_names">
@@ -3293,4 +3310,6 @@
     <string name="action_view_month">View by month</string>
     <string name="action_view_week">View by week</string>
     <string name="action_view_year">View by year</string>
+    <string name="workout_tab">Workout</string>
+    <string name="bodyfat_tab">Body Fat</string>
 </resources>

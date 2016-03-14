@@ -175,10 +175,11 @@ public class WorkoutExerController implements IDataSource {
             workoutExerDetail.setExerid(cursor.getInt(2));
             workoutExerDetail.setWeek(cursor.getInt(3));
             workoutExerDetail.setDay(cursor.getInt(4));
-            workoutExerDetail.setSet(cursor.getInt(5));
-            workoutExerDetail.setRepeat(cursor.getString(6));
-            workoutExerDetail.setWeight(cursor.getFloat(7));
-            workoutExerDetail.setTime(cursor.getFloat(8));
+            workoutExerDetail.setDesc(cursor.getString(5));
+            workoutExerDetail.setSet(cursor.getInt(6));
+            workoutExerDetail.setRepeat(cursor.getString(7));
+            workoutExerDetail.setWeight(cursor.getFloat(8));
+            workoutExerDetail.setTime(cursor.getFloat(9));
             workoutExerDetails.add(workoutExerDetail);
             cursor.moveToNext();
         }

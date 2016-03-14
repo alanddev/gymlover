@@ -12,6 +12,7 @@ import com.alanddev.gymlover.R;
 import com.alanddev.gymlover.fragment.OnboardingFragment1;
 import com.alanddev.gymlover.fragment.OnboardingFragment2;
 import com.alanddev.gymlover.fragment.OnboardingFragment3;
+import com.alanddev.gymlover.util.Constant;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
@@ -21,6 +22,8 @@ public class OnboardingActivity extends FragmentActivity {
     private SmartTabLayout indicator;
     private ButtonFlat skip;
     private ButtonFlat next;
+    private int length = Constant.LENGTH_GUIDE;
+    private int first_guide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,20 +35,30 @@ public class OnboardingActivity extends FragmentActivity {
         skip = (ButtonFlat)findViewById(R.id.skip);
         next = (ButtonFlat)findViewById(R.id.next);
 
+        Bundle bundle = getIntent().getExtras();;
+        first_guide = 0;
+        if (bundle !=null){
+            first_guide = bundle.getInt(Constant.KEY_FIRST_GUIDE);
+        }
+
         FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                switch (position) {
-                    case 0 : return new OnboardingFragment1();
-                    case 1 : return new OnboardingFragment2();
-                    case 2 : return new OnboardingFragment3();
-                    default: return null;
+                if (position == 0) {return new OnboardingFragment1();}
+                else if (position == length-1) {return new OnboardingFragment3();}
+                else {
+                    OnboardingFragment2 fragment =  new OnboardingFragment2();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(Constant.KEY_GUIDE_POSITION,position);
+                    fragment.setArguments(bundle);
+                    return fragment;
                 }
+
             }
 
             @Override
             public int getCount() {
-                return 3;
+                return length;
             }
         };
 
@@ -61,7 +74,7 @@ public class OnboardingActivity extends FragmentActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pager.getCurrentItem() == 2) { // The last screen
+                if (pager.getCurrentItem() == length -1 ) { // The last screen
                     finishOnboarding();
                 } else {
                     pager.setCurrentItem(
@@ -75,7 +88,7 @@ public class OnboardingActivity extends FragmentActivity {
         indicator.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                if(position == 2){
+                if(position == length - 1){
                     skip.setVisibility(View.GONE);
                     next.setText("Done");
                 } else {
@@ -90,17 +103,16 @@ public class OnboardingActivity extends FragmentActivity {
 
     private void finishOnboarding() {
         // Get the shared preferences
-//        SharedPreferences preferences =
-//                getSharedPreferences("my_preferences", MODE_PRIVATE);
-//
-//        // Set onboarding_complete to true
-//        preferences.edit()
-//                .putBoolean("onboarding_complete",true).apply();
-
         // Launch the main Activity, called MainActivity
-        Intent main = new Intent(this, MainActivity.class);
-        startActivity(main);
-
+        if (first_guide == 1) {
+            Intent intent = new Intent(OnboardingActivity.this, SelectThemeActivity.class);
+            intent.putExtra("SETTING_EXTRA",Constant.CHANGE_LANGUAGE_ID);
+            intent.putExtra("SETTING_FIRST",Constant.CHANGE_LANGUAGE_ID);
+            startActivity(intent);
+        }else {
+            Intent main = new Intent(this, MainActivity.class);
+            startActivity(main);
+        }
         // Close the OnboardingActivity
         finish();
     }

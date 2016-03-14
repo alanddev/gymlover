@@ -22,17 +22,30 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_report" tools:context="com.alanddev.gymlover.ui.ReportActivity">
+
+
+
         <TextView
             android:id="@+id/notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize = "12sp"
+            android:textSize = "14sp"
             android:layout_centerHorizontal="true"
             android:text="@string/noticebody"
             android:textColor="@color/colorDeepSkyBlue"
             android:layout_gravity="center_horizontal"
             />
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/update"
+            android:id="@+id/update"
+            android:gravity="center"
+            android:background="#1E88E5"
+            android:layout_gravity="center_horizontal"
+            />
+
         <TableRow
             android:id="@+id/hr1"
             android:layout_width="match_parent"
@@ -79,12 +92,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_barchart_trend" />
 
-        <Button
+<!--        <Button
             android:id="@+id/update"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_centerHorizontal = "true"
-            android:text="@string/update" />
+            android:text="@string/update" />-->
+
+
+
 
     </LinearLayout>
 </ScrollView>
