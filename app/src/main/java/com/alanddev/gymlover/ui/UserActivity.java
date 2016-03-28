@@ -269,20 +269,20 @@ public class UserActivity extends AppCompatActivity implements DatePickerDialog.
 
         float fHeight = 0.0f;
         String sHeight = heightEdit.getText().toString();
-        if (!sHeight.equals("")|| !sHeight.equals("0")) {
+        if (!sHeight.equals("")&& !sHeight.equals("0")) {
             fHeight = Float.valueOf(sHeight);
         }
 
         float fWeight = 0.0f;
         String sWeight = weightEdit.getText().toString();
-        if (!sWeight.equals("")|| !sWeight.equals("0")) {
+        if (!sWeight.equals("")&& !sWeight.equals("0")) {
             fWeight = Float.valueOf(sWeight);
         }
 
 
         float fFat = 0.0f;
         String sFat = fatEdit.getText().toString();
-        if (!sFat.equals("")|| !sFat.equals("0")) {
+        if (!sFat.equals("")&& !sFat.equals("0")) {
             fFat = Float.valueOf(sFat);
         }
 
